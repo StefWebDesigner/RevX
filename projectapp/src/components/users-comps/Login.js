@@ -41,10 +41,10 @@ const Login = () => {
 
     return (
         <>
-            //IMPORTED NAV HEADER
+            {/*IMPORTED NAV HEADER*/}
             <Navbar/>
 
-            //LOGIN FORM
+            {/*LOGIN FORM*/}
             <form>
                 <label> Enter Username : </label>
                 <input
@@ -62,7 +62,7 @@ const Login = () => {
                     onChange={(e) => {setPassword(e.target.value)}}
                 />
 
-                //BUTTON WITH THE LOGIN FORM
+                {/*BUTTON WITH THE LOGIN FORM*/}
                 <button
                     type="submit"
                     onClick={login}
