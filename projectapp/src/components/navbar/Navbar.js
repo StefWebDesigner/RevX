@@ -10,7 +10,6 @@ import {
     SidebarContent
 } from 'react-pro-sidebar';
 import icon from 'react-bootstrap'
-import 'react-pro-sidebar/dist/css/styles.css';
 import {
     FiHome,
     FiLogOut,
@@ -20,6 +19,9 @@ import {
 import {FaList, FaRegHeart} from "react-icons/fa";
 import { RiPencilLine } from "react-icons/ri";
 import { BiCog } from "react-icons/bi";
+// import 'react-pro-sidebar/dist/css/styles.css';
+// import './custom.css';
+
 
 
 const Navbar = () => {
@@ -62,7 +64,7 @@ const Navbar = () => {
                         </div>
 
                         {/*CHANGE MENU ICON SHAPE*/}
-                        <Menu iconShape="square">
+                        <Menu iconShape="cirlce">
                             <MenuItem icon={<FaList/>}>
                                 <li><Link to="/login">Login</Link></li>
                             </MenuItem>
@@ -83,10 +85,11 @@ const Navbar = () => {
                                 <li><Link to="/admin">Admin Portal</Link></li>
                             </MenuItem>
                             <MenuItem icon={<RiPencilLine/>}>
-                                Content
+                                <li><a>Content</a></li>
                             </MenuItem>
                             <MenuItem icon={<BiCog/>}>
-                                Settings
+                                <li><a>Setting</a></li>
+
                             </MenuItem>
                         </Menu>
                     </SidebarContent>
@@ -95,7 +98,7 @@ const Navbar = () => {
                     <SidebarFooter>
                         <Menu iconShape="square">
                             <MenuItem icon={<FiLogOut/>}>
-                                Logout
+                                <li><a>Logout</a></li>
                             </MenuItem>
                         </Menu>
                     </SidebarFooter>
