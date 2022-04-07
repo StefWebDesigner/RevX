@@ -105,7 +105,6 @@ const Navbar = () => {
                     </SidebarFooter>
                 </ProSidebar>
             </div>
-
         </>
     );
 };
