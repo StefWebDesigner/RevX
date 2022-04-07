@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Link} from "react-router-dom";
 import DataContext from "../../dataStore/dataStore";
 import {
@@ -8,8 +8,19 @@ import {
     SidebarHeader,
     SidebarFooter,
     SidebarContent
-} from "react-pro-sidebar";
-import "react-pro-sidebar/dist/css/styles.css";
+} from 'react-pro-sidebar';
+import icon from 'react-bootstrap'
+import 'react-pro-sidebar/dist/css/styles.css';
+import {
+    FiHome,
+    FiLogOut,
+    FiArrowLeftCircle,
+    FiArrowRightCircle
+} from "react-icons/fi";
+import {FaList, FaRegHeart} from "react-icons/fa";
+import { RiPencilLine } from "react-icons/ri";
+import { BiCog } from "react-icons/bi";
+
 
 const Navbar = () => {
 
@@ -31,6 +42,9 @@ const Navbar = () => {
 
     //NAV STRUCTURE SECTIONS
 
+    const menuIconClick = () => {
+        menuCollapse ? setMenuCollaspe(false) : setMenuCollaspe(true);
+    }
 
     return (
         <>
@@ -45,7 +59,42 @@ const Navbar = () => {
             {/*    <li><Link to="/admin">Admin Portal</Link></li>*/}
             {/*</Menu>*/}
 
+            <div id="header">
+                <ProSidebar collapsed={menuCollapse}>
+                    <SidebarHeader>
+                        <div className="logotext">
+                            <p>{menuCollapse ? "Logo" : "Big Logo"}</p>
+                        </div>
+                        <div className="closemenu" onClick={menuIconClick}>
+                            {menuCollapse ? <FiArrowRightCircle/> :
+                                <FiArrowLeftCircle/>}
+                        </div>
+                    </SidebarHeader>
 
+                    <SidebarContent>
+                        <Menu iconShape="square">
+                            <MenuItem active={true} icon={<FiHome/>}>
+                                Home
+                            </MenuItem>
+                            <MenuItem icon={<FaList/>}>
+                                Login
+                            </MenuItem>
+                            <MenuItem icon={<FaRegHeart/>}>
+                                Admin
+                            </MenuItem>
+                            <MenuItem icon={<RiPencilLine/>}>
+                                Content
+                            </MenuItem>
+                            <MenuItem icon={<BiCog/>}>
+                                Settings
+                            </MenuItem>
+                        </Menu>
+                    </SidebarContent>
+
+                </ProSidebar>
+
+
+            </div>
 
         </>
     );
