@@ -71,7 +71,11 @@ const Navbar = () => {
                             <MenuItem icon={<RiPencilLine/>}>
                                 <li><Link to="/signup">Signup</Link></li>
                             </MenuItem>
+                            <MenuItem icon={<FaRegHeart/>}>
+                                <li><Link to="/admin">Admin Portal</Link></li>
+                            </MenuItem>
                         </Menu>
+
 
                     </SidebarHeader>
 
@@ -81,22 +85,19 @@ const Navbar = () => {
                             <MenuItem active={true} icon={<FiHome/>}>
                                 <li><Link to="/">Home</Link></li>
                             </MenuItem>
-                            <MenuItem icon={<FaRegHeart/>}>
-                                <li><Link to="/admin">Admin Portal</Link></li>
-                            </MenuItem>
                             <MenuItem icon={<RiPencilLine/>}>
                                 <li><a>Content</a></li>
                             </MenuItem>
-                            <MenuItem icon={<BiCog/>}>
-                                <li><a>Setting</a></li>
 
-                            </MenuItem>
                         </Menu>
                     </SidebarContent>
 
                     {/*FOOTER SECTION*/}
                     <SidebarFooter>
                         <Menu iconShape="square">
+                            <MenuItem icon={<BiCog/>}>
+                                <li><a>Setting</a></li>
+                            </MenuItem>
                             <MenuItem icon={<FiLogOut/>}>
                                 <li><a>Logout</a></li>
                             </MenuItem>
