@@ -54,7 +54,7 @@ const Navbar = () => {
                     {/*CONTAINS HEADER & RESPONSIVE LOGO*/}
                     <SidebarHeader>
                         <div className="logotext">
-                            <p>{menuCollapse ? "Logo" : "Big Logo"}</p>
+                            <p>{menuCollapse ? "Logo" : "Expanded Logo"}</p>
                         </div>
                         <div className="closemenu" onClick={menuIconClick}>
                             {menuCollapse ? <FiArrowRightCircle/> :
