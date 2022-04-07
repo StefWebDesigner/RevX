@@ -9,7 +9,6 @@ import {
     SidebarFooter,
     SidebarContent
 } from 'react-pro-sidebar';
-import icon from 'react-bootstrap'
 import {
     FiHome,
     FiLogOut,
@@ -19,10 +18,6 @@ import {
 import {FaList, FaRegHeart} from "react-icons/fa";
 import { RiPencilLine } from "react-icons/ri";
 import { BiCog } from "react-icons/bi";
-// import 'react-pro-sidebar/dist/css/styles.css';
-// import './custom.css';
-
-
 
 const Navbar = () => {
 
@@ -43,7 +38,6 @@ const Navbar = () => {
     }
 
     //NAV STRUCTURE SECTIONS
-
     const menuIconClick = () => {
         menuCollapse ? setMenuCollaspe(false) : setMenuCollaspe(true);
     }
