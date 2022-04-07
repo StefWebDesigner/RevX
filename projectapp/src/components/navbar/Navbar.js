@@ -48,19 +48,10 @@ const Navbar = () => {
 
     return (
         <>
-            {/*<Menu>*/}
-            {/*    <li><Link to="/">Home</Link></li>*/}
-            {/*    <li><Link to="/login">Login</Link></li>*/}
-
-            {/*    /!*LOGGING OUT BUTTON FROM NAV*!/*/}
-            {/*    <li><a onClick={logout}>Login</a></li>*/}
-
-            {/*    <li><Link to="/signup">Signup</Link></li>*/}
-            {/*    <li><Link to="/admin">Admin Portal</Link></li>*/}
-            {/*</Menu>*/}
-
             <div id="header">
                 <ProSidebar collapsed={menuCollapse}>
+
+                    {/*CONTAINS HEADER & RESPONSIVE LOGO*/}
                     <SidebarHeader>
                         <div className="logotext">
                             <p>{menuCollapse ? "Logo" : "Big Logo"}</p>
@@ -69,18 +60,27 @@ const Navbar = () => {
                             {menuCollapse ? <FiArrowRightCircle/> :
                                 <FiArrowLeftCircle/>}
                         </div>
+
+                        {/*CHANGE MENU ICON SHAPE*/}
+                        <Menu iconShape="square">
+                            <MenuItem icon={<FaList/>}>
+                                <li><Link to="/login">Login</Link></li>
+                            </MenuItem>
+                            <MenuItem icon={<RiPencilLine/>}>
+                                <li><Link to="/signup">Signup</Link></li>
+                            </MenuItem>
+                        </Menu>
+
                     </SidebarHeader>
 
+                    {/*CONTAIN MAIN NAV CONTENT*/}
                     <SidebarContent>
                         <Menu iconShape="square">
                             <MenuItem active={true} icon={<FiHome/>}>
-                                Home
-                            </MenuItem>
-                            <MenuItem icon={<FaList/>}>
-                                Login
+                                <li><Link to="/">Home</Link></li>
                             </MenuItem>
                             <MenuItem icon={<FaRegHeart/>}>
-                                Admin
+                                <li><Link to="/admin">Admin Portal</Link></li>
                             </MenuItem>
                             <MenuItem icon={<RiPencilLine/>}>
                                 Content
@@ -91,9 +91,15 @@ const Navbar = () => {
                         </Menu>
                     </SidebarContent>
 
+                    {/*FOOTER SECTION*/}
+                    <SidebarFooter>
+                        <Menu iconShape="square">
+                            <MenuItem icon={<FiLogOut/>}>
+                                Logout
+                            </MenuItem>
+                        </Menu>
+                    </SidebarFooter>
                 </ProSidebar>
-
-
             </div>
 
         </>
