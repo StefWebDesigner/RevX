@@ -1,5 +1,7 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-pro-sidebar/dist/css/styles.css';
+import './custom.css';
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import Admin from "./components/admin/Admin";
 import Signup from "./components/users-comps/Signup";
