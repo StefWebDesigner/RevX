@@ -95,6 +95,8 @@ const AdminBody = () => {
                 {/*OVERALL FACT ROW*/}
                 </div>
 
+                <h1>Going to add the survey chart here</h1>
+
 
 
 

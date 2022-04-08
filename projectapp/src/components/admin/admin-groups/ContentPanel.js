@@ -202,12 +202,11 @@ const ContentPanel = () => {
                                 <div className="card-body">
                                     {/*CARD ROW*/}
                                     <div className="row no-gutters align-items-center">
-                                        <div className="col mr-2">
+                                        <div className="col-md-12 mr-2">
                                             <div className="fact-body">
 
-                                                <div className="d-flex flex-column">
-                                                <div className="row">
                                                     <form onSubmit={SubmitPostContent}>
+                                                        <div className="d-flex flex-column justify-content-center">
                                                         {/*ROW FOR TITLE AND GENRE*/}
                                                         <div className="row">
                                                             <div className="col-xl-2 col-lg-2 col-md-2">
@@ -230,22 +229,29 @@ const ContentPanel = () => {
                                                                 </select>
                                                             {/*END TAGS FOR SELECT OPTIONS    */}
                                                             </div>
-                                                            <div className="col-md-10">
-                                                        <label> Enter a title: </label>
-                                                        <input
-                                                            name="postTitle"
-                                                            value={postContent.postTitle}
-                                                            type="text"
-                                                            placeholder="Enter a title"
-                                                            onChange={handlePosts}
-                                                            required
-                                                        />
+                                                            <div className="col-xl-2 col-lg-2 col-md-2">
+                                                                <label
+                                                                    className="text-center"
+                                                                > Enter a title:
+                                                                </label>
+                                                                <input
+                                                                    className=" text-center"
+                                                                    name="postTitle"
+                                                                    value={postContent.postTitle}
+                                                                    type="text"
+                                                                    placeholder="Enter a title"
+                                                                    onChange={handlePosts}
+                                                                    required
+                                                                />
                                                             </div>
                                                     {/* END DIV TAG FOR TITLE & GENRE */}
                                                     </div>
 
-                                                        <label> Enter some content: </label>
+                                                        <label
+                                                            className="text-center"
+                                                        > Enter some content: </label>
                                                         <input
+                                                            className="postInputField text-center"
                                                             name="postBody"
                                                             value={postContent.postBody}
                                                             type="text"
@@ -257,17 +263,15 @@ const ContentPanel = () => {
                                                         <div className="row">
                                                             <div className="col-md-12">
                                                                 <button
-                                                                    className="mainStyle text-center"
+                                                                    className="mainStyle"
                                                                     role="button"
                                                                     type="submit"
                                                                 >
                                                                 </button>
                                                             </div>
                                                         </div>
-
-
+                                                        </div>
                                                     </form>
-                                                </div>
 
 
 
@@ -278,7 +282,8 @@ const ContentPanel = () => {
 
 
 
-                                                </div>
+
+                                                {/*</div>*/}
                                             </div>
                                         </div>
                                         {/*END CARD ROW*/}

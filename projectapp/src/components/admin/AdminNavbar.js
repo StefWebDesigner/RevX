@@ -67,9 +67,7 @@ const Navbar = () => {
                             <MenuItem icon={<RiPencilLine/>}>
                                 <li><Link to="/contentpanel">Content Panel</Link></li>
                             </MenuItem>
-                            <MenuItem icon={<RiPencilLine/>}>
-                                <li><Link to="/surveypanel">Survey Panel</Link></li>
-                        </MenuItem>
+
                         </Menu>
                     </SidebarContent>
 
