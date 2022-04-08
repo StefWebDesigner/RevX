@@ -3,12 +3,9 @@ import Navbar from "../navbar/Navbar";
 import {useNavigate} from "react-router-dom";
 import DataStore from "../../dataStore/dataStore";
 import axios from "axios";
+import './forms.css';
 
 const Login = () => {
-
-    //SETUSENAME & PASSWORD FOR INPUT COLLECTION
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
 
     //CALLING THE USERNAVIGATOR
     const navigator = useNavigate();
@@ -16,61 +13,77 @@ const Login = () => {
     //IT CALLS THE DATASTORE GLOBAL VARIABLE FORM STORE
     const {setUser} = useContext(DataStore);
 
+    //potential error messages when validating form
+    const [errorMessages, setErrorMessages] = useState({});
+    const errors = {
+        uname: "invalid username",
+        pass: "invalid password"
+    };
+
+    //used to track what to render on page -- new login form or error
+    const [isSubmitted, setIsSubmitted] = useState(false);
+
 
     //LOGIN IN FUNCTION
-    async function login (e) {
+    async function handleSubmit (e) {
         e.preventDefault();
 
-        //CHECKING FOR ALL FIELD INPUT
-        if(!username.trim() || !password.trim() ) {
-            alert("Please enter all information");
-            return;
+        var { username, password } = document.forms[0];
+
+        const {data} = await axios.get(`http://localhost:4000/userByName/${username}`);
+
+        //validate user information
+        if (data) {
+
+            if (data.password === password.value) {
+                setIsSubmitted(true);
+
+                //PASS DATA RECIEVED FROM AXIOS CALL TO SETUSER
+                setUser(data);
+                
+            } else {
+                // Invalid password
+                setErrorMessages({ name: "pass", message: errors.pass });
+            }
+        } else {
+            // Username not found
+            setErrorMessages({ name: "uname", message: errors.uname });
         }
-
-        const {data} = await axios.get(`http://localhost:8080/user/login?username=${username}&password=${password}`);
-
-        //PASS DATA RECIEVED FROM AXIOS CALL TO SETUSER
-        setUser(data);
-
-        //DATA IS STORED INTO LOCALSTORE TO BE RETIREVED THE USEID/ACCOUNT...AND MORE!
-        localStorage.setItem("user", JSON.stringify(data));
-
-        //AFTER SUCCESSFUL IT WILL REDIRECT TO HOME PAGE
-        navigator("/");
     }
 
+    //function to render error messages if username or password doesn't match
+    function renderErrorMessage (name){
+        if (name === errorMessages.name) {
+            return (<div className="error">{errorMessages.message}</div>);
+        }
+    }
+
+    //login form JSX element
+    const renderForm = (
+        <form onSubmit={handleSubmit}>
+            <div className="input-container">
+                <label>Enter username: </label>
+                <input type="text" name="username" placeholder="username" required />
+                {renderErrorMessage("uname")}
+            </div>
+            <div className="input-container">
+                <label>Enter password: </label>
+                <input type="password" name="password" placeholder="password" required />
+                {renderErrorMessage("pass")}
+            </div>
+            <div className="button-container">
+                <input type="submit" />
+            </div>
+        </form>
+    );
+
     return (
-        <>
-            {/*IMPORTED NAV HEADER*/}
-            <Navbar/>
-
-            {/*LOGIN FORM*/}
-            <form>
-                <label> Enter Username : </label>
-                <input
-                    type="username"
-                    name="username"
-                    placeholder="username"
-                    onChange={(e) => {setUsername(e.target.value)}}
-                />
-
-                <label> Enter password : </label>
-                <input
-                    type="password"
-                    name="password"
-                    placeholder="password"
-                    onChange={(e) => {setPassword(e.target.value)}}
-                />
-
-                {/*BUTTON WITH THE LOGIN FORM*/}
-                <button
-                    type="submit"
-                    onClick={login}
-                >
-                    Login
-                </button>
-            </form>
-        </>
+            <div className="app">
+                <div className="login-form">
+                    <div className="title">Sign In</div>
+                    {isSubmitted ? navigator('/') : renderForm}
+                </div>
+            </div>
     );
 };
 

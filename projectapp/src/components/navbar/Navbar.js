@@ -1,11 +1,31 @@
-import React, {useContext, useEffect} from 'react';
-import {Link} from "react-router-dom";
+import React, { useContext, useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
 import DataContext from "../../dataStore/dataStore";
+import {
+    ProSidebar,
+    Menu,
+    MenuItem,
+    SidebarHeader,
+    SidebarFooter,
+    SidebarContent
+} from 'react-pro-sidebar';
+import {
+    FiHome,
+    FiLogOut,
+    FiArrowLeftCircle,
+    FiArrowRightCircle
+} from "react-icons/fi";
+import { FaList, FaRegHeart } from "react-icons/fa";
+import { RiPencilLine } from "react-icons/ri";
+import { BiCog } from "react-icons/bi";
 
 const Navbar = () => {
 
+    //NAV COLLAPSING STATE
+    const [menuCollapse, setMenuCollaspe] = useState(false);
+
     //CALLING IN DATASTORE -> USED FOR NAV BAR CONDITION STATEMENT
-    const {user, setUser} = useContext(DataContext);
+    const { user, setUser } = useContext(DataContext);
 
     //GETTING THE USER
     useEffect(() => {
@@ -17,19 +37,68 @@ const Navbar = () => {
         localStorage.removeItem("user");
     }
 
+    //NAV STRUCTURE SECTIONS
+    const menuIconClick = () => {
+        menuCollapse ? setMenuCollaspe(false) : setMenuCollaspe(true);
+    }
 
     return (
         <>
-            <nav>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/login">Login</Link></li>
+            <div id="header">
+                <ProSidebar collapsed={menuCollapse}>
 
-                {/*LOGGING OUT BUTTON FROM NAV*/}
-                <li><a onClick={logout}>Login</a></li>
+                    {/*CONTAINS HEADER & RESPONSIVE LOGO*/}
+                    <SidebarHeader>
+                        <div className="logotext">
+                            <p>{menuCollapse ? "Logo" : "Expanded Logo"}</p>
+                        </div>
+                        <div className="closemenu" onClick={menuIconClick}>
+                            {menuCollapse ? <FiArrowRightCircle /> :
+                                <FiArrowLeftCircle />}
+                        </div>
 
-                <li><Link to="/signup">Signup</Link></li>
-                <li><Link to="/admin">Admin Portal</Link></li>
-            </nav>
+                        {/*CHANGE MENU ICON SHAPE*/}
+                        <Menu iconShape="cirlce">
+                            <MenuItem icon={<FaList />}>
+                                <li><Link to="/login">Login</Link></li>
+                            </MenuItem>
+                            <MenuItem icon={<RiPencilLine />}>
+                                <li><Link to="/signup">Signup</Link></li>
+                            </MenuItem>
+                            <MenuItem icon={<FaRegHeart />}>
+                                <li><Link to="/admin">Admin Portal</Link></li>
+                            </MenuItem>
+                        </Menu>
+
+
+                    </SidebarHeader>
+
+                    {/*CONTAIN MAIN NAV CONTENT*/}
+                    <SidebarContent>
+                        <Menu iconShape="square">
+                            <MenuItem active={true} icon={<FiHome />}>
+                                <li><Link to="/">Home</Link></li>
+                            </MenuItem>
+                            <MenuItem icon={<RiPencilLine />}>
+                                <li><a>Content</a></li>
+                            </MenuItem>
+
+                        </Menu>
+                    </SidebarContent>
+
+                    {/*FOOTER SECTION*/}
+                    <SidebarFooter>
+                        <Menu iconShape="square">
+                            <MenuItem icon={<BiCog />}>
+                                <li><a>Setting</a></li>
+                            </MenuItem>
+                            <MenuItem icon={<FiLogOut />}>
+                                <li><a>Logout</a></li>
+                            </MenuItem>
+                        </Menu>
+                    </SidebarFooter>
+                </ProSidebar>
+            </div>
         </>
     );
 };
