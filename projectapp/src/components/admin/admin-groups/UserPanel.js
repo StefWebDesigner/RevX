@@ -118,6 +118,7 @@ const UserPanel = () => {
                                                 </div>
                                                 {/*<div className=" text-center h5 mb-0 font-weight-bold text-gray-800">*/}
                                                 {/*    (Take from from DS)*/}
+
                                                 {/*</div>*/}
                                                 <div className="text-center mt-5">
                                                     <button
@@ -203,6 +204,7 @@ const UserPanel = () => {
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800 mb-3">
                                                     Table has the following pending reported Users
+                                                    - add the sorting scripts
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
 
