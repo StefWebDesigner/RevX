@@ -1,3 +1,31 @@
+/*  ANIMATION */
+
+.fade-in-animation {
+    animation: animation-fade 1s ease-in-out;
+}
+
+@keyframes animation-fade {
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 0.25;
+
+    }
+    50%{
+        opacity: 0.5;
+
+    }
+    75%{
+        opacity: 0.75;
+
+    }
+    100%{
+        opacity: 1;
+
+    }
+}
+
 /* NAVIGATION CSS*/
 
 #header {
@@ -89,4 +117,13 @@
     html {
         overflow: hidden;
     }
+}
+
+
+/* ----------ADMIN--------- */
+
+.adminBody {
+    padding-left: 100px;
+    padding-right: 20px;
+
 }
