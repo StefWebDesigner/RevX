@@ -1,17 +1,19 @@
-import React, {useContext, useState} from 'react';
-import Navbar from "../navbar/Navbar";
-import {useNavigate} from "react-router-dom";
-import DataStore from "../../dataStore/dataStore";
+import Form from 'react-bootstrap/Form'
+import Modal from 'react-bootstrap/Modal'
+import Button from 'react-bootstrap/button'
+import { useContext, useState } from 'react';
 import axios from "axios";
-import './forms.css';
 
-const Login = () => {
+import DataStore from "../../dataStore/dataStore";
 
-    //CALLING THE USERNAVIGATOR
-    const navigator = useNavigate();
+
+function Login() {
 
     //IT CALLS THE DATASTORE GLOBAL VARIABLE FORM STORE
-    const {setUser} = useContext(DataStore);
+    const { setUser } = useContext(DataStore);
+
+    //controls visibility of modal
+    const [isOpen, setIsOpen] = useState(true);
 
     //potential error messages when validating form
     const [errorMessages, setErrorMessages] = useState({});
@@ -24,23 +26,24 @@ const Login = () => {
     const [isSubmitted, setIsSubmitted] = useState(false);
 
 
-    //LOGIN IN FUNCTION
-    async function handleSubmit (e) {
+    async function handleSubmit(e) {
+
         e.preventDefault();
 
         var { username, password } = document.forms[0];
 
-        const {data} = await axios.get(`http://localhost:4000/userByName/${username}`);
-
+        // const { data } = await axios.get(`http://localhost:4000/userByName/${username}`);
+        const data = { username: "morth", password: "password" };
         //validate user information
         if (data) {
 
             if (data.password === password.value) {
                 setIsSubmitted(true);
+                setIsOpen(false);
 
                 //PASS DATA RECIEVED FROM AXIOS CALL TO SETUSER
                 setUser(data);
-                
+
             } else {
                 // Invalid password
                 setErrorMessages({ name: "pass", message: errors.pass });
@@ -51,40 +54,47 @@ const Login = () => {
         }
     }
 
-    //function to render error messages if username or password doesn't match
-    function renderErrorMessage (name){
+    function renderErrorMessage(name) {
         if (name === errorMessages.name) {
             return (<div className="error">{errorMessages.message}</div>);
         }
     }
 
-    //login form JSX element
     const renderForm = (
-        <form onSubmit={handleSubmit}>
-            <div className="input-container">
-                <label>Enter username: </label>
-                <input type="text" name="username" placeholder="username" required />
-                {renderErrorMessage("uname")}
-            </div>
-            <div className="input-container">
-                <label>Enter password: </label>
-                <input type="password" name="password" placeholder="password" required />
-                {renderErrorMessage("pass")}
-            </div>
-            <div className="button-container">
-                <input type="submit" />
-            </div>
-        </form>
+        <Modal
+            show={isOpen}
+            size="md"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+        >
+            <Form onSubmit={handleSubmit}>
+                <Modal.Header>
+                    <Modal.Title>Sign In</Modal.Title>
+                </Modal.Header>
+
+                <Modal.Body>
+                    <Form.Group>
+                        <Form.Label>Enter username: </Form.Label>
+                        <Form.Control type="text" name="username" placeholder="username" required />
+                        {renderErrorMessage("uname")}
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Enter password: </Form.Label>
+                        <Form.Control type="password" name="password" placeholder="password" required />
+                        {renderErrorMessage("pass")}
+                    </Form.Group>
+                </Modal.Body>
+
+                <Modal.Footer>
+                    <Button variant="primary" type="submit">
+                        Submit
+                    </Button>
+                </Modal.Footer>
+            </Form>
+        </Modal>
     );
 
-    return (
-            <div className="app">
-                <div className="login-form">
-                    <div className="title">Sign In</div>
-                    {isSubmitted ? navigator('/') : renderForm}
-                </div>
-            </div>
-    );
-};
+    return (isSubmitted ? "" : renderForm);
+}
 
 export default Login;

@@ -60,13 +60,13 @@ const Navbar = () => {
                         {/*CHANGE MENU ICON SHAPE*/}
                         <Menu iconShape="cirlce">
                             <MenuItem icon={<FaList />}>
-                                <li><Link to="/login">Login</Link></li>
+                                <Link to="/login">Login</Link>
                             </MenuItem>
                             <MenuItem icon={<RiPencilLine />}>
-                                <li><Link to="/signup">Signup</Link></li>
+                                <Link to="/signup">Signup</Link>
                             </MenuItem>
                             <MenuItem icon={<FaRegHeart />}>
-                                <li><Link to="/admin">Admin Portal</Link></li>
+                                <Link to="/admin">Admin Portal</Link>
                             </MenuItem>
                         </Menu>
 
@@ -77,10 +77,10 @@ const Navbar = () => {
                     <SidebarContent>
                         <Menu iconShape="square">
                             <MenuItem active={true} icon={<FiHome />}>
-                                <li><Link to="/">Home</Link></li>
+                                <Link to="/">Home</Link>
                             </MenuItem>
                             <MenuItem icon={<RiPencilLine />}>
-                                <li><a>Content</a></li>
+                                <a>Content</a>
                             </MenuItem>
 
                         </Menu>
@@ -90,10 +90,10 @@ const Navbar = () => {
                     <SidebarFooter>
                         <Menu iconShape="square">
                             <MenuItem icon={<BiCog />}>
-                                <li><a>Setting</a></li>
+                                <a>Setting</a>
                             </MenuItem>
                             <MenuItem icon={<FiLogOut />}>
-                                <li><a>Logout</a></li>
+                                <a>Logout</a>
                             </MenuItem>
                         </Menu>
                     </SidebarFooter>
