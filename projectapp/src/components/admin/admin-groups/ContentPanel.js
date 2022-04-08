@@ -192,6 +192,105 @@ const ContentPanel = () => {
                     </div>
 
 
+                    {/*POST CONTENT SECTION*/}
+                    <div className="row mb-3">
+
+
+                        {/*COL FOR CARD*/}
+                        <div className="col-xl-12 col-lg-12 col-md-12">
+                            <div className="card shadow h-100">
+                                <div className="card-body">
+                                    {/*CARD ROW*/}
+                                    <div className="row no-gutters align-items-center">
+                                        <div className="col mr-2">
+                                            <div className="fact-body">
+
+                                                <div className="d-flex flex-column">
+                                                <div className="row">
+                                                    <form onSubmit={SubmitPostContent}>
+                                                        {/*ROW FOR TITLE AND GENRE*/}
+                                                        <div className="row">
+                                                            <div className="col-xl-2 col-lg-2 col-md-2">
+                                                                {/*SELECT INDIVIDUAL DIV*/}
+                                                                <select
+                                                                    className="custom-select d-block w-100"
+                                                                    name="postGenre"
+                                                                    value={postContent.postGenre}
+                                                                    onChange={handlePosts}
+                                                                    required
+                                                                >
+                                                                    <option  value="">Choose...</option>
+                                                                    <option  value="beginner">Beginner</option>
+                                                                    <option value="intermediate">Intermediate</option>
+                                                                    <option  value="advanced">Advanced</option>
+                                                                    <option value="java">Java</option>
+                                                                    <option  value="javascript">Javascript</option>
+                                                                    <option value="react">React</option>
+                                                                    <option  value="python">Python</option>
+                                                                </select>
+                                                            {/*END TAGS FOR SELECT OPTIONS    */}
+                                                            </div>
+                                                            <div className="col-md-10">
+                                                        <label> Enter a title: </label>
+                                                        <input
+                                                            name="postTitle"
+                                                            value={postContent.postTitle}
+                                                            type="text"
+                                                            placeholder="Enter a title"
+                                                            onChange={handlePosts}
+                                                            required
+                                                        />
+                                                            </div>
+                                                    {/* END DIV TAG FOR TITLE & GENRE */}
+                                                    </div>
+
+                                                        <label> Enter some content: </label>
+                                                        <input
+                                                            name="postBody"
+                                                            value={postContent.postBody}
+                                                            type="text"
+                                                            placeholder="Enter content in the body"
+                                                            onChange={handlePosts}
+                                                            required
+                                                        />
+
+                                                        <div className="row">
+                                                            <div className="col-md-12">
+                                                                <button
+                                                                    className="mainStyle text-center"
+                                                                    role="button"
+                                                                    type="submit"
+                                                                >
+                                                                </button>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </form>
+                                                </div>
+
+
+
+
+
+
+
+
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {/*END CARD ROW*/}
+                                    </div>
+                                </div>
+                            </div>
+                            {/*COL END*/}
+                        </div>
+                        {/*OVERALL FACT ROW*/}
+                    </div>
+
+
                     <div className="row">
 
                         {/*GRAPH*/}
@@ -221,88 +320,8 @@ const ContentPanel = () => {
                             {/*COL END*/}
                         </div>
 
-
-                        {/*REPORT USER*/}
-                        {/*COL FOR CARD*/}
-                        <div className="col-xl-6 col-lg-6 col-md-6">
-                            <div className="card shadow h-100">
-                                <div className="card-body">
-                                    {/*CARD ROW*/}
-                                    <div className="row no-gutters align-items-center">
-                                        <div className="col mr-2">
-                                            <div className="fact-body">
-                                                <div className="text-center text-xs font-weight-bold text-uppercase">
-                                                    Create Post :
-                                                </div>
-                                                <div className=" text-center h5 mb-0 font-weight-bold text-gray-800 mb-3">
-                                                    Create a post by choosing a topic, adding the content, and submiting it.
-                                                </div>
-                                                <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-
-                                                    {/*A PLACE HOLDER FOR THE REAL CONTENT*/}
-                                                    <div className="row">
-                                                        <form onSubmit={SubmitPostContent}>
-
-                                                            <select
-                                                                className="custom-select d-block w-100"
-                                                                name="postGenre"
-                                                                value={postContent.postGenre}
-                                                                onChange={handlePosts}
-                                                                required
-                                                            >
-                                                                <option  value="">Choose...</option>
-                                                                <option  value="beginner">Beginner</option>
-                                                                <option value="intermediate">Intermediate</option>
-                                                                <option  value="advanced">Advanced</option>
-                                                                <option value="java">Java</option>
-                                                                <option  value="javascript">Javascript</option>
-                                                                <option value="react">React</option>
-                                                                <option  value="python">Python</option>
-                                                            </select>
-                                                            <label> Enter a title: </label>
-                                                            <input
-                                                                name="postTitle"
-                                                                value={postContent.postTitle}
-                                                                type="text"
-                                                                placeholder="Enter a title"
-                                                                onChange={handlePosts}
-                                                                required
-                                                            />
-                                                            <label> Enter some content: </label>
-                                                            <input
-                                                                name="postBody"
-                                                                value={postContent.postBody}
-                                                                type="text"
-                                                                placeholder="Enter content in the body"
-                                                                onChange={handlePosts}
-                                                                required
-                                                            />
-                                                            <label> Enter some content: </label>
-
-
-
-
-                                                        </form>
-
-
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {/*END CARD ROW*/}
-                                    </div>
-                                </div>
-                            </div>
-                            {/*COL END*/}
-                        </div>
-
                         {/*OVERALL FACT ROW*/}
                     </div>
-
-
-
-
 
 
                     {/* END OF WRAPPER CONTENT CLASS*/}
