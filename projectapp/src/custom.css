@@ -139,6 +139,7 @@
     background-color: #F8F9FC   ;
 }
 
+/*MAIN BUTTON STYLING*/
 .mainStyle, .mainStyle:after {
     position: relative;
     background: linear-gradient(45deg, transparent 5%, mediumpurple 5%);
