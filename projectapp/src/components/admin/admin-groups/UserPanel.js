@@ -119,10 +119,12 @@ const UserPanel = () => {
                                                 {/*</div>*/}
                                                 <div className="text-center mt-5">
                                                     <button
+                                                        className="mainStyle"
+                                                        role="button"
                                                         type="submit"
                                                         onClick={() => setShowUser(prevState => !prevState)}
                                                     >
-                                                        Retrieve Users
+
                                                     </button>
 
                                                     {/*ALL RETRIEVED DATA GOES HERE*/}
@@ -175,3 +177,4 @@ const UserPanel = () => {
 };
 
 export default UserPanel;
+
