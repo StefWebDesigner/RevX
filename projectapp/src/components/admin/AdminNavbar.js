@@ -62,14 +62,12 @@ const Navbar = () => {
                                 <li><Link to="/">Home</Link></li>
                             </MenuItem>
                             <MenuItem icon={<RiPencilLine/>}>
-                                <li><a>User Panel</a></li>
+                                <li><Link to="/userpanel">User Panel</Link></li>
                             </MenuItem>
                             <MenuItem icon={<RiPencilLine/>}>
-                                <li><a>Content Panel M</a></li>
+                                <li><Link to="/contentpanel">Content Panel</Link></li>
                             </MenuItem>
-                            <MenuItem icon={<RiPencilLine/>}>
-                            <li><a>Survey Panel</a></li>
-                        </MenuItem>
+
                         </Menu>
                     </SidebarContent>
 
