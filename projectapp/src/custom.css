@@ -120,10 +120,21 @@
 }
 
 
-/* ----------ADMIN--------- */
+/* ADMIN  */
 
+/*PADDING TO AVOID COLISION ON NAV*/
 .adminBody {
     padding-left: 100px;
     padding-right: 20px;
+}
 
+/*COLOR TAG ON FACT*/
+.purple-text-tag {
+    border-left: 10px solid #8479E1 ;
+    border-radius: 5px;
+}
+
+/*ADMIN BACKGROUND*/
+.adminBackground {
+    background-color: #F8F9FC   ;
 }

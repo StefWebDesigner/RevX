@@ -9,6 +9,9 @@ import Login from "./components/users-comps/Login";
 import Home from "./components/home/Home";
 import {useState} from "react";
 import DataContext from "./dataStore/dataStore";
+import UserPanel from "./components/admin/admin-groups/UserPanel";
+import SurveyPanel from "./components/admin/admin-groups/SurveyPanel";
+import ContentPanel from "./components/admin/admin-groups/ContentPanel";
 
 
 function App() {
@@ -26,10 +29,16 @@ function App() {
         }}>
           <Router>
               <Routes>
+                  {/*ROUTES FOR HOME NAV*/}
                   <Route path="/" element={<Home/>}/>
                   <Route path="/login" element={<Login/>}/>
                   <Route path="/signup" element={<Signup/>}/>
                   <Route path="/admin" element={<Admin/>}/>
+
+                  {/*ROUTES FOR ADMIN*/}
+                  <Route path="/userpanel" element={<UserPanel/>}/>
+                  <Route path="/surveypanel" element={<SurveyPanel/>}/>
+                  <Route path="/contentpanel" element={<ContentPanel/>}/>
               </Routes>
           </Router>
       </DataContext.Provider>
