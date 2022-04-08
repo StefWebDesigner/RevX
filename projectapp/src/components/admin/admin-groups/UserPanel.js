@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import AdminNavbar from "../AdminNavbar";
+import UsersChart from "../admincharts/UsersChart";
 
 const UserPanel = () => {
 
@@ -174,6 +175,9 @@ const UserPanel = () => {
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
                                                     (Take from from DS)
+                                                </div>
+                                                <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
+                                                    {/*<UsersChart/>*/}
                                                 </div>
                                             </div>
                                         </div>
