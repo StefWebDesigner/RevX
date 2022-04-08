@@ -1,9 +1,43 @@
 import React, {useState} from 'react';
 import AdminNavbar from "../AdminNavbar";
+import axios from "axios";
+
 
 const ContentPanel = () => {
 
+
+    //FORM STATE FOR POST CONTENT
+    const [postContent, setPostContent] = useState({
+        postTitle: "",
+        postBody: "",
+        postGenre: ""
+    });
+
+    //GET POST TOGGLE STATES
     const [showPost, setShowPost] = useState();
+
+    //POSTING METHOD FOR POST CONTENT
+    const SubmitPostContent = async (e) => {
+       e.defaultPrevented();
+
+       //POST CALL
+       const data = await axios.post('url', postContent);
+       console.log(data);
+
+       //RESETS THE CONTENT IN TO THE FORM
+       setPostContent({
+           postTitle: "",
+           postBody: "",
+           postGenre: ""
+       });
+    }
+    //POST CONTENT FORM HANDLER
+    const handlePosts = (e) => {
+        setPostContent({
+            ...postContent,
+            [e.target.name] : e.target.value,
+        });
+    };
 
     return (
         <>
@@ -207,7 +241,48 @@ const ContentPanel = () => {
 
                                                     {/*A PLACE HOLDER FOR THE REAL CONTENT*/}
                                                     <div className="row">
+                                                        <form onSubmit={SubmitPostContent}>
 
+                                                            <select
+                                                                className="custom-select d-block w-100"
+                                                                name="postGenre"
+                                                                value={postContent.postGenre}
+                                                                onChange={handlePosts}
+                                                                required
+                                                            >
+                                                                <option  value="">Choose...</option>
+                                                                <option  value="beginner">Beginner</option>
+                                                                <option value="intermediate">Intermediate</option>
+                                                                <option  value="advanced">Advanced</option>
+                                                                <option value="java">Java</option>
+                                                                <option  value="javascript">Javascript</option>
+                                                                <option value="react">React</option>
+                                                                <option  value="python">Python</option>
+                                                            </select>
+                                                            <label> Enter a title: </label>
+                                                            <input
+                                                                name="postTitle"
+                                                                value={postContent.postTitle}
+                                                                type="text"
+                                                                placeholder="Enter a title"
+                                                                onChange={handlePosts}
+                                                                required
+                                                            />
+                                                            <label> Enter some content: </label>
+                                                            <input
+                                                                name="postBody"
+                                                                value={postContent.postBody}
+                                                                type="text"
+                                                                placeholder="Enter content in the body"
+                                                                onChange={handlePosts}
+                                                                required
+                                                            />
+                                                            <label> Enter some content: </label>
+
+
+
+
+                                                        </form>
 
 
                                                     </div>
