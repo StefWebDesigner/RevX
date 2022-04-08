@@ -90,3 +90,8 @@
         overflow: hidden;
     }
 }
+
+.error {
+    color: red;
+    font-size: 12px;
+}

@@ -1,5 +1,5 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {Link} from "react-router-dom";
+import React, { useContext, useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
 import DataContext from "../../dataStore/dataStore";
 import {
     ProSidebar,
@@ -15,7 +15,7 @@ import {
     FiArrowLeftCircle,
     FiArrowRightCircle
 } from "react-icons/fi";
-import {FaList, FaRegHeart} from "react-icons/fa";
+import { FaList, FaRegHeart } from "react-icons/fa";
 import { RiPencilLine } from "react-icons/ri";
 import { BiCog } from "react-icons/bi";
 
@@ -25,7 +25,7 @@ const Navbar = () => {
     const [menuCollapse, setMenuCollaspe] = useState(false);
 
     //CALLING IN DATASTORE -> USED FOR NAV BAR CONDITION STATEMENT
-    const {user, setUser} = useContext(DataContext);
+    const { user, setUser } = useContext(DataContext);
 
     //GETTING THE USER
     useEffect(() => {
@@ -53,8 +53,8 @@ const Navbar = () => {
                             <p>{menuCollapse ? "Logo" : "Expanded Logo"}</p>
                         </div>
                         <div className="closemenu" onClick={menuIconClick}>
-                            {menuCollapse ? <FiArrowRightCircle/> :
-                                <FiArrowLeftCircle/>}
+                            {menuCollapse ? <FiArrowRightCircle /> :
+                                <FiArrowLeftCircle />}
                         </div>
 
                         {/*CHANGE MENU ICON SHAPE*/}

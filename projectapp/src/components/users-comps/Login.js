@@ -1,77 +1,100 @@
-import React, {useContext, useState} from 'react';
-import Navbar from "../navbar/Navbar";
-import {useNavigate} from "react-router-dom";
-import DataStore from "../../dataStore/dataStore";
+import Form from 'react-bootstrap/Form'
+import Modal from 'react-bootstrap/Modal'
+import Button from 'react-bootstrap/button'
+import { useContext, useState } from 'react';
 import axios from "axios";
 
-const Login = () => {
+import DataStore from "../../dataStore/dataStore";
 
-    //SETUSENAME & PASSWORD FOR INPUT COLLECTION
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
 
-    //CALLING THE USERNAVIGATOR
-    const navigator = useNavigate();
+function Login() {
 
     //IT CALLS THE DATASTORE GLOBAL VARIABLE FORM STORE
-    const {setUser} = useContext(DataStore);
+    const { setUser } = useContext(DataStore);
+
+    //controls visibility of modal
+    const [isOpen, setIsOpen] = useState(true);
+
+    //potential error messages when validating form
+    const [errorMessages, setErrorMessages] = useState({});
+    const errors = {
+        uname: "invalid username",
+        pass: "invalid password"
+    };
+
+    //used to track what to render on page -- new login form or error
+    const [isSubmitted, setIsSubmitted] = useState(false);
 
 
-    //LOGIN IN FUNCTION
-    async function login (e) {
+    async function handleSubmit(e) {
+
         e.preventDefault();
 
-        //CHECKING FOR ALL FIELD INPUT
-        if(!username.trim() || !password.trim() ) {
-            alert("Please enter all information");
-            return;
+        var { username, password } = document.forms[0];
+
+        // const { data } = await axios.get(`http://localhost:4000/userByName/${username}`);
+        const data = { username: "morth", password: "password" };
+        //validate user information
+        if (data) {
+
+            if (data.password === password.value) {
+                setIsSubmitted(true);
+                setIsOpen(false);
+
+                //PASS DATA RECIEVED FROM AXIOS CALL TO SETUSER
+                setUser(data);
+
+            } else {
+                // Invalid password
+                setErrorMessages({ name: "pass", message: errors.pass });
+            }
+        } else {
+            // Username not found
+            setErrorMessages({ name: "uname", message: errors.uname });
         }
-
-        const {data} = await axios.get(`http://localhost:8080/user/login?username=${username}&password=${password}`);
-
-        //PASS DATA RECIEVED FROM AXIOS CALL TO SETUSER
-        setUser(data);
-
-        //DATA IS STORED INTO LOCALSTORE TO BE RETIREVED THE USEID/ACCOUNT...AND MORE!
-        localStorage.setItem("user", JSON.stringify(data));
-
-        //AFTER SUCCESSFUL IT WILL REDIRECT TO HOME PAGE
-        navigator("/");
     }
 
-    return (
-        <>
-            {/*IMPORTED NAV HEADER*/}
-            <Navbar/>
+    function renderErrorMessage(name) {
+        if (name === errorMessages.name) {
+            return (<div className="error">{errorMessages.message}</div>);
+        }
+    }
 
-            {/*LOGIN FORM*/}
-            <form>
-                <label> Enter Username : </label>
-                <input
-                    type="username"
-                    name="username"
-                    placeholder="username"
-                    onChange={(e) => {setUsername(e.target.value)}}
-                />
+    const renderForm = (
+        <Modal
+            show={isOpen}
+            size="md"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+        >
+            <Form onSubmit={handleSubmit}>
+                <Modal.Header>
+                    <Modal.Title>Sign In</Modal.Title>
+                </Modal.Header>
 
-                <label> Enter password : </label>
-                <input
-                    type="password"
-                    name="password"
-                    placeholder="password"
-                    onChange={(e) => {setPassword(e.target.value)}}
-                />
+                <Modal.Body>
+                    <Form.Group>
+                        <Form.Label>Enter username: </Form.Label>
+                        <Form.Control type="text" name="username" placeholder="username" required />
+                        {renderErrorMessage("uname")}
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Enter password: </Form.Label>
+                        <Form.Control type="password" name="password" placeholder="password" required />
+                        {renderErrorMessage("pass")}
+                    </Form.Group>
+                </Modal.Body>
 
-                {/*BUTTON WITH THE LOGIN FORM*/}
-                <button
-                    type="submit"
-                    onClick={login}
-                >
-                    Login
-                </button>
-            </form>
-        </>
+                <Modal.Footer>
+                    <Button variant="primary" type="submit">
+                        Submit
+                    </Button>
+                </Modal.Footer>
+            </Form>
+        </Modal>
     );
-};
+
+    return (isSubmitted ? "" : renderForm);
+}
 
 export default Login;
