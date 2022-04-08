@@ -3,7 +3,7 @@ import React from 'react';
 const AdminBody = () => {
     return (
         <>
-        <section id="adminSection" className="adminBackground">
+        <section id="adminSection" className="adminBackground fade-in-animation">
 
             {/*FLEX AND WRAPPER CONTENT CLASS*/}
             <div id="admin-wrapper" className="d-flex flex-column adminBody">
