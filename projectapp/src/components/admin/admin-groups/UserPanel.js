@@ -127,9 +127,7 @@ const UserPanel = () => {
                                                         type="submit"
                                                         onClick={() => setShowUser(prevState => !prevState)}
                                                     >
-                                                        Pixel button
-
-                                                        {/*<a href="javascript:void(0);">Pixel button</a>*/}
+                                                        Get Users
                                                     </button>
 
                                                     {/*ALL RETRIEVED DATA GOES HERE*/}
