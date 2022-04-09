@@ -14,25 +14,17 @@ const Signup = (props) => {
     //potential error messages when validating form
     const [errorMessages, setErrorMessages] = useState({});
     const errors = {
-        name: "please enter your name",
+        fullname: "please enter your name",
         uname: "invalid username",
         unameused: "username taken",
         email: "invalid email format"
     };
 
-    //used to track what to render on page -- new login form or error
-    const [isSubmitted, setIsSubmitted] = useState(false);
-
     //POST AXIOS & EMAIL AND VALIDATION
-    async function handleSubmit(e){
+    function handleSubmit(e){
         e.preventDefault();
 
         const { first, last, username, password, city, state, email, account } = document.forms[0];
-
-        console.log(first.value);
-        console.log(last.value);
-        console.log(username.value);
-        console.log(password.value);
 
         const emailFormat =
             /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -52,31 +44,43 @@ const Signup = (props) => {
         } else {
 
             //check if username is in database
-            axios.get(`http://localhost:4000/userByName/${username.value}`).then((res)=>{
+            axios.get(`http://localhost:4000/users/userByName/${username.value}`).then((res)=>{
 
                 const existingUser = res.data;
-
-                console.log(existingUser);
 
                 if (existingUser) {
                     //username in system - check if returning user
                     if (existingUser.password === password.value) {
-                        setIsSubmitted(true);
+
                         props.setShowSignup(false);
 
                         //PASS DATA RECIEVED FROM AXIOS CALL TO SETUSER
                         setUser(existingUser);
 
                     } else {
+                        //username taken
                         setErrorMessages({ name: "unameused", message: errors.unameused });
+
                     }
                 } else {
                     // new user
-                    console.log(document.forms[0]);
-                    //await axios.post(document.forms[0]);
+                    const newUser = {
+                        firstname:first.value, 
+                        lastname:last.value, 
+                        username:username.value, 
+                        password:password.value, 
+                        city:city.value, 
+                        state:state.value, 
+                        email:email.value, 
+                        account:account.value
+                    }
+                    axios.post(`http://localhost:4000/users/newUser`,newUser).then((res)=>{
 
-                    setIsSubmitted(true);
-                    props.setShowSignup(false);
+                        props.setShowSignup(false);
+                        newUser.userid = res.userid;
+
+                        setUser(newUser);
+                    });
                 }
             })
         }  
@@ -117,17 +121,17 @@ const Signup = (props) => {
                     <Form.Group>
                         <Form.Label>Enter first name: </Form.Label>
                         <Form.Control type="text" name="first" placeholder="first name" required />
-                        {renderErrorMessage("name")}
+                        {renderErrorMessage("fullname")}
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Enter last name: </Form.Label>
                         <Form.Control type="text" name="last" placeholder="last name" required />
-                        {renderErrorMessage("name")}
+                        {renderErrorMessage("fullname")}
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Enter username: </Form.Label>
                         <Form.Control type="text" name="username" placeholder="username" required />
-                        {renderErrorMessage("uname")}
+                        {renderErrorMessage("unameused")}
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Enter password: </Form.Label>
@@ -217,7 +221,7 @@ const Signup = (props) => {
         </Modal>
     );
 
-    return (isSubmitted ? "" : renderForm);
+    return (user ? "" : renderForm);
 };
 
 export default Signup;

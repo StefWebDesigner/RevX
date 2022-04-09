@@ -17,7 +17,7 @@ import ContentPanel from "./components/admin/admin-groups/ContentPanel";
 function App() {
 
     //GROUNDING USER STATE IN THE APP
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
 
   return (
 

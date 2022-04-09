@@ -12,20 +12,12 @@ function Login(props) {
     //CALL THE DATASTORE GLOBAL VARIABLE FROM STORE
     const { user, setUser } = useContext(DataStore);
 
-    // //controls visibility of modal
-    // var isLoggedIn;
-    // user ? isLoggedIn=true: isLoggedIn=false;
-
     //potential error messages when validating form
     const [errorMessages, setErrorMessages] = useState({});
     const errors = {
         uname: "invalid username",
         pass: "invalid password"
     };
-
-    //used to track what to render on page -- new login form or error
-    const [isSubmitted, setIsSubmitted] = useState(false);
-
 
     //validates user information upon submit
     async function handleSubmit(e) {
@@ -42,16 +34,16 @@ function Login(props) {
         } else {
 
             //check if username is in database
-            const { data } = await axios.get(`http://localhost:4000/userByName/${username.value}`);
+            const { data } = await axios.get(`http://localhost:4000/users/userByName/${username.value}`);
 
             if (data) {
                 //username in system - check if passwords match
                 if (data.password === password.value) {
-                    setIsSubmitted(true);
                     props.setShowLogin(false);
 
                     //PASS DATA RECIEVED FROM AXIOS CALL TO SETUSER
                     setUser(data);
+                    localStorage.setItem("user", JSON.stringify(data));
 
                 } else {
                     // Invalid password
@@ -70,6 +62,7 @@ function Login(props) {
         }
     }
 
+    //change which modal is showing on button click
     function changeForm(){
         props.setShowLogin(false);
         props.setShowSignup(true);
@@ -87,7 +80,7 @@ function Login(props) {
                 {/* <Modal.Header> */}
                     <h3>Sign In</h3>
                     <div className="formbuttons">
-                        <button className="selectedbutton">
+                        <button className="selectedbutton" disabled>
                             Sign In
                         </button>
                         <button className="unselectedbutton" onClick={changeForm}>
@@ -118,7 +111,7 @@ function Login(props) {
         </Modal>
     );
 
-    return (isSubmitted ? "" : renderForm);
+    return ((user !== null) ? "" : renderForm);
 }
 
 export default Login;
