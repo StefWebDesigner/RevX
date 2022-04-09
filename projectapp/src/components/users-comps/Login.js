@@ -1,19 +1,20 @@
 import Form from 'react-bootstrap/Form'
 import Modal from 'react-bootstrap/Modal'
-import Button from 'react-bootstrap/button'
 import { useContext, useState } from 'react';
 import axios from "axios";
 
 import DataStore from "../../dataStore/dataStore";
+import "./forms.css";
 
 
-function Login() {
+function Login(props) {
 
-    //IT CALLS THE DATASTORE GLOBAL VARIABLE FORM STORE
-    const { setUser } = useContext(DataStore);
+    //CALL THE DATASTORE GLOBAL VARIABLE FROM STORE
+    const { user, setUser } = useContext(DataStore);
 
-    //controls visibility of modal
-    const [isOpen, setIsOpen] = useState(true);
+    // //controls visibility of modal
+    // var isLoggedIn;
+    // user ? isLoggedIn=true: isLoggedIn=false;
 
     //potential error messages when validating form
     const [errorMessages, setErrorMessages] = useState({});
@@ -26,31 +27,40 @@ function Login() {
     const [isSubmitted, setIsSubmitted] = useState(false);
 
 
+    //validates user information upon submit
     async function handleSubmit(e) {
 
         e.preventDefault();
 
         var { username, password } = document.forms[0];
 
-        // const { data } = await axios.get(`http://localhost:4000/userByName/${username}`);
-        const data = { username: "morth", password: "password" };
-        //validate user information
-        if (data) {
+        //check that username is not only whitespace
+        if(!username.value.trim()){
 
-            if (data.password === password.value) {
-                setIsSubmitted(true);
-                setIsOpen(false);
-
-                //PASS DATA RECIEVED FROM AXIOS CALL TO SETUSER
-                setUser(data);
-
-            } else {
-                // Invalid password
-                setErrorMessages({ name: "pass", message: errors.pass });
-            }
-        } else {
-            // Username not found
             setErrorMessages({ name: "uname", message: errors.uname });
+
+        } else {
+
+            //check if username is in database
+            const { data } = await axios.get(`http://localhost:4000/userByName/${username.value}`);
+
+            if (data) {
+                //username in system - check if passwords match
+                if (data.password === password.value) {
+                    setIsSubmitted(true);
+                    props.setShowLogin(false);
+
+                    //PASS DATA RECIEVED FROM AXIOS CALL TO SETUSER
+                    setUser(data);
+
+                } else {
+                    // Invalid password
+                    setErrorMessages({ name: "pass", message: errors.pass });
+                }
+            } else {
+                // Username not found
+                setErrorMessages({ name: "uname", message: errors.uname });
+            }
         }
     }
 
@@ -60,16 +70,30 @@ function Login() {
         }
     }
 
+    function changeForm(){
+        props.setShowLogin(false);
+        props.setShowSignup(true);
+    }
+
     const renderForm = (
         <Modal
-            show={isOpen}
+            show={props.showLogin}
             size="md"
             aria-labelledby="contained-modal-title-vcenter"
             centered
         >
             <Form onSubmit={handleSubmit}>
-                <Modal.Header>
-                    <Modal.Title>Sign In</Modal.Title>
+                <Modal.Header bsPrefix="formheading">
+                {/* <Modal.Header> */}
+                    <h3>Sign In</h3>
+                    <div className="formbuttons">
+                        <button className="selectedbutton">
+                            Sign In
+                        </button>
+                        <button className="unselectedbutton" onClick={changeForm}>
+                            Sign Up
+                        </button>
+                    </div>
                 </Modal.Header>
 
                 <Modal.Body>
@@ -86,9 +110,9 @@ function Login() {
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Button variant="primary" type="submit">
+                    <button className="loginbtn" variant="none" type="submit">
                         Submit
-                    </Button>
+                    </button>
                 </Modal.Footer>
             </Form>
         </Modal>

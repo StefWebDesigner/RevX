@@ -1,0 +1,62 @@
+/* Login/Registration Form */
+.formheading {
+    color: #163BBB;
+    text-align: center;
+    padding: 20px 5px 0 5px;
+    border-radius: 2px;
+}
+
+.formbuttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    font-size: medium;
+}
+
+.selectedbutton {
+    background: #163BBB;
+    width: 50%;
+    padding: 10px;
+    margin: 10px 5px 0 5px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+
+.unselectedbutton {
+    background: rgba(0, 212, 255, 0);
+    width: 50%;
+    padding: 10px;
+    margin: 10px 5px 0 5px;
+    border: #163BBB solid 2px;
+    border-radius: 5px;
+    color: black;
+}
+
+.unselectedbutton:hover {
+    background: #214ff4;
+    border: #214ff4 solid 2px;
+    color:white;
+}
+
+.loginbtn {
+    background: #163BBB;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+
+.loginbtn:hover {
+    background-color: #214ff4;
+}
+
+.loginbtn:active {
+    border: black solid 1px;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+}
