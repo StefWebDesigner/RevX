@@ -154,12 +154,12 @@ const ContentPanel = () => {
                                                 </div>
                                                 <div className="text-center mt-5">
                                                     <button
-                                                        className="mainStyle"
+                                                        className="buttonMainStyle"
                                                         role="button"
                                                         type="submit"
                                                         onClick={() => setShowPost(prevState => !prevState)}
                                                     >
-
+                                                        Show Posts
                                                     </button>
 
                                                     {/*ALL RETRIEVED DATA GOES HERE*/}
@@ -263,10 +263,11 @@ const ContentPanel = () => {
                                                         <div className="row">
                                                             <div className="col-md-12">
                                                                 <button
-                                                                    className="mainStyle"
+                                                                    className="buttonMainStyle"
                                                                     role="button"
                                                                     type="submit"
                                                                 >
+                                                                    Post Information
                                                                 </button>
                                                             </div>
                                                         </div>
