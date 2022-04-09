@@ -1,13 +1,16 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import Main from "./Main";
 import Footer from "./Footer";
 import Navbar from "../navbar/Navbar";
 import Login from '../users-comps/Login';
 import Signup from '../users-comps/Signup';
+import DataStore from "../../dataStore/dataStore";
 
 const Home = () => {
 
-    const [showLogin, setShowLogin] = useState(true);
+    const { user, setUser } = useContext(DataStore);
+
+    const [showLogin, setShowLogin] = useState(!user);
     const [showSignup, setShowSignup] = useState(false);
 
     return (
@@ -22,7 +25,7 @@ const Home = () => {
                 setShowSignup={setShowSignup}
                 setShowLogin={setShowLogin}
             />
-            <Navbar/>
+            <Navbar setShowLogin={setShowLogin}/>
             <Main/>
             <Footer/>
 

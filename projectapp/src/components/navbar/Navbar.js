@@ -20,7 +20,7 @@ import { RiPencilLine } from "react-icons/ri";
 import { BiCog } from "react-icons/bi";
 // import Logo from "../img-components/Logo";
 
-const Navbar = () => {
+const Navbar = ({setShowLogin}) => {
 
     //NAV COLLAPSING STATE
     const [menuCollapse, setMenuCollaspe] = useState(false);
@@ -28,7 +28,7 @@ const Navbar = () => {
     //CALLING IN DATASTORE -> USED FOR NAV BAR CONDITION STATEMENT
     const { user, setUser } = useContext(DataContext);
 
-    //GETTING THE USER
+    // //GETTING THE USER
     useEffect(() => {
         setUser(JSON.parse(localStorage.getItem("user")))
     }, []);
@@ -36,6 +36,7 @@ const Navbar = () => {
     function logout() {
         setUser(null);
         localStorage.removeItem("user");
+        setShowLogin(true);
     }
 
     //NAV STRUCTURE SECTIONS
@@ -94,7 +95,7 @@ const Navbar = () => {
                                 <a>Setting</a>
                             </MenuItem>
                             <MenuItem icon={<FiLogOut/>}>
-                                <a>Logout</a>
+                                <Link to="/" onClick={() => logout()}>Logout</Link>
                             </MenuItem>
                         </Menu>
                     </SidebarFooter>
