@@ -263,7 +263,7 @@ const ContentPanel = () => {
                                                         <div className="row">
                                                             <div className="col-md-12">
                                                                 <button
-                                                                    className="mainStyle"
+                                                                    className="buttonMainStyle"
                                                                     role="button"
                                                                     type="submit"
                                                                 >
