@@ -14,55 +14,27 @@ const Signup = (props) => {
     //potential error messages when validating form
     const [errorMessages, setErrorMessages] = useState({});
     const errors = {
-<<<<<<< HEAD
-        name: "please enter your name",
-=======
         fullname: "please enter your name",
->>>>>>> 5c98f738987ea964d358d8ecf4ce080f8d7b29fa
         uname: "invalid username",
         unameused: "username taken",
         email: "invalid email format"
     };
 
-<<<<<<< HEAD
-    //used to track what to render on page -- new login form or error
-    const [isSubmitted, setIsSubmitted] = useState(false);
-
-    //POST AXIOS & EMAIL AND VALIDATION
-    async function handleSubmit(e){
-=======
     //POST AXIOS & EMAIL AND VALIDATION
     function handleSubmit(e){
->>>>>>> 5c98f738987ea964d358d8ecf4ce080f8d7b29fa
         e.preventDefault();
 
         const { first, last, username, password, city, state, email, account } = document.forms[0];
 
-<<<<<<< HEAD
-        console.log(first.value);
-        console.log(last.value);
-        console.log(username.value);
-        console.log(password.value);
-
-=======
->>>>>>> 5c98f738987ea964d358d8ecf4ce080f8d7b29fa
         const emailFormat =
             /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
         //VALIDATOR & CHECK ALL FIELDS FILLED
-<<<<<<< HEAD
 
         if (!email.value.trim() || !email.value.match(emailFormat)){
             setErrorMessages({ name: "email", message: errors.email });
 
         }
-=======
-        
-        if (!email.value.trim() || !email.value.match(emailFormat)){
-            setErrorMessages({ name: "email", message: errors.email });
-        
-        } 
->>>>>>> 5c98f738987ea964d358d8ecf4ce080f8d7b29fa
 
         //check that username is not only whitespace
         if (!username.value.trim()) {
@@ -72,18 +44,6 @@ const Signup = (props) => {
         } else {
 
             //check if username is in database
-<<<<<<< HEAD
-            axios.get(`http://localhost:4000/userByName/${username.value}`).then((res)=>{
-
-                const existingUser = res.data;
-
-                console.log(existingUser);
-
-                if (existingUser) {
-                    //username in system - check if returning user
-                    if (existingUser.password === password.value) {
-                        setIsSubmitted(true);
-=======
             axios.get(`http://localhost:4000/users/userByName/${username.value}`).then((res)=>{
 
                 const existingUser = res.data;
@@ -92,27 +52,12 @@ const Signup = (props) => {
                     //username in system - check if returning user
                     if (existingUser.password === password.value) {
 
->>>>>>> 5c98f738987ea964d358d8ecf4ce080f8d7b29fa
                         props.setShowSignup(false);
 
                         //PASS DATA RECIEVED FROM AXIOS CALL TO SETUSER
                         setUser(existingUser);
 
                     } else {
-<<<<<<< HEAD
-                        setErrorMessages({ name: "unameused", message: errors.unameused });
-                    }
-                } else {
-                    // new user
-                    console.log(document.forms[0]);
-                    //await axios.post(document.forms[0]);
-
-                    setIsSubmitted(true);
-                    props.setShowSignup(false);
-                }
-            })
-        }
-=======
                         //username taken
                         setErrorMessages({ name: "unameused", message: errors.unameused });
 
@@ -120,13 +65,13 @@ const Signup = (props) => {
                 } else {
                     // new user
                     const newUser = {
-                        firstname:first.value, 
-                        lastname:last.value, 
-                        username:username.value, 
-                        password:password.value, 
-                        city:city.value, 
-                        state:state.value, 
-                        email:email.value, 
+                        firstname:first.value,
+                        lastname:last.value,
+                        username:username.value,
+                        password:password.value,
+                        city:city.value,
+                        state:state.value,
+                        email:email.value,
                         account:account.value
                     }
                     axios.post(`http://localhost:4000/users/newUser`,newUser).then((res)=>{
@@ -138,8 +83,7 @@ const Signup = (props) => {
                     });
                 }
             })
-        }  
->>>>>>> 5c98f738987ea964d358d8ecf4ce080f8d7b29fa
+        }
     }
 
     function renderErrorMessage(name) {
@@ -177,29 +121,17 @@ const Signup = (props) => {
                     <Form.Group>
                         <Form.Label>Enter first name: </Form.Label>
                         <Form.Control type="text" name="first" placeholder="first name" required />
-<<<<<<< HEAD
-                        {renderErrorMessage("name")}
-=======
                         {renderErrorMessage("fullname")}
->>>>>>> 5c98f738987ea964d358d8ecf4ce080f8d7b29fa
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Enter last name: </Form.Label>
                         <Form.Control type="text" name="last" placeholder="last name" required />
-<<<<<<< HEAD
-                        {renderErrorMessage("name")}
-=======
                         {renderErrorMessage("fullname")}
->>>>>>> 5c98f738987ea964d358d8ecf4ce080f8d7b29fa
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Enter username: </Form.Label>
                         <Form.Control type="text" name="username" placeholder="username" required />
-<<<<<<< HEAD
-                        {renderErrorMessage("uname")}
-=======
                         {renderErrorMessage("unameused")}
->>>>>>> 5c98f738987ea964d358d8ecf4ce080f8d7b29fa
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Enter password: </Form.Label>
@@ -289,14 +221,7 @@ const Signup = (props) => {
         </Modal>
     );
 
-<<<<<<< HEAD
-    return (isSubmitted ? "" : renderForm);
-};
-
-export default Signup;
-=======
     return (user ? "" : renderForm);
 };
 
 export default Signup;
->>>>>>> 5c98f738987ea964d358d8ecf4ce080f8d7b29fa

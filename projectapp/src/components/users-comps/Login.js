@@ -12,13 +12,6 @@ function Login(props) {
     //CALL THE DATASTORE GLOBAL VARIABLE FROM STORE
     const { user, setUser } = useContext(DataStore);
 
-<<<<<<< HEAD
-    // //controls visibility of modal
-    // var isLoggedIn;
-    // user ? isLoggedIn=true: isLoggedIn=false;
-
-=======
->>>>>>> 5c98f738987ea964d358d8ecf4ce080f8d7b29fa
     //potential error messages when validating form
     const [errorMessages, setErrorMessages] = useState({});
     const errors = {
@@ -26,13 +19,6 @@ function Login(props) {
         pass: "invalid password"
     };
 
-<<<<<<< HEAD
-    //used to track what to render on page -- new login form or error
-    const [isSubmitted, setIsSubmitted] = useState(false);
-
-
-=======
->>>>>>> 5c98f738987ea964d358d8ecf4ce080f8d7b29fa
     //validates user information upon submit
     async function handleSubmit(e) {
 
@@ -53,18 +39,11 @@ function Login(props) {
             if (data) {
                 //username in system - check if passwords match
                 if (data.password === password.value) {
-<<<<<<< HEAD
-                    setIsSubmitted(true);
-=======
->>>>>>> 5c98f738987ea964d358d8ecf4ce080f8d7b29fa
                     props.setShowLogin(false);
 
                     //PASS DATA RECIEVED FROM AXIOS CALL TO SETUSER
                     setUser(data);
-<<<<<<< HEAD
-=======
                     localStorage.setItem("user", JSON.stringify(data));
->>>>>>> 5c98f738987ea964d358d8ecf4ce080f8d7b29fa
 
                 } else {
                     // Invalid password
@@ -83,10 +62,7 @@ function Login(props) {
         }
     }
 
-<<<<<<< HEAD
-=======
     //change which modal is showing on button click
->>>>>>> 5c98f738987ea964d358d8ecf4ce080f8d7b29fa
     function changeForm(){
         props.setShowLogin(false);
         props.setShowSignup(true);
@@ -94,6 +70,9 @@ function Login(props) {
 
     const renderForm = (
         <Modal
+            //I added this
+            // show={true}
+            //ORIGNAL CODE
             show={props.showLogin}
             size="md"
             aria-labelledby="contained-modal-title-vcenter"
@@ -101,14 +80,10 @@ function Login(props) {
         >
             <Form onSubmit={handleSubmit}>
                 <Modal.Header bsPrefix="formheading">
-                {/* <Modal.Header> */}
+                    {/* <Modal.Header> */}
                     <h3>Sign In</h3>
                     <div className="formbuttons">
-<<<<<<< HEAD
-                        <button className="selectedbutton">
-=======
                         <button className="selectedbutton" disabled>
->>>>>>> 5c98f738987ea964d358d8ecf4ce080f8d7b29fa
                             Sign In
                         </button>
                         <button className="unselectedbutton" onClick={changeForm}>
@@ -139,11 +114,10 @@ function Login(props) {
         </Modal>
     );
 
-<<<<<<< HEAD
-    return (isSubmitted ? "" : renderForm);
-=======
+
+    //A LITTLE SET
     return ((user !== null) ? "" : renderForm);
->>>>>>> 5c98f738987ea964d358d8ecf4ce080f8d7b29fa
+
 }
 
 export default Login;

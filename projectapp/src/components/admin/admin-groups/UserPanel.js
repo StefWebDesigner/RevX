@@ -1,11 +1,42 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import AdminNavbar from "../AdminNavbar";
-import UsersChart from "../admincharts/UsersChart";
+// import UsersChart from "../admincharts/UsersChart";
+import axios from "axios";
 
 const UserPanel = () => {
 
-    //GET ALL BUTTON TOGGLE
-    const [showUser, setShowUser] = useState(false);
+    //GET ALL REQUEST
+    const [allUser, setAllUser] = useState([]);
+
+    //ALL USER FACT
+    const [countUsers, setCountUsers] = useState(0);
+
+
+    //THE GET ALL USER FUNCTION
+    const getAllUsers = async (e) => {
+        const data = await axios.get('http://localhost:4000/users/allUsers');
+        console.log(data);
+
+        setAllUser(data.data)
+
+        //TO ADD THE DELETE REQUEST ONCE ABLE TO PASS VOER CORSE ERROR
+
+    };
+
+
+    //MAYBE IT IS WORKING?
+    async function numberAllUsers() {
+
+        let data = await axios.get('http://localhost:4000/users/allUsers');
+            // let data = await response.Json();
+            setCountUsers(data.length);
+    }
+
+
+
+
+
+
 
     return (
         <>
@@ -38,7 +69,16 @@ const UserPanel = () => {
                                                     Total Users :
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                    (Take from from DS)
+                                                    {countUsers}
+
+                                                    {/*{countUsers.map((data, index) => {*/}
+                                                    {/*    return (*/}
+                                                    {/*            <div key={countUsers.id}>*/}
+                                                    {/*                {data}*/}
+                                                    {/*            </div>*/}
+
+                                                    {/*    )*/}
+                                                    {/*})};*/}
                                                 </div>
                                             </div>
                                         </div>
@@ -116,36 +156,38 @@ const UserPanel = () => {
                                                 <div className="text-center text-xs font-weight-bold text-uppercase">
                                                     Get All Current Users :
                                                 </div>
-                                                {/*<div className=" text-center h5 mb-0 font-weight-bold text-gray-800">*/}
-                                                {/*    (Take from from DS)*/}
 
-                                                {/*</div>*/}
                                                 <div className="text-center mt-5">
                                                     <button
                                                         className="buttonMainStyle"
                                                         role="button"
                                                         type="submit"
-                                                        onClick={() => setShowUser(prevState => !prevState)}
+                                                        onClick={getAllUsers}
                                                     >
                                                         Get Users
                                                     </button>
 
-                                                    {/*ALL RETRIEVED DATA GOES HERE*/}
-                                                    {/*TOGGLE APPLIED*/}
-                                                    { showUser &&
-
                                                         <aside>
                                                             <div className="fade-in-animation">
-                                                                {/* WILL CREATE THE  LIST HERE*/}
 
+                                                                {
+                                                                    allUser.map((user, index) => {
+                                                                        return(
+                                                                            <div key={user.userid}>
+                                                                                {user.userid}
+                                                                                {user.username}
+                                                                                {user.password}
+                                                                                {user.email}
+                                                                                {user.city}
+                                                                                {user.account}
+                                                                                {user.post}
+                                                                            </div>
+                                                                        );
 
-                                                                {/*    add toggle like in show product*/}
-                                                                {/*    add for name / id / and ect sorting button here   */}
-
+                                                                    })};
 
                                                             </div>
                                                         </aside>
-                                                    }
 
                                                 </div>
                                             </div>

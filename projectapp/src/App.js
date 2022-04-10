@@ -40,7 +40,7 @@ function App() {
                   <Route path="/userpanel" element={<UserPanel/>}/>
                   <Route path="/surveypanel" element={<SurveyPanel/>}/>
                   <Route path="/contentpanel" element={<ContentPanel/>}/>
-                  <Route path="/chat" element={<ChatMain/>}/>
+                  {/*<Route path="/chat" element={<ChatMain/>}/>*/}
               </Routes>
           </Router>
       </DataContext.Provider>

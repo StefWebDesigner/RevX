@@ -39,6 +39,11 @@ const ContentPanel = () => {
         });
     };
 
+    //GET ALL POST
+
+
+
+
     return (
         <>
             {/*IMPORTING ADMIN NAVBAR*/}

@@ -1,17 +1,15 @@
-// import React from 'react';
-//
-// const Logo = () => {
-//     return (
-//         <>
-//
-//             <img src="../images/pinklogo.svg" width="100%">
-//
-//
-//             </>
-//     );
-// };
-//
-// export default Logo;
+import React from 'react';
+import logo from '../../RevX-vector.svg'
+
+const Logo = () => {
+    return (
+        <>
+            <img src={logo}/>
+        </>
+    );
+};
+
+export default Logo;
 
 
 
