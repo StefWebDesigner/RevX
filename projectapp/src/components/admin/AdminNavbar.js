@@ -71,6 +71,15 @@ const Navbar = () => {
                         </Menu>
                     </SidebarContent>
 
+                    {/*SLIDEHEADER PUSHS IT DONW*/}
+                    <SidebarHeader>
+                        <Menu iconShape="square">
+                            <MenuItem icon={<FaRegHeart/>}>
+                                <li><Link to="/chat">Chat</Link></li>
+                            </MenuItem>
+                        </Menu>
+                    </SidebarHeader>
+
                     {/*FOOTER SECTION*/}
                     <SidebarFooter>
                         <Menu iconShape="square">
