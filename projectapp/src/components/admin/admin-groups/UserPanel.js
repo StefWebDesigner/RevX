@@ -10,19 +10,9 @@ const UserPanel = () => {
     //THE TOGGLE
     const [toggleAllUsers, setToggleAllUsers] = useState(false);
 
-    //ALL USER FACT
+    //STATE FOR COUNTING TOTAL USERS
     const [countUsers, setCountUsers] = useState(0);
 
-    //THE GET ALL USER FUNCTION
-    // const getAllUsers = async (e) => {
-    //     const data = await axios.get('http://localhost:4000/users/allUsers');
-    //     console.log(data);
-    //
-    //     setAllUser(data.data)
-    //
-    //     //TO ADD THE DELETE REQUEST ONCE ABLE TO PASS VOER CORSE ERROR
-    //
-    // };
 
     //GET ALL USERS
     useEffect(() => {
@@ -31,10 +21,35 @@ const UserPanel = () => {
             setAllUser(data);
         }
 
+        //HAVE IT RECALL WHEN SOMEONE IS DELETED
         getAllUsers();
 
     },[]);
 
+    //TOTAL USER FACT
+
+    useEffect(() => {
+        async function getTotalUsers() {
+             const {data} = await axios.get('http://localhost:4000/users/allUsers');
+             setAllUser(data)
+        }
+
+
+    })
+
+
+    // GET ALL USERS INFORMATION
+    useEffect(() => {
+        const data = axios.get('http://localhost:4000/users/allUsers');
+        console.log(data);
+
+        setCountUsers(data);
+
+        return () => {
+            //CLEARS AND RE-RENDER UPON GETTING INFORMATIOM
+            // setCountUsers("");
+        };
+    }, []);
 
 
     return (
@@ -68,16 +83,15 @@ const UserPanel = () => {
                                                     Total Users :
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                    {countUsers}
-
-                                                    {/*{countUsers.map((data, index) => {*/}
-                                                    {/*    return (*/}
-                                                    {/*            <div key={countUsers.id}>*/}
-                                                    {/*                {data}*/}
-                                                    {/*            </div>*/}
-
-                                                    {/*    )*/}
-                                                    {/*})};*/}
+                                                    {
+                                                        countUsers.map((data, index) => {
+                                                            return (
+                                                                <div>
+                                                                    {data}
+                                                                </div>
+                                                            );
+                                                        })
+                                                    };
                                                 </div>
                                             </div>
                                         </div>
