@@ -7,34 +7,33 @@ const UserPanel = () => {
 
     //GET ALL REQUEST
     const [allUser, setAllUser] = useState([]);
+    //THE TOGGLE
+    const [toggleAllUsers, setToggleAllUsers] = useState(false);
 
     //ALL USER FACT
     const [countUsers, setCountUsers] = useState(0);
 
-
     //THE GET ALL USER FUNCTION
-    const getAllUsers = async (e) => {
-        const data = await axios.get('http://localhost:4000/users/allUsers');
-        console.log(data);
+    // const getAllUsers = async (e) => {
+    //     const data = await axios.get('http://localhost:4000/users/allUsers');
+    //     console.log(data);
+    //
+    //     setAllUser(data.data)
+    //
+    //     //TO ADD THE DELETE REQUEST ONCE ABLE TO PASS VOER CORSE ERROR
+    //
+    // };
 
-        setAllUser(data.data)
+    //GET ALL USERS
+    useEffect(() => {
+        async function getAllUsers() {
+            const { data } = await axios.get('http://localhost:4000/users/allUsers');
+            setAllUser(data);
+        }
 
-        //TO ADD THE DELETE REQUEST ONCE ABLE TO PASS VOER CORSE ERROR
+        getAllUsers();
 
-    };
-
-
-    //MAYBE IT IS WORKING?
-    async function numberAllUsers() {
-
-        let data = await axios.get('http://localhost:4000/users/allUsers');
-            // let data = await response.Json();
-            setCountUsers(data.length);
-    }
-
-
-
-
+    },[]);
 
 
 
@@ -162,7 +161,7 @@ const UserPanel = () => {
                                                         className="buttonMainStyle"
                                                         role="button"
                                                         type="submit"
-                                                        onClick={getAllUsers}
+                                                        onClick={() => setToggleAllUsers(prevState => !prevState)}
                                                     >
                                                         Get Users
                                                     </button>
@@ -170,7 +169,7 @@ const UserPanel = () => {
                                                         <aside>
                                                             <div className="fade-in-animation">
 
-                                                                {
+                                                                { toggleAllUsers &&
                                                                     allUser.map((user, index) => {
                                                                         return(
                                                                             <div key={user.userid}>
