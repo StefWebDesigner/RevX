@@ -40,12 +40,12 @@
     color: mediumpurple;
     position: absolute;
     right: 0;
-    z-index: 9999;
+    z-index: 1000;
     line-height: 20px;
     border-radius: 50%;
     font-weight: bold;
     font-size: 22px;
-    top: 55px;
+    top: 50%;
     cursor: pointer;
 }
 /*CONTROLLS THE WIDTH OF NAVBAR*/
@@ -74,7 +74,7 @@
 /*CONTROL FONT OF LOGO AREA*/
 #header .pro-sidebar-inner .pro-sidebar-layout .logotext p {
     font-size: 20px;
-    padding: 0 20px;
+    padding: 5px 20px 0 20px;
     color: white;
     font-weight: bold;
 }

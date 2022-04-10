@@ -18,16 +18,31 @@ import {
 import {FaList, FaRegHeart} from "react-icons/fa";
 import { RiPencilLine } from "react-icons/ri";
 import { BiCog } from "react-icons/bi";
+import DataContext from "../../dataStore/dataStore";
 
-const Navbar = () => {
+const Navbar = ({setShowLogin}) => {
 
     //NAV COLLAPSING STATE
     const [menuCollapse, setMenuCollaspe] = useState(false);
 
+    //CALLING IN DATASTORE -> USED FOR NAV BAR CONDITION STATEMENT
+    const { user, setUser } = useContext(DataContext);
+
+    // //GETTING THE USER
+    useEffect(() => {
+        setUser(JSON.parse(localStorage.getItem("user")))
+    }, []);
 
     //NAV STRUCTURE SECTIONS
     const menuIconClick = () => {
         menuCollapse ? setMenuCollaspe(false) : setMenuCollaspe(true);
+    }
+
+    //logout and send to login home
+    function logout() {
+        setUser(null);
+        localStorage.removeItem("user");
+        setShowLogin(true);
     }
 
     return (
@@ -48,7 +63,7 @@ const Navbar = () => {
                         {/*CHANGE MENU ICON SHAPE*/}
                         <Menu iconShape="square">
                             <MenuItem icon={<FaRegHeart/>}>
-                                <li><Link to="/admin">Admin Portal</Link></li>
+                                <Link to="/admin">Admin Portal</Link>
                             </MenuItem>
                         </Menu>
 
@@ -59,13 +74,13 @@ const Navbar = () => {
                     <SidebarContent>
                         <Menu iconShape="square">
                             <MenuItem active={true} icon={<FiHome/>}>
-                                <li><Link to="/">Home</Link></li>
+                                <Link to="/">Home</Link>
                             </MenuItem>
                             <MenuItem icon={<RiPencilLine/>}>
-                                <li><Link to="/userpanel">User Panel</Link></li>
+                                <Link to="/userpanel">User Panel</Link>
                             </MenuItem>
                             <MenuItem icon={<RiPencilLine/>}>
-                                <li><Link to="/contentpanel">Content Panel</Link></li>
+                                <Link to="/contentpanel">Content Panel</Link>
                             </MenuItem>
 
                         </Menu>
@@ -75,10 +90,10 @@ const Navbar = () => {
                     <SidebarFooter>
                         <Menu iconShape="square">
                             <MenuItem icon={<BiCog/>}>
-                                <li><a>Setting</a></li>
+                                <a>Setting</a>
                             </MenuItem>
                             <MenuItem icon={<FiLogOut/>}>
-                                <li><a>Logout</a></li>
+                                <Link to="/" onClick={() => logout()}>Logout</Link>
                             </MenuItem>
                         </Menu>
                     </SidebarFooter>
