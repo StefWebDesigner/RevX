@@ -26,31 +26,27 @@ const UserPanel = () => {
 
     },[]);
 
+
     //TOTAL USER FACT
+
+    // useEffect(() => {
+    //     async function getTotalUsers() {
+    //          const {data} = await axios.get('http://localhost:4000/users/allUsers');
+    //         setCountUsers(data)
+    //     }
+    //     getTotalUsers();
+    //
+    // }, []);
+
 
     useEffect(() => {
         async function getTotalUsers() {
-             const {data} = await axios.get('http://localhost:4000/users/allUsers');
-             setAllUser(data)
+            const {data} = await axios.get('http://localhost:4000/users/allUsers');
+            setCountUsers(data)
         }
+        getTotalUsers();
 
-
-    })
-
-
-    // GET ALL USERS INFORMATION
-    useEffect(() => {
-        const data = axios.get('http://localhost:4000/users/allUsers');
-        console.log(data);
-
-        setCountUsers(data);
-
-        return () => {
-            //CLEARS AND RE-RENDER UPON GETTING INFORMATIOM
-            // setCountUsers("");
-        };
     }, []);
-
 
     return (
         <>
@@ -82,16 +78,23 @@ const UserPanel = () => {
                                                 <div className="text-center text-xs font-weight-bold text-uppercase">
                                                     Total Users :
                                                 </div>
+
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                    {/*{*/}
-                                                    {/*    countUsers.map((data, index) => {*/}
-                                                    {/*        return (*/}
-                                                    {/*            <div>*/}
-                                                    {/*                {data}*/}
-                                                    {/*            </div>*/}
-                                                    {/*        );*/}
-                                                    {/*    })*/}
-                                                    {/*};*/}
+                                                    {
+                                                        countUsers.map((count, index) => {
+                                                            return (
+                                                                // <div key={count.data}>
+                                                                <div>
+                                                                    <h1>{count.data}</h1>
+                                                                </div>
+                                                            );
+                                                        })
+                                                    };
+
+                                                    {/*{data.length}*/}
+
+
+
                                                 </div>
                                             </div>
                                         </div>
@@ -200,7 +203,6 @@ const UserPanel = () => {
                                                 <div className="col-md-2"><td>{user.account}</td></div>
                                                 <div className="col-md-1">
                                                     <button
-
                                                     >
                                                         <i className="bi bi-dash-square">-</i>
                                                     </button>
