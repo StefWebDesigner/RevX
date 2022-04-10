@@ -83,15 +83,15 @@ const UserPanel = () => {
                                                     Total Users :
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                    {
-                                                        countUsers.map((data, index) => {
-                                                            return (
-                                                                <div>
-                                                                    {data}
-                                                                </div>
-                                                            );
-                                                        })
-                                                    };
+                                                    {/*{*/}
+                                                    {/*    countUsers.map((data, index) => {*/}
+                                                    {/*        return (*/}
+                                                    {/*            <div>*/}
+                                                    {/*                {data}*/}
+                                                    {/*            </div>*/}
+                                                    {/*        );*/}
+                                                    {/*    })*/}
+                                                    {/*};*/}
                                                 </div>
                                             </div>
                                         </div>
@@ -183,21 +183,42 @@ const UserPanel = () => {
                                                         <aside>
                                                             <div className="fade-in-animation">
 
-                                                                { toggleAllUsers &&
-                                                                    allUser.map((user, index) => {
-                                                                        return(
-                                                                            <div key={user.userid}>
-                                                                                {user.userid}
-                                                                                {user.username}
-                                                                                {user.password}
-                                                                                {user.email}
-                                                                                {user.city}
-                                                                                {user.account}
-                                                                                {user.post}
-                                                                            </div>
-                                                                        );
+                        { toggleAllUsers &&
+                            allUser.map((user, index) => {
 
-                                                                    })};
+                                return(
+                                    <div key={user.userid}>
+
+                                <table className="table table-striped table-hover">
+                                    <tbody className="text-center">
+                                        <tr>
+                                            <div className="row p">
+                                                <div className="col-md-2"><td>{user.userid}</td></div>
+                                                <div className="col-md-2"><td>{user.username}</td></div>
+                                                <div className="col-md-2"><td>{user.password}</td></div>
+                                                <div className="col-md-3"><td>{user.email}</td></div>
+                                                <div className="col-md-2"><td>{user.account}</td></div>
+                                                <div className="col-md-1">
+                                                    <button
+
+                                                    >
+                                                        <i className="bi bi-dash-square">-</i>
+                                                    </button>
+                                                </div>
+
+                                            {/*ENDING DIV FOR TABLE ROW    */}
+                                            </div>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+
+
+                                    </div>
+                                );
+
+                            })};
 
                                                             </div>
                                                         </aside>
