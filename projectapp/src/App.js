@@ -18,7 +18,7 @@ import ChatMain from "./components/chat-components/ChatMain.js";
 function App() {
 
     //GROUNDING USER STATE IN THE APP
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
 
   return (
 
