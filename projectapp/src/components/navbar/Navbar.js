@@ -93,9 +93,9 @@ const Navbar = ({setShowLogin}) => {
                             {/*<MenuItem icon={<FaList/>}>*/}
                             {/*    <Link to="/login">Login</Link>*/}
                             {/*</MenuItem>*/}
-                            {/*<MenuItem icon={<RiPencilLine/>}>*/}
-                            {/*    <Link to="/signup">Signup</Link>*/}
-                            {/*</MenuItem>*/}
+                            <MenuItem icon={<RiPencilLine/>}>
+                                <a onClick="">Report</a>
+                            </MenuItem>
                             <MenuItem icon={<FiLogOut/>}>
                                 <Link to="/" onClick={() => logout()}>Logout</Link>
                             </MenuItem>

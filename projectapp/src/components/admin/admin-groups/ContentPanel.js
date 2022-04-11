@@ -202,7 +202,7 @@ const ContentPanel = () => {
 
 
                         {/*COL FOR CARD*/}
-                        <div className="col-xl-12 col-lg-12 col-md-12">
+                        <div className="col-xl-8 col-lg-8 col-md-8">
                             <div className="card shadow h-100">
                                 <div className="card-body">
                                     {/*CARD ROW*/}
@@ -299,14 +299,14 @@ const ContentPanel = () => {
                             {/*COL END*/}
                         </div>
                         {/*OVERALL FACT ROW*/}
-                    </div>
+                    {/*</div>*/}
 
 
-                    <div className="row">
+                    {/*<div className="row">*/}
 
                         {/*GRAPH*/}
                         {/*COL FOR CARD*/}
-                        <div className="col-xl-6 col-lg-6 col-md-6">
+                        <div className="col-xl-4 col-lg-3 col-md-4">
                             <div className="card shadow h-100">
                                 <div className="card-body ">
                                     {/*CARD ROW*/}

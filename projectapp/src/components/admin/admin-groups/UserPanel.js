@@ -11,13 +11,13 @@ const UserPanel = () => {
     const [toggleAllUsers, setToggleAllUsers] = useState(false);
 
     //STATE FOR COUNTING TOTAL USERS
-    const [countUsers, setCountUsers] = useState(0);
+    const [countUsers, setCountUsers] = useState(false);
 
 
     //GET ALL USERS
     useEffect(() => {
         async function getAllUsers() {
-            const { data } = await axios.get('http://localhost:4000/users/allUsers');
+            const data = await axios.get('http://localhost:4000/users/allUsers');
             setAllUser(data);
         }
 
@@ -27,26 +27,52 @@ const UserPanel = () => {
     },[]);
 
 
+    //ATTEMPT 1
     //TOTAL USER FACT
 
     // useEffect(() => {
     //     async function getTotalUsers() {
-    //          const {data} = await axios.get('http://localhost:4000/users/allUsers');
-    //         setCountUsers(data)
+    //          let totalUser = await axios.get('http://localhost:4000/users/totalusers');
+    //          console.log(totalUser)
     //     }
-    //     getTotalUsers();
+    //
+    // }, []);
+
+    //ATTEMPT 2
+    // useEffect(() => {
+    //     async function getTotalUsers() {
+    //         const data = await axios.get('http://localhost:4000/users/allUsers');
+    //         let countUsers = data;
+    //         setCountUsers(countUsers);
+    //     }
+    //
     //
     // }, []);
 
 
-    useEffect(() => {
-        async function getTotalUsers() {
-            const {data} = await axios.get('http://localhost:4000/users/allUsers');
-            setCountUsers(data)
-        }
-        getTotalUsers();
+    //ATTEMPT 3
+    // useEffect(() => {
+    //     async function totalUsers() {
+    //         const {data} = await axios.get('http://localhost:4000/users/allUsers');
+    //         setCountUsers(data);
+    //     }
+    //
+    //     //HAVE IT RECALL WHEN SOMEONE IS DELETED
+    //     totalUsers();
+    //
+    // },[]);
 
-    }, []);
+    // useEffect(() => {
+    //     async function totalUsers() {
+    //         const {data} = await axios.get('http://localhost:4000/users/totalusers');
+    //         setCountUsers(data);
+    //     }
+    //
+    //     //HAVE IT RECALL WHEN SOMEONE IS DELETED
+    //     totalUsers();
+    //
+    // },[]);
+
 
     return (
         <>
@@ -61,6 +87,11 @@ const UserPanel = () => {
                     {/*HEADER TITLE*/}
                     <div className="d-sm-flex align-items-center justify-content-center mb-4">
                         <h1 className="text-center">User Panel</h1>
+                        {/*<button*/}
+                        {/*    onClick={getTotalUsers(getTotalUsers())}*/}
+                        {/*>*/}
+                        {/*    update facts*/}
+                        {/*</button>*/}
                     </div>
 
                     {/*OVERALL FACT ROW*/}
@@ -80,20 +111,37 @@ const UserPanel = () => {
                                                 </div>
 
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                    {
-                                                        countUsers.map((count, index) => {
-                                                            return (
-                                                                // <div key={count.data}>
-                                                                <div>
-                                                                    <h1>{count.data}</h1>
-                                                                </div>
-                                                            );
-                                                        })
-                                                    };
+                                                    {/*{*/}
 
-                                                    {/*{data.length}*/}
+                                                    {/*    {totalUser}*/}
 
 
+                                                    {/*}*/}
+
+                                                    {/*{*/}
+                                                    {/*    countUsers.map((usercount, index) => {*/}
+
+                                                    {/*    return(*/}
+                                                    {/*        <div key={usercount.userid}>*/}
+                                                    {/*            <h1>{countUsers}</h1>*/}
+                                                    {/*        </div>*/}
+
+                                                    {/*    );*/}
+
+                                                    {/*    })*/}
+                                                    {/*}*/}
+                                                    {/*{*/}
+
+
+                                                    {/*    countUsers.map((count, index) =>{*/}
+
+                                                    {/*        return (*/}
+                                                    {/*        <div key={count.userid}>*/}
+                                                    {/*            <h1>{count.userid}</h1>*/}
+                                                    {/*        </div>*/}
+                                                    {/*        );*/}
+                                                    {/*    })*/}
+                                                    {/*};*/}
 
                                                 </div>
                                             </div>
@@ -213,13 +261,8 @@ const UserPanel = () => {
                                         </tr>
                                     </tbody>
                                 </table>
-
-
-
-
                                     </div>
                                 );
-
                             })};
 
                                                             </div>
@@ -311,9 +354,6 @@ const UserPanel = () => {
 
                         {/*OVERALL FACT ROW*/}
                     </div>
-
-
-
 
 
 
