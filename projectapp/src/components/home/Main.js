@@ -1,3 +1,5 @@
+import Header from "../navbar/Header";
+import PostInput from '../posts/PostInput';
 import React, {useState} from 'react';
 import axios from "axios";
 
@@ -6,10 +8,8 @@ const Main = () => {
 
     return (
         <>
-
-            <h1 className="text-center">Home page</h1>
-
-
+            <Header />
+            <PostInput />
 
         </>
     );
