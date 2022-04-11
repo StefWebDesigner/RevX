@@ -7,35 +7,24 @@ const UserPanel = () => {
 
     //GET ALL REQUEST
     const [allUser, setAllUser] = useState([]);
+    //THE TOGGLE
+    const [toggleAllUsers, setToggleAllUsers] = useState(false);
 
-    //ALL USER FACT
-    const [countUsers, setCountUsers] = useState(0);
-
-
-    //THE GET ALL USER FUNCTION
-    const getAllUsers = async (e) => {
-        const data = await axios.get('http://localhost:4000/users/allUsers');
-        console.log(data);
-
-        setAllUser(data.data)
-
-        //TO ADD THE DELETE REQUEST ONCE ABLE TO PASS VOER CORSE ERROR
-
-    };
+    //STATE FOR COUNTING TOTAL USERS
+    const [countUsers, setCountUsers] = useState(false);
 
 
-    //MAYBE IT IS WORKING?
-    async function numberAllUsers() {
+    //GET ALL USERS
+    useEffect(() => {
+        async function getAllUsers() {
+            const data = await axios.get('http://localhost:4000/users/allUsers');
+            setAllUser(data);
+        }
 
-        let data = await axios.get('http://localhost:4000/users/allUsers');
-            // let data = await response.Json();
-            setCountUsers(data.length);
-    }
+        //HAVE IT RECALL WHEN SOMEONE IS DELETED
+        getAllUsers();
 
-
-
-
-
+    },[]);
 
 
     return (
@@ -51,6 +40,7 @@ const UserPanel = () => {
                     {/*HEADER TITLE*/}
                     <div className="d-sm-flex align-items-center justify-content-center mb-4">
                         <h1 className="text-center">User Panel</h1>
+
                     </div>
 
                     {/*OVERALL FACT ROW*/}
@@ -68,17 +58,12 @@ const UserPanel = () => {
                                                 <div className="text-center text-xs font-weight-bold text-uppercase">
                                                     Total Users :
                                                 </div>
+
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                    {countUsers}
 
-                                                    {/*{countUsers.map((data, index) => {*/}
-                                                    {/*    return (*/}
-                                                    {/*            <div key={countUsers.id}>*/}
-                                                    {/*                {data}*/}
-                                                    {/*            </div>*/}
+                                                {/*    Place for content to go here*/}
 
-                                                    {/*    )*/}
-                                                    {/*})};*/}
+
                                                 </div>
                                             </div>
                                         </div>
@@ -162,7 +147,7 @@ const UserPanel = () => {
                                                         className="buttonMainStyle"
                                                         role="button"
                                                         type="submit"
-                                                        onClick={getAllUsers}
+                                                        onClick={() => setToggleAllUsers(prevState => !prevState)}
                                                     >
                                                         Get Users
                                                     </button>
@@ -170,21 +155,36 @@ const UserPanel = () => {
                                                         <aside>
                                                             <div className="fade-in-animation">
 
-                                                                {
-                                                                    allUser.map((user, index) => {
-                                                                        return(
-                                                                            <div key={user.userid}>
-                                                                                {user.userid}
-                                                                                {user.username}
-                                                                                {user.password}
-                                                                                {user.email}
-                                                                                {user.city}
-                                                                                {user.account}
-                                                                                {user.post}
-                                                                            </div>
-                                                                        );
+                        { toggleAllUsers &&
+                            allUser.map((user, index) => {
 
-                                                                    })};
+                                return(
+                                    <div key={user.userid}>
+
+                                <table className="table table-striped table-hover">
+                                    <tbody className="text-center">
+                                        <tr>
+                                            <div className="row p">
+                                                <div className="col-md-2"><td>{user.userid}</td></div>
+                                                <div className="col-md-2"><td>{user.username}</td></div>
+                                                <div className="col-md-2"><td>{user.password}</td></div>
+                                                <div className="col-md-3"><td>{user.email}</td></div>
+                                                <div className="col-md-2"><td>{user.account}</td></div>
+                                                <div className="col-md-1">
+                                                    <button
+                                                    >
+                                                        <i className="bi bi-dash-square">-</i>
+                                                    </button>
+                                                </div>
+
+                                            {/*ENDING DIV FOR TABLE ROW    */}
+                                            </div>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                    </div>
+                                );
+                            })};
 
                                                             </div>
                                                         </aside>
@@ -275,9 +275,6 @@ const UserPanel = () => {
 
                         {/*OVERALL FACT ROW*/}
                     </div>
-
-
-
 
 
 

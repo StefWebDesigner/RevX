@@ -60,10 +60,8 @@ const Navbar = ({setShowLogin}) => {
                         </div>
 
                         {/*CHANGE MENU ICON SHAPE*/}
+
                         <Menu >
-                            <MenuItem active={true} icon={<FiHome />}>
-                                <Link to="/">Home</Link>
-                            </MenuItem>
                             <MenuItem icon={<FaRegHeart/>}>
                                 <Link to="/admin">Admin Portal</Link>
                             </MenuItem>
@@ -74,6 +72,9 @@ const Navbar = ({setShowLogin}) => {
 
                     {/*CONTAIN MAIN NAV CONTENT*/}
                     <SidebarContent>
+                      <MenuItem active={true} icon={<FiHome />}>
+                                <Link to="/">Home</Link>
+                            </MenuItem>
                         <Menu iconShape="square">
                             <MenuItem icon={<RiPencilLine/>}>
                                 <a href="#">Content</a>
@@ -85,8 +86,13 @@ const Navbar = ({setShowLogin}) => {
                     {/*FOOTER SECTION*/}
                     <SidebarFooter>
                         <Menu iconShape="square">
-                            <MenuItem icon={<BiCog/>}>
-                                <a href="#">Account</a>
+
+                          <MenuItem icon={<BiCog/>}>
+                                <a>Setting</a>
+                            </MenuItem>
+                          
+                            <MenuItem icon={<RiPencilLine/>}>
+                                <a onClick="">Report</a>
                             </MenuItem>
                             <MenuItem icon={<FiLogOut/>}>
                                 <Link to="/" onClick={() => logout()}>Logout</Link>
