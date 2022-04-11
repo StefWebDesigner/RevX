@@ -10,7 +10,6 @@ const Main = () => {
         <>
             <Header />
             <PostInput />
-
         </>
     );
 };

@@ -15,6 +15,7 @@ const Home = () => {
 
     return (
         <>
+
             <Login 
                 showLogin={showLogin} 
                 setShowLogin={setShowLogin}
@@ -29,7 +30,7 @@ const Home = () => {
             <Main/>
             <Footer/>
 
-            
+
         </>
     );
 };

@@ -201,6 +201,11 @@
     margin-top: 3px;
 }
 
+.form-dark {
+    background-color: #212529;
+    color: white;
+}
+
 #root {
     height: 100vh;
     background-color: #F8F9FC;

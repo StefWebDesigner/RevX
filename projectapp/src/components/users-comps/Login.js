@@ -76,16 +76,17 @@ function Login(props) {
             size="md"
             aria-labelledby="contained-modal-title-vcenter"
             centered
+            contentClassName="form-dark"
         >
             <Form id="loginform" onSubmit={handleSubmit}>
-                <Modal.Header bsPrefix="formheading">
+                <Modal.Header bsPrefix="formheading-dark">
                     {/* <Modal.Header> */}
                     <h3>Sign In</h3>
                     <div className="formbuttons">
                         <button className="selectedbutton" disabled>
                             Sign In
                         </button>
-                        <button className="unselectedbutton" onClick={changeForm}>
+                        <button className="unselectedbutton-dark" onClick={changeForm}>
                             Sign Up
                         </button>
                     </div>
@@ -93,13 +94,13 @@ function Login(props) {
 
                 <Modal.Body>
                     <Form.Group className="mb-2">
-                        <Form.Label>Enter username: </Form.Label>
-                        <Form.Control type="text" name="username" placeholder="username" required />
+                        <Form.Label bsPrefix="form-dark">Enter username: </Form.Label>
+                        <Form.Control bsPrefix="form-control form-dark" type="text" name="username" placeholder="username" required />
                         {renderErrorMessage("uname")}
                     </Form.Group>
                     <Form.Group className="mb-2">
-                        <Form.Label>Enter password: </Form.Label>
-                        <Form.Control type="password" name="password" placeholder="password" required />
+                        <Form.Label bsPrefix="form-dark">Enter password: </Form.Label>
+                        <Form.Control bsPrefix="form-control form-dark" type="password" name="password" placeholder="password" required />
                         {renderErrorMessage("pass")}
                     </Form.Group>
                 </Modal.Body>
