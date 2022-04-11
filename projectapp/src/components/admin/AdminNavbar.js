@@ -29,11 +29,6 @@ const Navbar = ({setShowLogin}) => {
     //CALLING IN DATASTORE -> USED FOR NAV BAR CONDITION STATEMENT
     const { user, setUser } = useContext(DataContext);
 
-    // //GETTING THE USER
-    useEffect(() => {
-        setUser(JSON.parse(localStorage.getItem("user")))
-    }, []);
-
     //NAV STRUCTURE SECTIONS
     const menuIconClick = () => {
         menuCollapse ? setMenuCollaspe(false) : setMenuCollaspe(true);
