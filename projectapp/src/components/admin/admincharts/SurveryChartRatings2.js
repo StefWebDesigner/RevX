@@ -5,16 +5,18 @@ import { Doughnut, Pie } from "react-chartjs-2";
 Chart.register(ArcElement);
 
 
-function UsersChart({adminCount,associateCount}) {
+function SurveyChartRating2() {
+
+    //GOING TO MAKE ALL TOTAL GENRE FOR THE SUB CATEGORY BASED ON THEIR POST AND ADD IT HERE
 
     const data = {
-        labels: ["Admin", "Asociates"],
+        labels: ["Beginner","Intermediate", "Advanced", "Java", "React"],
         datasets: [{
-            label: 'Admin  and Associates Totals',
-            data: [adminCount, associateCount],
+            label: 'All Total Post Per Genre',
+            data: [ 5, 7, 8, 2, 3],
             backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(54, 162, 235)',
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
 
             ],
             hoverOffset: 4
@@ -27,4 +29,4 @@ function UsersChart({adminCount,associateCount}) {
     )
 }
 
-export  default   UsersChart;
+export  default SurveyChartRating2;

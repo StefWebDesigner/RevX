@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import AdminNavbar from "../AdminNavbar";
 import axios from "axios";
+import ContentChart from "../admincharts/ContentChart";
 
 
 const ContentPanel = () => {
@@ -257,7 +258,7 @@ const ContentPanel = () => {
                                                         <label
                                                             className="text-center"
                                                         > Enter some content: </label>
-                                                        <input
+                                                        <textarea
                                                             className="postInputField text-center"
                                                             name="postBody"
                                                             value={postContent.postBody}
@@ -265,7 +266,8 @@ const ContentPanel = () => {
                                                             placeholder="Enter content in the body"
                                                             onChange={handlePosts}
                                                             required
-                                                        />
+                                                        >
+                                                        </textarea>
 
                                                         <div className="row">
                                                             {/*<div className="col-md-12">*/}
@@ -321,10 +323,10 @@ const ContentPanel = () => {
                                                     Post Graph :
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                    (Take from from DS) - pie chart of all generes
+                                                    All Total Post Per Genre
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                    {/*<UsersChart/>*/}
+                                                    <ContentChart/>
                                                 </div>
                                             </div>
                                         </div>
