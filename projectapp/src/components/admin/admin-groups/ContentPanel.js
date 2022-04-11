@@ -202,7 +202,7 @@ const ContentPanel = () => {
 
 
                         {/*COL FOR CARD*/}
-                        <div className="col-xl-12 col-lg-12 col-md-12">
+                        <div className="col-xl-8 col-lg-8 col-md-8">
                             <div className="card shadow h-100">
                                 <div className="card-body">
                                     {/*CARD ROW*/}
@@ -214,7 +214,7 @@ const ContentPanel = () => {
                                                         <div className="d-flex flex-column justify-content-center">
                                                         {/*ROW FOR TITLE AND GENRE*/}
                                                         <div className="row">
-                                                            <div className="col-xl-2 col-lg-2 col-md-2">
+                                                            <div className="col-xl-3 col-lg-3 col-md-3">
                                                                 {/*SELECT INDIVIDUAL DIV*/}
                                                                 <select
                                                                     className="custom-select d-block w-100"
@@ -234,20 +234,22 @@ const ContentPanel = () => {
                                                                 </select>
                                                             {/*END TAGS FOR SELECT OPTIONS    */}
                                                             </div>
-                                                            <div className="col-xl-2 col-lg-2 col-md-2">
-                                                                <label
-                                                                    className="text-center"
-                                                                > Enter a title:
-                                                                </label>
-                                                                <input
-                                                                    className=" text-center"
-                                                                    name="postTitle"
-                                                                    value={postContent.postTitle}
-                                                                    type="text"
-                                                                    placeholder="Enter a title"
-                                                                    onChange={handlePosts}
-                                                                    required
-                                                                />
+                                                            <div className="col-xl-9 col-lg-9 col-md-9">
+                                                                <div className="d-flex flex-row justify-content-center">
+                                                                    <label
+                                                                        className="col-md-3 text-center"
+                                                                    > Enter a title:
+                                                                    </label>
+                                                                    <input
+                                                                        className=" col-md-7 text-center"
+                                                                        name="postTitle"
+                                                                        value={postContent.postTitle}
+                                                                        type="text"
+                                                                        placeholder="Enter a title"
+                                                                        onChange={handlePosts}
+                                                                        required
+                                                                    />
+                                                                </div>
                                                             </div>
                                                     {/* END DIV TAG FOR TITLE & GENRE */}
                                                     </div>
@@ -266,16 +268,18 @@ const ContentPanel = () => {
                                                         />
 
                                                         <div className="row">
-                                                            <div className="col-md-12">
+                                                            {/*<div className="col-md-12">*/}
+                                                                <div className="d-flex justify-content-center">
                                                                 <button
                                                                     className="buttonMainStyle"
                                                                     role="button"
                                                                     type="submit"
                                                                 >
-                                                                    Post Information
+                                                                    Post
                                                                 </button>
+                                                                </div>
                                                             </div>
-                                                        </div>
+                                                        {/*</div>*/}
                                                         </div>
                                                     </form>
 
@@ -299,14 +303,14 @@ const ContentPanel = () => {
                             {/*COL END*/}
                         </div>
                         {/*OVERALL FACT ROW*/}
-                    </div>
+                    {/*</div>*/}
 
 
-                    <div className="row">
+                    {/*<div className="row">*/}
 
                         {/*GRAPH*/}
                         {/*COL FOR CARD*/}
-                        <div className="col-xl-6 col-lg-6 col-md-6">
+                        <div className="col-xl-4 col-lg-3 col-md-4">
                             <div className="card shadow h-100">
                                 <div className="card-body ">
                                     {/*CARD ROW*/}
