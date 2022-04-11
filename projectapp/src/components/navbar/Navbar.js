@@ -18,6 +18,7 @@ import {
 import { FaList, FaRegHeart } from "react-icons/fa";
 import { RiPencilLine } from "react-icons/ri";
 import { BiCog } from "react-icons/bi";
+import Logo from "./Logo";
 // import Logo from "../img-components/Logo";
 
 const Navbar = ({setShowLogin}) => {
@@ -52,7 +53,7 @@ const Navbar = ({setShowLogin}) => {
                     {/*CONTAINS HEADER & RESPONSIVE LOGO*/}
                     <SidebarHeader>
                         <div className="logotext">
-                            <p>{menuCollapse ? "logo" : "Expanded Logo"}</p>
+                            <p>{menuCollapse ? <Logo/> : <Logo/>}</p>
                         </div>
                         <div className="closemenu" onClick={menuIconClick}>
                             {menuCollapse ? <FiArrowRightCircle /> :

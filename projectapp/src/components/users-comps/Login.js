@@ -70,6 +70,9 @@ function Login(props) {
 
     const renderForm = (
         <Modal
+            //I added this
+            // show={true}
+            //ORIGNAL CODE
             show={props.showLogin}
             size="md"
             aria-labelledby="contained-modal-title-vcenter"
@@ -77,7 +80,7 @@ function Login(props) {
         >
             <Form onSubmit={handleSubmit}>
                 <Modal.Header bsPrefix="formheading">
-                {/* <Modal.Header> */}
+                    {/* <Modal.Header> */}
                     <h3>Sign In</h3>
                     <div className="formbuttons">
                         <button className="selectedbutton" disabled>
@@ -111,7 +114,10 @@ function Login(props) {
         </Modal>
     );
 
+
+    //A LITTLE SET
     return ((user !== null) ? "" : renderForm);
+
 }
 
 export default Login;

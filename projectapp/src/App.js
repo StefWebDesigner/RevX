@@ -9,6 +9,7 @@ import DataContext from "./dataStore/dataStore";
 import UserPanel from "./components/admin/admin-groups/UserPanel";
 import SurveyPanel from "./components/admin/admin-groups/SurveyPanel";
 import ContentPanel from "./components/admin/admin-groups/ContentPanel";
+import ChatMain from "./components/chat-components/ChatMain.js";
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
                   <Route path="/userpanel" element={<UserPanel/>}/>
                   <Route path="/surveypanel" element={<SurveyPanel/>}/>
                   <Route path="/contentpanel" element={<ContentPanel/>}/>
+                  {/*<Route path="/chat" element={<ChatMain/>}/>*/}
               </Routes>
           </Router>
       </DataContext.Provider>

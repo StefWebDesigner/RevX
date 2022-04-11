@@ -30,11 +30,11 @@ const Signup = (props) => {
             /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
         //VALIDATOR & CHECK ALL FIELDS FILLED
-        
+
         if (!email.value.trim() || !email.value.match(emailFormat)){
             setErrorMessages({ name: "email", message: errors.email });
-        
-        } 
+
+        }
 
         //check that username is not only whitespace
         if (!username.value.trim()) {
@@ -65,13 +65,13 @@ const Signup = (props) => {
                 } else {
                     // new user
                     const newUser = {
-                        firstname:first.value, 
-                        lastname:last.value, 
-                        username:username.value, 
-                        password:password.value, 
-                        city:city.value, 
-                        state:state.value, 
-                        email:email.value, 
+                        firstname:first.value,
+                        lastname:last.value,
+                        username:username.value,
+                        password:password.value,
+                        city:city.value,
+                        state:state.value,
+                        email:email.value,
                         account:account.value
                     }
                     axios.post(`http://localhost:4000/users/newUser`,newUser).then((res)=>{
@@ -83,7 +83,7 @@ const Signup = (props) => {
                     });
                 }
             })
-        }  
+        }
     }
 
     function renderErrorMessage(name) {

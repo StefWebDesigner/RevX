@@ -1,6 +1,10 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import axios from "axios";
 
 const AdminBody = () => {
+
+
+
     return (
         <>
         <section id="adminSection" className="adminBackground fade-in-animation">
@@ -29,7 +33,10 @@ const AdminBody = () => {
                                                 Total Users :
                                             </div>
                                             <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                (Take from from DS)
+
+                                                {/* placeholder for content*/}
+                                                Information coming soon
+
                                             </div>
                                         </div>
                                     </div>
