@@ -59,6 +59,8 @@ const Signup = (props) => {
                         //PASS DATA RECIEVED FROM AXIOS CALL TO SETUSER
                         setUser(existingUser);
 
+                        setErrorMessages({});
+
                     } else {
                         //username taken
                         setErrorMessages({ name: "unameused", message: errors.unameused });
@@ -82,6 +84,8 @@ const Signup = (props) => {
                         newUser.userid = res.userid;
 
                         setUser(newUser);
+
+                        setErrorMessages({});
                     });
                 }
             })

@@ -30,9 +30,9 @@ const Navbar = ({setShowLogin}) => {
     const { user, setUser } = useContext(DataContext);
 
     // //GETTING THE USER
-    useEffect(() => {
-        setUser(JSON.parse(localStorage.getItem("user")))
-    });
+    // useEffect(() => {
+    //     setUser(JSON.parse(localStorage.getItem("user")))
+    // }, [setUser]);
     function logout() {
         setUser(null);
         localStorage.removeItem("user");
@@ -76,7 +76,7 @@ const Navbar = ({setShowLogin}) => {
                     <SidebarContent>
                         <Menu iconShape="square">
                             <MenuItem icon={<RiPencilLine/>}>
-                                Content
+                                <a href="#">Content</a>
                             </MenuItem>
 
                         </Menu>
@@ -86,7 +86,7 @@ const Navbar = ({setShowLogin}) => {
                     <SidebarFooter>
                         <Menu iconShape="square">
                             <MenuItem icon={<BiCog/>}>
-                                Account
+                                <a href="#">Account</a>
                             </MenuItem>
                             <MenuItem icon={<FiLogOut/>}>
                                 <Link to="/" onClick={() => logout()}>Logout</Link>
