@@ -72,12 +72,34 @@ const Navbar = ({setShowLogin}) => {
 
                     {/*CONTAIN MAIN NAV CONTENT*/}
                     <SidebarContent>
-                      <MenuItem active={true} icon={<FiHome />}>
+
+                        <Menu iconShape="square">
+                            <MenuItem active={true} icon={<FiHome />}>
                                 <Link to="/">Home</Link>
                             </MenuItem>
-                        <Menu iconShape="square">
                             <MenuItem icon={<RiPencilLine/>}>
                                 <a href="#">Content</a>
+                            </MenuItem>
+
+                        </Menu>
+                    </SidebarContent>
+                    <SidebarContent>
+
+                        <Menu iconShape="square">
+                            <MenuItem active={true} icon={<FiHome />}>
+                                <a href="#">Beginner</a>
+                            </MenuItem>
+                            <MenuItem icon={<RiPencilLine/>}>
+                                <a href="#">Intermidate</a>
+                            </MenuItem>
+                            <MenuItem icon={<RiPencilLine/>}>
+                                <a href="#">Advanced</a>
+                            </MenuItem>
+                            <MenuItem icon={<RiPencilLine/>}>
+                                <a href="#">Java</a>
+                            </MenuItem>
+                            <MenuItem icon={<RiPencilLine/>}>
+                            <a href="#">React</a>
                             </MenuItem>
 
                         </Menu>

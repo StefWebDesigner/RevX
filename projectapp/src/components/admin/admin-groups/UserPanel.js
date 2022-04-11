@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import AdminNavbar from "../AdminNavbar";
 // import UsersChart from "../admincharts/UsersChart";
 import axios from "axios";
+import UsersChart from '../admincharts/UsersChart';
 
 const UserPanel = () => {
 
@@ -9,20 +10,51 @@ const UserPanel = () => {
     const [allUser, setAllUser] = useState([]);
     //THE TOGGLE
     const [toggleAllUsers, setToggleAllUsers] = useState(false);
+    //GET TOTAL ASOCIATE COUNT
+    const [associateCount,setAssociateCount]=useState([])
+    //GET TOTAL ADMIN ACCOUNT
+    const [adminCount, setAdminCount] = useState([]);
 
-    //STATE FOR COUNTING TOTAL USERS
-    const [countUsers, setCountUsers] = useState(false);
+
+    //RETREIVE ALL USERS AND SHOW ALL THEIR DETAILS
+    async function getAllUsers() {
+        const data = await axios.get('http://localhost:4000/users/allUsers');
+        setAllUser(data.data);
+    }
+
+    //GET TOTAL USERS
+    async function getAllUsers() {
+        const data = await axios.get('http://localhost:4000/users/allUsers');
+        setAllUser(data.data);
+    }
+
+    //GET TOTAL AMIN USERS
+    async function getTotalAdminUsers() {
+        const data = await axios.get('http://localhost:4000/users/totalusers/account/admin');
+        const amount = data.data[0].count
+
+        console.log(amount)
+        setAdminCount(amount);
+    }
+
+    async function getTotalAssociateUsers() {
+        const data = await axios.get('http://localhost:4000/users/totalusers/account/associate');
+        const amount = data.data[0].count
+
+        console.log(amount)
+        setAssociateCount(amount);
+    }
 
 
     //GET ALL USERS
     useEffect(() => {
-        async function getAllUsers() {
-            const data = await axios.get('http://localhost:4000/users/allUsers');
-            setAllUser(data);
-        }
 
-        //HAVE IT RECALL WHEN SOMEONE IS DELETED
+        //CALLING GET ALL USERS & DETAILS
         getAllUsers();
+        //CALLING GET ALL TOTAL ADMIN
+        getTotalAdminUsers()
+        //CALLING GET ALL TOTAL ASSOCIATES
+        getTotalAssociateUsers()
 
     },[]);
 
@@ -60,10 +92,7 @@ const UserPanel = () => {
                                                 </div>
 
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-
-                                                {/*    Place for content to go here*/}
-
-
+                                                    {allUser.length}
                                                 </div>
                                             </div>
                                         </div>
@@ -87,7 +116,7 @@ const UserPanel = () => {
                                                     Total Associates :
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                    (Take from from DS)
+                                                    {associateCount}
                                                 </div>
                                             </div>
                                         </div>
@@ -111,7 +140,7 @@ const UserPanel = () => {
                                                     Total Admin :
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                    (Take from from DS)
+                                                    {adminCount}
                                                 </div>
                                             </div>
                                         </div>
@@ -217,10 +246,10 @@ const UserPanel = () => {
                                                     User Graph :
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                    (Take from from DS)
+                                                    Admin  and Associates Totals
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                    {/*<UsersChart/>*/}
+                                                    <UsersChart adminCount={adminCount} associateCount={associateCount}/>
                                                 </div>
                                             </div>
                                         </div>
