@@ -24,8 +24,10 @@ const Signup = (props) => {
     function handleSubmit(e){
         e.preventDefault();
 
-        const { first, last, username, password, city, state, email, account } = document.forms[0];
+        const regForm = document.getElementById("regform");
+        const { first, last, username, password, city, state, email, account } = regForm;
 
+        console.log(regForm);
         const emailFormat =
             /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
@@ -104,45 +106,45 @@ const Signup = (props) => {
             aria-labelledby="contained-modal-title-vcenter"
             centered
         >
-            <Form onSubmit={handleSubmit}>
+            <Form id="regform" onSubmit={handleSubmit}>
                 <Modal.Header bsPrefix="formheading">
                     <h3>Sign Up</h3>
                     <div className="formbuttons">
                         <button className="unselectedbutton" onClick={changeForm}>
                             Sign In
                         </button>
-                        <button className="selectedbutton">
+                        <button className="selectedbutton" disabled>
                             Sign Up
                         </button>
                     </div>
                 </Modal.Header>
 
                 <Modal.Body>
-                    <Form.Group>
+                    <Form.Group className="mb-2">
                         <Form.Label>Enter first name: </Form.Label>
                         <Form.Control type="text" name="first" placeholder="first name" required />
                         {renderErrorMessage("fullname")}
                     </Form.Group>
-                    <Form.Group>
+                    <Form.Group className="mb-2">
                         <Form.Label>Enter last name: </Form.Label>
                         <Form.Control type="text" name="last" placeholder="last name" required />
                         {renderErrorMessage("fullname")}
                     </Form.Group>
-                    <Form.Group>
+                    <Form.Group className="mb-2">
                         <Form.Label>Enter username: </Form.Label>
                         <Form.Control type="text" name="username" placeholder="username" required />
                         {renderErrorMessage("unameused")}
                     </Form.Group>
-                    <Form.Group>
+                    <Form.Group className="mb-2">
                         <Form.Label>Enter password: </Form.Label>
                         <Form.Control type="password" name="password" placeholder="password" required />
                         {renderErrorMessage("pass")}
                     </Form.Group>
-                    <Form.Group>
+                    <Form.Group className="mb-2">
                         <Form.Label>Enter city: </Form.Label>
                         <Form.Control type="text" name="city" placeholder="city" required />
                     </Form.Group>
-                    <Form.Group>
+                    <Form.Group className="mb-2">
                         <Form.Label>Enter state: </Form.Label>
                         <Form.Select aria-label="Choose state" name="state">
                             <option>Select state</option>
@@ -198,11 +200,11 @@ const Signup = (props) => {
                             <option value="WY">Wyoming</option>
                         </Form.Select>
                     </Form.Group>
-                    <Form.Group>
+                    <Form.Group className="mb-2">
                         <Form.Label>Enter email: </Form.Label>
                         <Form.Control type="email" name="email" placeholder="email" required />
                     </Form.Group>
-                    <Form.Group>
+                    <Form.Group className="mb-2">
                         <Form.Label>Position: </Form.Label>
                         <Form.Select aria-label="Choose position" name="account">
                             <option>Select position</option>
