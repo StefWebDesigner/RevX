@@ -10,9 +10,6 @@ const UserPanel = () => {
     //THE TOGGLE
     const [toggleAllUsers, setToggleAllUsers] = useState(false);
 
-    //STATE FOR COUNTING TOTAL USERS
-    const [countUsers, setCountUsers] = useState(false);
-
 
     //GET ALL USERS
     useEffect(() => {

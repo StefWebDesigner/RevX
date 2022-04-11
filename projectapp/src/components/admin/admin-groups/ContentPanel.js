@@ -257,7 +257,7 @@ const ContentPanel = () => {
                                                         <label
                                                             className="text-center"
                                                         > Enter some content: </label>
-                                                        <input
+                                                        <textarea
                                                             className="postInputField text-center"
                                                             name="postBody"
                                                             value={postContent.postBody}
@@ -265,7 +265,8 @@ const ContentPanel = () => {
                                                             placeholder="Enter content in the body"
                                                             onChange={handlePosts}
                                                             required
-                                                        />
+                                                        >
+                                                        </textarea>
 
                                                         <div className="row">
                                                             {/*<div className="col-md-12">*/}
