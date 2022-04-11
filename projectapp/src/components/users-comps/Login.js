@@ -24,7 +24,8 @@ function Login(props) {
 
         e.preventDefault();
 
-        var { username, password } = document.forms[0];
+        const loginForm = document.getElementById("loginform");
+        var { username, password } = loginForm.elements;
 
         //check that username is not only whitespace
         if(!username.value.trim()){
@@ -44,6 +45,7 @@ function Login(props) {
                     //PASS DATA RECIEVED FROM AXIOS CALL TO SETUSER
                     setUser(data);
                     localStorage.setItem("user", JSON.stringify(data));
+                    setErrorMessages({});
 
                 } else {
                     // Invalid password
@@ -70,15 +72,12 @@ function Login(props) {
 
     const renderForm = (
         <Modal
-            //I added this
-            // show={true}
-            //ORIGNAL CODE
             show={props.showLogin}
             size="md"
             aria-labelledby="contained-modal-title-vcenter"
             centered
         >
-            <Form onSubmit={handleSubmit}>
+            <Form id="loginform" onSubmit={handleSubmit}>
                 <Modal.Header bsPrefix="formheading">
                     {/* <Modal.Header> */}
                     <h3>Sign In</h3>
@@ -93,12 +92,12 @@ function Login(props) {
                 </Modal.Header>
 
                 <Modal.Body>
-                    <Form.Group>
+                    <Form.Group className="mb-2">
                         <Form.Label>Enter username: </Form.Label>
                         <Form.Control type="text" name="username" placeholder="username" required />
                         {renderErrorMessage("uname")}
                     </Form.Group>
-                    <Form.Group>
+                    <Form.Group className="mb-2">
                         <Form.Label>Enter password: </Form.Label>
                         <Form.Control type="password" name="password" placeholder="password" required />
                         {renderErrorMessage("pass")}

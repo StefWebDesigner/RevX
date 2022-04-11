@@ -30,10 +30,9 @@ const Navbar = ({setShowLogin}) => {
     const { user, setUser } = useContext(DataContext);
 
     // //GETTING THE USER
-    useEffect(() => {
-        setUser(JSON.parse(localStorage.getItem("user")))
-    }, []);
-
+    // useEffect(() => {
+    //     setUser(JSON.parse(localStorage.getItem("user")))
+    // }, [setUser]);
     function logout() {
         setUser(null);
         localStorage.removeItem("user");
@@ -61,11 +60,8 @@ const Navbar = ({setShowLogin}) => {
                         </div>
 
                         {/*CHANGE MENU ICON SHAPE*/}
-                        <Menu iconShape="cirlce">
-                            <MenuItem icon={<BiCog/>}>
-                                <a>Setting</a>
-                            </MenuItem>
 
+                        <Menu >
                             <MenuItem icon={<FaRegHeart/>}>
                                 <Link to="/admin">Admin Portal</Link>
                             </MenuItem>
@@ -76,12 +72,12 @@ const Navbar = ({setShowLogin}) => {
 
                     {/*CONTAIN MAIN NAV CONTENT*/}
                     <SidebarContent>
-                        <Menu iconShape="square">
-                            <MenuItem active={true} icon={<FiHome/>}>
+                      <MenuItem active={true} icon={<FiHome />}>
                                 <Link to="/">Home</Link>
                             </MenuItem>
+                        <Menu iconShape="square">
                             <MenuItem icon={<RiPencilLine/>}>
-                                <a>Content</a>
+                                <a href="#">Content</a>
                             </MenuItem>
 
                         </Menu>
@@ -90,9 +86,11 @@ const Navbar = ({setShowLogin}) => {
                     {/*FOOTER SECTION*/}
                     <SidebarFooter>
                         <Menu iconShape="square">
-                            {/*<MenuItem icon={<FaList/>}>*/}
-                            {/*    <Link to="/login">Login</Link>*/}
-                            {/*</MenuItem>*/}
+
+                          <MenuItem icon={<BiCog/>}>
+                                <a>Setting</a>
+                            </MenuItem>
+                          
                             <MenuItem icon={<RiPencilLine/>}>
                                 <a onClick="">Report</a>
                             </MenuItem>

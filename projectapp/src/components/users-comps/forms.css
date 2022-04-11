@@ -1,6 +1,6 @@
 /* Login/Registration Form */
 .formheading {
-    color: #163BBB;
+    color: #212529;
     text-align: center;
     padding: 20px 5px 0 5px;
     border-radius: 2px;
@@ -14,7 +14,7 @@
 }
 
 .selectedbutton {
-    background: #163BBB;
+    background: mediumpurple;
     width: 50%;
     padding: 10px;
     margin: 10px 5px 0 5px;
@@ -24,23 +24,23 @@
 }
 
 .unselectedbutton {
-    background: rgba(0, 212, 255, 0);
     width: 50%;
     padding: 10px;
     margin: 10px 5px 0 5px;
-    border: #163BBB solid 2px;
+    border: mediumpurple solid 2px;
+    background-color: white;
     border-radius: 5px;
     color: black;
 }
 
 .unselectedbutton:hover {
-    background: #214ff4;
-    border: #214ff4 solid 2px;
+    background: rgb(105, 67, 181);
+    border: rgb(105, 67, 181) solid 2px;
     color:white;
 }
 
 .loginbtn {
-    background: #163BBB;
+    background: mediumpurple;
     width: 100%;
     padding: 10px;
     border: none;
@@ -49,7 +49,7 @@
 }
 
 .loginbtn:hover {
-    background-color: #214ff4;
+    background-color: rgb(105, 67, 181);
 }
 
 .loginbtn:active {

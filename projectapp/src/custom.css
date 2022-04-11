@@ -40,12 +40,12 @@
     color: mediumpurple;
     position: absolute;
     right: 0;
-    z-index: 9999;
+    z-index: 1000;
     line-height: 20px;
     border-radius: 50%;
     font-weight: bold;
     font-size: 22px;
-    top: 55px;
+    top: 50%;
     cursor: pointer;
 }
 /*CONTROLLS THE WIDTH OF NAVBAR*/
@@ -62,8 +62,7 @@
 
 /*TARGETS BACKGROUND PG NAV*/
 #header .pro-sidebar-inner {
-    background-color: black;
-    opacity: .9;
+    background-color: #212529;
     box-shadow: 0.5px 0.866px 2px 0px rgba(0, 0, 0, 0.15);
 }
 
@@ -74,7 +73,7 @@
 /*CONTROL FONT OF LOGO AREA*/
 #header .pro-sidebar-inner .pro-sidebar-layout .logotext p {
     font-size: 20px;
-    padding: 0 20px;
+    padding: 5px 20px 0 20px;
     color: white;
     font-weight: bold;
 }
@@ -86,7 +85,7 @@
 
 /*SPACING FOR ICON ELEMENTS*/
 #header .pro-sidebar-inner .pro-sidebar-layout ul .pro-inner-item {
-    color: #000;
+    color: #212529;
     margin: 10px 0px;
     font-weight: bold;
 }
@@ -94,13 +93,13 @@
 /*BACKGROUND COLOR OF ICONS*/
 #header .pro-sidebar-inner .pro-sidebar-layout ul .pro-inner-item .pro-icon-wrapper {
     background-color: mediumpurple;
-    color: #000;
+    color: #212529;
     border-radius: 3px;
 }
 
 /*WRAPPING*/
 #header .pro-sidebar-inner .pro-sidebar-layout ul .pro-inner-item .pro-icon-wrapper .pro-item-content {
-    color: #000;
+    color: #212529;
 }
 
 /*ACTIVE STATUS*/
@@ -161,7 +160,7 @@
     text-transform: uppercase;
     text-align: center;
     color: black;
-    trasnition: 0.5s;
+    transition: 0.5s;
     border: 1px solid #ec1840;
 }
 
@@ -192,4 +191,59 @@
     }
 }
 
+/* Header */
+.icon {
+    width:20px;
+}
 
+.headertext{
+    color:white;
+    margin-top: 3px;
+}
+
+#root {
+    height: 100vh;
+    background-color: #F8F9FC;
+}
+
+/* Posts */
+.post-input-container {
+    margin: 20px auto;
+    padding: 10px;
+    width: 55%;
+    /* border: #a07ede solid 2px; */
+    background-color: #212529;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 3px 2px 5px 3px rgba(0, 0, 0, 0.15);
+}
+
+.user-badge {
+    width: 50px;
+    margin: 0 5px 10px 5px;
+}
+
+.postbtn{
+    background: #a07ede;
+    width: 100%;
+    margin:10px 0% 0 0%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+
+.postbtn:hover{
+    background-color: #845ecb;
+}
+
+.post-container{
+    margin: 20px auto;
+    padding: 10px;
+    width: 55%;
+    border: #a07ede solid 2px;
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    box-shadow: 3px 2px 5px 3px rgba(0, 0, 0, 0.15);
+}
