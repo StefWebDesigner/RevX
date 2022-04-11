@@ -191,15 +191,22 @@
     }
 }
 
-/* Header Icons */
-#root{
-    height: 100vh;
-    background-color: #F8F9FC;
-}
+/* Header */
 .icon {
     width:20px;
 }
 
+.headertext{
+    color:white;
+    margin-top: 3px;
+}
+
+#root {
+    height: 100vh;
+    background-color: #F8F9FC;
+}
+
+/* Posts */
 .post-input-container {
     margin: 20px auto;
     padding: 10px;
