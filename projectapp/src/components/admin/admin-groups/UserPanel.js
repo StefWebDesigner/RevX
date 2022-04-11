@@ -246,7 +246,7 @@ const UserPanel = () => {
                                                     User Graph :
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-
+                                                    Admin  and Associates Totals
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
                                                     <UsersChart adminCount={adminCount} associateCount={associateCount}/>

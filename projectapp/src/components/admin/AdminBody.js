@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
+import ContentChart from "./admincharts/ContentChart";
+import SurveryChartRatings from "./admincharts/SurveryChartRatings";
 
 const AdminBody = () => {
 
@@ -94,6 +96,114 @@ const AdminBody = () => {
                             </div>
                         </div>
                         {/*COL END*/}
+                    </div>
+
+                    <div className="row mb-3">
+
+
+                        {/*COL FOR CARD*/}
+                        <div className="col-xl-12 col-lg-12 col-md-12">
+                            <div className="card shadow h-100">
+                                <div className="card-body">
+                                    {/*CARD ROW*/}
+                                    <div className="row no-gutters align-items-center">
+                                        <div className="col mr-2">
+                                            <div className="fact-body">
+                                                <div className="text-center text-xs font-weight-bold text-uppercase">
+                                                    Get All Post :
+                                                </div>
+                                                <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
+                                                    (Take from from DS)
+                                                    - Add three sorting buttons
+                                                </div>
+                                                <div className="text-center mt-5">
+                                                    <button
+                                                        className="buttonMainStyle"
+                                                        role="button"
+                                                        type="submit"
+                                                        // onClick={() => setShowPost(prevState => !prevState)}
+                                                    >
+                                                        Show Posts
+                                                    </button>
+
+                                                    {/*ALL RETRIEVED DATA GOES HERE*/}
+                                                    {/*TOGGLE APPLIED*/}
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {/*END CARD ROW*/}
+                                    </div>
+                                </div>
+                            </div>
+                            {/*COL END*/}
+                        </div>
+                        {/*OVERALL FACT ROW*/}
+                    </div>
+
+
+                    {/*POST CONTENT SECTION*/}
+                    <div className="row mb-3">
+
+
+                        {/*COL FOR CARD*/}
+                        <div className="col-xl-6 col-lg-6 col-md-6">
+                            <div className="card shadow h-100">
+                                <div className="card-body ">
+                                    {/*CARD ROW*/}
+                                    <div className="row no-gutters align-items-center">
+                                        <div className="col mr-2">
+                                            <div className="fact-body">
+                                                <div className="text-center text-xs font-weight-bold text-uppercase">
+                                                    Post Graph :
+                                                </div>
+                                                <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
+                                                    All Total Post Per Genre
+                                                </div>
+                                                <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
+                                                    <SurveryChartRatings/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {/*END CARD ROW*/}
+                                    </div>
+                                </div>
+                            </div>
+                            {/*COL END*/}
+                        </div>
+
+
+                        {/*<div className="row">*/}
+
+                        {/*GRAPH*/}
+                        {/*COL FOR CARD*/}
+                        <div className="col-xl-6 col-lg-6 col-md-6">
+                            <div className="card shadow h-100">
+                                <div className="card-body ">
+                                    {/*CARD ROW*/}
+                                    <div className="row no-gutters align-items-center">
+                                        <div className="col mr-2">
+                                            <div className="fact-body">
+                                                <div className="text-center text-xs font-weight-bold text-uppercase">
+                                                    Post Graph :
+                                                </div>
+                                                <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
+                                                    All Total Post Per Genre
+                                                </div>
+                                                <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
+                                                    <SurveryChartRatings/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {/*END CARD ROW*/}
+                                    </div>
+                                </div>
+                            </div>
+                            {/*COL END*/}
+                        </div>
+
+                        {/*OVERALL FACT ROW*/}
                     </div>
 
 

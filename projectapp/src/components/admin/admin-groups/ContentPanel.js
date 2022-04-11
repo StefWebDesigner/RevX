@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import AdminNavbar from "../AdminNavbar";
 import axios from "axios";
+import ContentChart from "../admincharts/ContentChart";
 
 
 const ContentPanel = () => {
@@ -322,10 +323,10 @@ const ContentPanel = () => {
                                                     Post Graph :
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                    (Take from from DS) - pie chart of all generes
+                                                    All Total Post Per Genre
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                    {/*<UsersChart/>*/}
+                                                    <ContentChart/>
                                                 </div>
                                             </div>
                                         </div>
