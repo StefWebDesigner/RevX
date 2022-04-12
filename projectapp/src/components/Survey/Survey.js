@@ -5,12 +5,14 @@ const Survey = () => {
     return (
         <>
             <section>
-                <h4 className="text-center">Please Let us know your thought today!</h4>
-                <button>
-                    <Link to="/survey">
-                        <h5 className="">Survey</h5>
+                <h4 className="text-center">Let us know your thought today!</h4>
+                {/*<div className="suveryBackground">*/}
+                <div className="d-flex justify-content-center">
+                    <Link to="/surveyform" className="suveryTitle text-center">
+                            <h4 className=" text-center">Survey</h4>
                     </Link>
-                </button>
+                </div>
+                {/*</div>*/}
             </section>
 
         </>

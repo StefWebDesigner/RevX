@@ -17,6 +17,7 @@
     "react-scripts": "5.0.0",
     "react-svg": "^14.1.18",
     "stream-chat-react": "^8.1.0",
+    "survey-react": "^1.9.24",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

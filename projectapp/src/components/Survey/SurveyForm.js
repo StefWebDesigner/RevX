@@ -4,7 +4,9 @@ import 'survey-react/modern.min.css';
 import { Survey, StylesManager, Model } from 'survey-react';
 import {useNavigate} from "react-router-dom";
 
-StylesManager.applyTheme("purple");
+StylesManager.applyTheme("bootstrap");
+
+//OTHER OPTIONS ARE modern, orange, darkblue, stone, winter, winterstone, defaultV2
 
 const surveyJSON = {
 
@@ -20,7 +22,9 @@ const surveyJSON = {
                 {value: 3, text: "Neutral"},
                 {value: 2, text: "Rather Unsatisfying"},
                 {value: 1, text: "Not satisfying at all"},
-            ],
+                ],
+                isRequired: true
+
         }]
     }, {
         elements: [{
@@ -28,21 +32,24 @@ const surveyJSON = {
             title: "Would you recommend others to try out our platform?",
             type: "rating",
             rateMin: 0,
-            rateMax: 10
+            rateMax: 10,
+            isRequired: true
+
         }]
     }, {
         elements: [{
             name: "improvements",
             title: "How could improve our platform?",
             type: "comment",
+            isRequired: true
+
         }]
     } , {
             elements: [{
                 name: "competion",
                 title: "What are some other social app that you use?",
-                type: "rating",
-                rateMin: 0,
-                rateMax: 10
+                type: "comment",
+                isRequired: true
             }]
         }
 
@@ -63,6 +70,8 @@ const surveyJSON = {
 
 const SurveyForm = () => {
 
+
+
     const navigate = useNavigate();
 
     // useRef enables the Model object to persist between state changes
@@ -81,11 +90,11 @@ const SurveyForm = () => {
 
     return (
         <>
-            <Survey model={survey} id="surveyContainer" className="fade-in-animation"/>
+            <Survey model={survey} id="surveyContainer" className="fade-in-animation text-center"/>
             {isSurveyCompleted && (
                 <>
                     <p>Result JSON:</p>
-                    <code style={{ whiteSpace: 'pre' }}>
+                    <code className="text-center"  style={{ whiteSpace: 'pre' }}>
                         {surveyResults}
                     </code>
                 </>
