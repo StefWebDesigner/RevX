@@ -8,7 +8,7 @@ function Header() {
     const { user } = useContext(DataStore);
 
     return(
-        <Navbar bg="dark">
+        <Navbar bg="dark" sticky="top">
             <Navbar.Collapse className="justify-content-end">
                 <Container fluid className="headertext">
                     <Row>
