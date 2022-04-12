@@ -85,27 +85,26 @@ const Navbar = ({setShowLogin}) => {
 
                         </Menu>
                     </SidebarContent>
-                    <SidebarContent>
 
-                        <Menu iconShape="square">
-                            <MenuItem active={true} icon={<FiHome />}>
-                                <a href="#">Beginner</a>
-                            </MenuItem>
-                            <MenuItem icon={<RiPencilLine/>}>
-                                <a href="#">Intermidate</a>
-                            </MenuItem>
-                            <MenuItem icon={<RiPencilLine/>}>
-                                <a href="#">Advanced</a>
-                            </MenuItem>
-                            <MenuItem icon={<RiPencilLine/>}>
-                                <a href="#">Java</a>
-                            </MenuItem>
-                            <MenuItem icon={<RiPencilLine/>}>
-                            <a href="#">React</a>
-                            </MenuItem>
-
-                        </Menu>
-                    </SidebarContent>
+                    {/*<SidebarContent>*/}
+                    {/*    <Menu iconShape="square">*/}
+                    {/*        <MenuItem active={true} icon={<FiHome />}>*/}
+                    {/*            <a href="#">Beginner</a>*/}
+                    {/*        </MenuItem>*/}
+                    {/*        <MenuItem icon={<RiPencilLine/>}>*/}
+                    {/*            <a href="#">Intermidate</a>*/}
+                    {/*        </MenuItem>*/}
+                    {/*        <MenuItem icon={<RiPencilLine/>}>*/}
+                    {/*            <a href="#">Advanced</a>*/}
+                    {/*        </MenuItem>*/}
+                    {/*        <MenuItem icon={<RiPencilLine/>}>*/}
+                    {/*            <a href="#">Java</a>*/}
+                    {/*        </MenuItem>*/}
+                    {/*        <MenuItem icon={<RiPencilLine/>}>*/}
+                    {/*        <a href="#">React</a>*/}
+                    {/*        </MenuItem>*/}
+                    {/*    </Menu>*/}
+                    {/*</SidebarContent>*/}
 
                     {/*FOOTER SECTION*/}
                     <SidebarFooter>
