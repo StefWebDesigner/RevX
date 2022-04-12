@@ -1,22 +1,22 @@
 /*  ANIMATION */
 
-.suveryTitle {
-    color: white;
-    background-color: mediumpurple;
-    border: black solid 2px;
-    border-radius: 7px;
-    width: 25%;
-    text-decoration: none;
-    list-style: none;
-}
+/*.suveryTitle {*/
+/*    color: white;*/
+/*    background-color: mediumpurple;*/
+/*    border: black solid 2px;*/
+/*    border-radius: 7px;*/
+/*    width: 25%;*/
+/*    text-decoration: none;*/
+/*    list-style: none;*/
+/*}*/
 
-.suveryTitle:hover {
-    background-color: white;
-    /*border: white;*/
-    color: mediumpurple;
-    cursor: pointer;
+/*.suveryTitle:hover {*/
+/*    background-color: white;*/
+/*    !*border: white;*!*/
+/*    color: mediumpurple;*/
+/*    cursor: pointer;*/
 
-}
+/*}*/
 
 
 .fade-in-animation {

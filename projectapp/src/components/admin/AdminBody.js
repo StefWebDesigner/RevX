@@ -5,6 +5,23 @@ import SurveryChartRatings from "./admincharts/SurveryChartRatings";
 
 const AdminBody = () => {
 
+    const [allUser, setAllUser] = useState([]);
+
+
+    async function getAllUsers() {
+        const data = await axios.get('http://localhost:4000/users/allUsers');
+        setAllUser(data.data);
+    }
+
+    //GET ALL USERS
+    useEffect(() => {
+
+        //CALLING GET ALL USERS & DETAILS
+        getAllUsers();
+
+
+    },[]);
+
 
     return (
         <>
@@ -35,8 +52,7 @@ const AdminBody = () => {
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
 
-                                                    {/* placeholder for content*/}
-                                                    Information coming soon
+                                                    {allUser}
 
                                                 </div>
                                             </div>

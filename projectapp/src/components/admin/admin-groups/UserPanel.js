@@ -46,7 +46,7 @@ const UserPanel = () => {
     }
 
 
-    //GET ALL USERS
+    //GET all facts with use effect
     useEffect(() => {
 
         //CALLING GET ALL USERS & DETAILS
