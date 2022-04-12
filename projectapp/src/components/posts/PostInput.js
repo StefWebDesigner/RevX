@@ -5,7 +5,7 @@ import DataStore from "../../dataStore/dataStore";
 function PostInput(){
 
     //CALL THE DATASTORE GLOBAL VARIABLE FROM STORE
-    const { user, setUser } = useContext(DataStore);
+    const { user } = useContext(DataStore);
 
     function handlePost(){
         
@@ -17,20 +17,18 @@ function PostInput(){
             posttext: content,
         }
 
-        console.log(newPost);
-
         axios.post('http://localhost:4000/posts/newPost', newPost).then((res)=>{
             //do something
 
             postInput.value = "";
+            
         });
     }
 
     return(
-        <div className="post-input-container">
+        <div className="post-container">
 
-            {/* <img src={user? user.pic : "../../../images/user-badge-purple.svg"} className="user-badge" alt="user badge" /> */}
-            <img src="../../../images/user-badge-purple.svg" className="user-badge" alt="user badge"/>
+            <img src={user && user.pic ? user.pic : "../../../images/user-badge-purple.svg"} className="user-badge" alt="user badge" />
             <span>{user? user.username : "" }</span>
 
             <form id="postinput" className="post-input">
