@@ -19,6 +19,7 @@ function PostFeed(){
         return (
                 <Post
                     key={post.postid}
+                    postid={post.postid}
                     pic=""
                     username={post.username}
                     content={post.posttext}
