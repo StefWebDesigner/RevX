@@ -1,8 +1,10 @@
 import Header from "../navbar/Header";
 import PostInput from '../posts/PostInput';
+import Survey from "../Survey/Survey";
 import PostFeed from '../posts/PostFeed';
 import React, { useContext } from 'react';
 import DataStore from "../../dataStore/dataStore";
+
 
 const Main = () => {
 
@@ -13,7 +15,9 @@ const Main = () => {
         <>
             <Header />
             <PostInput />
+            <Survey/>
             {user ? <PostFeed /> : ""}
+
         </>
     );
 };

@@ -1,5 +1,24 @@
 /*  ANIMATION */
 
+.suveryTitle {
+    color: white;
+    background-color: mediumpurple;
+    border: black solid 2px;
+    border-radius: 7px;
+    width: 25%;
+    text-decoration: none;
+    list-style: none;
+}
+
+.suveryTitle:hover {
+    background-color: white;
+    /*border: white;*/
+    color: mediumpurple;
+    cursor: pointer;
+
+}
+
+
 .fade-in-animation {
     animation: animation-fade 1s ease-in-out;
 }
@@ -25,6 +44,8 @@
 
     }
 }
+
+/*MAIN STYLING SECTION*/
 
 /* NAVIGATION CSS*/
 
@@ -166,6 +187,9 @@
     transition: 0.5s;
     border: 1px solid #ec1840;
 }
+
+
+
 
 /*HOVER EFFECT & ANIMATION TRIGGER*/
 .buttonMainStyle:hover {
