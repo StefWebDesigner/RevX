@@ -1,10 +1,15 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import AdminNavbar from "../AdminNavbar";
 import axios from "axios";
 import ContentChart from "../admincharts/ContentChart";
 
 
 const ContentPanel = () => {
+
+    const [allPost, setAllPost] = useState([]);
+
+    const [allGenre, setAllGenre] = useState([]);
+
 
 
     //FORM STATE FOR POST CONTENT
@@ -41,6 +46,24 @@ const ContentPanel = () => {
     };
 
     //GET ALL POST
+    async function getAllPost() {
+        const data = await axios.get('http://localhost:4000/posts/getAllPosts');
+        setAllPost(data.data);
+    }
+
+    async function getAllGenre() {
+        const data = await axios.get('http://localhost:4000/categories/getAll');
+        setAllGenre(data.data);
+    }
+
+    useEffect(() => {
+
+        //CALLING GET ALL USERS & DETAILS
+        getAllPost();
+        getAllGenre()
+
+
+    },[]);
 
 
 
@@ -76,7 +99,7 @@ const ContentPanel = () => {
                                                     Total Genres :
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                    (Take from from DS)
+                                                    {allGenre.length}
                                                 </div>
                                             </div>
                                         </div>
@@ -100,7 +123,7 @@ const ContentPanel = () => {
                                                     Total Posts :
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                    (Take from from DS)
+                                                    {allPost.length}
                                                 </div>
                                             </div>
                                         </div>

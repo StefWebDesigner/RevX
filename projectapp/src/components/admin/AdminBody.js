@@ -6,6 +6,7 @@ import SurveryChartRatings from "./admincharts/SurveryChartRatings";
 const AdminBody = () => {
 
     const [allUser, setAllUser] = useState([]);
+    const [allPost, setAllPost] = useState([]);
 
 
     async function getAllUsers() {
@@ -13,11 +14,18 @@ const AdminBody = () => {
         setAllUser(data.data);
     }
 
+    async function getAllPost() {
+        const data = await axios.get('http://localhost:4000/posts/getAllPosts');
+        setAllPost(data.data);
+    }
+
     //GET ALL USERS
     useEffect(() => {
 
         //CALLING GET ALL USERS & DETAILS
         getAllUsers();
+
+        getAllPost();
 
 
     },[]);
@@ -52,7 +60,7 @@ const AdminBody = () => {
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
 
-                                                    {allUser}
+                                                    {allUser.length}
 
                                                 </div>
                                             </div>
@@ -77,7 +85,7 @@ const AdminBody = () => {
                                                     Total Posts :
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                    (Take from from DS)
+                                                    {allPost.length}
                                                 </div>
                                             </div>
                                         </div>
