@@ -2,7 +2,6 @@ import React, {useContext, useEffect, useState} from 'react';
 import {Container, Navbar, Row, Col, InputGroup, FormControl, Card} from 'react-bootstrap';
 import DataStore from "../../dataStore/dataStore";
 import axios from "axios";
-import Following from "../users-comps/Following";
 import {Link} from "react-router-dom";
 
 
@@ -44,7 +43,7 @@ function Header() {
                         <Col></Col>
                         <Col xs={4}>{user ? <h4>Welcome, {user.firstname}</h4> : <h4>Welcome</h4>}</Col>
                         <Col>
-                            <Following/>
+                        {/*    incldue teh folliwng button */}
 
                         </Col>
                     {/*<Following/>*/}
