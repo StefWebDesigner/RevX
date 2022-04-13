@@ -16,8 +16,8 @@ import {
     FiArrowRightCircle
 } from "react-icons/fi";
 import {FaList, FaRegHeart} from "react-icons/fa";
-import { RiPencilLine } from "react-icons/ri";
-import { BiCog } from "react-icons/bi";
+import {RiPencilLine} from "react-icons/ri";
+import {BiCog} from "react-icons/bi";
 import DataContext from "../../dataStore/dataStore";
 import Logo from "../navbar/Logo";
 
@@ -27,12 +27,7 @@ const Navbar = ({setShowLogin}) => {
     const [menuCollapse, setMenuCollaspe] = useState(false);
 
     //CALLING IN DATASTORE -> USED FOR NAV BAR CONDITION STATEMENT
-    const { user, setUser } = useContext(DataContext);
-
-    // //GETTING THE USER
-    useEffect(() => {
-        setUser(JSON.parse(localStorage.getItem("user")))
-    }, []);
+    const {user, setUser} = useContext(DataContext);
 
     //NAV STRUCTURE SECTIONS
     const menuIconClick = () => {

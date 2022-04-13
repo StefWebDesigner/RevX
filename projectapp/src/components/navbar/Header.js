@@ -5,10 +5,10 @@ import DataStore from "../../dataStore/dataStore";
 function Header() {
 
     //CALL THE DATASTORE GLOBAL VARIABLE FROM STORE
-    const { user, setUser } = useContext(DataStore);
+    const { user } = useContext(DataStore);
 
     return(
-        <Navbar bg="dark">
+        <Navbar bg="dark" sticky="top">
             <Navbar.Collapse className="justify-content-end">
                 <Container fluid className="headertext">
                     <Row>

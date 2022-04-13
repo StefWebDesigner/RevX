@@ -109,12 +109,13 @@ const Signup = (props) => {
             size="md"
             aria-labelledby="contained-modal-title-vcenter"
             centered
+            contentClassName="form-dark"
         >
             <Form id="regform" onSubmit={handleSubmit}>
-                <Modal.Header bsPrefix="formheading">
+                <Modal.Header bsPrefix="formheading-dark">
                     <h3>Sign Up</h3>
                     <div className="formbuttons">
-                        <button className="unselectedbutton" onClick={changeForm}>
+                        <button className="unselectedbutton-dark" onClick={changeForm}>
                             Sign In
                         </button>
                         <button className="selectedbutton" disabled>
@@ -125,33 +126,33 @@ const Signup = (props) => {
 
                 <Modal.Body>
                     <Form.Group className="mb-2">
-                        <Form.Label>Enter first name: </Form.Label>
-                        <Form.Control type="text" name="first" placeholder="first name" required />
+                        <Form.Label bsPrefix="form-dark">Enter first name: </Form.Label>
+                        <Form.Control bsPrefix="form-control form-dark" type="text" name="first" placeholder="first name" required />
                         {renderErrorMessage("fullname")}
                     </Form.Group>
                     <Form.Group className="mb-2">
-                        <Form.Label>Enter last name: </Form.Label>
-                        <Form.Control type="text" name="last" placeholder="last name" required />
+                        <Form.Label bsPrefix="form-dark">Enter last name: </Form.Label>
+                        <Form.Control bsPrefix="form-control form-dark" type="text" name="last" placeholder="last name" required />
                         {renderErrorMessage("fullname")}
                     </Form.Group>
                     <Form.Group className="mb-2">
-                        <Form.Label>Enter username: </Form.Label>
-                        <Form.Control type="text" name="username" placeholder="username" required />
+                        <Form.Label bsPrefix="form-dark">Enter username: </Form.Label>
+                        <Form.Control bsPrefix="form-control form-dark" type="text" name="username" placeholder="username" required />
                         {renderErrorMessage("unameused")}
                     </Form.Group>
                     <Form.Group className="mb-2">
-                        <Form.Label>Enter password: </Form.Label>
-                        <Form.Control type="password" name="password" placeholder="password" required />
+                        <Form.Label bsPrefix="form-dark">Enter password: </Form.Label>
+                        <Form.Control bsPrefix="form-control form-dark" type="password" name="password" placeholder="password" required />
                         {renderErrorMessage("pass")}
                     </Form.Group>
                     <Form.Group className="mb-2">
-                        <Form.Label>Enter city: </Form.Label>
-                        <Form.Control type="text" name="city" placeholder="city" required />
+                        <Form.Label bsPrefix="form-dark">Enter city: </Form.Label>
+                        <Form.Control bsPrefix="form-control form-dark" type="text" name="city" placeholder="city" required />
                     </Form.Group>
                     <Form.Group className="mb-2">
-                        <Form.Label>Enter state: </Form.Label>
-                        <Form.Select aria-label="Choose state" name="state">
-                            <option>Select state</option>
+                        <Form.Label bsPrefix="form-dark">Enter state: </Form.Label>
+                        <Form.Select bsPrefix="form-select form-dark" aria-label="Choose state" name="state">
+                            <option disabled>Select state</option>
                             <option value="AL">Alabama</option>
                             <option value="AK">Alaska</option>
                             <option value="AZ">Arizona</option>
@@ -205,13 +206,13 @@ const Signup = (props) => {
                         </Form.Select>
                     </Form.Group>
                     <Form.Group className="mb-2">
-                        <Form.Label>Enter email: </Form.Label>
-                        <Form.Control type="email" name="email" placeholder="email" required />
+                        <Form.Label bsPrefix="form-dark">Enter email: </Form.Label>
+                        <Form.Control bsPrefix="form-control form-dark" type="email" name="email" placeholder="email" required />
                     </Form.Group>
                     <Form.Group className="mb-2">
-                        <Form.Label>Position: </Form.Label>
-                        <Form.Select aria-label="Choose position" name="account">
-                            <option>Select position</option>
+                        <Form.Label bsPrefix="form-dark">Position: </Form.Label>
+                        <Form.Select bsPrefix="form-select form-dark" aria-label="Choose position" name="account" placeholder="Select position">
+                            <option disabled>Select position</option>
                             <option value="associate">Associate</option>
                             <option value="admin">Admin</option>
                         </Form.Select>

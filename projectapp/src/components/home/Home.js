@@ -8,13 +8,14 @@ import DataStore from "../../dataStore/dataStore";
 
 const Home = () => {
 
-    const { user, setUser } = useContext(DataStore);
+    const { user } = useContext(DataStore);
 
     const [showLogin, setShowLogin] = useState(!user);
     const [showSignup, setShowSignup] = useState(false);
 
     return (
         <>
+
             <Login 
                 showLogin={showLogin} 
                 setShowLogin={setShowLogin}
@@ -29,7 +30,7 @@ const Home = () => {
             <Main/>
             <Footer/>
 
-            
+
         </>
     );
 };

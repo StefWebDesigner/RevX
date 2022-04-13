@@ -1,5 +1,24 @@
 /*  ANIMATION */
 
+.suveryTitle {
+    color: white;
+    background-color: mediumpurple;
+    border: black solid 2px;
+    border-radius: 7px;
+    width: 25%;
+    text-decoration: none;
+    list-style: none;
+}
+
+.suveryTitle:hover {
+    background-color: white;
+    /*border: white;*/
+    color: mediumpurple;
+    cursor: pointer;
+
+}
+
+
 .fade-in-animation {
     animation: animation-fade 1s ease-in-out;
 }
@@ -26,11 +45,16 @@
     }
 }
 
+/*MAIN STYLING SECTION*/
+
 /* NAVIGATION CSS*/
 
 #header {
-    position: absolute;
+    position:fixed;
+    top:0;
+    left:0;
     width: 220px;
+    z-index: 10000;
 }
 #header .pro-sidebar {
     height: 100vh;
@@ -164,6 +188,9 @@
     border: 1px solid #ec1840;
 }
 
+
+
+
 /*HOVER EFFECT & ANIMATION TRIGGER*/
 .buttonMainStyle:hover {
      border: 1px solid transparent;
@@ -201,20 +228,24 @@
     margin-top: 3px;
 }
 
+.form-dark {
+    background-color: #212529;
+    color: white;
+}
+
 #root {
     height: 100vh;
     background-color: #F8F9FC;
 }
 
 /* Posts */
-.post-input-container {
+.post-container {
     margin: 20px auto;
     padding: 10px;
     width: 55%;
-    /* border: #a07ede solid 2px; */
     background-color: #212529;
     color: white;
-    border-radius: 5px;
+    border-radius: 10px;
     box-shadow: 3px 2px 5px 3px rgba(0, 0, 0, 0.15);
 }
 
@@ -237,13 +268,53 @@
     background-color: #845ecb;
 }
 
-.post-container{
-    margin: 20px auto;
-    padding: 10px;
-    width: 55%;
-    border: #a07ede solid 2px;
-    background-color: white;
-    color: black;
+.post-content{
+    width:90%;
+    margin-left: 5%;
+    padding:10px;
     border-radius: 5px;
-    box-shadow: 3px 2px 5px 3px rgba(0, 0, 0, 0.15);
+    padding-bottom: 0px;
+    background-color: #2d3237;
+    border: #845ecb solid 1px;
+}
+
+.post-content-dark {
+    width: 90%;
+    margin-left: 5%;
+    padding: 10px;
+    border: #845ecb solid 1px;
+    border-radius: 5px;
+    padding-bottom: 0;
+}
+
+.post-date{
+    float: right;
+    margin-right: 5%;
+    margin-top: 2px;
+}
+
+.post-footer{
+    margin: 10px 0 10px 10px;
+}
+
+.liked-button{
+    display: inline;
+    margin:5px;
+    border:mediumpurple solid 1px;;
+    background-color: mediumpurple;
+    border-radius: 5px;
+    color:white;
+}
+
+.not-liked-button {
+    display: inline;
+    margin: 5px;
+    border: mediumpurple solid 1px;
+    background-color: transparent;
+    border-radius: 5px;
+    color: white;
+}
+
+.like-button:hover{
+    background-color: mediumpurple;
 }

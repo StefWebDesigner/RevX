@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from "react-router-dom";
 import DataContext from "../../dataStore/dataStore";
 import {
@@ -29,10 +29,6 @@ const Navbar = ({setShowLogin}) => {
     //CALLING IN DATASTORE -> USED FOR NAV BAR CONDITION STATEMENT
     const { user, setUser } = useContext(DataContext);
 
-    // //GETTING THE USER
-    // useEffect(() => {
-    //     setUser(JSON.parse(localStorage.getItem("user")))
-    // }, [setUser]);
     function logout() {
         setUser(null);
         localStorage.removeItem("user");
@@ -62,9 +58,19 @@ const Navbar = ({setShowLogin}) => {
                         {/*CHANGE MENU ICON SHAPE*/}
 
                         <Menu >
-                            <MenuItem icon={<FaRegHeart/>}>
-                                <Link to="/admin">Admin Portal</Link>
+                            <MenuItem active={true} icon={<FiHome />}>
+                                <Link to="/">Home</Link>
                             </MenuItem>
+
+                            {/* conditionally show the admin portal */}
+                            {user && user.account == 'admin' ?
+
+                            <MenuItem icon={<FaRegHeart/>}>
+                                 <Link to="/admin">Admin Portal</Link>
+                            </MenuItem>
+
+                            : ""}
+
                         </Menu>
 
 
@@ -72,38 +78,33 @@ const Navbar = ({setShowLogin}) => {
 
                     {/*CONTAIN MAIN NAV CONTENT*/}
                     <SidebarContent>
-
                         <Menu iconShape="square">
-                            <MenuItem active={true} icon={<FiHome />}>
-                                <Link to="/">Home</Link>
-                            </MenuItem>
                             <MenuItem icon={<RiPencilLine/>}>
                                 <a href="#">Content</a>
                             </MenuItem>
 
                         </Menu>
                     </SidebarContent>
-                    <SidebarContent>
 
-                        <Menu iconShape="square">
-                            <MenuItem active={true} icon={<FiHome />}>
-                                <a href="#">Beginner</a>
-                            </MenuItem>
-                            <MenuItem icon={<RiPencilLine/>}>
-                                <a href="#">Intermidate</a>
-                            </MenuItem>
-                            <MenuItem icon={<RiPencilLine/>}>
-                                <a href="#">Advanced</a>
-                            </MenuItem>
-                            <MenuItem icon={<RiPencilLine/>}>
-                                <a href="#">Java</a>
-                            </MenuItem>
-                            <MenuItem icon={<RiPencilLine/>}>
-                            <a href="#">React</a>
-                            </MenuItem>
-
-                        </Menu>
-                    </SidebarContent>
+                    {/*<SidebarContent>*/}
+                    {/*    <Menu iconShape="square">*/}
+                    {/*        <MenuItem active={true} icon={<FiHome />}>*/}
+                    {/*            <a href="#">Beginner</a>*/}
+                    {/*        </MenuItem>*/}
+                    {/*        <MenuItem icon={<RiPencilLine/>}>*/}
+                    {/*            <a href="#">Intermidate</a>*/}
+                    {/*        </MenuItem>*/}
+                    {/*        <MenuItem icon={<RiPencilLine/>}>*/}
+                    {/*            <a href="#">Advanced</a>*/}
+                    {/*        </MenuItem>*/}
+                    {/*        <MenuItem icon={<RiPencilLine/>}>*/}
+                    {/*            <a href="#">Java</a>*/}
+                    {/*        </MenuItem>*/}
+                    {/*        <MenuItem icon={<RiPencilLine/>}>*/}
+                    {/*        <a href="#">React</a>*/}
+                    {/*        </MenuItem>*/}
+                    {/*    </Menu>*/}
+                    {/*</SidebarContent>*/}
 
                     {/*FOOTER SECTION*/}
                     <SidebarFooter>
@@ -114,7 +115,7 @@ const Navbar = ({setShowLogin}) => {
                             </MenuItem>
                           
                             <MenuItem icon={<RiPencilLine/>}>
-                                <a onClick="">Report</a>
+                                <a href="#">Report</a>
                             </MenuItem>
                             <MenuItem icon={<FiLogOut/>}>
                                 <Link to="/" onClick={() => logout()}>Logout</Link>
