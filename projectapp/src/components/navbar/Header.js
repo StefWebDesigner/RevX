@@ -1,11 +1,33 @@
-import React, {useContext} from 'react';
-import { Container, Navbar, Row, Col, InputGroup, FormControl } from 'react-bootstrap';
+import React, {useContext, useEffect, useState} from 'react';
+import {Container, Navbar, Row, Col, InputGroup, FormControl, Card} from 'react-bootstrap';
 import DataStore from "../../dataStore/dataStore";
+import axios from "axios";
 
 function Header() {
 
     //CALL THE DATASTORE GLOBAL VARIABLE FROM STORE
     const { user } = useContext(DataStore);
+
+    //TO RETRIEVE SEARCHED CONTENT FROM PERSISTANCE LATER
+    const [getSearch, setGetSearch] = useState([]);
+
+
+    async function searchUser(e) {
+        e.preventDefault();
+
+        const data = await axios.get('http://localhost:4000/users/userByName/username');
+            console.log(data);
+        setGetSearch(data.data);
+    }
+
+
+
+    useEffect(async () => {
+        await searchUser()
+
+    }, [])
+
+
 
     return(
         <Navbar bg="dark" sticky="top">
@@ -25,6 +47,30 @@ function Header() {
                                 />
                             </InputGroup>
                         </Col>
+                    </Row>
+                    <Row>
+                        <Card>
+                            <Card.Body itemsPerRow={3} style={{marginTop: 20}}>
+                                {
+                                    getSearch.map((results) => {
+                                        return (
+                                            <Card>
+                                                <Card.Content>
+                                                    <Card.Header>
+                                                        {results.username}
+                                                    </Card.Header>
+                                                    <Card.Description>
+                                                        {results.location}
+                                                    </Card.Description>
+                                                </Card.Content>
+                                            </Card>
+                                        );
+                                    })
+                                }
+
+
+                            </Card.Body>
+                        </Card>
                     </Row>
                 </Container>
             </Navbar.Collapse>

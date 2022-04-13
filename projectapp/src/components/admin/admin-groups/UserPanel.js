@@ -79,6 +79,7 @@ const UserPanel = () => {
         });
     }
 
+    //SORT BY ROLE
     const sortingByRole = () => {
         setSortByRole(prevState => !prevState);
         const roleData = allUser.sort((a, b) => {
@@ -103,7 +104,16 @@ const UserPanel = () => {
         });
     }
 
-    //SORT BY ROLE
+    //DELETE USER
+
+    // /deleteUser/:username
+
+    async function deteleUser() {
+        const data = await axios.delete('')
+
+    }
+
+
 
     //GET TOTAL USERS
     async function getAllUsers() {

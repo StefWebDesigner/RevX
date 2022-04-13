@@ -63,6 +63,7 @@ const Navbar = ({setShowLogin}) => {
                                 <Link to="/">Home</Link>
                             </MenuItem>
 
+
                             {/* conditionally show the admin portal */}
                             {user && user.account == 'admin' ?
 
@@ -82,6 +83,10 @@ const Navbar = ({setShowLogin}) => {
                         <Menu iconShape="square">
                             <MenuItem icon={<RiPencilLine/>}>
                                 <a href="#">Content</a>
+                            </MenuItem>
+
+                            <MenuItem icon={<FaRegHeart/>}>
+                                <Link to="/admin">Following</Link>
                             </MenuItem>
 
                         </Menu>
