@@ -19,6 +19,7 @@ import { FaList, FaRegHeart } from "react-icons/fa";
 import { RiPencilLine } from "react-icons/ri";
 import { BiCog } from "react-icons/bi";
 import Logo from "./Logo";
+import Survey from "../Survey/Survey";
 // import Logo from "../img-components/Logo";
 
 const Navbar = ({setShowLogin}) => {
@@ -62,6 +63,7 @@ const Navbar = ({setShowLogin}) => {
                                 <Link to="/">Home</Link>
                             </MenuItem>
 
+
                             {/* conditionally show the admin portal */}
                             {user && user.account == 'admin' ?
 
@@ -83,28 +85,37 @@ const Navbar = ({setShowLogin}) => {
                                 <a href="#">Content</a>
                             </MenuItem>
 
+
+
                         </Menu>
                     </SidebarContent>
 
-                    {/*<SidebarContent>*/}
-                    {/*    <Menu iconShape="square">*/}
-                    {/*        <MenuItem active={true} icon={<FiHome />}>*/}
-                    {/*            <a href="#">Beginner</a>*/}
-                    {/*        </MenuItem>*/}
-                    {/*        <MenuItem icon={<RiPencilLine/>}>*/}
-                    {/*            <a href="#">Intermidate</a>*/}
-                    {/*        </MenuItem>*/}
-                    {/*        <MenuItem icon={<RiPencilLine/>}>*/}
-                    {/*            <a href="#">Advanced</a>*/}
-                    {/*        </MenuItem>*/}
-                    {/*        <MenuItem icon={<RiPencilLine/>}>*/}
-                    {/*            <a href="#">Java</a>*/}
-                    {/*        </MenuItem>*/}
-                    {/*        <MenuItem icon={<RiPencilLine/>}>*/}
-                    {/*        <a href="#">React</a>*/}
-                    {/*        </MenuItem>*/}
-                    {/*    </Menu>*/}
-                    {/*</SidebarContent>*/}
+                    <SidebarContent>
+                        <Menu iconShape="square">
+                            <MenuItem active={true} icon={<FiHome />}>
+                                <a href="#">Beginner</a>
+                            </MenuItem>
+                            <MenuItem icon={<RiPencilLine/>}>
+                                <a href="#">Intermidate</a>
+                            </MenuItem>
+                            <MenuItem icon={<RiPencilLine/>}>
+                                <a href="#">Advanced</a>
+                            </MenuItem>
+                            <MenuItem icon={<RiPencilLine/>}>
+                                <a href="#">Java</a>
+                            </MenuItem>
+                            <MenuItem icon={<RiPencilLine/>}>
+                            <a href="#">React</a>
+                            </MenuItem>
+                        </Menu>
+                    </SidebarContent>
+                    <SidebarContent>
+                        <Menu>
+                            <MenuItem icon={<RiPencilLine/>}>
+                                <Link to="/surveyform">Survey</Link>
+                            </MenuItem>
+                        </Menu>
+                    </SidebarContent>
 
                     {/*FOOTER SECTION*/}
                     <SidebarFooter>

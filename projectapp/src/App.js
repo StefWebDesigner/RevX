@@ -12,6 +12,7 @@ import ContentPanel from "./components/admin/admin-groups/ContentPanel";
 import ChatMain from "./components/chat-components/ChatMain.js";
 import Account from '../src/components/Accounts/accounts';
 import SurveyForm from "./components/Survey/SurveyForm";
+import UserProfile from "./components/users-comps/UserProfile";
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
                   <Route path="/contentpanel" element={<ContentPanel/>}/> 
                   <Route path="/account" element={<Account/>}/>
                   <Route path="/surveyform" element={<SurveyForm/>}/>
+                  <Route path="/userprofile/:username" element={<UserProfile/>}/>
 
                   {/*<Route path="/chat" element={<ChatMain/>}/>*/}
               </Routes>
