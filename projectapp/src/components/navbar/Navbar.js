@@ -85,9 +85,9 @@ const Navbar = ({setShowLogin}) => {
                                 <a href="#">Content</a>
                             </MenuItem>
 
-                            <MenuItem icon={<FaRegHeart/>}>
-                                <Link to="/admin">Following</Link>
-                            </MenuItem>
+                            {/*<MenuItem icon={<FaRegHeart/>}>*/}
+                            {/*    <Link to="/">Following</Link>*/}
+                            {/*</MenuItem>*/}
 
                         </Menu>
                     </SidebarContent>

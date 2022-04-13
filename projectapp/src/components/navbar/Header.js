@@ -2,38 +2,39 @@ import React, {useContext, useEffect, useState} from 'react';
 import {Container, Navbar, Row, Col, InputGroup, FormControl, Card} from 'react-bootstrap';
 import DataStore from "../../dataStore/dataStore";
 import axios from "axios";
+import Following from "../users-comps/Following";
+import {Link} from "react-router-dom";
+
 
 function Header() {
 
     //CALL THE DATASTORE GLOBAL VARIABLE FROM STORE
     const { user } = useContext(DataStore);
 
-    //TO RETRIEVE SEARCHED CONTENT FROM PERSISTANCE LATER
-    const [retrieveInfo, setRetrieveInfo] = useState([]);
+    // TO RETRIEVE SEARCHED CONTENT FROM PERSISTANCE LATER
+    const [retrieveInfo, setRetrieveInfo] = useState(null);
     const [filteredResults, setFilterResults] = useState([])
     const[search, setSearch] = useState('');
 
 
-    useEffect(() => {
-        axios.get(`http://localhost:4000/users/userByName/username`)
-            .then((response) => {
-                setRetrieveInfo(response.data);
-            })
-    }, [])
+    // useEffect(() => {
+    //     axios.get(`http://localhost:4000/users/userByName/username`)
+    //         .then((response) => {
+    //             setRetrieveInfo(response.data);
+    //         })
+    // }, [])
 
     const searchResults = (searchValue) => {
         setSearch(searchValue);
-        if(search !== '') {
-            const filtedData = retrieveInfo.filter((item) => {
-                return Object.values(item).join('').toLowerCase(searchResults.toLowerCase());
-            });
-            setFilterResults(filtedData);
-        }
-        else {
-            setFilterResults(retrieveInfo);
-        }
+
+        axios.get(`http://localhost:4000/users/userByName/${searchValue}`)
+            .then((response) => {
+                setRetrieveInfo(response.data);
+            })
+
 
     }
+    console.log(retrieveInfo);
 
     return(
         <Navbar bg="dark" sticky="top">
@@ -42,13 +43,17 @@ function Header() {
                     <Row>
                         <Col></Col>
                         <Col xs={4}>{user ? <h4>Welcome, {user.firstname}</h4> : <h4>Welcome</h4>}</Col>
-                        <Col></Col>
+                        <Col>
+                            <Following/>
+
+                        </Col>
+                    {/*<Following/>*/}
                         <Col >
                             <InputGroup>
                                 <InputGroup.Text><img src="../../../images/mg-black.svg" className="icon" alt=""/></InputGroup.Text>
                                 <FormControl
                                     placeholder="Search..."
-                                     // onChange={(e) => searchResults(e.target.value)}
+                                     onChange={(e) => searchResults(e.target.value)}
                                     aria-label="Search"
                                     aria-describedby="basic-addon2"
                                 />
@@ -56,44 +61,24 @@ function Header() {
                         </Col>
                     </Row>
                     <Row>
-                        <Card>
-                            <Card.Body itemsPerRow={3} style={{marginTop: 20}}>
-                                { search.length > 1 ? (
 
-                                        filteredResults.map((results) => {
-                                        return (
-                                            <Card>
-                                                <Card.Content>
-                                                    <Card.Header>
-                                                        {results.username}
-                                                    </Card.Header>
-                                                    <Card.Description>
-                                                        {results.location}
-                                                    </Card.Description>
-                                                </Card.Content>
-                                            </Card>
-                                        );
-                                    })
+                        {retrieveInfo &&
 
-                                    ) :(
-                                    retrieveInfo.map((results) => {
-                                        return (
-                                            <Card>
-                                                <Card.Content>
-                                                <Card.Header>{results.name}</Card.Header>
-                                                <Card.Description>
-                                                     {results.email}
-                                                      </Card.Description>
-                                            </Card.Content>
-                                    </Card>
-                                    );
-                                })
-                            )
+                            <Link to={`/userprofile/${retrieveInfo?.username}`}>
+                            {/*NORMALLY IT IS NULL, TI LOOKS FOR A SPECIFIC VALUE*/}
+                                <h4 style={{color: "white"}} >
+                        {retrieveInfo?.username}
+                                </h4>
+                                <h4 style={{color: "white"}} >
+                        {retrieveInfo?.email}
+                                </h4>
+                            </Link>
+
+
                         }
 
 
-                            </Card.Body>
-                        </Card>
+
                     </Row>
                 </Container>
             </Navbar.Collapse>
