@@ -273,13 +273,22 @@
     margin: 10px 0 10px 10px;
 }
 
-.like-button{
+.liked-button{
     display: inline;
     margin:5px;
     border:mediumpurple solid 1px;;
-    background-color: transparent;
+    background-color: mediumpurple;
     border-radius: 5px;
     color:white;
+}
+
+.not-liked-button {
+    display: inline;
+    margin: 5px;
+    border: mediumpurple solid 1px;
+    background-color: transparent;
+    border-radius: 5px;
+    color: white;
 }
 
 .like-button:hover{

@@ -13,16 +13,16 @@ function Post({postid, pic, username, content, postdate, likes}){
 
         //update like count
         if (!liked) {
-            // axios.put(`http://localhost:4000/posts/addLike/${postid}`, 1);
             setLiked(true);
             setNumLikes(numLikes + 1);
+            axios.put(`http://localhost:4000/posts/likes/${postid}`, { likes: (numLikes+1) });
 
         //user is removing their like
         } else {
             setLiked(false);
             setNumLikes(numLikes - 1);
+            axios.put(`http://localhost:4000/posts/likes/${postid}`, { likes: (numLikes-1) });
         }
-
     }
 
     return (
@@ -45,7 +45,7 @@ function Post({postid, pic, username, content, postdate, likes}){
             {/* Post footer - likes, share, report */}
             <div className="post-footer">
                 {/* like icon/ number of likes */}
-                <button type="button" className="like-button" onClick={handleClick}>Like</button>
+                <button type="button" className={liked? "liked-button": "not-liked-button"} onClick={handleClick}>Like</button>
                 <span>{numLikes}</span>
             </div>
 
