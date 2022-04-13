@@ -9,25 +9,31 @@ function Header() {
     const { user } = useContext(DataStore);
 
     //TO RETRIEVE SEARCHED CONTENT FROM PERSISTANCE LATER
-    const [getSearch, setGetSearch] = useState([]);
+    const [retrieveInfo, setRetrieveInfo] = useState([]);
+    const [filteredResults, setFilterResults] = useState([])
+    const[search, setSearch] = useState('');
 
 
-    async function searchUser(e) {
-        e.preventDefault();
-
-        const data = await axios.get('http://localhost:4000/users/userByName/username');
-            console.log(data);
-        setGetSearch(data.data);
-    }
-
-
-
-    useEffect(async () => {
-        await searchUser()
-
+    useEffect(() => {
+        axios.get(`http://localhost:4000/users/userByName/username`)
+            .then((response) => {
+                setRetrieveInfo(response.data);
+            })
     }, [])
 
+    const searchResults = (searchValue) => {
+        setSearch(searchValue);
+        if(search !== '') {
+            const filtedData = retrieveInfo.filter((item) => {
+                return Object.values(item).join('').toLowerCase(searchResults.toLowerCase());
+            });
+            setFilterResults(filtedData);
+        }
+        else {
+            setFilterResults(retrieveInfo);
+        }
 
+    }
 
     return(
         <Navbar bg="dark" sticky="top">
@@ -42,6 +48,7 @@ function Header() {
                                 <InputGroup.Text><img src="../../../images/mg-black.svg" className="icon" alt=""/></InputGroup.Text>
                                 <FormControl
                                     placeholder="Search..."
+                                     // onChange={(e) => searchResults(e.target.value)}
                                     aria-label="Search"
                                     aria-describedby="basic-addon2"
                                 />
@@ -51,8 +58,9 @@ function Header() {
                     <Row>
                         <Card>
                             <Card.Body itemsPerRow={3} style={{marginTop: 20}}>
-                                {
-                                    getSearch.map((results) => {
+                                { search.length > 1 ? (
+
+                                        filteredResults.map((results) => {
                                         return (
                                             <Card>
                                                 <Card.Content>
@@ -66,7 +74,22 @@ function Header() {
                                             </Card>
                                         );
                                     })
-                                }
+
+                                    ) :(
+                                    retrieveInfo.map((results) => {
+                                        return (
+                                            <Card>
+                                                <Card.Content>
+                                                <Card.Header>{results.name}</Card.Header>
+                                                <Card.Description>
+                                                     {results.email}
+                                                      </Card.Description>
+                                            </Card.Content>
+                                    </Card>
+                                    );
+                                })
+                            )
+                        }
 
 
                             </Card.Body>
