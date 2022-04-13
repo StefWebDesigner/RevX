@@ -1,8 +1,8 @@
 import axios from 'axios';
-import {useContext} from 'react';
+import {useContext, useState} from 'react';
 import DataStore from "../../dataStore/dataStore";
 
-function PostInput(){
+function PostInput({setCreateNewPost}){
 
     //CALL THE DATASTORE GLOBAL VARIABLE FROM STORE
     const { user } = useContext(DataStore);
@@ -18,14 +18,15 @@ function PostInput(){
         }
 
         axios.post('http://localhost:4000/posts/newPost', newPost).then((res)=>{
-            //do something
+
+            newPost.postid = res.data.postid;
+            setCreateNewPost(newPost);
 
             postInput.value = "";
-            
         });
     }
 
-    return(
+    return(<>
         <div className="post-container">
 
             <img src={user && user.pic ? user.pic : "../../../images/user-badge-purple.svg"} className="user-badge" alt="user badge" />
@@ -36,7 +37,7 @@ function PostInput(){
                 <button type="button" className="postbtn" onClick={handlePost}>Post</button>
             </form>            
         </div>
-    );
+    </>);
 }
 
 export default PostInput;
