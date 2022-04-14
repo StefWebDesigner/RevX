@@ -10,6 +10,8 @@ const ContentPanel = () => {
 
     const [allGenre, setAllGenre] = useState([]);
 
+    const [collectingAllPost, setCollectingAllPost] = useState([]);
+
 
 
     //FORM STATE FOR POST CONTENT
@@ -56,11 +58,19 @@ const ContentPanel = () => {
         setAllGenre(data.data);
     }
 
+
+    async function getAllCollectedPost() {
+
+        const data = await axios.get('http://localhost:4000/posts/getAllPosts');
+        setCollectingAllPost(data.data);
+    }
+
     useEffect(() => {
 
         //CALLING GET ALL USERS & DETAILS
         getAllPost();
         getAllGenre()
+        getAllCollectedPost();
 
 
     },[]);
@@ -178,8 +188,8 @@ const ContentPanel = () => {
                                                     Get All Post :
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                    (Take from from DS)
-                                                    - Add three sorting buttons
+
+                                                    Displays all post currently recorded in database
                                                 </div>
                                                 <div className="text-center mt-5">
                                                     <button
@@ -191,21 +201,37 @@ const ContentPanel = () => {
                                                         Show Posts
                                                     </button>
 
-                                                    {/*ALL RETRIEVED DATA GOES HERE*/}
-                                                    {/*TOGGLE APPLIED*/}
-                                                    { showPost &&
+                                                    {
+                                                        showPost &&
 
-                                                        <aside>
-                                                            <div className="fade-in-animation">
-                                                                {/* WILL CREATE THE  LIST HERE*/}
+                                                        collectingAllPost.map((collect, index) => {
+                                                            return (
+                                                                <div key={collect.postid}>
+                                        <table className="table table-striped table-hover">
+                                            <tbody className="text-center">
+                                            <tr>
+                                                <div className="row p">
+                                                    <div className="col-md-2"><td>{collect.postid}</td></div>
+                                                    <div className="col-md-6"><td>{collect.posttext}</td></div>
+                                                    <div className="col-md-1"><td>{collect.postdate}</td></div>
+                                                    <div className="col-md-2"><td>{collect.likes}</td></div>
+                                                    <div className="col-md-1">
+                                                        <button
+                                                        >
+                                                            <i className="bi bi-dash-square">-</i>
+                                                        </button>
+                                                    </div>
 
+                                                    {/*ENDING DIV FOR TABLE ROW    */}
+                                                </div>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                                                </div>
 
-                                                                {/*    add toggle like in show product*/}
-                                                                {/*    add for name / id / and ect sorting button here   */}
+                                                            );
 
-
-                                                            </div>
-                                                        </aside>
+                                                        })
                                                     }
 
                                                 </div>

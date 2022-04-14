@@ -7,6 +7,7 @@ const AdminBody = () => {
 
     const [allUser, setAllUser] = useState([]);
     const [allPost, setAllPost] = useState([]);
+    const [allInteractions, setAllInteractions] = useState([]);
 
 
     async function getAllUsers() {
@@ -18,6 +19,11 @@ const AdminBody = () => {
         const data = await axios.get('http://localhost:4000/posts/getAllPosts');
         setAllPost(data.data);
     }
+
+    // async function getAllInteractions () {
+    //     const data = await axios.get('');
+    //     setAllInteractions(data.data);
+    // }
 
     //GET ALL USERS
     useEffect(() => {
@@ -106,7 +112,7 @@ const AdminBody = () => {
                                         <div className="col mr-2">
                                             <div className="fact-body">
                                                 <div className="text-center text-xs font-weight-bold text-uppercase">
-                                                    Amount of Surveys :
+                                                    Amount of Interactions :
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
                                                     (Take from from DS)
@@ -122,48 +128,6 @@ const AdminBody = () => {
 
                         <div className="row mb-3">
 
-
-                            {/*COL FOR CARD*/}
-                            <div className="col-xl-12 col-lg-12 col-md-12">
-                                <div className="card shadow h-100">
-                                    <div className="card-body">
-                                        {/*CARD ROW*/}
-                                        <div className="row no-gutters align-items-center">
-                                            <div className="col mr-2">
-                                                <div className="fact-body">
-                                                    <div
-                                                        className="text-center text-xs font-weight-bold text-uppercase">
-                                                        Get All Post :
-                                                    </div>
-                                                    <div
-                                                        className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                        (Take from from DS)
-                                                        - Add three sorting buttons
-                                                    </div>
-                                                    <div className="text-center mt-5">
-                                                        <button
-                                                            className="buttonMainStyle"
-                                                            role="button"
-                                                            type="submit"
-                                                            // onClick={() => setShowPost(prevState => !prevState)}
-                                                        >
-                                                            Show Posts
-                                                        </button>
-
-                                                        {/*ALL RETRIEVED DATA GOES HERE*/}
-                                                        {/*TOGGLE APPLIED*/}
-
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            {/*END CARD ROW*/}
-                                        </div>
-                                    </div>
-                                </div>
-                                {/*COL END*/}
-                            </div>
-                            {/*OVERALL FACT ROW*/}
                         </div>
 
 
@@ -239,8 +203,6 @@ const AdminBody = () => {
 
                         {/*OVERALL FACT ROW*/}
                     </div>
-
-                    <h1>Going to add the survey chart here</h1>
 
 
                     {/* END OF WRAPPER CONTENT CLASS*/}
