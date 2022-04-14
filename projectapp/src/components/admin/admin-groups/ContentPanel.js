@@ -79,7 +79,8 @@ const ContentPanel = () => {
 
     async function getAllTips() {
         const data = await axios.get('http://localhost:4000/categories/totaltips');
-        setAllTips(data.data);
+        const amount = data.data[0].count
+        setAllTips(amount);
     }
 
     useEffect(() => {
