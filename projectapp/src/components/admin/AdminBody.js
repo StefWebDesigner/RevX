@@ -2,11 +2,21 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import ContentChart from "./admincharts/ContentChart";
 import SurveryChartRatings from "./admincharts/SurveryChartRatings";
+import UsersChart from "./admincharts/UsersChart";
 
 const AdminBody = () => {
 
     const [allUser, setAllUser] = useState([]);
     const [allPost, setAllPost] = useState([]);
+    const [allInteractions, setAllInteractions] = useState([]);
+    const [associateCount,setAssociateCount]=useState([])
+    //GET TOTAL ADMIN ACCOUNT
+    const [adminCount, setAdminCount] = useState([]);
+
+    console.log(adminCount);
+    console.log(associateCount);
+
+
 
 
     async function getAllUsers() {
@@ -19,6 +29,35 @@ const AdminBody = () => {
         setAllPost(data.data);
     }
 
+
+
+    // async function getAllInteractions () {
+    //     const data = await axios.get('');
+    //     setAllInteractions(data.data);
+    // }
+
+
+    //GET TOTAL AMIN USERS
+    async function getTotalAdminUsers() {
+        const data = await axios.get('http://localhost:4000/users/totalusers/account/admin');
+        const amount = data.data[0].count
+
+        console.log(amount)
+        setAdminCount(amount);
+    }
+
+    //GET TOTAL ASSOCIATE USERS
+    async function getTotalAssociateUsers() {
+        const data = await axios.get('http://localhost:4000/users/totalusers/account/associate');
+        const amount = data.data[0].count
+
+        console.log(amount)
+        setAssociateCount(amount);
+    }
+
+
+
+
     //GET ALL USERS
     useEffect(() => {
 
@@ -26,6 +65,10 @@ const AdminBody = () => {
         getAllUsers();
 
         getAllPost();
+
+        getTotalAdminUsers();
+
+        getTotalAssociateUsers();
 
 
     },[]);
@@ -106,7 +149,7 @@ const AdminBody = () => {
                                         <div className="col mr-2">
                                             <div className="fact-body">
                                                 <div className="text-center text-xs font-weight-bold text-uppercase">
-                                                    Amount of Surveys :
+                                                    Total Tips :
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
                                                     (Take from from DS)
@@ -122,48 +165,6 @@ const AdminBody = () => {
 
                         <div className="row mb-3">
 
-
-                            {/*COL FOR CARD*/}
-                            <div className="col-xl-12 col-lg-12 col-md-12">
-                                <div className="card shadow h-100">
-                                    <div className="card-body">
-                                        {/*CARD ROW*/}
-                                        <div className="row no-gutters align-items-center">
-                                            <div className="col mr-2">
-                                                <div className="fact-body">
-                                                    <div
-                                                        className="text-center text-xs font-weight-bold text-uppercase">
-                                                        Get All Post :
-                                                    </div>
-                                                    <div
-                                                        className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                        (Take from from DS)
-                                                        - Add three sorting buttons
-                                                    </div>
-                                                    <div className="text-center mt-5">
-                                                        <button
-                                                            className="buttonMainStyle"
-                                                            role="button"
-                                                            type="submit"
-                                                            // onClick={() => setShowPost(prevState => !prevState)}
-                                                        >
-                                                            Show Posts
-                                                        </button>
-
-                                                        {/*ALL RETRIEVED DATA GOES HERE*/}
-                                                        {/*TOGGLE APPLIED*/}
-
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            {/*END CARD ROW*/}
-                                        </div>
-                                    </div>
-                                </div>
-                                {/*COL END*/}
-                            </div>
-                            {/*OVERALL FACT ROW*/}
                         </div>
 
 
@@ -181,7 +182,7 @@ const AdminBody = () => {
                                                 <div className="fact-body">
                                                     <div
                                                         className="text-center text-xs font-weight-bold text-uppercase">
-                                                        Post Graph :
+                                                        Categories Graph :
                                                     </div>
                                                     <div
                                                         className=" text-center h5 mb-0 font-weight-bold text-gray-800">
@@ -189,7 +190,7 @@ const AdminBody = () => {
                                                     </div>
                                                     <div
                                                         className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                        <SurveryChartRatings/>
+                                                        <ContentChart/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -214,15 +215,15 @@ const AdminBody = () => {
                                                 <div className="fact-body">
                                                     <div
                                                         className="text-center text-xs font-weight-bold text-uppercase">
-                                                        Post Graph :
+                                                        User Graph :
                                                     </div>
                                                     <div
                                                         className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                        All Total Post Per Genre
+                                                        Admin  and Associates Totals
                                                     </div>
                                                     <div
                                                         className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                        <SurveryChartRatings/>
+                                                        <UsersChart adminCount={adminCount} associateCount={associateCount}/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -239,8 +240,6 @@ const AdminBody = () => {
 
                         {/*OVERALL FACT ROW*/}
                     </div>
-
-                    <h1>Going to add the survey chart here</h1>
 
 
                     {/* END OF WRAPPER CONTENT CLASS*/}

@@ -16,22 +16,30 @@ function Header() {
     const[search, setSearch] = useState('');
 
 
-    // useEffect(() => {
-    //     axios.get(`http://localhost:4000/users/userByName/username`)
-    //         .then((response) => {
-    //             setRetrieveInfo(response.data);
-    //         })
-    // }, [])
-
-    const searchResults = (searchValue) => {
+    const searchResultsUsername = (searchValue) => {
         setSearch(searchValue);
 
+        // axios.get(`http://localhost:4000/users/userByName/${searchValue}`)
+
         axios.get(`http://localhost:4000/users/userByName/${searchValue}`)
+
             .then((response) => {
                 setRetrieveInfo(response.data);
             })
+    }
+    console.log(retrieveInfo);
 
+    //MY BEST AND FASTEST SOLUTION & A NEW REQUEST FOR CITY
+    const searchResultsLocation = (searchValue) => {
+        setSearch(searchValue);
 
+        // axios.get(`http://localhost:4000/users/userByName/${searchValue}`)
+
+        axios.get(`http://localhost:4000/users/userByName/${searchValue}`)
+
+            .then((response) => {
+                setRetrieveInfo(response.data);
+            })
     }
 
     return(
@@ -51,7 +59,16 @@ function Header() {
                                 </FormSelect>
                                 <FormControl
                                     placeholder="Search..."
-                                     onChange={(e) => searchResults(e.target.value)}
+                                     onChange={(e) => searchResultsUsername(e.target.value)}
+                                    aria-label="Search"
+                                    aria-describedby="basic-addon2"
+                                />
+                            </InputGroup>
+                            <InputGroup>
+                                <InputGroup.Text><img src="../../../images/mg-black.svg" className="icon" alt=""/></InputGroup.Text>
+                                <FormControl
+                                    placeholder="Search..."
+                                    onChange={(e) => searchResultsLocation(e.target.value)}
                                     aria-label="Search"
                                     aria-describedby="basic-addon2"
                                 />
@@ -67,11 +84,10 @@ function Header() {
                                 <h4 style={{color: "white"}} >
                         {retrieveInfo?.username}
                                 </h4>
-                                <h4 style={{color: "white"}} >
-                        {retrieveInfo?.email}
-                                </h4>
+                        {/*        <h4 style={{color: "white"}} >*/}
+                        {/*{retrieveInfo?.city}*/}
+                        {/*        </h4>*/}
                             </Link>
-
 
                         }
 

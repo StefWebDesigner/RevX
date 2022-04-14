@@ -91,27 +91,52 @@ const Navbar = ({setShowLogin}) => {
                     {/*CONTAIN MAIN NAV CONTENT*/}
                     <SidebarContent>
                         <Menu iconShape="square">
-                            <MenuItem active={true} icon={<FaJava />}>
-                                <a href="#">Java</a>
+
+                            <MenuItem icon={<RiPencilLine/>}>
+                                <a href="#">Content</a>
                             </MenuItem>
-                            <MenuItem icon={<FaReact/>}>
-                                <a href="#">React</a>
-                            </MenuItem>
-                            <MenuItem icon={<FaTable/>}>
-                                <a href="#">SQL</a>
-                            </MenuItem>
-                            <MenuItem icon={<IoLogoJavascript/>}>
-                                <a href="#">JavaScript</a>
-                            </MenuItem>
-                            <MenuItem icon={<MdWebAsset/>}>
-                            <a href="#">HTML</a>
-                            </MenuItem>
+
+
+
                         </Menu>
                     </SidebarContent>
+
                     <SidebarContent>
-                        <Menu>
+                        <Menu iconShape="square">
+                            <MenuItem active={true} icon={<FiHome />}>
+                                <Link to="/beginner">Beginner</Link>
+                            </MenuItem>
                             <MenuItem icon={<RiPencilLine/>}>
-                                <Link to="/surveyform">Survey</Link>
+                                <Link to="/intermidate">Intermidate</Link>
+                            </MenuItem>
+
+
+                            <MenuItem icon={<RiPencilLine/>}>
+                                <Link to="/advanced">Advanced</Link>
+                            </MenuItem>
+                            <MenuItem icon={<RiPencilLine/>}>
+                                <Link to="/java">Java</Link>
+
+                                {/*<Link to={`/userprofile/${retrieveInfo?.username}`}>*/}
+
+
+{/*                            <MenuItem active={true} icon={<FaJava />}>*/}
+{/*                                <a href="#">Java</a>*/}
+{/*                            </MenuItem>*/}
+{/*                            <MenuItem icon={<FaReact/>}>*/}
+{/*                                <a href="#">React</a>*/}
+{/*                            </MenuItem>*/}
+{/*                            <MenuItem icon={<FaTable/>}>*/}
+{/*                                <a href="#">SQL</a>*/}
+{/*                            </MenuItem>*/}
+{/*                            <MenuItem icon={<IoLogoJavascript/>}>*/}
+{/*                                <a href="#">JavaScript</a>*/}
+{/*                            </MenuItem>*/}
+{/*                            <MenuItem icon={<MdWebAsset/>}>*/}
+{/*                            <a href="#">HTML</a>*/}
+                            </MenuItem>
+                            <MenuItem icon={<RiPencilLine/>}>
+                                <Link to="/react">React</Link>
                             </MenuItem>
                         </Menu>
                     </SidebarContent>

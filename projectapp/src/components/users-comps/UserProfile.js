@@ -16,13 +16,13 @@ const UserProfile = () => {
     }, [])
 
 
+
     console.log(userProfile);
 
     return (
         <>
-
             <h1> USername {username}</h1>
-
+            {/*<h1> USername {city}</h1>*/}
         </>
     );
 };
