@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import AdminNavbar from "../AdminNavbar";
-// import UsersChart from "../admincharts/UsersChart";
 import axios from "axios";
 import UsersChart from '../admincharts/UsersChart';
 
@@ -20,7 +19,7 @@ const UserPanel = () => {
     const [sortByUsername, setSortByUsername] = useState(false);
     const [sortByRole, setSortByRole] = useState(false);
 
-
+    const [getReport, setGetReport] = useState([]);
 
 
     //RETREIVE ALL USERS AND SHOW ALL THEIR DETAILS
@@ -31,7 +30,9 @@ const UserPanel = () => {
 
     //SORTING BY ID
     const sortingById = () => {
-        setSortById(prevState => !prevState);
+        getAllUsers()
+
+        setSortById(prevId => !prevId);
         const newData = allUser.sort((a, b) => {
             if(a.userid > b.userid) {
                 return 1;
@@ -41,8 +42,8 @@ const UserPanel = () => {
             }
             return 0;
         });
-        setAllUser((prevUser) => {
-            return (prevUser.sort((a, b) => {
+        setAllUser((prevIdUser) => {
+            return (prevIdUser.sort((a, b) => {
                 if(a.userid > b.userid) {
                     return 1;
                 }
@@ -56,7 +57,9 @@ const UserPanel = () => {
 
     //SORT BY NAME
     const sortingByUsername = () => {
-        setSortByUsername(prevState => !prevState);
+        getAllUsers()
+
+        setSortByUsername(prevUsername => !prevUsername);
         const usernameData = allUser.sort((a, b) => {
             if(a.username > b.username) {
                 return 1;
@@ -66,8 +69,8 @@ const UserPanel = () => {
             }
             return 0
         });
-        setAllUser((prevUser) => {
-            return (prevUser.sort((a, b) => {
+        setAllUser((prevUsernameUser) => {
+            return (prevUsernameUser.sort((a, b) => {
                 if(a.username > b.username) {
                     return 1;
                 }
@@ -81,7 +84,8 @@ const UserPanel = () => {
 
     //SORT BY ROLE
     const sortingByRole = () => {
-        setSortByRole(prevState => !prevState);
+        getAllUsers()
+        setSortByRole(prevRole => !prevRole);
         const roleData = allUser.sort((a, b) => {
             if(a.account > b.account) {
                 return 1;
@@ -91,8 +95,8 @@ const UserPanel = () => {
             }
                 return 0;
         });
-        setAllUser((prevUser) => {
-            return(prevUser.sort((a, b) => {
+        setAllUser((prevRoleUser) => {
+            return(prevRoleUser.sort((a, b) => {
                 if(a.account > b.account) {
                     return 1;
                 }
@@ -113,14 +117,6 @@ const UserPanel = () => {
 
     }
 
-
-
-    //GET TOTAL USERS
-    async function getAllUsers() {
-        const data = await axios.get('http://localhost:4000/users/allUsers');
-        setAllUser(data.data);
-    }
-
     //GET TOTAL AMIN USERS
     async function getTotalAdminUsers() {
         const data = await axios.get('http://localhost:4000/users/totalusers/account/admin');
@@ -139,8 +135,11 @@ const UserPanel = () => {
         setAssociateCount(amount);
     }
 
+    async function getReportMethod() {
+        const data = await axios.get('http://localhost:4000/categories/makereport');
+        setGetReport(data.data);
 
-
+    }
 
 //GENERAL HUB FOR USEEFFECT
     useEffect(() => {
@@ -151,6 +150,8 @@ const UserPanel = () => {
         getTotalAdminUsers()
         //CALLING GET ALL TOTAL ASSOCIATES
         getTotalAssociateUsers()
+
+        getReportMethod();
 
     },[]);
 
@@ -287,13 +288,13 @@ const UserPanel = () => {
                                         </button>
                                         <button
                                             className="adminbtn"
-                                            onClick={sortingById}
+                                            onClick={sortingByUsername}
                                         >
                                             Sort By username
                                         </button>
                                         <button
                                             className="adminbtn"
-                                            onClick={sortingById}
+                                            onClick={sortingByRole}
                                         >
                                             Sort By role
                                         </button>
@@ -412,6 +413,23 @@ const UserPanel = () => {
                                                             </thead>
                                                         </table>
                                                     </div>
+
+
+                                                    {
+                                                        getReport.map((report, index) => {
+                                                            return (
+                                                            <div key={report.caseid}>
+                                                                {report.caseid}
+                                                                {report.reportid}
+                                                                {report.username}
+                                                                {report.issue}
+                                                            </div>
+                                                            );
+                                                        })
+
+                                                    }
+
+
 
                                                 </div>
                                             </div>
