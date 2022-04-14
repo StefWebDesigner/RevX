@@ -93,13 +93,15 @@ const Navbar = ({setShowLogin}) => {
                     <SidebarContent>
                         <Menu iconShape="square">
                             <MenuItem active={true} icon={<FiHome />}>
-                                <a href="#">Beginner</a>
+                                <Link to="/beginner">Beginner</Link>
                             </MenuItem>
                             <MenuItem icon={<RiPencilLine/>}>
-                                <a href="#">Intermidate</a>
+                                <Link to="/intermidate">Intermidate</Link>
                             </MenuItem>
+
+
                             <MenuItem icon={<RiPencilLine/>}>
-                                <a href="#">Advanced</a>
+                                <Link to="/advanced">Advanced</Link>
                             </MenuItem>
                             <MenuItem icon={<RiPencilLine/>}>
                                 <Link to="/java">Java</Link>
@@ -108,7 +110,7 @@ const Navbar = ({setShowLogin}) => {
 
                             </MenuItem>
                             <MenuItem icon={<RiPencilLine/>}>
-                            <a href="#">React</a>
+                                <Link to="/react">React</Link>
                             </MenuItem>
                         </Menu>
                     </SidebarContent>

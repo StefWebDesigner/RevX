@@ -14,6 +14,10 @@ import Account from '../src/components/Accounts/accounts';
 import SurveyForm from "./components/Survey/SurveyForm";
 import UserProfile from "./components/users-comps/UserProfile";
 import Java from "./components/Categories/Java";
+import ReactFile from "./components/Categories/ReactFile";
+import Beginner from "./components/Categories/Beginner";
+import Intermidate from "./components/Categories/Intermidate";
+import Advanced from "./components/Categories/Advanced";
 
 
 function App() {
@@ -44,6 +48,12 @@ function App() {
                   <Route path="/userprofile/:username" element={<UserProfile/>}/>
 
                   <Route path="/java" element={<Java/>}/>
+                  <Route path="/react" element={<ReactFile/>}/>
+                  <Route path="/beginner" element={<Beginner/>}/>
+                  <Route path="/intermidate" element={<Intermidate/>}/>
+                  <Route path="/advanced" element={<Advanced/>}/>
+
+
 
                   {/*<Route path="/chat" element={<ChatMain/>}/>*/}
               </Routes>

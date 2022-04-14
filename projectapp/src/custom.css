@@ -361,3 +361,27 @@
     border: black solid 1px;
 }
 
+/*CATEGORY TITLE*/
+
+
+.category-container {
+    margin: 20px auto;
+    padding: 10px;
+    width: 55%;
+    background-color: #212529;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 3px 2px 5px 3px rgba(0, 0, 0, 0.15);
+
+
+}
+
+.category-content {
+    width:90%;
+    margin-left: 5%;
+    padding-top: 75px;
+    padding-bottom: 75px;
+    border-radius: 5px;
+    background-color: mediumpurple;
+    border: #845ecb solid 1px;
+}
