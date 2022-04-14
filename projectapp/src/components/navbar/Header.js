@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {Container, Navbar, Row, Col, InputGroup, FormControl, Card} from 'react-bootstrap';
+import {Container, Navbar, Row, Col, InputGroup, FormSelect, FormControl, Card} from 'react-bootstrap';
 import DataStore from "../../dataStore/dataStore";
 import axios from "axios";
 import {Link} from "react-router-dom";
@@ -49,14 +49,14 @@ function Header() {
                     <Row>
                         <Col></Col>
                         <Col xs={4}>{user ? <h4>Welcome, {user.firstname}</h4> : <h4>Welcome</h4>}</Col>
-                        <Col>
-                        {/*    incldue teh folliwng button */}
-
-                        </Col>
                     {/*<Following/>*/}
                         <Col >
                             <InputGroup>
                                 <InputGroup.Text><img src="../../../images/mg-black.svg" className="icon" alt=""/></InputGroup.Text>
+                                <FormSelect>
+                                    <option>Username</option>
+                                    <option>Location</option>
+                                </FormSelect>
                                 <FormControl
                                     placeholder="Search..."
                                      onChange={(e) => searchResultsUsername(e.target.value)}
