@@ -33,7 +33,7 @@ const Beginner = () => {
             <Navbar/>
             <>
 
-                <h1 className="text-center">Beginer content</h1>
+                <h1 className="category-title text-center">Beginer content</h1>
 
                 {
                     showBeginnerContent.map((item, index) => {
@@ -41,7 +41,7 @@ const Beginner = () => {
                             <div className="category-container text-center">
 
                                 {/* link to user profile */}
-                                <span className="">{item.title}</span>
+                                <span className="category-subtitle">{item.title}</span>
 
                                 {/* Post body content */}
                                 <div className="category-content">
