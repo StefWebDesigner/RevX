@@ -216,11 +216,11 @@ const ContentPanel = () => {
                                                         <thead className="text-center">
                                                         <tr>
                                                         <div className="row">
-                                                        <div className="col-md-2"><th>Post ID</th></div>
-                                                        <div className="col-md-6"><th>Post</th></div>
-                                                        <div className="col-md-1"><th>Date</th></div>
+                                                        <div className="col-md-1"><th>PostID</th></div>
+                                                        <div className="col-md-4"><th >Post</th></div>
+                                                        <div className="col-md-3"><th>Date</th></div>
                                                         <div className="col-md-2"><th>Like</th></div>
-                                                        <div className="col-md-1"><th>Remove</th></div>
+                                                        <div className="col-md-2"><th>Remove</th></div>
                                                         </div>
                                                         </tr>
                                                         </thead>
@@ -236,16 +236,19 @@ const ContentPanel = () => {
                                             <tbody className="text-center">
                                             <tr>
                                                 <div className="row ">
-                                                    <div className="col-md-2"><td>{collect.postid}</td></div>
-                                                    <div className="col-md-6"><td>{collect.posttext}</td></div>
-                                                    <div className="col-md-1"><td>{collect.postdate}</td></div>
+                                                    <div className="col-md-1"><td>{collect.postid}</td></div>
+                                                    <div className="col-md-4"><td>{collect.posttext}</td></div>
+                                                    <div className="col-md-3"><td>{collect.postdate}</td></div>
                                                     <div className="col-md-2"><td>{collect.likes}</td></div>
-                                                    <div className="col-md-1">
-                                                        <button
-                                                            onClick={() => deletePost(collect.postid)}
-                                                        >
-                                                            <i className="bi bi-dash-square">-</i>
-                                                        </button>
+                                                    <div className="col-md-2">
+                                                        {/*<div className="d-flex justify-content-center">*/}
+                                                            <button
+                                                                className="adminDeletebtn text-center"
+                                                                onClick={() => deletePost(collect.postid)}
+                                                            >
+                                                                <i className="bi bi-dash-square">-</i>
+                                                            </button>
+                                                        {/*</div>*/}
                                                     </div>
 
                                                     {/*ENDING DIV FOR TABLE ROW    */}

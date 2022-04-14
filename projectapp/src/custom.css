@@ -318,3 +318,46 @@
 .like-button:hover{
     background-color: mediumpurple;
 }
+
+
+/*ADMIN BUTTONS*/
+
+.adminbtn {
+    background: mediumpurple;
+    width: 25%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+
+.adminbtn:hover {
+    background-color: rgb(105, 67, 181);
+}
+
+.adminbtn:active {
+    border: black solid 1px;
+}
+
+.adminDeletebtn {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    background: mediumpurple;
+    width: 10%;
+    /*padding: 10px;*/
+    padding-left: 10px;
+    padding-right: 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+
+.adminDeletebtn:hover {
+    background-color: rgb(105, 67, 181);
+}
+
+.adminDeletebtn:active {
+    border: black solid 1px;
+}
+

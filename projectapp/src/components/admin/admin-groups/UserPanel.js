@@ -280,22 +280,24 @@ const UserPanel = () => {
                             { toggleAllUsers &&
                                 <aside>
                                     <div className="fade-in-animation">
-                                        <button
+                                        <button className="adminbtn"
                                             onClick={sortingById}
                                         >
                                             Sort By Id
                                         </button>
                                         <button
+                                            className="adminbtn"
                                             onClick={sortingById}
                                         >
                                             Sort By username
                                         </button>
                                         <button
+                                            className="adminbtn"
                                             onClick={sortingById}
                                         >
                                             Sort By role
                                         </button>
-                                        }
+
                                     </div>
                                 </aside>
                             }
@@ -321,6 +323,7 @@ const UserPanel = () => {
                                                 <div className="col-md-2"><td>{user.account}</td></div>
                                                 <div className="col-md-1">
                                                     <button
+                                                        className="adminDeletebtn"
                                                     >
                                                         <i className="bi bi-dash-square">-</i>
                                                     </button>
