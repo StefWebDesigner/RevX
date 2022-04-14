@@ -11,7 +11,6 @@ function PostFeed({createNewPost}){
 
             setPosts(res.data);
         });
-
     });
     
 
@@ -23,6 +22,7 @@ function PostFeed({createNewPost}){
                     postid={post.postid}
                     pic=""
                     username={post.username}
+                    accountType={post.account}
                     content={post.posttext}
                     postdate={post.postdate}
                     likes={post.likes}

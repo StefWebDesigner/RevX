@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-function Post({postid, pic, username, content, postdate, likes}){
+function Post({postid, pic, username, accountType, content, postdate, likes}){
 
     const [liked, setLiked] = useState(false);
     const [numLikes, setNumLikes] = useState(likes);
@@ -32,7 +32,7 @@ function Post({postid, pic, username, content, postdate, likes}){
             <img src={pic ? pic : "../../../images/user-badge-purple.svg"} className="user-badge" alt="user badge" />
             
             {/* link to user profile */}
-            <span>{username}</span>
+            <span>{username}</span> <small className="account-label"><i>{accountType}</i></small>
 
             {/* follow button */}
 
