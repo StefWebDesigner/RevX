@@ -53,6 +53,14 @@ const ContentPanel = () => {
         setAllPost(data.data);
     }
 
+    //DELETE A POST
+    async function deletePost () {
+        const data = await axios.delete('http://localhost:4000/posts/deletePost/id');
+        console.log(data);
+    }
+
+
+
     async function getAllGenre() {
         const data = await axios.get('http://localhost:4000/categories/getAll');
         setAllGenre(data.data);
@@ -204,19 +212,37 @@ const ContentPanel = () => {
                                                     {
                                                         showPost &&
 
+                                                            <table className="table table-striped table-hover">
+                                                        <thead className="text-center">
+                                                        <tr>
+                                                        <div className="row">
+                                                        <div className="col-md-2"><th>Post ID</th></div>
+                                                        <div className="col-md-6"><th>Post</th></div>
+                                                        <div className="col-md-1"><th>Date</th></div>
+                                                        <div className="col-md-2"><th>Like</th></div>
+                                                        <div className="col-md-1"><th>Remove</th></div>
+                                                        </div>
+                                                        </tr>
+                                                        </thead>
+                                                        </table>
+                                                    }
+
+                                                    {
+                                                        showPost &&
                                                         collectingAllPost.map((collect, index) => {
                                                             return (
                                                                 <div key={collect.postid}>
                                         <table className="table table-striped table-hover">
                                             <tbody className="text-center">
                                             <tr>
-                                                <div className="row p">
+                                                <div className="row ">
                                                     <div className="col-md-2"><td>{collect.postid}</td></div>
                                                     <div className="col-md-6"><td>{collect.posttext}</td></div>
                                                     <div className="col-md-1"><td>{collect.postdate}</td></div>
                                                     <div className="col-md-2"><td>{collect.likes}</td></div>
                                                     <div className="col-md-1">
                                                         <button
+                                                            onClick={() => deletePost(collect.postid)}
                                                         >
                                                             <i className="bi bi-dash-square">-</i>
                                                         </button>

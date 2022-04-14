@@ -277,30 +277,37 @@ const UserPanel = () => {
                                                         Get Users
                                                     </button>
 
-                                                        <aside>
-                                                            <div className="fade-in-animation">
-                                                                <button
-                                                                    onClick={sortingById}
-                                                                >
-                                                                    Sort By Id
-                                                                </button>
-                                                                <button
-                                                                    onClick={sortingById}
-                                                                >
-                                                                    Sort By username
-                                                                </button>
-                                                                <button
-                                                                    onClick={sortingById}
-                                                                >
-                                                                    Sort By role
-                                                                </button>
+                            { toggleAllUsers &&
+                                <aside>
+                                    <div className="fade-in-animation">
+                                        <button
+                                            onClick={sortingById}
+                                        >
+                                            Sort By Id
+                                        </button>
+                                        <button
+                                            onClick={sortingById}
+                                        >
+                                            Sort By username
+                                        </button>
+                                        <button
+                                            onClick={sortingById}
+                                        >
+                                            Sort By role
+                                        </button>
+                                        }
+                                    </div>
+                                </aside>
+                            }
+
 
                         { toggleAllUsers &&
 
                             allUser.map((user, index) => {
 
                                 return(
-                                    <div key={user.userid}>
+
+                        <aside key={user.userid} className="fade-in-animation">
 
 
                                 <table className="table table-striped table-hover">
@@ -324,12 +331,10 @@ const UserPanel = () => {
                                         </tr>
                                     </tbody>
                                 </table>
-                                    </div>
+                        </aside>
                                 );
                             })};
 
-                                                            </div>
-                                                        </aside>
 
                                                 </div>
                                             </div>
