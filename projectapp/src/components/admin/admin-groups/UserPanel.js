@@ -15,12 +15,105 @@ const UserPanel = () => {
     //GET TOTAL ADMIN ACCOUNT
     const [adminCount, setAdminCount] = useState([]);
 
+    //STATE FOR SORTING BY ID
+    const [sortById, setSortById] = useState(false);
+    const [sortByUsername, setSortByUsername] = useState(false);
+    const [sortByRole, setSortByRole] = useState(false);
+
+
+
 
     //RETREIVE ALL USERS AND SHOW ALL THEIR DETAILS
     async function getAllUsers() {
         const data = await axios.get('http://localhost:4000/users/allUsers');
         setAllUser(data.data);
     }
+
+    //SORTING BY ID
+    const sortingById = () => {
+        setSortById(prevState => !prevState);
+        const newData = allUser.sort((a, b) => {
+            if(a.userid > b.userid) {
+                return 1;
+            }
+            if(a.userid < b.userid) {
+                return -1;
+            }
+            return 0;
+        });
+        setAllUser((prevUser) => {
+            return (prevUser.sort((a, b) => {
+                if(a.userid > b.userid) {
+                    return 1;
+                }
+                if(a.userid < b.userid) {
+                    return -1;
+                }
+                return 0;
+            }));
+        });
+    }
+
+    //SORT BY NAME
+    const sortingByUsername = () => {
+        setSortByUsername(prevState => !prevState);
+        const usernameData = allUser.sort((a, b) => {
+            if(a.username > b.username) {
+                return 1;
+            }
+            if(a.username < b.username) {
+                return 1;
+            }
+            return 0
+        });
+        setAllUser((prevUser) => {
+            return (prevUser.sort((a, b) => {
+                if(a.username > b.username) {
+                    return 1;
+                }
+                if(a.username < b.username) {
+                    return 1;
+                }
+                return 0;
+            }));
+        });
+    }
+
+    //SORT BY ROLE
+    const sortingByRole = () => {
+        setSortByRole(prevState => !prevState);
+        const roleData = allUser.sort((a, b) => {
+            if(a.account > b.account) {
+                return 1;
+            }
+            if(a.account < b.account) {
+                return -1;
+            }
+                return 0;
+        });
+        setAllUser((prevUser) => {
+            return(prevUser.sort((a, b) => {
+                if(a.account > b.account) {
+                    return 1;
+                }
+                if(a.account < b.account) {
+                    return -1;
+                }
+                return 0;
+            }));
+        });
+    }
+
+    //DELETE USER
+
+    // /deleteUser/:username
+
+    async function deteleUser() {
+        const data = await axios.delete('')
+
+    }
+
+
 
     //GET TOTAL USERS
     async function getAllUsers() {
@@ -37,6 +130,7 @@ const UserPanel = () => {
         setAdminCount(amount);
     }
 
+    //GET TOTAL ASSOCIATE USERS
     async function getTotalAssociateUsers() {
         const data = await axios.get('http://localhost:4000/users/totalusers/account/associate');
         const amount = data.data[0].count
@@ -46,7 +140,9 @@ const UserPanel = () => {
     }
 
 
-    //GET ALL USERS
+
+
+//GENERAL HUB FOR USEEFFECT
     useEffect(() => {
 
         //CALLING GET ALL USERS & DETAILS
@@ -183,12 +279,29 @@ const UserPanel = () => {
 
                                                         <aside>
                                                             <div className="fade-in-animation">
+                                                                <button
+                                                                    onClick={sortingById}
+                                                                >
+                                                                    Sort By Id
+                                                                </button>
+                                                                <button
+                                                                    onClick={sortingById}
+                                                                >
+                                                                    Sort By username
+                                                                </button>
+                                                                <button
+                                                                    onClick={sortingById}
+                                                                >
+                                                                    Sort By role
+                                                                </button>
 
                         { toggleAllUsers &&
+
                             allUser.map((user, index) => {
 
                                 return(
                                     <div key={user.userid}>
+
 
                                 <table className="table table-striped table-hover">
                                     <tbody className="text-center">

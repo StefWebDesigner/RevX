@@ -1,6 +1,5 @@
 import Header from "../navbar/Header";
 import PostInput from '../posts/PostInput';
-import Survey from "../Survey/Survey";
 import PostFeed from '../posts/PostFeed';
 import React, { useContext, useState } from 'react';
 import DataStore from "../../dataStore/dataStore";
