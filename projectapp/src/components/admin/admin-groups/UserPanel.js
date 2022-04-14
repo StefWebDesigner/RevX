@@ -7,6 +7,8 @@ const UserPanel = () => {
 
     //GET ALL REQUEST
     const [allUser, setAllUser] = useState([]);
+    //THE ORIGINAL STATE
+    const [users, setUsers] = useState([]);
     //THE TOGGLE
     const [toggleAllUsers, setToggleAllUsers] = useState(false);
     //GET TOTAL ASOCIATE COUNT
@@ -26,24 +28,14 @@ const UserPanel = () => {
     async function getAllUsers() {
         const data = await axios.get('http://localhost:4000/users/allUsers');
         setAllUser(data.data);
+        setUsers(data.data);
     }
 
     //SORTING BY ID
     const sortingById = () => {
-        getAllUsers()
+        console.log("hello world");
 
-        setSortById(prevId => !prevId);
-        const newData = allUser.sort((a, b) => {
-            if(a.userid > b.userid) {
-                return 1;
-            }
-            if(a.userid < b.userid) {
-                return -1;
-            }
-            return 0;
-        });
-        setAllUser((prevIdUser) => {
-            return (prevIdUser.sort((a, b) => {
+        const newData = users.sort((a, b) => {
                 if(a.userid > b.userid) {
                     return 1;
                 }
@@ -51,70 +43,85 @@ const UserPanel = () => {
                     return -1;
                 }
                 return 0;
-            }));
-        });
+            });
+        console.log(allUser);
+        console.log(users);
+        setAllUser(newData);
+
+        setSortById(prevId => !prevId);
+        // const newData = allUser.sort((a, b) => {
+        //     if(a.userid > b.userid) {
+        //         return 1;
+        //     }
+        //     if(a.userid < b.userid) {
+        //         return -1;
+        //     }
+        //     return 0;
+        // });
+        // setAllUser((prevIdUser) => {
+        //     return (prevIdUser.sort((a, b) => {
+        //         if(a.userid > b.userid) {
+        //             return 1;
+        //         }
+        //         if(a.userid < b.userid) {
+        //             return -1;
+        //         }
+        //         return 0;
+        //     }));
+        // });
     }
 
     //SORT BY NAME
     const sortingByUsername = () => {
-        getAllUsers()
 
-        setSortByUsername(prevUsername => !prevUsername);
-        const usernameData = allUser.sort((a, b) => {
+
+        const newData = users.sort((a, b) => {
             if(a.username > b.username) {
                 return 1;
             }
             if(a.username < b.username) {
-                return 1;
+                return -1;
             }
-            return 0
+            return 0;
         });
-        setAllUser((prevUsernameUser) => {
-            return (prevUsernameUser.sort((a, b) => {
-                if(a.username > b.username) {
-                    return 1;
-                }
-                if(a.username < b.username) {
-                    return 1;
-                }
-                return 0;
-            }));
-        });
+        console.log(allUser);
+        console.log(newData);
+        setAllUser(newData);
+
+        setSortByUsername(prevUsername => !prevUsername);
+
     }
 
     //SORT BY ROLE
     const sortingByRole = () => {
-        getAllUsers()
-        setSortByRole(prevRole => !prevRole);
-        const roleData = allUser.sort((a, b) => {
+
+        const newData = users.sort((a, b) => {
             if(a.account > b.account) {
                 return 1;
             }
             if(a.account < b.account) {
                 return -1;
             }
-                return 0;
+            return 0;
         });
-        setAllUser((prevRoleUser) => {
-            return(prevRoleUser.sort((a, b) => {
-                if(a.account > b.account) {
-                    return 1;
-                }
-                if(a.account < b.account) {
-                    return -1;
-                }
-                return 0;
-            }));
-        });
+        console.log(allUser);
+        console.log(newData);
+        setAllUser(newData);
+
+        // getAllUsers()
+        setSortByRole(prevRole => !prevRole);
+
     }
 
     //DELETE USER
 
     // /deleteUser/:username
 
-    async function deteleUser() {
-        const data = await axios.delete('')
+    async function deteleUser(username) {
 
+        const data = await axios.delete(`http://localhost:4000/users/deleteUser/${username}`);
+        alert("User Deleted");
+        getAllUsers();
     }
 
     //GET TOTAL AMIN USERS
@@ -325,6 +332,7 @@ const UserPanel = () => {
                                                 <div className="col-md-1">
                                                     <button
                                                         className="adminDeletebtn"
+                                                        onClick={() => deteleUser(user.username)}
                                                     >
                                                         <i className="bi bi-dash-square">-</i>
                                                     </button>
@@ -413,7 +421,6 @@ const UserPanel = () => {
                                                             </thead>
                                                         </table>
                                                     </div>
-
 
                                                     {
                                                         getReport.map((report, index) => {

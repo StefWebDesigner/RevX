@@ -16,9 +16,9 @@ const ContentPanel = () => {
 
     //FORM STATE FOR POST CONTENT
     const [postContent, setPostContent] = useState({
-        postTitle: "",
-        postBody: "",
-        postGenre: ""
+        tiptitle: "",
+        tipbody: "",
+        tipgenre: ""
     });
 
     //GET POST TOGGLE STATES
@@ -29,14 +29,17 @@ const ContentPanel = () => {
        e.defaultPrevented();
 
        //POST CALL
-       const data = await axios.post('url', postContent);
+       const data = await axios.post('http://localhost:4000/categories/newtips', postContent);
        console.log(data);
 
        //RESETS THE CONTENT IN TO THE FORM
        setPostContent({
-           postTitle: "",
-           postBody: "",
-           postGenre: ""
+           // postTitle: "",
+           // postBody: "",
+           // postGenre: ""
+           tiptitle: "",
+           tipbody: "",
+           tipgenre: ""
        });
     }
     //POST CONTENT FORM HANDLER
@@ -45,6 +48,7 @@ const ContentPanel = () => {
             ...postContent,
             [e.target.name] : e.target.value,
         });
+        console.log(postContent);
     };
 
     //GET ALL POST
@@ -114,7 +118,7 @@ const ContentPanel = () => {
                                         <div className="col mr-2">
                                             <div className="fact-body">
                                                 <div className="text-center text-xs font-weight-bold text-uppercase">
-                                                    Total Genres :
+                                                    Total Tips :
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
                                                     {allGenre.length}
@@ -162,7 +166,7 @@ const ContentPanel = () => {
                                         <div className="col mr-2">
                                             <div className="fact-body">
                                                 <div className="text-center text-xs font-weight-bold text-uppercase">
-                                                    Total Share :
+                                                    Most popular Category :
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
                                                     (Take from from DS)
@@ -297,8 +301,8 @@ const ContentPanel = () => {
                                                                 {/*SELECT INDIVIDUAL DIV*/}
                                                                 <select
                                                                     className="custom-select d-block w-100"
-                                                                    name="postGenre"
-                                                                    value={postContent.postGenre}
+                                                                    name="tipgenre"
+                                                                    value={postContent.tipgenre}
                                                                     onChange={handlePosts}
                                                                     required
                                                                 >
@@ -321,8 +325,8 @@ const ContentPanel = () => {
                                                                     </label>
                                                                     <input
                                                                         className=" col-md-7 text-center"
-                                                                        name="postTitle"
-                                                                        value={postContent.postTitle}
+                                                                        name="tiptitle"
+                                                                        value={postContent.tiptitle}
                                                                         type="text"
                                                                         placeholder="Enter a title"
                                                                         onChange={handlePosts}
@@ -338,8 +342,8 @@ const ContentPanel = () => {
                                                         > Enter some content: </label>
                                                         <textarea
                                                             className="postInputField text-center"
-                                                            name="postBody"
-                                                            value={postContent.postBody}
+                                                            name="tipbody"
+                                                            value={postContent.tipbody}
                                                             type="text"
                                                             placeholder="Enter content in the body"
                                                             onChange={handlePosts}

@@ -2,12 +2,21 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import ContentChart from "./admincharts/ContentChart";
 import SurveryChartRatings from "./admincharts/SurveryChartRatings";
+import UsersChart from "./admincharts/UsersChart";
 
 const AdminBody = () => {
 
     const [allUser, setAllUser] = useState([]);
     const [allPost, setAllPost] = useState([]);
     const [allInteractions, setAllInteractions] = useState([]);
+    const [associateCount,setAssociateCount]=useState([])
+    //GET TOTAL ADMIN ACCOUNT
+    const [adminCount, setAdminCount] = useState([]);
+
+    console.log(adminCount);
+    console.log(associateCount);
+
+
 
 
     async function getAllUsers() {
@@ -20,10 +29,34 @@ const AdminBody = () => {
         setAllPost(data.data);
     }
 
+
+
     // async function getAllInteractions () {
     //     const data = await axios.get('');
     //     setAllInteractions(data.data);
     // }
+
+
+    //GET TOTAL AMIN USERS
+    async function getTotalAdminUsers() {
+        const data = await axios.get('http://localhost:4000/users/totalusers/account/admin');
+        const amount = data.data[0].count
+
+        console.log(amount)
+        setAdminCount(amount);
+    }
+
+    //GET TOTAL ASSOCIATE USERS
+    async function getTotalAssociateUsers() {
+        const data = await axios.get('http://localhost:4000/users/totalusers/account/associate');
+        const amount = data.data[0].count
+
+        console.log(amount)
+        setAssociateCount(amount);
+    }
+
+
+
 
     //GET ALL USERS
     useEffect(() => {
@@ -32,6 +65,10 @@ const AdminBody = () => {
         getAllUsers();
 
         getAllPost();
+
+        getTotalAdminUsers();
+
+        getTotalAssociateUsers();
 
 
     },[]);
@@ -112,7 +149,7 @@ const AdminBody = () => {
                                         <div className="col mr-2">
                                             <div className="fact-body">
                                                 <div className="text-center text-xs font-weight-bold text-uppercase">
-                                                    Amount of Interactions :
+                                                    Total Tips :
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
                                                     (Take from from DS)
@@ -145,7 +182,7 @@ const AdminBody = () => {
                                                 <div className="fact-body">
                                                     <div
                                                         className="text-center text-xs font-weight-bold text-uppercase">
-                                                        Post Graph :
+                                                        Categories Graph :
                                                     </div>
                                                     <div
                                                         className=" text-center h5 mb-0 font-weight-bold text-gray-800">
@@ -178,15 +215,15 @@ const AdminBody = () => {
                                                 <div className="fact-body">
                                                     <div
                                                         className="text-center text-xs font-weight-bold text-uppercase">
-                                                        Post Graph :
+                                                        User Graph :
                                                     </div>
                                                     <div
                                                         className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                        All Total Post Per Genre
+                                                        Admin  and Associates Totals
                                                     </div>
                                                     <div
                                                         className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                        <SurveryChartRatings/>
+                                                        <UsersChart adminCount={adminCount} associateCount={associateCount}/>
                                                     </div>
                                                 </div>
                                             </div>
