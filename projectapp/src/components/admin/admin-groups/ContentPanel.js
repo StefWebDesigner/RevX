@@ -10,13 +10,15 @@ const ContentPanel = () => {
 
     const [allGenre, setAllGenre] = useState([]);
 
+    const [collectingAllPost, setCollectingAllPost] = useState([]);
 
+    const [allTips, setAllTips] = useState([]);
 
     //FORM STATE FOR POST CONTENT
     const [postContent, setPostContent] = useState({
-        postTitle: "",
-        postBody: "",
-        postGenre: ""
+        tiptitle: "",
+        tipbody: "",
+        tipgenre: ""
     });
 
     //GET POST TOGGLE STATES
@@ -27,14 +29,17 @@ const ContentPanel = () => {
        e.defaultPrevented();
 
        //POST CALL
-       const data = await axios.post('url', postContent);
+       const data = await axios.post('http://localhost:4000/categories/newtips', postContent);
        console.log(data);
 
        //RESETS THE CONTENT IN TO THE FORM
        setPostContent({
-           postTitle: "",
-           postBody: "",
-           postGenre: ""
+           // postTitle: "",
+           // postBody: "",
+           // postGenre: ""
+           tiptitle: "",
+           tipbody: "",
+           tipgenre: ""
        });
     }
     //POST CONTENT FORM HANDLER
@@ -43,6 +48,7 @@ const ContentPanel = () => {
             ...postContent,
             [e.target.name] : e.target.value,
         });
+        console.log(postContent);
     };
 
     //GET ALL POST
@@ -51,9 +57,30 @@ const ContentPanel = () => {
         setAllPost(data.data);
     }
 
+    //DELETE A POST
+    async function deletePost () {
+        const data = await axios.delete('http://localhost:4000/posts/deletePost/id');
+        console.log(data);
+    }
+
+
+
     async function getAllGenre() {
         const data = await axios.get('http://localhost:4000/categories/getAll');
         setAllGenre(data.data);
+    }
+
+
+    async function getAllCollectedPost() {
+
+        const data = await axios.get('http://localhost:4000/posts/getAllPosts');
+        setCollectingAllPost(data.data);
+    }
+
+    async function getAllTips() {
+        const data = await axios.get('http://localhost:4000/categories/totaltips');
+        const amount = data.data[0].count
+        setAllTips(amount);
     }
 
     useEffect(() => {
@@ -61,6 +88,8 @@ const ContentPanel = () => {
         //CALLING GET ALL USERS & DETAILS
         getAllPost();
         getAllGenre()
+        getAllCollectedPost();
+        getAllTips()
 
 
     },[]);
@@ -96,10 +125,10 @@ const ContentPanel = () => {
                                         <div className="col mr-2">
                                             <div className="fact-body">
                                                 <div className="text-center text-xs font-weight-bold text-uppercase">
-                                                    Total Genres :
+                                                    Total Tips :
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                    {allGenre.length}
+                                                    {/*{ allTips}*/}
                                                 </div>
                                             </div>
                                         </div>
@@ -144,7 +173,7 @@ const ContentPanel = () => {
                                         <div className="col mr-2">
                                             <div className="fact-body">
                                                 <div className="text-center text-xs font-weight-bold text-uppercase">
-                                                    Total Share :
+                                                    Most popular Category :
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
                                                     (Take from from DS)
@@ -178,8 +207,8 @@ const ContentPanel = () => {
                                                     Get All Post :
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                    (Take from from DS)
-                                                    - Add three sorting buttons
+
+                                                    Displays all post currently recorded in database
                                                 </div>
                                                 <div className="text-center mt-5">
                                                     <button
@@ -191,21 +220,58 @@ const ContentPanel = () => {
                                                         Show Posts
                                                     </button>
 
-                                                    {/*ALL RETRIEVED DATA GOES HERE*/}
-                                                    {/*TOGGLE APPLIED*/}
-                                                    { showPost &&
+                                                    {
+                                                        showPost &&
 
-                                                        <aside>
-                                                            <div className="fade-in-animation">
-                                                                {/* WILL CREATE THE  LIST HERE*/}
+                                                            <table className="table table-striped table-hover">
+                                                        <thead className="text-center">
+                                                        <tr>
+                                                        <div className="row">
+                                                        <div className="col-md-1"><th>PostID</th></div>
+                                                        <div className="col-md-4"><th >Post</th></div>
+                                                        <div className="col-md-3"><th>Date</th></div>
+                                                        <div className="col-md-2"><th>Like</th></div>
+                                                        <div className="col-md-2"><th>Remove</th></div>
+                                                        </div>
+                                                        </tr>
+                                                        </thead>
+                                                        </table>
+                                                    }
 
+                                                    {
+                                                        showPost &&
+                                                        collectingAllPost.map((collect, index) => {
+                                                            return (
+                                                                <div key={collect.postid}>
+                                        <table className="table table-striped table-hover">
+                                            <tbody className="text-center">
+                                            <tr>
+                                                <div className="row ">
+                                                    <div className="col-md-1"><td>{collect.postid}</td></div>
+                                                    <div className="col-md-4"><td>{collect.posttext}</td></div>
+                                                    <div className="col-md-3"><td>{collect.postdate}</td></div>
+                                                    <div className="col-md-2"><td>{collect.likes}</td></div>
+                                                    <div className="col-md-2">
+                                                        {/*<div className="d-flex justify-content-center">*/}
+                                                            <button
+                                                                className="adminDeletebtn text-center"
+                                                                onClick={() => deletePost(collect.postid)}
+                                                            >
+                                                                <i className="bi bi-dash-square">-</i>
+                                                            </button>
+                                                        {/*</div>*/}
+                                                    </div>
 
-                                                                {/*    add toggle like in show product*/}
-                                                                {/*    add for name / id / and ect sorting button here   */}
+                                                    {/*ENDING DIV FOR TABLE ROW    */}
+                                                </div>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                                                </div>
 
+                                                            );
 
-                                                            </div>
-                                                        </aside>
+                                                        })
                                                     }
 
                                                 </div>
@@ -242,8 +308,8 @@ const ContentPanel = () => {
                                                                 {/*SELECT INDIVIDUAL DIV*/}
                                                                 <select
                                                                     className="custom-select d-block w-100"
-                                                                    name="postGenre"
-                                                                    value={postContent.postGenre}
+                                                                    name="tipgenre"
+                                                                    value={postContent.tipgenre}
                                                                     onChange={handlePosts}
                                                                     required
                                                                 >
@@ -266,8 +332,8 @@ const ContentPanel = () => {
                                                                     </label>
                                                                     <input
                                                                         className=" col-md-7 text-center"
-                                                                        name="postTitle"
-                                                                        value={postContent.postTitle}
+                                                                        name="tiptitle"
+                                                                        value={postContent.tiptitle}
                                                                         type="text"
                                                                         placeholder="Enter a title"
                                                                         onChange={handlePosts}
@@ -283,8 +349,8 @@ const ContentPanel = () => {
                                                         > Enter some content: </label>
                                                         <textarea
                                                             className="postInputField text-center"
-                                                            name="postBody"
-                                                            value={postContent.postBody}
+                                                            name="tipbody"
+                                                            value={postContent.tipbody}
                                                             type="text"
                                                             placeholder="Enter content in the body"
                                                             onChange={handlePosts}

@@ -93,29 +93,34 @@ const Navbar = ({setShowLogin}) => {
                     <SidebarContent>
                         <Menu iconShape="square">
                             <MenuItem active={true} icon={<FiHome />}>
-                                <a href="#">Beginner</a>
+                                <Link to="/beginner">Beginner</Link>
                             </MenuItem>
                             <MenuItem icon={<RiPencilLine/>}>
-                                <a href="#">Intermidate</a>
+                                <Link to="/intermidate">Intermidate</Link>
+                            </MenuItem>
+
+
+                            <MenuItem icon={<RiPencilLine/>}>
+                                <Link to="/advanced">Advanced</Link>
                             </MenuItem>
                             <MenuItem icon={<RiPencilLine/>}>
-                                <a href="#">Advanced</a>
+                                <Link to="/java">Java</Link>
+
+                                {/*<Link to={`/userprofile/${retrieveInfo?.username}`}>*/}
+
                             </MenuItem>
                             <MenuItem icon={<RiPencilLine/>}>
-                                <a href="#">Java</a>
-                            </MenuItem>
-                            <MenuItem icon={<RiPencilLine/>}>
-                            <a href="#">React</a>
+                                <Link to="/react">React</Link>
                             </MenuItem>
                         </Menu>
                     </SidebarContent>
-                    <SidebarContent>
-                        <Menu>
-                            <MenuItem icon={<RiPencilLine/>}>
-                                <Link to="/surveyform">Survey</Link>
-                            </MenuItem>
-                        </Menu>
-                    </SidebarContent>
+                    {/*<SidebarContent>*/}
+                    {/*    <Menu>*/}
+                    {/*        <MenuItem icon={<RiPencilLine/>}>*/}
+                    {/*            <Link to="/surveyform">Survey</Link>*/}
+                    {/*        </MenuItem>*/}
+                    {/*    </Menu>*/}
+                    {/*</SidebarContent>*/}
 
                     {/*FOOTER SECTION*/}
                     <SidebarFooter>
