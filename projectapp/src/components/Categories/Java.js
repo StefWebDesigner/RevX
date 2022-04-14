@@ -1,20 +1,19 @@
 import React, {useEffect, useState} from 'react';
-import {useParams} from "react-router-dom";
 import axios from "axios";
-import {Navbar} from "react-bootstrap";
 
 const Java = () => {
 
     // const {categoryid} = useParams();
 
     const [showJavaContent, setShowJavaContent] = useState(true);
-    const [showContent, setShowContent] = useState([])
+    // const [showContent, setShowContent] = useState([])
 
     async function getJavaContent() {
 
-        axios.get(`http://localhost:4000/categories/getcontentbycategoryid/1`)
+        await axios.get(`http://localhost:4000/categories/getcontentbycategoryid/1`)
             .then((response) => {
                 setShowJavaContent(response.data);
+                console.log(response);
             });
     }
 
@@ -28,7 +27,7 @@ const Java = () => {
     return (
         <>
             <div>
-            <Navbar/>
+            {/*<Navbar/>*/}
             <h1>Java content</h1>
 
             {
@@ -41,6 +40,8 @@ const Java = () => {
                     );
 
                 })};
+
+            }"
 
             </div>
         </>
