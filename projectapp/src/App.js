@@ -13,6 +13,7 @@ import ChatMain from "./components/chat-components/ChatMain.js";
 import Account from '../src/components/Accounts/accounts';
 import SurveyForm from "./components/Survey/SurveyForm";
 import UserProfile from "./components/users-comps/UserProfile";
+import Java from "./components/Categories/Java";
 
 
 function App() {
@@ -41,6 +42,8 @@ function App() {
                   <Route path="/account" element={<Account/>}/>
                   <Route path="/surveyform" element={<SurveyForm/>}/>
                   <Route path="/userprofile/:username" element={<UserProfile/>}/>
+
+                  <Route path="/java" element={<Java/>}/>
 
                   {/*<Route path="/chat" element={<ChatMain/>}/>*/}
               </Routes>

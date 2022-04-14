@@ -33,7 +33,6 @@ const UserPanel = () => {
 
     //SORTING BY ID
     const sortingById = () => {
-        console.log("hello world");
 
         const newData = users.sort((a, b) => {
                 if(a.userid > b.userid) {
@@ -49,26 +48,7 @@ const UserPanel = () => {
         setAllUser(newData);
 
         setSortById(prevId => !prevId);
-        // const newData = allUser.sort((a, b) => {
-        //     if(a.userid > b.userid) {
-        //         return 1;
-        //     }
-        //     if(a.userid < b.userid) {
-        //         return -1;
-        //     }
-        //     return 0;
-        // });
-        // setAllUser((prevIdUser) => {
-        //     return (prevIdUser.sort((a, b) => {
-        //         if(a.userid > b.userid) {
-        //             return 1;
-        //         }
-        //         if(a.userid < b.userid) {
-        //             return -1;
-        //         }
-        //         return 0;
-        //     }));
-        // });
+
     }
 
     //SORT BY NAME

@@ -102,7 +102,10 @@ const Navbar = ({setShowLogin}) => {
                                 <a href="#">Advanced</a>
                             </MenuItem>
                             <MenuItem icon={<RiPencilLine/>}>
-                                <a href="#">Java</a>
+                                <Link to="/java">Java</Link>
+
+                                {/*<Link to={`/userprofile/${retrieveInfo?.username}`}>*/}
+
                             </MenuItem>
                             <MenuItem icon={<RiPencilLine/>}>
                             <a href="#">React</a>
