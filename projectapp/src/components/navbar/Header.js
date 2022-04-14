@@ -33,7 +33,6 @@ function Header() {
 
 
     }
-    console.log(retrieveInfo);
 
     return(
         <Navbar bg="dark" sticky="top">

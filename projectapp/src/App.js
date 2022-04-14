@@ -10,7 +10,8 @@ import UserPanel from "./components/admin/admin-groups/UserPanel";
 import SurveyPanel from "./components/admin/admin-groups/SurveyPanel";
 import ContentPanel from "./components/admin/admin-groups/ContentPanel";
 import ChatMain from "./components/chat-components/ChatMain.js";
-import Account from '../src/components/Accounts/accounts';
+// import Account from '../src/components/Accounts/accounts';
+import EditAccount from '../src/components/users-comps/EditAccount';
 import SurveyForm from "./components/Survey/SurveyForm";
 import UserProfile from "./components/users-comps/UserProfile";
 
@@ -38,11 +39,10 @@ function App() {
                   <Route path="/userpanel" element={<UserPanel/>}/>
                   <Route path="/surveypanel" element={<SurveyPanel/>}/>
                   <Route path="/contentpanel" element={<ContentPanel/>}/> 
-                  <Route path="/account" element={<Account/>}/>
+                  {/* <Route path="/account" element={<Account/>}/> */}
+                  <Route path="/editAccount" element={<EditAccount />}/>
                   <Route path="/surveyform" element={<SurveyForm/>}/>
                   <Route path="/userprofile/:username" element={<UserProfile/>}/>
-
-                  {/*<Route path="/chat" element={<ChatMain/>}/>*/}
               </Routes>
           </Router>
       </DataContext.Provider>
