@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {useContext, useState} from 'react';
+import {useContext} from 'react';
 import DataStore from "../../dataStore/dataStore";
 
 function PostInput({setCreateNewPost}){

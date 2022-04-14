@@ -15,9 +15,19 @@ import {
     FiArrowLeftCircle,
     FiArrowRightCircle
 } from "react-icons/fi";
-import { FaList, FaRegHeart } from "react-icons/fa";
-import { RiPencilLine } from "react-icons/ri";
+import { 
+    FaList, 
+    FaRegHeart,
+    FaJava,
+    FaReact,
+    FaExclamationTriangle,
+    FaTable 
+} from "react-icons/fa";
+import { RiPencilLine, RiAdminLine } from "react-icons/ri";
 import { BiCog } from "react-icons/bi";
+import { IoLogoJavascript } from 'react-icons/io';
+import { SiPostgresql } from 'react-icons/si';
+import { MdWebAsset } from 'react-icons/md';
 import Logo from "./Logo";
 import Survey from "../Survey/Survey";
 // import Logo from "../img-components/Logo";
@@ -65,9 +75,9 @@ const Navbar = ({setShowLogin}) => {
 
 
                             {/* conditionally show the admin portal */}
-                            {user && user.account == 'admin' ?
+                            {user && user.account === 'admin' ?
 
-                            <MenuItem icon={<FaRegHeart/>}>
+                                <MenuItem icon={<RiAdminLine />}>
                                  <Link to="/admin">Admin Portal</Link>
                             </MenuItem>
 
@@ -81,6 +91,7 @@ const Navbar = ({setShowLogin}) => {
                     {/*CONTAIN MAIN NAV CONTENT*/}
                     <SidebarContent>
                         <Menu iconShape="square">
+
                             <MenuItem icon={<RiPencilLine/>}>
                                 <a href="#">Content</a>
                             </MenuItem>
@@ -108,29 +119,37 @@ const Navbar = ({setShowLogin}) => {
 
                                 {/*<Link to={`/userprofile/${retrieveInfo?.username}`}>*/}
 
+
+{/*                            <MenuItem active={true} icon={<FaJava />}>*/}
+{/*                                <a href="#">Java</a>*/}
+{/*                            </MenuItem>*/}
+{/*                            <MenuItem icon={<FaReact/>}>*/}
+{/*                                <a href="#">React</a>*/}
+{/*                            </MenuItem>*/}
+{/*                            <MenuItem icon={<FaTable/>}>*/}
+{/*                                <a href="#">SQL</a>*/}
+{/*                            </MenuItem>*/}
+{/*                            <MenuItem icon={<IoLogoJavascript/>}>*/}
+{/*                                <a href="#">JavaScript</a>*/}
+{/*                            </MenuItem>*/}
+{/*                            <MenuItem icon={<MdWebAsset/>}>*/}
+{/*                            <a href="#">HTML</a>*/}
                             </MenuItem>
                             <MenuItem icon={<RiPencilLine/>}>
                                 <Link to="/react">React</Link>
                             </MenuItem>
                         </Menu>
                     </SidebarContent>
-                    {/*<SidebarContent>*/}
-                    {/*    <Menu>*/}
-                    {/*        <MenuItem icon={<RiPencilLine/>}>*/}
-                    {/*            <Link to="/surveyform">Survey</Link>*/}
-                    {/*        </MenuItem>*/}
-                    {/*    </Menu>*/}
-                    {/*</SidebarContent>*/}
 
                     {/*FOOTER SECTION*/}
                     <SidebarFooter>
                         <Menu iconShape="square">
 
                           <MenuItem icon={<BiCog/>}>
-                                <a>Setting</a>
+                                <Link to="/editAccount">Account</Link>
                             </MenuItem>
                           
-                            <MenuItem icon={<RiPencilLine/>}>
+                            <MenuItem icon={<FaExclamationTriangle/>}>
                                 <a href="#">Report</a>
                             </MenuItem>
                             <MenuItem icon={<FiLogOut/>}>

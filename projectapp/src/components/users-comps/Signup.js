@@ -17,7 +17,8 @@ const Signup = (props) => {
         fullname: "please enter your name",
         uname: "invalid username",
         unameused: "username taken",
-        email: "invalid email format"
+        email: "invalid email format",
+        state: "please choose a state"
     };
 
     //POST AXIOS & EMAIL AND VALIDATION
@@ -27,22 +28,23 @@ const Signup = (props) => {
         const regForm = document.getElementById("regform");
         const { first, last, username, password, city, state, email, account } = regForm;
 
-        console.log(regForm);
         const emailFormat =
             /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
         //VALIDATOR & CHECK ALL FIELDS FILLED
-
-        if (!email.value.trim() || !email.value.match(emailFormat)){
-            setErrorMessages({ name: "email", message: errors.email });
-
-        }
-
         //check that username is not only whitespace
         if (!username.value.trim()) {
 
             setErrorMessages({ name: "uname", message: errors.uname });
 
+        } else if (!email.value.trim() || !email.value.match(emailFormat)){
+
+            setErrorMessages({ name: "email", message: errors.email });
+
+        } else if (state.value === "unselected") {
+
+            setErrorMessages({ name: "state", message: errors.state });
+     
         } else {
 
             //check if username is in database
@@ -152,7 +154,7 @@ const Signup = (props) => {
                     <Form.Group className="mb-2">
                         <Form.Label bsPrefix="form-dark">Enter state: </Form.Label>
                         <Form.Select bsPrefix="form-select form-dark" aria-label="Choose state" name="state">
-                            <option disabled>Select state</option>
+                            <option value="unselected">Select state</option>
                             <option value="AL">Alabama</option>
                             <option value="AK">Alaska</option>
                             <option value="AZ">Arizona</option>
@@ -204,6 +206,7 @@ const Signup = (props) => {
                             <option value="WI">Wisconsin</option>
                             <option value="WY">Wyoming</option>
                         </Form.Select>
+                        {renderErrorMessage("state")}
                     </Form.Group>
                     <Form.Group className="mb-2">
                         <Form.Label bsPrefix="form-dark">Enter email: </Form.Label>
@@ -211,9 +214,11 @@ const Signup = (props) => {
                     </Form.Group>
                     <Form.Group className="mb-2">
                         <Form.Label bsPrefix="form-dark">Position: </Form.Label>
-                        <Form.Select bsPrefix="form-select form-dark" aria-label="Choose position" name="account" placeholder="Select position">
+                        <Form.Select bsPrefix="form-select form-dark" aria-label="Choose position" name="account" defaultValue={"associate"}>
                             <option disabled>Select position</option>
                             <option value="associate">Associate</option>
+                            <option value="alumni">Alumni</option>
+                            <option value="trainer">Trainer</option>
                             <option value="admin">Admin</option>
                         </Form.Select>
                     </Form.Group>

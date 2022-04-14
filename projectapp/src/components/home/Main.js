@@ -16,7 +16,8 @@ const Main = () => {
             <Header />
             <PostInput setCreateNewPost={setCreateNewPost}/>
             {user ? <PostFeed newPost={createNewPost}/> : ""}
-            {/*<Survey/>*/}
+
+
         </>
     );
 };
