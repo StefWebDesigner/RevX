@@ -190,7 +190,7 @@ const AdminBody = () => {
                                                     </div>
                                                     <div
                                                         className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                        <SurveryChartRatings/>
+                                                        <ContentChart/>
                                                     </div>
                                                 </div>
                                             </div>

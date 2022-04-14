@@ -114,13 +114,13 @@ const Navbar = ({setShowLogin}) => {
                             </MenuItem>
                         </Menu>
                     </SidebarContent>
-                    <SidebarContent>
-                        <Menu>
-                            <MenuItem icon={<RiPencilLine/>}>
-                                <Link to="/surveyform">Survey</Link>
-                            </MenuItem>
-                        </Menu>
-                    </SidebarContent>
+                    {/*<SidebarContent>*/}
+                    {/*    <Menu>*/}
+                    {/*        <MenuItem icon={<RiPencilLine/>}>*/}
+                    {/*            <Link to="/surveyform">Survey</Link>*/}
+                    {/*        </MenuItem>*/}
+                    {/*    </Menu>*/}
+                    {/*</SidebarContent>*/}
 
                     {/*FOOTER SECTION*/}
                     <SidebarFooter>

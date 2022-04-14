@@ -12,7 +12,7 @@ const ContentPanel = () => {
 
     const [collectingAllPost, setCollectingAllPost] = useState([]);
 
-
+    const [allTips, setAllTips] = useState([]);
 
     //FORM STATE FOR POST CONTENT
     const [postContent, setPostContent] = useState({
@@ -77,12 +77,18 @@ const ContentPanel = () => {
         setCollectingAllPost(data.data);
     }
 
+    async function getAllTips() {
+        const data = await axios.get('http://localhost:4000/categories/totaltips');
+        setAllTips(data.data);
+    }
+
     useEffect(() => {
 
         //CALLING GET ALL USERS & DETAILS
         getAllPost();
         getAllGenre()
         getAllCollectedPost();
+        getAllTips()
 
 
     },[]);
@@ -121,7 +127,7 @@ const ContentPanel = () => {
                                                     Total Tips :
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                    {allGenre.length}
+                                                    {/*{ allTips}*/}
                                                 </div>
                                             </div>
                                         </div>
