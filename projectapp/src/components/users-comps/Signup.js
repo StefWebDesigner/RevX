@@ -151,7 +151,7 @@ const Signup = (props) => {
                     </Form.Group>
                     <Form.Group className="mb-2">
                         <Form.Label bsPrefix="form-dark">Enter state: </Form.Label>
-                        <Form.Select bsPrefix="form-select form-dark" aria-label="Choose state" name="state">
+                        <Form.Select bsPrefix="form-select form-dark" aria-label="Choose state" name="state" required>
                             <option disabled>Select state</option>
                             <option value="AL">Alabama</option>
                             <option value="AK">Alaska</option>
@@ -211,9 +211,11 @@ const Signup = (props) => {
                     </Form.Group>
                     <Form.Group className="mb-2">
                         <Form.Label bsPrefix="form-dark">Position: </Form.Label>
-                        <Form.Select bsPrefix="form-select form-dark" aria-label="Choose position" name="account" placeholder="Select position">
+                        <Form.Select bsPrefix="form-select form-dark" aria-label="Choose position" name="account" placeholder="Select position" required>
                             <option disabled>Select position</option>
                             <option value="associate">Associate</option>
+                            <option value="alumni">Alumni</option>
+                            <option value="trainer">Trainer</option>
                             <option value="admin">Admin</option>
                         </Form.Select>
                     </Form.Group>
