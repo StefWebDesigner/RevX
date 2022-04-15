@@ -8,17 +8,12 @@ const AdminBody = () => {
 
     const [allUser, setAllUser] = useState([]);
     const [allPost, setAllPost] = useState([]);
-    const [allInteractions, setAllInteractions] = useState([]);
     const [associateCount,setAssociateCount]=useState([])
-    //GET TOTAL ADMIN ACCOUNT
     const [adminCount, setAdminCount] = useState([]);
     const [allTips, setAllTips] = useState([]);
 
-
     console.log(adminCount);
     console.log(associateCount);
-
-
 
 
     async function getAllUsers() {
@@ -95,8 +90,8 @@ const AdminBody = () => {
 
                         {/*FACT 1*/}
                         {/*COL FOR CARD*/}
-                        <div className="col-xl-4 col-lg-4 col-md-4">
-                            <div className="card shadow h-100">
+                        <div className="col-xl-4 col-lg-4 col-md-4 mt-2">
+                            <div className="card shadow h-100 ">
                                 <div className="card-body purple-text-tag">
                                     {/*CARD ROW*/}
                                     <div className="row no-gutters align-items-center">
@@ -121,7 +116,7 @@ const AdminBody = () => {
 
                         {/*FACT 2*/}
                         {/*COL FOR CARD*/}
-                        <div className="col-xl-4 col-lg-4 col-md-4">
+                        <div className="col-xl-4 col-lg-4 col-md-4 mt-2">
                             <div className="card shadow h-100">
                                 <div className="card-body purple-text-tag">
                                     {/*CARD ROW*/}
@@ -145,7 +140,7 @@ const AdminBody = () => {
 
                         {/*FACT 1*/}
                         {/*COL FOR CARD*/}
-                        <div className="col-xl-4 col-lg-4 col-md-4">
+                        <div className="col-xl-4 col-lg-4 col-md-4 mt-2">
                             <div className="card shadow h-100">
                                 <div className="card-body purple-text-tag">
                                     {/*CARD ROW*/}
@@ -178,7 +173,7 @@ const AdminBody = () => {
 
                             {/*COL FOR CARD*/}
                             <div className="col-xl-6 col-lg-6 col-md-6">
-                                <div className="card shadow h-100">
+                                <div className="card shadow h-100 mt-2">
                                     <div className="card-body ">
                                         {/*CARD ROW*/}
                                         <div className="row no-gutters align-items-center">
@@ -211,7 +206,7 @@ const AdminBody = () => {
                             {/*GRAPH*/}
                             {/*COL FOR CARD*/}
                             <div className="col-xl-6 col-lg-6 col-md-6">
-                                <div className="card shadow h-100">
+                                <div className="card shadow h-100 ">
                                     <div className="card-body ">
                                         {/*CARD ROW*/}
                                         <div className="row no-gutters align-items-center">

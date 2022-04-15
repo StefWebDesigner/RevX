@@ -164,7 +164,7 @@ const UserPanel = () => {
 
                         {/*FACT 1*/}
                         {/*COL FOR CARD*/}
-                        <div className="col-xl-4 col-lg-4 col-md-4">
+                        <div className="col-xl-4 col-lg-4 col-md-4 mt-2">
                             <div className="card shadow h-100">
                                 <div className="card-body purple-text-tag">
                                     {/*CARD ROW*/}
@@ -189,7 +189,7 @@ const UserPanel = () => {
 
                         {/*FACT 2*/}
                         {/*COL FOR CARD*/}
-                        <div className="col-xl-4 col-lg-4 col-md-4">
+                        <div className="col-xl-4 col-lg-4 col-md-4 mt-2">
                             <div className="card shadow h-100">
                                 <div className="card-body purple-text-tag">
                                     {/*CARD ROW*/}
@@ -213,7 +213,7 @@ const UserPanel = () => {
 
                         {/*FACT 1*/}
                         {/*COL FOR CARD*/}
-                        <div className="col-xl-4 col-lg-4 col-md-4">
+                        <div className="col-xl-4 col-lg-4 col-md-4 mt-2">
                             <div className="card shadow h-100">
                                 <div className="card-body purple-text-tag">
                                     {/*CARD ROW*/}
