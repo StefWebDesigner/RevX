@@ -4,11 +4,14 @@ import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import { Container, Row, Col } from 'react-bootstrap';
 import DataStore from "../../dataStore/dataStore";
+import ProfilePics from './ProfilePics';
 
 function AccountForm() {
 
     //CALL THE DATASTORE GLOBAL VARIABLE FROM STORE
     const { user, setUser } = useContext(DataStore);
+
+    const [profilePic, setProfilePic] = useState(`../../../images/${user.pic ? user.pic : "user-badge-purple.svg"}`);
 
     //potential error messages when validating form
     const [errorMessages, setErrorMessages] = useState({});
@@ -24,20 +27,22 @@ function AccountForm() {
         e.preventDefault();
 
         const regForm = document.getElementById("editaccountform");
-        const { first, last, username, password, city, state, email, account } = regForm;
+        const { profilepic, first, last, username, password, city, state, email, account } = regForm;
 
         //if username is not ""
         if (!username.value === "") {
-
+            console.log();
             if (username.value !== user.username) {
                 //check if username is in database
                 axios.get(`http://localhost:4000/users/userByName/${username.value}`).then((res) => {
 
                     const existingUser = res.data;
-
+                    console.log(existingUser);
                     if (existingUser) {
                         //username taken
                         setErrorMessages({ name: "unameused", message: errors.unameused });
+                        console.log("should have error message");
+                        console.log(errorMessages);
                     }
                 });
             }
@@ -47,6 +52,7 @@ function AccountForm() {
         if (!errorMessages.name) {
             const newInfo = {
                 userid: user.userid,
+                pic: (profilePic.value? profilePic.value : "user-badge-purple"),
                 firstname: (first.value.trim() ? first.value : user.firstname),
                 lastname: (last.value.trim()? last.value : user.lastname),
                 username: (username.value.trim()? username.value : user.username),
@@ -69,6 +75,16 @@ function AccountForm() {
         }
     }
 
+    function updatePreview(){
+        const picOptions = document.querySelectorAll('input[name="profilepic"]');
+        for(const option of picOptions){
+            if(option.checked){
+                setProfilePic("../../../images/"+option.value);
+                break;
+            }
+        }
+    }
+
     const renderForm = (
 
         <Container className="account-page">
@@ -76,9 +92,15 @@ function AccountForm() {
                 <Row className="justify-content-md-center">
                     <Col xs="auto">
                         <Form.Group>
-                            <img src={`../../../images/${user.pic ? user.pic : "user-badge-purple.svg"}`} 
-                            className="profile-pic" alt="Profile picture"/>
+                            <div className="profile-pic-dropdown">
+                                <img src={profilePic}
+                                    className="profile-pic" alt="User Avatar" />
+                                <ProfilePics />
+                            </div>
                         </Form.Group>
+                        <button className="previewbtn" onClick={updatePreview}>
+                            Preview Changes
+                        </button>
                     </Col>
 
                     <Col md={6}>
@@ -174,7 +196,7 @@ function AccountForm() {
                                 <Form.Group className="mb-3">
                                     <Form.Label >Position: </Form.Label>
                                     <Form.Select aria-label="Choose position" name="account" defaultValue={user.account} disabled>
-                                        <option disabled>Select position</option>
+                                        <option >Select position</option>
                                         <option value="associate">Associate</option>
                                         <option value="alumni">Alumni</option>
                                         <option value="trainer">Trainer</option>

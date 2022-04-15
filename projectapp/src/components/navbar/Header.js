@@ -16,25 +16,6 @@ function Header() {
     const[search, setSearch] = useState('');
     const [searchCategory,setSearchCategory]=useState('Username')
 
-    //SEARCHING FOR INPUT WITH SEARCHVALUE
-    const searchResultsUsername = (searchValue) => {
-
-        axios.get(`http://localhost:4000/users/userByName/${searchValue}`)
-
-            .then((response) => {
-                setRetrieveInfo(response.data);
-            })
-    }
-
-    //SEARCHING FOR LOCATOIN BASED ON SEARCHVALUE
-    const searchResultsLocation = (searchValue) => {
-
-        axios.get(`http://localhost:4000/users/userByLocation/${searchValue}`)
-
-            .then((response) => {
-                setRetrieveInfo(response.data);
-            })
-    }
 
     return(
         <Navbar bg="dark" sticky="top">
@@ -46,7 +27,22 @@ function Header() {
                     {/*<Following/>*/}
                         <Col >
                            <Link to='/searchResults'>Search page</Link>
-                            <InputGroup>
+//                             <InputGroup>
+//                                 <InputGroup.Text bsPrefix="search-icon">
+//                                     <img src="../../../images/mg-white.svg" className="icon" alt=""/>
+//                                 </InputGroup.Text>
+//                                 <Form.Select id="searchtype" bsPrefix="search" defaultValue={"name"}>
+//                                     <option value="name">Name</option>
+//                                     <option value="location">Location</option>
+//                                 </Form.Select>
+//                                 <FormControl
+//                                     placeholder="Search..."
+//                                      onChange={(e) => searchResults(e.target.value)}
+
+//                                     aria-label="Search"
+//                                     aria-describedby="basic-addon2"
+// //                                 />
+//                             </InputGroup>
                                 <InputGroup.Text ><img src="../../../images/mg-black.svg" className="icon" alt=""/></InputGroup.Text>
 
                                 <FormSelect onChange={(e)=>{
@@ -64,12 +60,7 @@ function Header() {
                                      onChange={(e) => {
 
                                          setSearch(e.target.value)
-                                     }}
-                                    aria-label="Search"
-                                    aria-describedby="basic-addon2"
-                                />
-                            </InputGroup>
-
+                                     }}/>
                             <button onClick={()=>{
                                 //MATCHING WITH CONDITIONS & APPLY SEARCH STATE TO REULTS
                                 console.log(searchCategory)
