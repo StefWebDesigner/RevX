@@ -5,7 +5,7 @@ const Java = () => {
 
     // const {categoryid} = useParams();
 
-    const [showJavaContent, setShowJavaContent] = useState(true);
+    const [showJavaContent, setShowJavaContent] = useState([]);
     const [showContent, setShowContent] = useState([])
 
     async function getJavaContent() {
@@ -31,26 +31,7 @@ const Java = () => {
 
     return (
         <>
-            {/*THIS IS CAN'T BE TOUCHED*/}
-            {/*<div>*/}
-            {/*/!*<Navbar/>*!/*/}
-            {/*<h1>Java content</h1>*/}
 
-            {/*{*/}
-            {/*    showJavaContent.map((java, index) => {*/}
-            {/*        return(*/}
-            {/*            <div key={java.id}>*/}
-            {/*                {java.title}*/}
-            {/*                {java.mainbodycontent}*/}
-            {/*            </div>*/}
-            {/*        )*/}
-
-            {/*    })*/}
-
-            {/*}*/}
-
-
-            {/*</div>*/}
 
             <Navbar/>
             <div>
@@ -63,11 +44,15 @@ const Java = () => {
                             <div className="category-container text-center">
 
                                 {/* link to user profile */}
-                                <span className="">{java.title}</span>
+                                <span className="category-subtitle">{java.title}</span>
 
                                 {/* Post body content */}
                                 <div className="category-content">
                                     <p>{java.mainbodycontent}</p>
+                                </div>
+                                <div className="color-line">
+                                    <span className="color-line-1"></span>
+
                                 </div>
                             </div>
                         )

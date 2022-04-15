@@ -1,5 +1,5 @@
-import React, {useContext, useState} from 'react';
-import {Container, Navbar, Row, Col, InputGroup, Form, FormControl} from 'react-bootstrap';
+import React, {useContext, useEffect, useState} from 'react';
+import {Container, Navbar, Row, Col, InputGroup, FormSelect, FormControl, Card, Button} from 'react-bootstrap';
 import DataStore from "../../dataStore/dataStore";
 import axios from "axios";
 import {Link} from "react-router-dom";
@@ -14,30 +14,8 @@ function Header() {
     const [retrieveInfo, setRetrieveInfo] = useState(null);
     const [filteredResults, setFilterResults] = useState([])
     const[search, setSearch] = useState('');
+    const [searchCategory,setSearchCategory]=useState('Username')
 
-
-    const searchResults = (searchValue) => {
-        setSearch(searchValue);
-
-        const searchType = document.getElementById("searchtype").value;
-
-        if(searchType === 'name' && searchValue.trim()){
-        // axios.get(`http://localhost:4000/users/userByName/${searchValue}`)
-
-        axios.get(`http://localhost:4000/users/userByName/${searchValue}`)
-
-            .then((response) => {
-                setRetrieveInfo(response.data);
-            })
-        } else if (searchType === "location" && searchValue.trim()){
-            // axios.get(`http://localhost:4000/users/userByLocation/${searchValue}`)
-
-            //     .then((response) => {
-            //         setRetrieveInfo(response.data);
-            //         console.log(response.data);
-            //     })
-        }
-    }
 
     return(
         <Navbar bg="dark" sticky="top">
@@ -46,31 +24,59 @@ function Header() {
                     <Row>
                         <Col></Col>
                         <Col xs={4}>{user ? <h4>Welcome, {user.firstname}</h4> : <h4>Welcome</h4>}</Col>
-                        <Col>
-                        {/*    incldue teh folliwng button */}
-
-                        </Col>
                     {/*<Following/>*/}
                         <Col >
-                            <InputGroup>
-                                <InputGroup.Text bsPrefix="search-icon">
-                                    <img src="../../../images/mg-white.svg" className="icon" alt=""/>
-                                </InputGroup.Text>
-                                <Form.Select id="searchtype" bsPrefix="search" defaultValue={"name"}>
-                                    <option value="name">Name</option>
-                                    <option value="location">Location</option>
-                                </Form.Select>
+                           <Link to='/searchResults'>Search page</Link>
+//                             <InputGroup>
+//                                 <InputGroup.Text bsPrefix="search-icon">
+//                                     <img src="../../../images/mg-white.svg" className="icon" alt=""/>
+//                                 </InputGroup.Text>
+//                                 <Form.Select id="searchtype" bsPrefix="search" defaultValue={"name"}>
+//                                     <option value="name">Name</option>
+//                                     <option value="location">Location</option>
+//                                 </Form.Select>
+//                                 <FormControl
+//                                     placeholder="Search..."
+//                                      onChange={(e) => searchResults(e.target.value)}
+
+//                                     aria-label="Search"
+//                                     aria-describedby="basic-addon2"
+// //                                 />
+//                             </InputGroup>
+                                <InputGroup.Text ><img src="../../../images/mg-black.svg" className="icon" alt=""/></InputGroup.Text>
+
+                                <FormSelect onChange={(e)=>{
+                                    console.log(e.target.value)
+                                    //BY SELECTED DROP DOWN OPTION, THE VALUE IS SET FOR THE FOLLWING PART
+                                    setSearchCategory(e.target.value);
+                               }}>
+                                    //BUTTON SEARCH OPTIONS
+                                    <option>Username</option>
+                                    <option>Location</option>
+                                </FormSelect>
                                 <FormControl
                                     placeholder="Search..."
-                                     onChange={(e) => searchResults(e.target.value)}
-                                    aria-label="Search"
-                                    aria-describedby="basic-addon2"
-                                />
-                            </InputGroup>
+                                    // LOOK FOR CHANGE AND IT TO SEARCH FOR BUTTON TO ACCESS
+                                     onChange={(e) => {
+
+                                         setSearch(e.target.value)
+                                     }}/>
+                            <button onClick={()=>{
+                                //MATCHING WITH CONDITIONS & APPLY SEARCH STATE TO REULTS
+                                console.log(searchCategory)
+                                if(searchCategory==="Username"){
+                                    searchResultsUsername(search)
+
+                                }
+                                if(searchCategory==="Location"){
+                                searchResultsLocation(search)
+                                }
+                            }}>Search</button>
                         </Col>
                     </Row>
                     <Row>
 
+                        {/*//OUTPUT OF THE REQUESTS*/}
                         {retrieveInfo &&
 
                             <Link to={`/userprofile/${retrieveInfo?.username}`}>
@@ -84,8 +90,6 @@ function Header() {
                             </Link>
 
                         }
-
-
 
                     </Row>
                 </Container>

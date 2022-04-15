@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Fragment, useEffect, useContext, useState } from 'react';
+import { useEffect, useContext, useState } from 'react';
 import DataStore from "../../dataStore/dataStore";
 
 
@@ -63,4 +63,4 @@ function AccountItems(_getUserInfo) {
 }
 
 
-    export default AccountItems;
+export default AccountItems;

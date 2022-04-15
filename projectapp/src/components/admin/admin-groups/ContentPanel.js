@@ -14,6 +14,9 @@ const ContentPanel = () => {
 
     const [allTips, setAllTips] = useState([]);
 
+    const [mostLikedPost, setMostLikedPost] = useState([]);
+
+
     //FORM STATE FOR POST CONTENT
     const [postContent, setPostContent] = useState({
         tiptitle: "",
@@ -52,15 +55,22 @@ const ContentPanel = () => {
     };
 
     //GET ALL POST
-    async function getAllPost() {
-        const data = await axios.get('http://localhost:4000/posts/getAllPosts');
-        setAllPost(data.data);
+   function getAllPost() {
+        axios.get('http://localhost:4000/posts/getAllPosts').then(data=>{
+            setAllPost(data.data);
+        })
+
     }
 
     //DELETE A POST
-    async function deletePost () {
-        const data = await axios.delete('http://localhost:4000/posts/deletePost/id');
-        console.log(data);
+     function deletePost (id) {
+
+        axios.delete(`http://localhost:4000/posts/deletePost/${id}`).then(data=>{
+            console.log('helo')
+        })
+
+
+
     }
 
 
@@ -79,8 +89,14 @@ const ContentPanel = () => {
 
     async function getAllTips() {
         const data = await axios.get('http://localhost:4000/categories/totaltips');
-        const amount = data.data[0].count
+        const amount = data.data[0].count;
         setAllTips(amount);
+    }
+
+    async function getMostLikedPost() {
+        const data = await axios.get('http://localhost:4000/posts/maxlikepost');
+        const amount = data.data;
+        setMostLikedPost(amount);
     }
 
     useEffect(() => {
@@ -89,8 +105,8 @@ const ContentPanel = () => {
         getAllPost();
         getAllGenre()
         getAllCollectedPost();
-        getAllTips()
-
+        getAllTips();
+        getMostLikedPost();
 
     },[]);
 
@@ -117,7 +133,7 @@ const ContentPanel = () => {
 
                         {/*FACT 1*/}
                         {/*COL FOR CARD*/}
-                        <div className="col-xl-4 col-lg-4 col-md-4">
+                        <div className="col-xl-4 col-lg-4 col-md-4 mt-2">
                             <div className="card shadow h-100">
                                 <div className="card-body purple-text-tag">
                                     {/*CARD ROW*/}
@@ -128,7 +144,7 @@ const ContentPanel = () => {
                                                     Total Tips :
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                    {/*{ allTips}*/}
+                                                    { allTips}
                                                 </div>
                                             </div>
                                         </div>
@@ -141,7 +157,7 @@ const ContentPanel = () => {
 
                         {/*FACT 2*/}
                         {/*COL FOR CARD*/}
-                        <div className="col-xl-4 col-lg-4 col-md-4">
+                        <div className="col-xl-4 col-lg-4 col-md-4 mt-2">
                             <div className="card shadow h-100">
                                 <div className="card-body purple-text-tag">
                                     {/*CARD ROW*/}
@@ -165,7 +181,7 @@ const ContentPanel = () => {
 
                         {/*FACT 1*/}
                         {/*COL FOR CARD*/}
-                        <div className="col-xl-4 col-lg-4 col-md-4">
+                        <div className="col-xl-4 col-lg-4 col-md-4 mt-2">
                             <div className="card shadow h-100">
                                 <div className="card-body purple-text-tag">
                                     {/*CARD ROW*/}
@@ -173,10 +189,10 @@ const ContentPanel = () => {
                                         <div className="col mr-2">
                                             <div className="fact-body">
                                                 <div className="text-center text-xs font-weight-bold text-uppercase">
-                                                    Most popular Category :
+                                                    Most Liked Post :
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                    (Take from from DS)
+                                                    {/*{ mostLikedPost}*/}
                                                 </div>
                                             </div>
                                         </div>
@@ -223,19 +239,27 @@ const ContentPanel = () => {
                                                     {
                                                         showPost &&
 
+                                                        // <div className="d-flex justify-content-center">
                                                             <table className="table table-striped table-hover">
-                                                        <thead className="text-center">
-                                                        <tr>
-                                                        <div className="row">
-                                                        <div className="col-md-1"><th>PostID</th></div>
-                                                        <div className="col-md-4"><th >Post</th></div>
-                                                        <div className="col-md-3"><th>Date</th></div>
-                                                        <div className="col-md-2"><th>Like</th></div>
-                                                        <div className="col-md-2"><th>Remove</th></div>
-                                                        </div>
-                                                        </tr>
-                                                        </thead>
-                                                        </table>
+                                                                {/*<div className="d-flex justify-content-center">*/}
+                                                                <thead className="text-center">
+                                                                    <tr>
+                                                                    <div className="row">
+                                                                    <div className="d-flex justify-content-center">
+                                                                        <div className="col-md-2 col-sm-2"><th className="text-center">PostID</th></div>
+                                                                        <div className="col-md-3 col-sm-3"><th className="text-center">Post</th></div>
+                                                                        <div className="col-md-3 col-sm-3"><th className="text-center">Date</th></div>
+                                                                        <div className="col-md-2 col-sm-2"><th className="text-center">Like</th></div>
+                                                                        <div className="col-md-2 col-sm-2"><th className="text-center">Remove</th></div>
+                                                                    </div>
+
+
+                                                                    </div>
+                                                                    </tr>
+                                                                    </thead>
+                                                                {/*</div>*/}
+                                                            </table>
+                                                        // </div>
                                                     }
 
                                                     {
@@ -245,21 +269,23 @@ const ContentPanel = () => {
                                                                 <div key={collect.postid}>
                                         <table className="table table-striped table-hover">
                                             <tbody className="text-center">
-                                            <tr>
-                                                <div className="row ">
-                                                    <div className="col-md-1"><td>{collect.postid}</td></div>
-                                                    <div className="col-md-4"><td>{collect.posttext}</td></div>
-                                                    <div className="col-md-3"><td>{collect.postdate}</td></div>
-                                                    <div className="col-md-2"><td>{collect.likes}</td></div>
-                                                    <div className="col-md-2">
-                                                        {/*<div className="d-flex justify-content-center">*/}
+                                            <tr className="text-center">
+                                                <div className="row">
+                                                    <div className="d-flex justify-content-center">
+
+                                                    <div className="col-md-1 col-sm-1 col-xs-12"><td className="text-center">{collect.postid}</td></div>
+                                                    <div className="col-md-4 col-sm-4 col-xs-12"><td className="text-center">{collect.posttext}</td></div>
+                                                    <div className="col-md-3 col-sm-3 col-xs-12"><td className="text-center">{collect.postdate}</td></div>
+                                                    <div className="col-md-2 col-sm-2 col-xs-12"><td className="text-center">{collect.likes}</td></div>
+                                                    <div className="col-md-2 col-sm-2 col-xs-12">
                                                             <button
                                                                 className="adminDeletebtn text-center"
                                                                 onClick={() => deletePost(collect.postid)}
                                                             >
                                                                 <i className="bi bi-dash-square">-</i>
                                                             </button>
-                                                        {/*</div>*/}
+                                                    {/*END TAG FOR DLEX    */}
+                                                    </div>
                                                     </div>
 
                                                     {/*ENDING DIV FOR TABLE ROW    */}

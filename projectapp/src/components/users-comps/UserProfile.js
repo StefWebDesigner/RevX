@@ -4,6 +4,7 @@ import axios from "axios";
 
 const UserProfile = () => {
 
+    //USE PARAM FOR THE LINK
     const {username} = useParams();
 
     const [userProfile, setUserProfile] = useState(null);
@@ -14,8 +15,6 @@ const UserProfile = () => {
                 setUserProfile(response.data);
             })
     }, [])
-
-
 
     console.log(userProfile);
 
