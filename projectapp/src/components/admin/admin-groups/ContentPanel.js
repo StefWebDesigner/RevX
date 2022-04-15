@@ -14,6 +14,9 @@ const ContentPanel = () => {
 
     const [allTips, setAllTips] = useState([]);
 
+    const [mostLikedPost, setMostLikedPost] = useState([]);
+
+
     //FORM STATE FOR POST CONTENT
     const [postContent, setPostContent] = useState({
         tiptitle: "",
@@ -86,8 +89,14 @@ const ContentPanel = () => {
 
     async function getAllTips() {
         const data = await axios.get('http://localhost:4000/categories/totaltips');
-        const amount = data.data[0].count
+        const amount = data.data[0].count;
         setAllTips(amount);
+    }
+
+    async function getMostLikedPost() {
+        const data = await axios.get('http://localhost:4000/posts/maxlikepost');
+        const amount = data.data;
+        setMostLikedPost(amount);
     }
 
     useEffect(() => {
@@ -96,8 +105,8 @@ const ContentPanel = () => {
         getAllPost();
         getAllGenre()
         getAllCollectedPost();
-        getAllTips()
-
+        getAllTips();
+        getMostLikedPost();
 
     },[]);
 
@@ -180,10 +189,10 @@ const ContentPanel = () => {
                                         <div className="col mr-2">
                                             <div className="fact-body">
                                                 <div className="text-center text-xs font-weight-bold text-uppercase">
-                                                    Most popular Category :
+                                                    Most Liked Post :
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                    (Take from from DS)
+                                                    {/*{ mostLikedPost}*/}
                                                 </div>
                                             </div>
                                         </div>

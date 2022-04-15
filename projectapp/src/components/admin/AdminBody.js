@@ -12,6 +12,8 @@ const AdminBody = () => {
     const [associateCount,setAssociateCount]=useState([])
     //GET TOTAL ADMIN ACCOUNT
     const [adminCount, setAdminCount] = useState([]);
+    const [allTips, setAllTips] = useState([]);
+
 
     console.log(adminCount);
     console.log(associateCount);
@@ -30,11 +32,11 @@ const AdminBody = () => {
     }
 
 
-
-    // async function getAllInteractions () {
-    //     const data = await axios.get('');
-    //     setAllInteractions(data.data);
-    // }
+    async function getAllTips() {
+        const data = await axios.get('http://localhost:4000/categories/totaltips');
+        const amount = data.data[0].count;
+        setAllTips(amount);
+    }
 
 
     //GET TOTAL AMIN USERS
@@ -69,6 +71,8 @@ const AdminBody = () => {
         getTotalAdminUsers();
 
         getTotalAssociateUsers();
+
+        getAllTips();
 
 
     },[]);
@@ -152,7 +156,7 @@ const AdminBody = () => {
                                                     Total Tips :
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                    (Take from from DS)
+                                                    {allTips}
                                                 </div>
                                             </div>
                                         </div>
