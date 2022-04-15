@@ -3,7 +3,7 @@ import axios from "axios";
 import Navbar from "../navbar/Navbar";
 const Beginner = () => {
 
-    const [showBeginnerContent, setShowBeginnerContent] = useState(true);
+    const [showBeginnerContent, setShowBeginnerContent] = useState([]);
     const [showContent, setShowContent] = useState([])
 
     async function getBeginnerContent() {

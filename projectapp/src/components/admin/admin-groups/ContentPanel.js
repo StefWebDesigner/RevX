@@ -52,15 +52,22 @@ const ContentPanel = () => {
     };
 
     //GET ALL POST
-    async function getAllPost() {
-        const data = await axios.get('http://localhost:4000/posts/getAllPosts');
-        setAllPost(data.data);
+   function getAllPost() {
+        axios.get('http://localhost:4000/posts/getAllPosts').then(data=>{
+            setAllPost(data.data);
+        })
+
     }
 
     //DELETE A POST
-    async function deletePost () {
-        const data = await axios.delete('http://localhost:4000/posts/deletePost/id');
-        console.log(data);
+     function deletePost (id) {
+
+        axios.delete(`http://localhost:4000/posts/deletePost/${id}`).then(data=>{
+            console.log('helo')
+        })
+
+
+
     }
 
 
@@ -128,7 +135,7 @@ const ContentPanel = () => {
                                                     Total Tips :
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                    {/*{ allTips}*/}
+                                                    { allTips}
                                                 </div>
                                             </div>
                                         </div>
