@@ -16,21 +16,16 @@ import {
     FiArrowRightCircle
 } from "react-icons/fi";
 import { 
-    FaList, 
-    FaRegHeart,
     FaJava,
     FaReact,
     FaExclamationTriangle,
     FaTable 
 } from "react-icons/fa";
-import { RiPencilLine, RiAdminLine } from "react-icons/ri";
+import { RiAdminLine } from "react-icons/ri";
 import { BiCog } from "react-icons/bi";
 import { IoLogoJavascript } from 'react-icons/io';
-import { SiPostgresql } from 'react-icons/si';
 import { MdWebAsset } from 'react-icons/md';
 import Logo from "./Logo";
-import Survey from "../Survey/Survey";
-// import Logo from "../img-components/Logo";
 
 const Navbar = ({setShowLogin}) => {
 

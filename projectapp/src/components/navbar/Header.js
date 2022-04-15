@@ -1,5 +1,5 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {Container, Navbar, Row, Col, InputGroup, Form, FormControl, Card} from 'react-bootstrap';
+import React, {useContext, useState} from 'react';
+import {Container, Navbar, Row, Col, InputGroup, Form, FormControl} from 'react-bootstrap';
 import DataStore from "../../dataStore/dataStore";
 import axios from "axios";
 import {Link} from "react-router-dom";
@@ -28,7 +28,6 @@ function Header() {
 
             .then((response) => {
                 setRetrieveInfo(response.data);
-                console.log(response.data);
             })
         } else if (searchType === "location" && searchValue.trim()){
             // axios.get(`http://localhost:4000/users/userByLocation/${searchValue}`)
