@@ -12,12 +12,7 @@ const Beginner = () => {
                 setShowBeginnerContent(response.data);
                 console.log(response);
 
-
-                // getReactContent()
-
             });
-        // getJavaContent()
-
     }
 
     useEffect(() => {
@@ -46,6 +41,10 @@ const Beginner = () => {
                                 {/* Post body content */}
                                 <div className="category-content">
                                     <p>{item.mainbodycontent}</p>
+                                </div>
+                                <div className="color-line">
+                                    <span className="color-line-1"></span>
+
                                 </div>
                             </div>
                         )
