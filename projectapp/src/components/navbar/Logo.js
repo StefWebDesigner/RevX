@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../../RevX-vector.svg'
+import logo from '../../RevX-vector-improved.svg'
 
 const Logo = () => {
     return (

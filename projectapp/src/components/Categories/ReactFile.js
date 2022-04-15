@@ -3,7 +3,7 @@ import axios from "axios";
 import Navbar from "../navbar/Navbar";
 const ReactFile = () => {
 
-    const [showReactContent, setShowReactContent] = useState(true);
+    const [showReactContent, setShowReactContent] = useState([]);
     const [showContent, setShowContent] = useState([])
 
     async function getReactContent() {
@@ -41,11 +41,15 @@ const ReactFile = () => {
                             <div className="category-container text-center">
 
                                 {/* link to user profile */}
-                                <span className="">{item.title}</span>
+                                <span className="category-subtitle">{item.title}</span>
 
                                 {/* Post body content */}
                                 <div className="category-content">
                                     <p>{item.mainbodycontent}</p>
+                                </div>
+                                <div className="color-line">
+                                    <span className="color-line-1"></span>
+
                                 </div>
                             </div>
                         )

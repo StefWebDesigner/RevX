@@ -164,7 +164,7 @@ const UserPanel = () => {
 
                         {/*FACT 1*/}
                         {/*COL FOR CARD*/}
-                        <div className="col-xl-4 col-lg-4 col-md-4">
+                        <div className="col-xl-4 col-lg-4 col-md-4 mt-2">
                             <div className="card shadow h-100">
                                 <div className="card-body purple-text-tag">
                                     {/*CARD ROW*/}
@@ -189,7 +189,7 @@ const UserPanel = () => {
 
                         {/*FACT 2*/}
                         {/*COL FOR CARD*/}
-                        <div className="col-xl-4 col-lg-4 col-md-4">
+                        <div className="col-xl-4 col-lg-4 col-md-4 mt-2">
                             <div className="card shadow h-100">
                                 <div className="card-body purple-text-tag">
                                     {/*CARD ROW*/}
@@ -213,7 +213,7 @@ const UserPanel = () => {
 
                         {/*FACT 1*/}
                         {/*COL FOR CARD*/}
-                        <div className="col-xl-4 col-lg-4 col-md-4">
+                        <div className="col-xl-4 col-lg-4 col-md-4 mt-2">
                             <div className="card shadow h-100">
                                 <div className="card-body purple-text-tag">
                                     {/*CARD ROW*/}
@@ -268,23 +268,25 @@ const UserPanel = () => {
                             { toggleAllUsers &&
                                 <aside>
                                     <div className="fade-in-animation">
-                                        <button className="adminbtn"
-                                            onClick={sortingById}
-                                        >
-                                            Sort By Id
-                                        </button>
-                                        <button
-                                            className="adminbtn"
-                                            onClick={sortingByUsername}
-                                        >
-                                            Sort By username
-                                        </button>
-                                        <button
-                                            className="adminbtn"
-                                            onClick={sortingByRole}
-                                        >
-                                            Sort By role
-                                        </button>
+                                        <div className="d-flex flex-sm-row flex-column justify-content-around">
+                                            <button className="adminbtn"
+                                                onClick={sortingById}
+                                            >
+                                                Sort By Id
+                                            </button>
+                                            <button
+                                                className="adminbtn"
+                                                onClick={sortingByUsername}
+                                            >
+                                                Sort By username
+                                            </button>
+                                            <button
+                                                className="adminbtn"
+                                                onClick={sortingByRole}
+                                            >
+                                                Sort By role
+                                            </button>
+                                        </div>
 
                                     </div>
                                 </aside>
@@ -303,19 +305,25 @@ const UserPanel = () => {
                                 <table className="table table-striped table-hover">
                                     <tbody className="text-center">
                                         <tr>
-                                            <div className="row p">
-                                                <div className="col-md-2"><td>{user.userid}</td></div>
-                                                <div className="col-md-2"><td>{user.username}</td></div>
-                                                <div className="col-md-2"><td>{user.password}</td></div>
-                                                <div className="col-md-3"><td>{user.email}</td></div>
-                                                <div className="col-md-2"><td>{user.account}</td></div>
-                                                <div className="col-md-1">
+                                            <div className="row">
+
+                                                <div className="d-flex justify-content-center flex-md-row flex-column">
+
+                                                <div className="col-md-2 col-sm-2"><td className="text-center">{user.userid}</td></div>
+                                                <div className="col-md-2 col-sm-2"><td className="text-center">{user.username}</td></div>
+                                                <div className="col-md-2 col-sm-2"><td className="text-center">{user.password}</td></div>
+                                                <div className="col-md-3 col-sm-3"><td className="text-center">{user.email}</td></div>
+                                                <div className="col-md-2 col-sm-2"><td className="text-center">{user.account}</td></div>
+                                                <div className="col-md-1 col-sm-1">
                                                     <button
                                                         className="adminDeletebtn"
                                                         onClick={() => deteleUser(user.username)}
                                                     >
                                                         <i className="bi bi-dash-square">-</i>
                                                     </button>
+                                                </div>
+
+                                                {/*Ent of flex tage    */}
                                                 </div>
 
                                             {/*ENDING DIV FOR TABLE ROW    */}

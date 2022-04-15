@@ -3,7 +3,7 @@ import axios from "axios";
 import Navbar from "../navbar/Navbar";
 const Advanced = () => {
 
-    const [showAdvancedContent, setShowAdvancedContent] = useState(true);
+    const [showAdvancedContent, setShowAdvancedContent] = useState([]);
     const [showContent, setShowContent] = useState([])
 
     async function getAdvancedContent() {
@@ -41,11 +41,15 @@ const Advanced = () => {
                             <div className="category-container text-center">
 
                                 {/* link to user profile */}
-                                <span className="">{item.title}</span>
+                                <span className="category-subtitle">{item.title}</span>
 
                                 {/* Post body content */}
                                 <div className="category-content">
                                     <p>{item.mainbodycontent}</p>
+                                </div>
+                                <div className="color-line">
+                                    <span className="color-line-1"></span>
+
                                 </div>
                             </div>
                         )

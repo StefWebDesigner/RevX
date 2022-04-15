@@ -11,7 +11,7 @@ function PostFeed({createNewPost}){
 
             setPosts(res.data);
         });
-    });
+    },[]);
     
 
     return posts.map((post) => {
