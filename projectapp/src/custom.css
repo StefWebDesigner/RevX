@@ -312,11 +312,30 @@
 /* Header */
 .icon {
     width:20px;
+    padding-top:5px;
 }
 
 .headertext{
     color:#a07ede;
     margin-top: 3px;
+}
+
+.search{
+    width:fit-content;  
+    border: #CED4D9 solid 1px;
+    background-color: white;
+    color: mediumpurple;
+    border-radius: 3px;
+    padding-left:5px;
+}
+
+.search-icon{
+    width:fit-content;
+    border: mediumpurple solid 1px;
+    background-color: mediumpurple;
+    border-radius: 3px;
+    padding-right: 10px;
+    padding-left: 10px;
 }
 
 .form-dark {

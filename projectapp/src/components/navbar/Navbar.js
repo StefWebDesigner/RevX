@@ -59,7 +59,7 @@ const Navbar = ({setShowLogin}) => {
                     {/*CONTAINS HEADER & RESPONSIVE LOGO*/}
                     <SidebarHeader>
                         <div className="logotext">
-                            <p>{menuCollapse ? <Logo/> : <Logo/>}</p>
+                            <Logo/>
                         </div>
                         <div className="closemenu" onClick={menuIconClick}>
                             {menuCollapse ? <FiArrowRightCircle /> :
@@ -73,70 +73,33 @@ const Navbar = ({setShowLogin}) => {
                                 <Link to="/">Home</Link>
                             </MenuItem>
 
-
                             {/* conditionally show the admin portal */}
                             {user && user.account === 'admin' ?
-
                                 <MenuItem icon={<RiAdminLine />}>
                                  <Link to="/admin">Admin Portal</Link>
                             </MenuItem>
-
                             : ""}
-
                         </Menu>
-
-
                     </SidebarHeader>
 
                     {/*CONTAIN MAIN NAV CONTENT*/}
-                    <SidebarContent>
-                        <Menu iconShape="square">
-
-                            <MenuItem icon={<RiPencilLine/>}>
-                                <a href="#">Content</a>
-                            </MenuItem>
-
-
-
-                        </Menu>
-                    </SidebarContent>
 
                     <SidebarContent>
                         <Menu iconShape="square">
-                            <MenuItem active={true} icon={<FiHome />}>
-                                <Link to="/beginner">Beginner</Link>
-                            </MenuItem>
-                            <MenuItem icon={<RiPencilLine/>}>
-                                <Link to="/intermidate">Intermidate</Link>
-                            </MenuItem>
-
-
-                            <MenuItem icon={<RiPencilLine/>}>
-                                <Link to="/advanced">Advanced</Link>
-                            </MenuItem>
-                            <MenuItem icon={<RiPencilLine/>}>
+                            <MenuItem icon={<FaJava/>}>
                                 <Link to="/java">Java</Link>
-
-                                {/*<Link to={`/userprofile/${retrieveInfo?.username}`}>*/}
-
-
-{/*                            <MenuItem active={true} icon={<FaJava />}>*/}
-{/*                                <a href="#">Java</a>*/}
-{/*                            </MenuItem>*/}
-{/*                            <MenuItem icon={<FaReact/>}>*/}
-{/*                                <a href="#">React</a>*/}
-{/*                            </MenuItem>*/}
-{/*                            <MenuItem icon={<FaTable/>}>*/}
-{/*                                <a href="#">SQL</a>*/}
-{/*                            </MenuItem>*/}
-{/*                            <MenuItem icon={<IoLogoJavascript/>}>*/}
-{/*                                <a href="#">JavaScript</a>*/}
-{/*                            </MenuItem>*/}
-{/*                            <MenuItem icon={<MdWebAsset/>}>*/}
-{/*                            <a href="#">HTML</a>*/}
                             </MenuItem>
-                            <MenuItem icon={<RiPencilLine/>}>
+                            <MenuItem icon={<FaReact/>}>
                                 <Link to="/react">React</Link>
+                            </MenuItem>
+                            <MenuItem icon={<FaTable />}>
+                                <Link to="/beginner">SQL</Link>
+                            </MenuItem>
+                            <MenuItem icon={<IoLogoJavascript />}>
+                                <Link to="/intermidate">JavaScript</Link>
+                            </MenuItem>
+                            <MenuItem icon={<MdWebAsset />}>
+                                <Link to="/advanced">HTML</Link>
                             </MenuItem>
                         </Menu>
                     </SidebarContent>

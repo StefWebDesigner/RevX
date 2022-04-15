@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {Container, Navbar, Row, Col, InputGroup, FormControl, Card} from 'react-bootstrap';
+import {Container, Navbar, Row, Col, InputGroup, Form, FormControl, Card} from 'react-bootstrap';
 import DataStore from "../../dataStore/dataStore";
 import axios from "axios";
 import {Link} from "react-router-dom";
@@ -16,30 +16,28 @@ function Header() {
     const[search, setSearch] = useState('');
 
 
-    const searchResultsUsername = (searchValue) => {
+    const searchResults = (searchValue) => {
         setSearch(searchValue);
 
+        const searchType = document.getElementById("searchtype").value;
+
+        if(searchType === 'name' && searchValue.trim()){
         // axios.get(`http://localhost:4000/users/userByName/${searchValue}`)
 
         axios.get(`http://localhost:4000/users/userByName/${searchValue}`)
 
             .then((response) => {
                 setRetrieveInfo(response.data);
+                console.log(response.data);
             })
-    }
-    console.log(retrieveInfo);
+        } else if (searchType === "location" && searchValue.trim()){
+            // axios.get(`http://localhost:4000/users/userByLocation/${searchValue}`)
 
-    //MY BEST AND FASTEST SOLUTION & A NEW REQUEST FOR CITY
-    const searchResultsLocation = (searchValue) => {
-        setSearch(searchValue);
-
-        // axios.get(`http://localhost:4000/users/userByName/${searchValue}`)
-
-        axios.get(`http://localhost:4000/users/userByName/${searchValue}`)
-
-            .then((response) => {
-                setRetrieveInfo(response.data);
-            })
+            //     .then((response) => {
+            //         setRetrieveInfo(response.data);
+            //         console.log(response.data);
+            //     })
+        }
     }
 
     return(
@@ -56,19 +54,16 @@ function Header() {
                     {/*<Following/>*/}
                         <Col >
                             <InputGroup>
-                                <InputGroup.Text><img src="../../../images/mg-black.svg" className="icon" alt=""/></InputGroup.Text>
+                                <InputGroup.Text bsPrefix="search-icon">
+                                    <img src="../../../images/mg-white.svg" className="icon" alt=""/>
+                                </InputGroup.Text>
+                                <Form.Select id="searchtype" bsPrefix="search" defaultValue={"name"}>
+                                    <option value="name">Name</option>
+                                    <option value="location">Location</option>
+                                </Form.Select>
                                 <FormControl
                                     placeholder="Search..."
-                                     onChange={(e) => searchResultsUsername(e.target.value)}
-                                    aria-label="Search"
-                                    aria-describedby="basic-addon2"
-                                />
-                            </InputGroup>
-                            <InputGroup>
-                                <InputGroup.Text><img src="../../../images/mg-black.svg" className="icon" alt=""/></InputGroup.Text>
-                                <FormControl
-                                    placeholder="Search..."
-                                    onChange={(e) => searchResultsLocation(e.target.value)}
+                                     onChange={(e) => searchResults(e.target.value)}
                                     aria-label="Search"
                                     aria-describedby="basic-addon2"
                                 />
