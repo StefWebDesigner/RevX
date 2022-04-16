@@ -526,9 +526,10 @@
 
 
 /* Edit Profile */
-.account-label{
-    color:rgb(155, 155, 155);
+.account-label {
+    color: rgb(155, 155, 155);
     margin-left: 5px;
+}
 
 .category-content:hover {
     border: mediumpurple solid 2px;
