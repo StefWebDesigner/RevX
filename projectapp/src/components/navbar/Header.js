@@ -1,8 +1,7 @@
-import React, {useContext, useState} from 'react';
-import {Container, Navbar, Row, Col, InputGroup, Form, FormControl} from 'react-bootstrap';
+import React, { useContext } from 'react';
+import { Container, Navbar, Row, Col } from 'react-bootstrap';
 import DataStore from "../../dataStore/dataStore";
-import axios from "axios";
-import {Link} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 function Header() {
@@ -10,83 +9,23 @@ function Header() {
     //CALL THE DATASTORE GLOBAL VARIABLE FROM STORE
     const { user } = useContext(DataStore);
 
-    // TO RETRIEVE SEARCHED CONTENT FROM PERSISTANCE LATER
-    const [retrieveInfo, setRetrieveInfo] = useState(null);
-    const [filteredResults, setFilterResults] = useState([])
-    const[search, setSearch] = useState('');
+    const navigate = useNavigate();
 
-
-    const searchResults = (searchValue) => {
-        setSearch(searchValue);
-
-        const searchType = document.getElementById("searchtype").value;
-
-        if(searchType === 'name' && searchValue.trim()){
-        // axios.get(`http://localhost:4000/users/userByName/${searchValue}`)
-
-        axios.get(`http://localhost:4000/users/userByName/${searchValue}`)
-
-            .then((response) => {
-                setRetrieveInfo(response.data);
-            })
-        } else if (searchType === "location" && searchValue.trim()){
-            // axios.get(`http://localhost:4000/users/userByLocation/${searchValue}`)
-
-            //     .then((response) => {
-            //         setRetrieveInfo(response.data);
-            //         console.log(response.data);
-            //     })
-        }
-    }
-
-    return(
+    return (
         <Navbar bg="dark" sticky="top">
-            <Navbar.Collapse className="justify-content-end">
+            <Navbar.Collapse>
                 <Container fluid className="headertext">
                     <Row>
                         <Col></Col>
-                        <Col xs={4}>{user ? <h4>Welcome, {user.firstname}</h4> : <h4>Welcome</h4>}</Col>
-                        <Col>
-                        {/*    incldue teh folliwng button */}
-
+                        <Col xs={4}>
+                            {user ? <h4>Welcome, {user.firstname}</h4> : <h4>Welcome</h4>}
                         </Col>
-                    {/*<Following/>*/}
-                        <Col >
-                            <InputGroup>
-                                <InputGroup.Text bsPrefix="search-icon">
-                                    <img src="../../../images/mg-white.svg" className="icon" alt=""/>
-                                </InputGroup.Text>
-                                <Form.Select id="searchtype" bsPrefix="search" defaultValue={"name"}>
-                                    <option value="name">Name</option>
-                                    <option value="location">Location</option>
-                                </Form.Select>
-                                <FormControl
-                                    placeholder="Search..."
-                                     onChange={(e) => searchResults(e.target.value)}
-                                    aria-label="Search"
-                                    aria-describedby="basic-addon2"
-                                />
-                            </InputGroup>
+                        <Col></Col>
+                        <Col className="right-align">
+                            <button className="search-icon" onClick={() => { navigate('/searchResults') }}>
+                                <img src="../../../images/mg-white.svg" className="icon" alt="search" />
+                            </button>
                         </Col>
-                    </Row>
-                    <Row>
-
-                        {retrieveInfo &&
-
-                            <Link to={`/userprofile/${retrieveInfo?.username}`}>
-                            {/*NORMALLY IT IS NULL, TI LOOKS FOR A SPECIFIC VALUE*/}
-                                <h4 style={{color: "white"}} >
-                        {retrieveInfo?.username}
-                                </h4>
-                        {/*        <h4 style={{color: "white"}} >*/}
-                        {/*{retrieveInfo?.city}*/}
-                        {/*        </h4>*/}
-                            </Link>
-
-                        }
-
-
-
                     </Row>
                 </Container>
             </Navbar.Collapse>
