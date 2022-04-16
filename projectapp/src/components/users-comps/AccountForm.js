@@ -27,7 +27,7 @@ function AccountForm() {
         e.preventDefault();
 
         const regForm = document.getElementById("editaccountform");
-        const { profilepic, first, last, username, password, city, state, email, account } = regForm;
+        const { first, last, username, password, city, state, email, account } = regForm;
 
         //if username is not ""
         if (!username.value === "") {
@@ -52,7 +52,7 @@ function AccountForm() {
         if (!errorMessages.name) {
             const newInfo = {
                 userid: user.userid,
-                pic: (profilePic.value? profilePic.value : "user-badge-purple"),
+                pic: (profilePic? profilePic : "user-badge-purple.svg"),
                 firstname: (first.value.trim() ? first.value : user.firstname),
                 lastname: (last.value.trim()? last.value : user.lastname),
                 username: (username.value.trim()? username.value : user.username),

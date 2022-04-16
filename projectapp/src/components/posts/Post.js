@@ -29,7 +29,7 @@ function Post({postid, pic, username, accountType, content, postdate, likes}){
         <div className="post-container">
 
             {/* Heading - pic, name, follow button */}
-            <img src={pic ? pic : "../../../images/user-badge-purple.svg"} className="user-badge" alt="user badge" />
+            <img src={pic ? "../../../images/" + pic : "../../../images/user-badge-purple.svg"} className="user-badge" alt="user badge" />
             
             {/* link to user profile */}
             <span>{username}</span> <small className="account-label"><i>{accountType}</i></small>
