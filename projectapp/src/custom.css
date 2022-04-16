@@ -473,6 +473,7 @@
     border: none;
     border-radius: 5px;
     color: white;
+    margin-bottom: 10px;
 }
 
 .adminbtn:hover {
@@ -541,10 +542,11 @@
 
 
 /* Edit Profile */
-.account-label{
-    color:rgb(155, 155, 155);
+.account-label {
+    color: rgb(155, 155, 155);
     margin-left: 5px;
 }
+
 .category-content:hover {
     border: mediumpurple solid 2px;
 
@@ -614,4 +616,19 @@
 
 .previewbtn:hover {
     border: mediumpurple solid 1px;
+}
+
+
+.reportFont {
+    font-size: 15px;
+}
+
+.reportTitle {
+    font-size: 15px;
+
+}
+
+.userChartSize {
+
+
 }

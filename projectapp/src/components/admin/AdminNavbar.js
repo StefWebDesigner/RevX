@@ -15,13 +15,13 @@ import {
     FiArrowLeftCircle,
     FiArrowRightCircle
 } from "react-icons/fi";
-import {FaList, FaRegHeart} from "react-icons/fa";
-import {RiPencilLine} from "react-icons/ri";
+import {FaList, FaRegHeart, FaRegUser} from "react-icons/fa";
+import {RiAdminLine, RiPencilLine} from "react-icons/ri";
 import {BiCog} from "react-icons/bi";
 import DataContext from "../../dataStore/dataStore";
 import Logo from "../navbar/Logo";
 
-const Navbar = ({setShowLogin}) => {
+const AdminNavbar = ({setShowLogin}) => {
 
     //NAV COLLAPSING STATE
     const [menuCollapse, setMenuCollaspe] = useState(false);
@@ -29,16 +29,16 @@ const Navbar = ({setShowLogin}) => {
     //CALLING IN DATASTORE -> USED FOR NAV BAR CONDITION STATEMENT
     const {user, setUser} = useContext(DataContext);
 
-    //NAV STRUCTURE SECTIONS
-    const menuIconClick = () => {
-        menuCollapse ? setMenuCollaspe(false) : setMenuCollaspe(true);
-    }
-
     //logout and send to login home
     function logout() {
         setUser(null);
         localStorage.removeItem("user");
         setShowLogin(true);
+    }
+
+    //NAV STRUCTURE SECTIONS
+    const menuIconClick = () => {
+        menuCollapse ? setMenuCollaspe(false) : setMenuCollaspe(true);
     }
 
     return (
@@ -58,10 +58,16 @@ const Navbar = ({setShowLogin}) => {
 
                         {/*CHANGE MENU ICON SHAPE*/}
                         <Menu iconShape="square">
-                            <MenuItem icon={<FaRegHeart/>}>
+                            <MenuItem icon={<RiAdminLine />}>
                                 <Link to="/admin">Admin Portal</Link>
                             </MenuItem>
                         </Menu>
+
+                        {/*{user && user.account === 'admin' ?*/}
+                        {/*    <MenuItem icon={<RiAdminLine />}>*/}
+                        {/*        <Link to="/admin">Admin Portal</Link>*/}
+                        {/*    </MenuItem>*/}
+                        {/*    : ""}*/}
 
 
                     </SidebarHeader>
@@ -72,7 +78,7 @@ const Navbar = ({setShowLogin}) => {
                             <MenuItem active={true} icon={<FiHome/>}>
                                 <Link to="/">Home</Link>
                             </MenuItem>
-                            <MenuItem icon={<RiPencilLine/>}>
+                            <MenuItem icon={<FaRegUser/>}>
                                 <Link to="/userpanel">User Panel</Link>
                             </MenuItem>
                             <MenuItem icon={<RiPencilLine/>}>
@@ -81,15 +87,6 @@ const Navbar = ({setShowLogin}) => {
 
                         </Menu>
                     </SidebarContent>
-
-                    {/*SLIDEHEADER PUSHS IT DONW*/}
-                    <SidebarHeader>
-                        <Menu iconShape="square">
-                            <MenuItem icon={<FaRegHeart/>}>
-                                <li><Link to="/chat">Chat</Link></li>
-                            </MenuItem>
-                        </Menu>
-                    </SidebarHeader>
 
                     {/*FOOTER SECTION*/}
                     <SidebarFooter>
@@ -108,4 +105,4 @@ const Navbar = ({setShowLogin}) => {
     );
 };
 
-export default Navbar;
+export default AdminNavbar;

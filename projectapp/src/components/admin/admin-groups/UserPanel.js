@@ -123,7 +123,7 @@ const UserPanel = () => {
     }
 
     async function getReportMethod() {
-        const data = await axios.get('http://localhost:4000/categories/makereport');
+        const data = await axios.get('http://localhost:4000/categories/getAllReports');
         setGetReport(data.data);
 
     }
@@ -268,7 +268,7 @@ const UserPanel = () => {
                             { toggleAllUsers &&
                                 <aside>
                                     <div className="fade-in-animation">
-                                        <div className="d-flex flex-sm-row flex-column justify-content-around">
+                                        <div className="d-flex flex-row justify-content-around">
                                             <button className="adminbtn"
                                                 onClick={sortingById}
                                             >
@@ -278,7 +278,7 @@ const UserPanel = () => {
                                                 className="adminbtn"
                                                 onClick={sortingByUsername}
                                             >
-                                                Sort By username
+                                                Sort by Name
                                             </button>
                                             <button
                                                 className="adminbtn"
@@ -301,20 +301,23 @@ const UserPanel = () => {
 
                         <aside key={user.userid} className="fade-in-animation">
 
-
+                                <div className="d-flex">
                                 <table className="table table-striped table-hover">
                                     <tbody className="text-center">
                                         <tr>
                                             <div className="row">
 
-                                                <div className="d-flex justify-content-center flex-md-row flex-column">
+                                                <div className="d-flex justify-content-center">
+                                                {/*<div className="d-flex justify-content-center flex-md-row flex-column">*/}
 
-                                                <div className="col-md-2 col-sm-2"><td className="text-center">{user.userid}</td></div>
-                                                <div className="col-md-2 col-sm-2"><td className="text-center">{user.username}</td></div>
-                                                <div className="col-md-2 col-sm-2"><td className="text-center">{user.password}</td></div>
-                                                <div className="col-md-3 col-sm-3"><td className="text-center">{user.email}</td></div>
-                                                <div className="col-md-2 col-sm-2"><td className="text-center">{user.account}</td></div>
-                                                <div className="col-md-1 col-sm-1">
+
+
+                                                <div className="col-xl-2 col-lg-2 col-md-2 col-sm-1 col-1"><td className="text-center">{user.userid}</td></div>
+                                                <div className="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-4"><td className="text-center">{user.username}</td></div>
+                                                <div className="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-4"><td className="text-center">{user.password}</td></div>
+                                                {/*<div className="col-md-3 col-sm-3 col-12"><td className="text-center">{user.email}</td></div>*/}
+                                                <div className="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2"><td className="text-center">{user.account}</td></div>
+                                                <div className="col-xl-2 col-lg-2 col-md-2 col-sm-1 col-1">
                                                     <button
                                                         className="adminDeletebtn"
                                                         onClick={() => deteleUser(user.username)}
@@ -326,14 +329,18 @@ const UserPanel = () => {
                                                 {/*Ent of flex tage    */}
                                                 </div>
 
+                                                    {/*Ent of table col tag    */}
+                                                {/*</div>*/}
+
                                             {/*ENDING DIV FOR TABLE ROW    */}
                                             </div>
                                         </tr>
                                     </tbody>
                                 </table>
+                                </div>
                         </aside>
                                 );
-                            })};
+                            })}
 
 
                                                 </div>
@@ -393,19 +400,18 @@ const UserPanel = () => {
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800 mb-3">
                                                     Table has the following pending reported Users
-                                                    - add the sorting scripts
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
 
-                                                    {/*A PLACE HOLDER FOR THE REAL CONTENT*/}
                                                     <div className="row">
                                                         <table>
                                                             <thead>
-                                                                <th className="col-2">Id</th>
-                                                                <th className="col-2">User</th>
-                                                                <th className="col-2">Complaint</th>
-                                                                <th className="col-2">Ignore</th>
-                                                                <th className="col-2">Ban</th>
+                                                            <th className="col-xl-1 col-lg-2 col-md-1 col-sm-1 col-1 reportTitle">Case</th>
+                                                            <th className="col-xl-1 col-lg-2 col-md-2 col-sm-1 col-1 reportTitle">Id</th>
+                                                            <th className="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3 reportTitle">User</th>
+                                                            <th className="col-xl-2 col-lg-3 col-md-3 col-sm-3 col-3 reportTitle">Complaint</th>
+                                                            {/*<th className="col-2">Ignore</th>*/}
+                                                            <th className="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 reportTitle">Ban</th>
                                                             </thead>
                                                         </table>
                                                     </div>
@@ -413,17 +419,49 @@ const UserPanel = () => {
                                                     {
                                                         getReport.map((report, index) => {
                                                             return (
-                                                            <div key={report.caseid}>
-                                                                {report.caseid}
-                                                                {report.reportid}
-                                                                {report.username}
-                                                                {report.issue}
-                                                            </div>
+
+                                                                <div key={report.caseid}>
+                                                                    <div className="d-flex">
+                                                                        <table className="table table-striped table-hover">
+                                                                            <tbody className="text-center">
+                                                                            <tr>
+                                                                                <div className="row">
+
+                                                                                    <div className="d-flex justify-content-center">
+
+                                                                                        <div className="col-xl-2 col-lg-2 col-md-1 col-sm-1 col-1"><td className="text-center reportFont">{report.caseid}</td></div>
+                                                                                        <div className="col-xl-2 col-lg-2 col-md-2 col-sm-1 col-1"><td className="text-center reportFont">{report.reportid}</td></div>
+                                                                                        <div className="col-xl-3 col-lg-3 col-md-4 col-sm-3 col-3"><td className="text-center reportFont">{report.username}</td></div>
+                                                                                        <div className="col-xl-3 col-lg-3 col-md-4 col-sm-3 col-3"><td className="text-center reportFont">{report.issue}</td></div>
+                                                                                        <div className="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">
+                                                                                            <button
+                                                                                                className="adminDeletebtn"
+                                                                                                // onClick={() => deteleUser(user.username)}
+                                                                                            >
+                                                                                                <i className="bi bi-dash-square">-</i>
+                                                                                            </button>
+                                                                                        </div>
+
+                                                                                        {/*Ent of flex tage    */}
+                                                                                    </div>
+
+                                                                                    {/*Ent of table col tag    */}
+                                                                                    {/*</div>*/}
+
+                                                                                    {/*ENDING DIV FOR TABLE ROW    */}
+                                                                                </div>
+                                                                            </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+
+
+
                                                             );
                                                         })
 
                                                     }
-
 
 
                                                 </div>
