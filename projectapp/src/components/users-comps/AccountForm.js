@@ -11,7 +11,7 @@ function AccountForm() {
     //CALL THE DATASTORE GLOBAL VARIABLE FROM STORE
     const { user, setUser } = useContext(DataStore);
 
-    const [profilePic, setProfilePic] = useState(`../../../images/${user.pic ? user.pic : "user-badge-purple.svg"}`);
+    const [profilePic, setProfilePic] = useState(user.pic ? user.pic : "user-badge-purple.svg");
 
     //potential error messages when validating form
     const [errorMessages, setErrorMessages] = useState({});
@@ -27,12 +27,12 @@ function AccountForm() {
         e.preventDefault();
 
         const regForm = document.getElementById("editaccountform");
-        const { first, last, username, password, city, state, email, account } = regForm;
+        const { profilepic, first, last, username, password, city, state, email, account } = regForm;
         setErrorMessages({});
 
         const newInfo = {
             userid: user.userid,
-            pic: (profilePic ? profilePic : "user-badge-purple.svg"),
+            pic: (profilepic.value ? profilepic.value : "user-badge-purple.svg"),
             firstname: (first.value.trim() ? first.value : user.firstname),
             lastname: (last.value.trim() ? last.value : user.lastname),
             username: (username.value.trim() ? username.value : user.username),
@@ -88,7 +88,7 @@ function AccountForm() {
         const picOptions = document.querySelectorAll('input[name="profilepic"]');
         for(const option of picOptions){
             if(option.checked){
-                setProfilePic("../../../images/"+option.value);
+                setProfilePic(option.value);
                 break;
             }
         }
@@ -102,7 +102,7 @@ function AccountForm() {
                     <Col xs="auto">
                         <Form.Group>
                             <div className="profile-pic-dropdown">
-                                <img src={profilePic}
+                                <img src={"../../../images/"+profilePic}
                                     className="profile-pic" alt="User Avatar" />
                                 <ProfilePics />
                             </div>

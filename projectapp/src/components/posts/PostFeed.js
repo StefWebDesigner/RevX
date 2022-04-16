@@ -20,9 +20,10 @@ function PostFeed({createNewPost}){
                 <Post
                     key={post.postid}
                     postid={post.postid}
-                    pic={post.pic}
+                    profilePic={post.pic}
                     username={post.username}
                     accountType={post.account}
+                    image={post.image}
                     content={post.posttext}
                     postdate={post.postdate}
                     likes={post.likes}
