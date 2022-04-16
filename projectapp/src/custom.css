@@ -439,6 +439,7 @@
     border: none;
     border-radius: 5px;
     color: white;
+    margin-bottom: 10px;
 }
 
 .adminbtn:hover {
