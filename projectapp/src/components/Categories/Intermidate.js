@@ -3,20 +3,14 @@ import axios from "axios";
 import Navbar from "../navbar/Navbar";
 const Intermidate = () => {
 
-    const [showIntermidateContent, setShowIntermidateContent] = useState(true);
+    const [showIntermidateContent, setShowIntermidateContent] = useState([]);
 
     async function getIntermediateContent() {
         await axios.get(`http://localhost:4000/categories/getcontentbycategoryid/4`)
             .then((response) => {
                 setShowIntermidateContent(response.data);
                 console.log(response);
-
-
-                // getReactContent()
-
             });
-        // getJavaContent()
-
     }
 
     useEffect(() => {
@@ -24,15 +18,13 @@ const Intermidate = () => {
         getIntermediateContent();
 
     }, []);
-
-
     return (
         <>
 
             <Navbar/>
             <>
 
-                <h1 className="text-center">Intermediate content</h1>
+                <h1 className="category-title">Intermediate content</h1>
 
                 {
                     showIntermidateContent.map((item, index) => {
@@ -40,11 +32,15 @@ const Intermidate = () => {
                             <div className="category-container text-center">
 
                                 {/* link to user profile */}
-                                <span className="">{item.title}</span>
+                                <span className="category-subtitle">{item.title}</span>
 
                                 {/* Post body content */}
                                 <div className="category-content">
                                     <p>{item.mainbodycontent}</p>
+                                </div>
+                                <div className="color-line">
+                                    <span className="color-line-1"></span>
+
                                 </div>
                             </div>
                         )

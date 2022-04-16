@@ -3,7 +3,7 @@ import axios from "axios";
 import Navbar from "../navbar/Navbar";
 const Beginner = () => {
 
-    const [showBeginnerContent, setShowBeginnerContent] = useState(true);
+    const [showBeginnerContent, setShowBeginnerContent] = useState([]);
     const [showContent, setShowContent] = useState([])
 
     async function getBeginnerContent() {
@@ -12,12 +12,7 @@ const Beginner = () => {
                 setShowBeginnerContent(response.data);
                 console.log(response);
 
-
-                // getReactContent()
-
             });
-        // getJavaContent()
-
     }
 
     useEffect(() => {
@@ -46,6 +41,10 @@ const Beginner = () => {
                                 {/* Post body content */}
                                 <div className="category-content">
                                     <p>{item.mainbodycontent}</p>
+                                </div>
+                                <div className="color-line">
+                                    <span className="color-line-1"></span>
+
                                 </div>
                             </div>
                         )
