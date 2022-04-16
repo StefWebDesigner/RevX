@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-function Post({postid, pic, username, accountType, content, postdate, likes}){
+function Post({postid, profilePic, username, accountType, image, content, postdate, likes}){
 
     const [liked, setLiked] = useState(false);
     const [numLikes, setNumLikes] = useState(likes);
@@ -25,19 +25,25 @@ function Post({postid, pic, username, accountType, content, postdate, likes}){
         }
     }
 
+    function reportClick(){
+
+    }
+
     return (
         <div className="post-container">
 
-            {/* Heading - pic, name, follow button */}
-            <img src={pic ? pic : "../../../images/user-badge-purple.svg"} className="user-badge" alt="user badge" />
+            {/* Heading - profilePic, name, follow button */}
+            <img src={profilePic ? "../../../images/" + profilePic : "../../../images/user-badge-purple.svg"} className="user-badge" alt="user badge" />
             
             {/* link to user profile */}
             <span>{username}</span> <small className="account-label"><i>{accountType}</i></small>
 
-            {/* follow button */}
+            {/* report button */}
+            <button className="reportbtn" onClick={reportClick}>Report</button>
 
             {/* Post body content */}
             <div className="post-content">
+                {image?<img src={image} alt="user upload"/>:""}
                 <p>{content}</p>
             </div>
             <small className="post-date">{pubDate}</small>
@@ -45,7 +51,7 @@ function Post({postid, pic, username, accountType, content, postdate, likes}){
             {/* Post footer - likes, share, report */}
             <div className="post-footer">
                 {/* like icon/ number of likes */}
-                <button type="button" className={liked? "liked-button": "not-liked-button"} onClick={handleClick}>Like</button>
+                <button className={liked? "liked-button": "not-liked-button"} onClick={handleClick}>Like</button>
                 <span>{numLikes}</span>
             </div>
 

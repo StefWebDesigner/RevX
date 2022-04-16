@@ -11,7 +11,7 @@ function AccountForm() {
     //CALL THE DATASTORE GLOBAL VARIABLE FROM STORE
     const { user, setUser } = useContext(DataStore);
 
-    const [profilePic, setProfilePic] = useState(`../../../images/${user.pic ? user.pic : "user-badge-purple.svg"}`);
+    const [profilePic, setProfilePic] = useState(user.pic ? user.pic : "user-badge-purple.svg");
 
     //potential error messages when validating form
     const [errorMessages, setErrorMessages] = useState({});
@@ -28,40 +28,49 @@ function AccountForm() {
 
         const regForm = document.getElementById("editaccountform");
         const { profilepic, first, last, username, password, city, state, email, account } = regForm;
+        setErrorMessages({});
+
+        const newInfo = {
+            userid: user.userid,
+            pic: (profilepic.value ? profilepic.value : "user-badge-purple.svg"),
+            firstname: (first.value.trim() ? first.value : user.firstname),
+            lastname: (last.value.trim() ? last.value : user.lastname),
+            username: (username.value.trim() ? username.value : user.username),
+            password: (password.value.trim() ? password.value : user.password),
+            city: (city.value.trim() ? city.value : user.city),
+            state: (state.value.trim() ? state.value : user.state),
+            email: (email.value.trim() ? email.value : user.email),
+            account: (account.value.trim() ? account.value : user.account)
+        }
 
         //if username is not ""
-        if (!username.value === "") {
-            console.log();
+        if (username.value) {
             if (username.value !== user.username) {
                 //check if username is in database
                 axios.get(`http://localhost:4000/users/userByName/${username.value}`).then((res) => {
 
                     const existingUser = res.data;
-                    console.log(existingUser);
+
                     if (existingUser) {
                         //username taken
                         setErrorMessages({ name: "unameused", message: errors.unameused });
-                        console.log("should have error message");
-                        console.log(errorMessages);
+
+                    } else {
+                        axios.put(`http://localhost:4000/users/updateUser/${user.userid}`, newInfo).then((res) => {
+
+                            setUser(newInfo);
+                        });
+
                     }
+                });
+            } else {
+                axios.put(`http://localhost:4000/users/updateUser/${user.userid}`, newInfo).then((res) => {
+
+                    setUser(newInfo);
                 });
             }
 
-        }
-
-        if (!errorMessages.name) {
-            const newInfo = {
-                userid: user.userid,
-                pic: (profilePic.value? profilePic.value : "user-badge-purple"),
-                firstname: (first.value.trim() ? first.value : user.firstname),
-                lastname: (last.value.trim()? last.value : user.lastname),
-                username: (username.value.trim()? username.value : user.username),
-                password: (password.value.trim()? password.value : user.password),
-                city: (city.value.trim()? city.value : user.city),
-                state: (state.value.trim()? state.value : user.state),
-                email: (email.value.trim()? email.value : user.email),
-                account: (account.value.trim()? account.value : user.account)
-            }
+        } else {
             axios.put(`http://localhost:4000/users/updateUser/${user.userid}`, newInfo).then((res) => {
 
                 setUser(newInfo);
@@ -79,7 +88,7 @@ function AccountForm() {
         const picOptions = document.querySelectorAll('input[name="profilepic"]');
         for(const option of picOptions){
             if(option.checked){
-                setProfilePic("../../../images/"+option.value);
+                setProfilePic(option.value);
                 break;
             }
         }
@@ -93,7 +102,7 @@ function AccountForm() {
                     <Col xs="auto">
                         <Form.Group>
                             <div className="profile-pic-dropdown">
-                                <img src={profilePic}
+                                <img src={"../../../images/"+profilePic}
                                     className="profile-pic" alt="User Avatar" />
                                 <ProfilePics />
                             </div>

@@ -104,7 +104,7 @@ const Navbar = ({setShowLogin}) => {
                         <Menu iconShape="square">
 
                           <MenuItem icon={<BiCog/>}>
-                                <Link to="/editAccount">Account</Link>
+                                <Link to="/account">Account</Link>
                             </MenuItem>
                           
                             <MenuItem icon={<FaExclamationTriangle/>}>

@@ -336,6 +336,9 @@
     border-radius: 3px;
     padding-right: 10px;
     padding-left: 10px;
+    padding-bottom: 10px;
+    margin-right: 10px;
+    float:right;
 }
 
 .form-dark {
@@ -429,6 +432,37 @@
     background-color: mediumpurple;
 }
 
+.account-label {
+    color: rgb(155, 155, 155);
+    margin-left: 5px;
+}
+
+.account-page {
+    margin-top: 3%;
+}
+
+.editform {
+    width: 100%;
+}
+
+.profile-pic {
+    width: 100%;
+    max-width: 200px;
+
+}
+
+.reportbtn{
+    color:rgb(155, 155, 155);
+    font-size: smaller;
+    border:none;
+    background-color: transparent;
+    float:right;
+}
+
+.reportbtn:hover {
+    color: rgb(180, 151, 238);
+}
+
 
 /*ADMIN BUTTONS*/
 
@@ -470,25 +504,6 @@
 
 .adminDeletebtn:active {
     border: black solid 1px;
-}
-
-.account-label{
-    color:rgb(155, 155, 155);
-    margin-left: 5px;
-}
-
-.account-page{
-    margin-top: 3%;
-}
-
-.editform{
-    width:100%;
-}
-
-.profile-pic{
-    width:100%;
-    max-width:200px;
-
 }
 
 /*CATEGORY TITLE*/
