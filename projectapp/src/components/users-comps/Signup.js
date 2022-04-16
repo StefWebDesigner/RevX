@@ -219,7 +219,6 @@ const Signup = (props) => {
                             <option value="associate">Associate</option>
                             <option value="alumni">Alumni</option>
                             <option value="trainer">Trainer</option>
-                            <option value="admin">Admin</option>
                         </Form.Select>
                     </Form.Group>
                 </Modal.Body>
