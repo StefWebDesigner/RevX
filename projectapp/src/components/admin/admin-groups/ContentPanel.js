@@ -179,37 +179,11 @@ const ContentPanel = () => {
                             {/*COL END*/}
                         </div>
 
-                        {/*FACT 1*/}
-                        {/*COL FOR CARD*/}
-                        {/*<div className="col-xl-4 col-lg-4 col-md-4 mt-2">*/}
-                        {/*    <div className="card shadow h-100">*/}
-                        {/*        <div className="card-body purple-text-tag">*/}
-                        {/*            /!*CARD ROW*!/*/}
-                        {/*            <div className="row no-gutters align-items-center">*/}
-                        {/*                <div className="col mr-2">*/}
-                        {/*                    <div className="fact-body">*/}
-                        {/*                        <div className="text-center text-xs font-weight-bold text-uppercase">*/}
-                        {/*                            Most Liked Post :*/}
-                        {/*                        </div>*/}
-                        {/*                        <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">*/}
-                        {/*                            /!*{ mostLikedPost}*!/*/}
-                        {/*                        </div>*/}
-                        {/*                    </div>*/}
-                        {/*                </div>*/}
-                        {/*                /!*END CARD ROW*!/*/}
-                        {/*            </div>*/}
-                        {/*        </div>*/}
-                        {/*    </div>*/}
-                        {/*    /!*COL END*!/*/}
-                        {/*</div>*/}
-                        {/*OVERALL FACT ROW*/}
                     </div>
-
 
 
                     {/*GET ALL USERS ROW*/}
                     <div className="row mb-3">
-
 
                         {/*COL FOR CARD*/}
                         <div className="col-xl-12 col-lg-12 col-md-12">
@@ -253,13 +227,10 @@ const ContentPanel = () => {
                                                                         <div className="col-lg-1 col-md-2 col-sm-2"><th className="text-center">Remove</th></div>
                                                                     </div>
 
-
                                                                     </div>
                                                                     </tr>
                                                                     </thead>
-                                                                {/*</div>*/}
                                                             </table>
-                                                        // </div>
                                                     }
 
                                                     {

@@ -602,3 +602,13 @@
 .previewbtn:hover {
     border: mediumpurple solid 1px;
 }
+
+
+.reportFont {
+    font-size: 15px;
+}
+
+.reportTitle {
+    font-size: 15px;
+
+}
