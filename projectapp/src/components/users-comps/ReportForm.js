@@ -44,7 +44,7 @@ const ReportForm = () => {
                         <FormLabel bsPrefix="form-dark">
                             Enter user who are reporting :
                         </FormLabel>
-                        <Form.Control bsPrefix="form-dark" type="text" name="user" value={report.user} {reportChangeHandler} placeholder="other username" aria-placeholder="other user" required/>
+                        <Form.Control bsPrefix="form-dark" type="text" name="user" value={report.user} onChange={reportChangeHandler} placeholder="other username" aria-placeholder="other user" required/>
                     </FormGroup>
                     <FormGroup bsPrefix="form-dark">
                         <FormLabel bsPrefix="form-dark">
