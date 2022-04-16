@@ -82,7 +82,7 @@ const AdminBody = () => {
 
                     {/*HEADER TITLE*/}
                     <div className="d-sm-flex align-items-center justify-content-center mb-4">
-                        <h1 className="text-center">Overal Portal Information</h1>
+                        <h1 className="text-center">Portal Information</h1>
                     </div>
 
                     {/*OVERALL FACT ROW*/}
@@ -185,7 +185,7 @@ const AdminBody = () => {
                                                     </div>
                                                     <div
                                                         className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                        All Total Post Per Genre
+                                                        Total Post Per Genre
                                                     </div>
                                                     <div
                                                         className=" text-center h5 mb-0 font-weight-bold text-gray-800">

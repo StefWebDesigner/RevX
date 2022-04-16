@@ -6,8 +6,6 @@ import { useNavigate } from "react-router-dom";
 //import AccountForms from "../users-comps/AccountForm"
 
 
-
-
 function AccountItems(_getUserInfo) {
 
 
@@ -43,7 +41,7 @@ function AccountItems(_getUserInfo) {
 
     let navigate = useNavigate(); 
   const routeChange = () => { 
-    let path = "../users-comps/AccountForm"; 
+    let path = "../editAccount/";
     navigate(path);
   }
 

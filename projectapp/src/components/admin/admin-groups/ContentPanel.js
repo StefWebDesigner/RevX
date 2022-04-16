@@ -37,9 +37,6 @@ const ContentPanel = () => {
 
        //RESETS THE CONTENT IN TO THE FORM
        setPostContent({
-           // postTitle: "",
-           // postBody: "",
-           // postGenre: ""
            tiptitle: "",
            tipbody: "",
            tipgenre: ""
@@ -63,12 +60,14 @@ const ContentPanel = () => {
     }
 
     //DELETE A POST
-     function deletePost (id) {
+     async function deletePost (postid) {
 
-        axios.delete(`http://localhost:4000/posts/deletePost/${id}`).then(data=>{
-            console.log('helo')
+        axios.delete(`http://localhost:4000/posts/deletePost/${postid}`).then(data=>{
+
+            console.log(data);
+
+            deletePost();
         })
-
 
 
     }
@@ -409,7 +408,7 @@ const ContentPanel = () => {
                                                     Post Graph :
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                    All Total Post Per Genre
+                                                    Total Post Per Genre
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
                                                     <ContentChart/>
