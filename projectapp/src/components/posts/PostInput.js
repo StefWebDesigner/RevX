@@ -26,10 +26,12 @@ function PostInput({setCreateNewPost}){
         });
     }
 
+    const profilePic =  "../../../images/" + (user && user.pic ? user.pic : 'user-badge-purple.svg');
+
     return(<>
         <div className="post-container">
 
-            <img src={user && user.pic ? user.pic : "../../../images/user-badge-purple.svg"} className="user-badge" alt="user badge" />
+            <img src={profilePic} className="user-badge" alt="user badge" />
             <span>{user? user.username : "" }</span>
 
             <form id="postinput" className="post-input">
