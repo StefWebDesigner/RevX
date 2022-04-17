@@ -32,10 +32,8 @@ const UserPanel = () => {
 
             console.log(data);
             console.log("successfully deleted case");
-
+            getReportMethod()
         })
-
-
     }
 
     //FOR THE NULL CASE
@@ -46,6 +44,8 @@ const UserPanel = () => {
         });
 
         alert("successfully deleted case");
+        getReportMethod()
+
     }
 
 
@@ -268,7 +268,7 @@ const UserPanel = () => {
 
 
                         {/*COL FOR CARD*/}
-                        <div className="col-xl-12 col-lg-12 col-md-12">
+                        <div className="col-xl-12 col-lg-12 col-md-12 mt-2">
                             <div className="card shadow h-100">
                                 <div className="card-body">
                                     {/*CARD ROW*/}
@@ -358,7 +358,7 @@ const UserPanel = () => {
                                                                                             className="col-xl-2 col-lg-2 col-md-2 col-sm-1 col-1">
                                                                                             <button
                                                                                                 className="adminDeletebtn"
-                                                                                                onClick={() => deleteReport(user.username)}
+                                                                                                onClick={() => deteleUser(user.username)}
                                                                                             >
                                                                                                 <i className="bi bi-dash-square">-</i>
                                                                                             </button>
@@ -366,9 +366,6 @@ const UserPanel = () => {
 
                                                                                         {/*Ent of flex tage    */}
                                                                                     </div>
-
-                                                                                    {/*Ent of table col tag    */}
-                                                                                    {/*</div>*/}
 
                                                                                     {/*ENDING DIV FOR TABLE ROW    */}
                                                                                 </div>
@@ -379,8 +376,6 @@ const UserPanel = () => {
                                                                 </aside>
                                                             );
                                                         })}
-
-
                                                 </div>
                                             </div>
                                         </div>
@@ -393,12 +388,11 @@ const UserPanel = () => {
                         {/*OVERALL FACT ROW*/}
                     </div>
 
-
                     <div className="row">
 
                         {/*REPORT USER*/}
                         {/*COL FOR CARD*/}
-                        <div className="col-xl-9 col-lg-9 col-md-9">
+                        <div className="col-xl-9 col-lg-9 col-md-9 mt-2">
                             <div className="card shadow h-100">
                                 <div className="card-body">
                                     {/*CARD ROW*/}
@@ -410,17 +404,16 @@ const UserPanel = () => {
                                                 </div>
                                                 <div
                                                     className=" text-center h5 mb-0 font-weight-bold text-gray-800 mb-3">
-                                                    Table has the following pending reported Users
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
 
                                                     <div className="row">
                                                         <table>
                                                             <thead>
-                                                            <th className="col-xl-1 col-lg-2 col-md-1 col-sm-1 col-1 reportTitle">Case</th>
-                                                            <th className="col-xl-1 col-lg-2 col-md-1 col-sm-1 col-1 reportTitle">Post</th>
-                                                            <th className="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-4 reportTitle">User</th>
-                                                            <th className="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-4 reportTitle">Issue</th>
+                                                            <th className="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 reportTitle">Case</th>
+                                                            <th className="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 reportTitle">Post</th>
+                                                            <th className="col-xl-1 col-lg-4 col-md-4 col-sm-4 col-4 reportTitle">User</th>
+                                                            <th className="col-xl-5 col-lg-4 col-md-4 col-sm-4 col-4 reportTitle">Issue</th>
                                                             <th className="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 reportTitle">OK</th>
                                                             <th className="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 reportTitle"> Delete</th>
 
@@ -444,19 +437,19 @@ const UserPanel = () => {
                                                                                         className="d-flex justify-content-center">
 
                                                                                         <div
-                                                                                            className="col-xl-2 col-lg-2 col-md-1 col-sm-1 col-1">
+                                                                                            className="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">
                                                                                             <td className="text-center reportFont">{report.caseid}</td>
                                                                                         </div>
                                                                                         <div
-                                                                                            className="col-xl-2 col-lg-2 col-md-1 col-sm-1 col-1">
+                                                                                            className="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">
                                                                                             <td className="text-center reportFont">{report.postid}</td>
                                                                                         </div>
                                                                                         <div
-                                                                                            className="col-xl-3 col-lg-3 col-md-4 col-sm-4 col-4">
+                                                                                            className="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
                                                                                             <td className="text-center reportFont">{report.username}</td>
                                                                                         </div>
                                                                                         <div
-                                                                                            className="col-xl-3 col-lg-3 col-md-4 col-sm-4 col-4">
+                                                                                            className="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
                                                                                             <td className="text-center reportFont">{report.issue}</td>
                                                                                         </div>
                                                                                         <div
@@ -507,7 +500,7 @@ const UserPanel = () => {
                         {/*COL END*/}
 
 
-                        <div className="col-xl-3 col-lg-3 col-md-3">
+                        <div className="col-xl-3 col-lg-3 col-md-3 mt-2">
                             <div className="card shadow h-100">
                                 <div className="card-body ">
                                     {/*CARD ROW*/}
