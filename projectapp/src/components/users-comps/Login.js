@@ -95,12 +95,24 @@ function Login(props) {
                 <Modal.Body>
                     <Form.Group className="mb-2">
                         <Form.Label bsPrefix="form-dark">Enter username: </Form.Label>
-                        <Form.Control bsPrefix="form-control form-dark" type="text" name="username" placeholder="username" required />
+                        <Form.Control 
+                            bsPrefix="form-control form-dark" 
+                            type="text" 
+                            name="username" 
+                            placeholder="username" 
+                            required 
+                        />
                         {renderErrorMessage("uname")}
                     </Form.Group>
                     <Form.Group className="mb-2">
                         <Form.Label bsPrefix="form-dark">Enter password: </Form.Label>
-                        <Form.Control bsPrefix="form-control form-dark" type="password" name="password" placeholder="password" required />
+                        <Form.Control 
+                            bsPrefix="form-control form-dark" 
+                            type="password" 
+                            name="password" 
+                            placeholder="password" 
+                            required 
+                        />
                         {renderErrorMessage("pass")}
                     </Form.Group>
                 </Modal.Body>

@@ -8,11 +8,8 @@ import {useState} from "react";
 import DataContext from "./dataStore/dataStore";
 import UserPanel from "./components/admin/admin-groups/UserPanel";
 import SearchResults from "./components/users-comps/SearchResults";
-//import SurveyPanel from "./components/admin/admin-groups/SurveyPanel";
 import ContentPanel from "./components/admin/admin-groups/ContentPanel";
-import ChatMain from "./components/chat-components/ChatMain.js";
-// import Account from '../src/components/Accounts/accounts';
-import EditAccount from '../src/components/users-comps/EditAccount';
+import EditAccount from '../src/components/Accounts/EditAccount';
 import UserProfile from "./components/users-comps/UserProfile";
 import Java from "./components/Categories/Java";
 import ReactFile from "./components/Categories/ReactFile";
@@ -20,7 +17,6 @@ import Beginner from "./components/Categories/Beginner";
 import Intermidate from "./components/Categories/Intermidate";
 import Advanced from "./components/Categories/Advanced";
 import AccountItems from './components/Accounts/AccountItems';
-//mport SurveyForm from "./components/Survey/SurveyForm";
 
 
 function App() {
@@ -38,30 +34,25 @@ function App() {
         }}>
           <Router>
               <Routes>
-                  {/*ROUTES FOR HOME NAV*/}
-                  <Route path="/" element={<Home/>}/>
-                  <Route path="/admin" element={<Admin/>}/>
+                {/*ROUTES FOR HOME NAV*/}
+                <Route path="/" element={<Home/>}/>
+                <Route path="/admin" element={<Admin/>}/>
 
-                  {/*ROUTES FOR ADMIN*/}
-                  <Route path="/userpanel" element={<UserPanel/>}/>
-                  {/* <Route path="/surveypanel" element={<SurveyPanel/>}/> */}
-                  <Route path="/contentpanel" element={<ContentPanel/>}/> 
+                {/*ROUTES FOR ADMIN*/}
+                <Route path="/userpanel" element={<UserPanel/>}/>
+                <Route path="/contentpanel" element={<ContentPanel/>}/> 
 
-                  <Route path="/editAccount" element={<EditAccount />}/>
-                  <Route path="/userprofile/:username" element={<UserProfile/>}/>
+                <Route path="/java" element={<Java/>}/>
+                <Route path="/react" element={<ReactFile/>}/>
+                <Route path="/beginner" element={<Beginner/>}/>
+                <Route path="/intermidate" element={<Intermidate/>}/>
+                <Route path="/advanced" element={<Advanced/>}/>
+                <Route path="/searchResults" element={<SearchResults/>}/>
 
-                  <Route path="/java" element={<Java/>}/>
-                  <Route path="/react" element={<ReactFile/>}/>
-                  <Route path="/beginner" element={<Beginner/>}/>
-                  <Route path="/intermidate" element={<Intermidate/>}/>
-                  <Route path="/advanced" element={<Advanced/>}/>
-                  <Route path="/searchResults" element={<SearchResults/>}/>
-
-
-                  <Route path="/account" element={<AccountItems/>}/>
-                  {/* <Route path="/surveyform" element={<SurveyForm/>}/> */}
-
-                  {/*<Route path="/chat" element={<ChatMain/>}/>*/}
+                {/* Routes for Account */}
+                <Route path="/account" element={<AccountItems/>}/>
+                <Route path="/editAccount" element={<EditAccount />} />
+                <Route path="/userprofile/:username" element={<UserProfile />} />
               </Routes>
           </Router>
       </DataContext.Provider>

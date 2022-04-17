@@ -463,6 +463,31 @@
     color: rgb(180, 151, 238);
 }
 
+.report-form{
+    box-shadow: 0 0 75px 20px rgb(0,0,0, .6), 0 0 20px 1px rgb(0,0,0,.6);
+}
+
+.reportformheading {
+    color: #abafb4;
+    text-align: center;
+    padding: 20px 5px 0 5px;
+    border-radius: 2px;
+    border-bottom: rgb(195, 195, 195) solid 1px;
+}
+
+.reportformbtn {
+    background:#4f5256;
+    width: fit-content;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+
+.reportformbtn:hover{
+    background-color: #845ecb;
+}
+
 
 /*ADMIN BUTTONS*/
 

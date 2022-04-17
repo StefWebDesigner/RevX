@@ -18,7 +18,6 @@ import {
 import { 
     FaJava,
     FaReact,
-    FaExclamationTriangle,
     FaTable 
 } from "react-icons/fa";
 import { RiAdminLine } from "react-icons/ri";
@@ -107,9 +106,6 @@ const Navbar = ({setShowLogin}) => {
                                 <Link to="/account">Account</Link>
                             </MenuItem>
                           
-                            <MenuItem icon={<FaExclamationTriangle/>}>
-                                <a href="#">Report</a>
-                            </MenuItem>
                             <MenuItem icon={<FiLogOut/>}>
                                 <Link to="/" onClick={() => logout()}>Logout</Link>
                             </MenuItem>

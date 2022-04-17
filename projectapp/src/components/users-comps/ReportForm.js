@@ -1,68 +1,73 @@
-import React, {useState} from 'react';
-import {Form, FormGroup, FormLabel, Modal, ModalFooter} from "react-bootstrap";
+import React from 'react';
+import {Form, Modal} from "react-bootstrap";
 import axios from "axios";
 
-const ReportForm = () => {
+function ReportForm({reportInfo, setReportInfo}){
 
-   const [report, setReport] = useState([{
-       user: "",
-       complaint: ""
-   }]);
+    const submitReport = (e) => {
+        e.preventDefault();
 
-   const submitReport = async(e) => {
-       e.preventDefault();
+        const reportForm = document.getElementById("reportform");
+        let complaint = reportForm.elements[0].value;
 
-       if(!report.user.trim() || !report.complaint.trim()) {
-           alert("Please enter all input fields");
-           return;
-       }
+        let newReport = {...reportInfo, issue:complaint};
 
-       const data = await axios.post('', report);
-       console.log(data);
-       setReport({
-          user: "",
-           compalaint : ""
-       });
-   };
+        if(!complaint.trim()) {
+            alert("Please enter all input fields");
+            return;
+        }
 
-   const reportChangeHandler = (e) => {
-       setReport({
-           ...report,
-           [e.target.name] : e.target.value,
-       });
-   };
+        console.log(newReport);
+        axios.post('http://localhost:4000/reports/newReport', newReport);
+
+        setReportInfo({ show: false });
+    };
+
+    function cancel(){
+        setReportInfo({show:false});
+    }
 
     return (
-        <>
-        <section>
-            <Form onSubmit={submitReport}>
-                <Modal.Header bsPrefix="formheading-dark">
+        <Modal
+            show={true}
+            size="md"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+            contentClassName="form-dark report-form"
+        >
+            <Form id="reportform" onSubmit={submitReport}>
+                <Modal.Header bsPrefix="reportformheading">
                     <h3> Report User : </h3>
                 </Modal.Header>
                 <Modal.Body>
-                    <FormGroup>
-                        <FormLabel bsPrefix="form-dark">
-                            Enter user who are reporting :
-                        </FormLabel>
-                        <Form.Control bsPrefix="form-dark" type="text" name="user" value={report.user} onChange={reportChangeHandler} placeholder="other username" aria-placeholder="other user" required/>
-                    </FormGroup>
-                    <FormGroup bsPrefix="form-dark">
-                        <FormLabel bsPrefix="form-dark">
+                    <Form.Group className="mb-2">
+                        <Form.Label bsPrefix="form-dark">
+                            You are reporting user : <i>{reportInfo.username}</i>
+                        </Form.Label>
+                    </Form.Group>
+                    <Form.Group className="mb-2">
+                        <Form.Label bsPrefix="form-dark">
                             Please enter your complaint :
-                        </FormLabel>
-                        <Form.Control bsPrefix="form-dark" type="text" name="complaint" value={report.complaint} onChange={reportChangeHandler} placeholder="complaint" aria-placeholder="complaint" required/>
-                    </FormGroup>
+                        </Form.Label>
+                        <textarea 
+                            name="complaint" 
+                            className="form-control form-dark" 
+                            rows="5" 
+                            placeholder={"Explain why you are reporting " + reportInfo.username} 
+                            required>
+                        </textarea>
+                    </Form.Group>
                 </Modal.Body>
                 <Modal.Footer>
-                    <button className="loginbtn" variant="none" type="submit">
-                        Submit report
+                    <button className="reportformbtn" variant="none" type="submit">
+                        Submit Report
+                    </button>
+                    <button className="reportformbtn" variant="none" type="button" onClick={cancel}>
+                        Cancel
                     </button>
                 </Modal.Footer>
             </Form>
-        </section>
-
-
-        </>
+        </Modal>
     );
 };
 

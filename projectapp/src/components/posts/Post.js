@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-function Post({postid, profilePic, username, accountType, image, content, postdate, likes}){
+function Post({postid, profilePic, userid, username, accountType, image, content, postdate, likes, setReportInfo}){
 
     const [liked, setLiked] = useState(false);
     const [numLikes, setNumLikes] = useState(likes);
@@ -26,7 +26,7 @@ function Post({postid, profilePic, username, accountType, image, content, postda
     }
 
     function reportClick(){
-
+        setReportInfo({show:true, reportid:userid, username:username, postid:postid});
     }
 
     return (
