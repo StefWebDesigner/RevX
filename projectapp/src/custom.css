@@ -417,6 +417,7 @@
     background-color: mediumpurple;
     border-radius: 5px;
     color:white;
+    cursor: pointer;
 }
 
 .not-liked-button {
@@ -426,6 +427,7 @@
     background-color: transparent;
     border-radius: 5px;
     color: white;
+    cursor: pointer;
 }
 
 .not-liked-button:hover{
@@ -457,6 +459,7 @@
     border:none;
     background-color: transparent;
     float:right;
+    cursor: pointer;
 }
 
 .reportbtn:hover {
@@ -643,10 +646,53 @@
 
 .reportTitle {
     font-size: 15px;
+}
+
+
+.userprofileTitle,
+.userprofileElements {
+    text-align: center;
+    color: mediumpurple;
+}
+
+.userprofileTitle,
+.userprofileElements,
+.userprofileSubtitlte {
+    text-align: center;
+}
+
+.userprofileTitle {
+    padding-left: 70px;
+}
+
+.userprofileSubtitlte {
+    color: black;
+}
+
+.userprofileContent {
+        border: rebeccapurple solid 2px;
+        background-color: #F8F9FC;
+}
+
+.searchPromptField {
+    width: 50%;
 
 }
 
-.userChartSize {
-
-
+.searchPromptField {
+    margin-left: 80px;
 }
+
+/*.searchResultButton{*/
+/*    !*width:fit-content;*!*/
+/*    border: mediumpurple solid 1px;*/
+/*    background-color: mediumpurple;*/
+/*    border-radius: 3px;*/
+/*    !*padding-right: 10px;*!*/
+/*    !*padding-left: 10px;*!*/
+/*    !*padding-bottom: 10px;*!*/
+/*    !*margin-right: 10px;*!*/
+/*    !*float:right;*!*/
+/*}*/
+
+
