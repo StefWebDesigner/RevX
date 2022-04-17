@@ -11,12 +11,8 @@ import SearchResults from "./components/users-comps/SearchResults";
 import ContentPanel from "./components/admin/admin-groups/ContentPanel";
 import EditAccount from '../src/components/Accounts/EditAccount';
 import UserProfile from "./components/users-comps/UserProfile";
-import Java from "./components/Categories/Java";
-import ReactFile from "./components/Categories/ReactFile";
-import Beginner from "./components/Categories/Beginner";
-import Intermidate from "./components/Categories/Intermidate";
-import Advanced from "./components/Categories/Advanced";
 import AccountItems from './components/Accounts/AccountItems';
+import CategoryPage from './components/Categories/CategoryPage';
 
 
 function App() {
@@ -42,11 +38,11 @@ function App() {
                 <Route path="/userpanel" element={<UserPanel/>}/>
                 <Route path="/contentpanel" element={<ContentPanel/>}/> 
 
-                <Route path="/java" element={<Java/>}/>
-                <Route path="/react" element={<ReactFile/>}/>
-                <Route path="/beginner" element={<Beginner/>}/>
-                <Route path="/intermidate" element={<Intermidate/>}/>
-                <Route path="/advanced" element={<Advanced/>}/>
+                <Route path="/java" element={<CategoryPage title="Java" categoryid={1} />} />
+                <Route path="/react" element={<CategoryPage title="React" categoryid={2} />} />
+                <Route path="/sql" element={<CategoryPage title="SQL" categoryid={3}/>} />
+                <Route path="/javascript" element={<CategoryPage title="JavaScript" categoryid={4} />} />
+                <Route path="/html" element={<CategoryPage title="HTML" categoryid={5} />} />
                 <Route path="/searchResults" element={<SearchResults/>}/>
 
                 {/* Routes for Account */}

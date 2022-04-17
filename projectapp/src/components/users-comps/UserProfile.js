@@ -1,22 +1,18 @@
 import React, {useEffect, useState} from 'react';
-import {useParams} from 'react-router-dom'
 import axios from "axios";
 
-const UserProfile = () => {
+const UserProfile = ({username}) => {
 
-    //USE PARAM FOR THE LINK
-    const {username} = useParams();
-
-    const [userProfile, setUserProfile] = useState(null);
+    let profile = {};
 
     useEffect(() => {
         axios.get(`http://localhost:4000/users/userByName/${username}`)
             .then((response) => {
-                setUserProfile(response.data);
+                profile = response.data;
             })
     }, [])
 
-    console.log(userProfile);
+    console.log(profile);
 
     return (
         <>

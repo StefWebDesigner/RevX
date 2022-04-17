@@ -87,13 +87,13 @@ const Navbar = ({setShowLogin}) => {
                                 <Link to="/react">React</Link>
                             </MenuItem>
                             <MenuItem icon={<FaTable />}>
-                                <Link to="/beginner">SQL</Link>
+                                <Link to="/sql">SQL</Link>
                             </MenuItem>
                             <MenuItem icon={<IoLogoJavascript />}>
-                                <Link to="/intermidate">JavaScript</Link>
+                                <Link to="/javascript">JavaScript</Link>
                             </MenuItem>
                             <MenuItem icon={<MdWebAsset />}>
-                                <Link to="/advanced">HTML</Link>
+                                <Link to="/html">HTML</Link>
                             </MenuItem>
                         </Menu>
                     </SidebarContent>
