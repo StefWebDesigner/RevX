@@ -135,12 +135,12 @@
     padding: 20px;
 }
 
-/*MEDIA QUERRIES*/
-@media only screen and (max-width: 720px) {
-    html {
-        overflow: hidden;
-    }
-}
+/*!*MEDIA QUERRIES*!*/
+/*@media only screen and (max-width: 720px) {*/
+/*    html {*/
+/*        overflow: hidden;*/
+/*    }*/
+/*}*/
 
 /* ADMIN  */
 
