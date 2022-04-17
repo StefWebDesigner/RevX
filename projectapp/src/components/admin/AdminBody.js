@@ -173,7 +173,7 @@ const AdminBody = () => {
 
 
                             {/*COL FOR CARD*/}
-                            <div className="col-xl-6 col-lg-6 col-md-6">
+                            <div className="col-xl-6 col-lg-6 col-md-6 mt-2">
                                 <div className="card shadow h-100">
                                     <div className="card-body">
                                         {/*CARD ROW*/}
@@ -206,7 +206,7 @@ const AdminBody = () => {
 
                             {/*GRAPH*/}
                             {/*COL FOR CARD*/}
-                            <div className="col-xl-6 col-lg-6 col-md-6">
+                            <div className="col-xl-6 col-lg-6 col-md-6 mt-2">
                                 <div className="card shadow h-100 ">
                                     <div className="card-body ">
                                         {/*CARD ROW*/}

@@ -59,9 +59,6 @@ function App() {
 
 
                   <Route path="/account" element={<AccountItems/>}/>
-                  {/* <Route path="/surveyform" element={<SurveyForm/>}/> */}
-
-                  {/*<Route path="/chat" element={<ChatMain/>}/>*/}
               </Routes>
           </Router>
       </DataContext.Provider>

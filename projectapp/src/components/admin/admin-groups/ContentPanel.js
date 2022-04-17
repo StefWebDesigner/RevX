@@ -6,30 +6,30 @@ import ContentChart from "../admincharts/ContentChart";
 
 const ContentPanel = () => {
 
+    //ALL POST FOR FACT
     const [allPost, setAllPost] = useState([]);
-
-    const [allGenre, setAllGenre] = useState([]);
-
+    //COLLECTING ALL THE POST
     const [collectingAllPost, setCollectingAllPost] = useState([]);
-
+    //DISPLAYING TOTAL TIPS FOR FACT
     const [allTips, setAllTips] = useState([]);
-
-    const [mostLikedPost, setMostLikedPost] = useState([]);
-
-
     //FORM STATE FOR POST CONTENT
     const [postContent, setPostContent] = useState({
         categoryid: "",
         title: "",
         mainbodycontent: ""
     });
-
     //GET POST TOGGLE STATES
     const [showPost, setShowPost] = useState();
 
     //POSTING METHOD FOR POST CONTENT
     const SubmitPostContent = async (e) => {
         e.preventDefault()
+
+        //SOME FORM VALIDATION
+        if(!postContent.categoryid.trim() || !postContent.title.trim() || !postContent.mainbodycontent.trim()) {
+            alert("Please enter all information");
+            return
+        }
 
         //POST CALL
         const data = await axios.post('http://localhost:4000/categories/createTip', postContent);
@@ -41,8 +41,6 @@ const ContentPanel = () => {
             title: "",
             mainbodycontent: ""
         });
-
-
     }
     //POST CONTENT FORM HANDLER
     const handlePosts = (e) => {
@@ -50,7 +48,6 @@ const ContentPanel = () => {
         setPostContent({
             ...postContent,
             [e.target.name]: e.target.value,
-            // [e.target.name] : e.target.value.replace(/\D/g, ""),
         });
 
     };
@@ -60,7 +57,6 @@ const ContentPanel = () => {
         axios.get('http://localhost:4000/posts/getAllPosts').then(data => {
             setAllPost(data.data);
         })
-
     }
 
     //DELETE A POST
@@ -72,16 +68,7 @@ const ContentPanel = () => {
 
             deletePost();
         })
-
-
     }
-
-
-    async function getAllGenre() {
-        const data = await axios.get('http://localhost:4000/categories/getAll');
-        setAllGenre(data.data);
-    }
-
 
     async function getAllCollectedPost() {
 
@@ -95,23 +82,12 @@ const ContentPanel = () => {
         setAllTips(amount);
     }
 
-    async function getMostLikedPost() {
-        const data = await axios.get('http://localhost:4000/posts/maxlikepost');
-        const amount = data.data;
-        setMostLikedPost(amount);
-    }
-
     useEffect(() => {
-
         //CALLING GET ALL USERS & DETAILS
         getAllPost();
-        getAllGenre()
         getAllCollectedPost();
         getAllTips();
-        getMostLikedPost();
-
     }, []);
-
 
     return (
         <>
@@ -119,7 +95,6 @@ const ContentPanel = () => {
             <AdminNavbar/>
 
             <section id="adminSection" className="adminBackground fade-in-animation">
-
                 {/*FLEX AND WRAPPER CONTENT CLASS*/}
                 <div id="admin-wrapper" className="d-flex flex-column adminBody">
 
@@ -181,12 +156,11 @@ const ContentPanel = () => {
 
                     </div>
 
-
                     {/*GET ALL USERS ROW*/}
                     <div className="row mb-3">
 
                         {/*COL FOR CARD*/}
-                        <div className="col-xl-12 col-lg-12 col-md-12">
+                        <div className="col-xl-12 col-lg-12 col-md-12 mt-2">
                             <div className="card shadow h-100">
                                 <div className="card-body">
                                     {/*CARD ROW*/}
@@ -197,7 +171,6 @@ const ContentPanel = () => {
                                                     Get All Post :
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-
                                                     Displays all post currently recorded in database
                                                 </div>
                                                 <div className="text-center mt-5">
@@ -307,13 +280,12 @@ const ContentPanel = () => {
                         {/*OVERALL FACT ROW*/}
                     </div>
 
-
                     {/*POST CONTENT SECTION*/}
                     <div className="row mb-3">
 
 
                         {/*COL FOR CARD*/}
-                        <div className="col-xl-8 col-lg-8 col-md-8">
+                        <div className="col-xl-8 col-lg-8 col-md-8 mt-2">
                             <div className="card shadow h-100">
                                 <div className="card-body">
                                     {/*CARD ROW*/}
@@ -349,6 +321,7 @@ const ContentPanel = () => {
                                                                 <div className="d-flex flex-row justify-content-center">
                                                                     <label
                                                                         className="col-md-3 text-center"
+                                                                        aria-label="Enter a title"
                                                                     > Enter a title:
                                                                     </label>
                                                                     <input
@@ -357,6 +330,7 @@ const ContentPanel = () => {
                                                                         value={postContent.title}
                                                                         type="text"
                                                                         placeholder="Enter a title"
+                                                                        aria-placeholder="Enter a title"
                                                                         onChange={handlePosts}
                                                                         required
                                                                     />
@@ -367,6 +341,8 @@ const ContentPanel = () => {
 
                                                         <label
                                                             className="text-center"
+                                                            aria-label="Enter content into body"
+
                                                         > Enter some content: </label>
                                                         <textarea
                                                             className="postInputField text-center"
@@ -374,13 +350,13 @@ const ContentPanel = () => {
                                                             value={postContent.mainbodycontent}
                                                             type="text"
                                                             placeholder="Enter content in the body"
+                                                            aria-placeholder="Enter content in body post"
                                                             onChange={handlePosts}
                                                             required
                                                         >
                                                         </textarea>
 
                                                         <div className="row">
-                                                            {/*<div className="col-md-12">*/}
                                                             <div className="d-flex justify-content-center">
                                                                 <button
                                                                     className="buttonMainStyle"
@@ -392,12 +368,9 @@ const ContentPanel = () => {
                                                                 </button>
                                                             </div>
                                                         </div>
-                                                        {/*</div>*/}
                                                     </div>
                                                 </form>
 
-
-                                                {/*</div>*/}
                                             </div>
                                         </div>
                                         {/*END CARD ROW*/}
@@ -407,14 +380,10 @@ const ContentPanel = () => {
                             {/*COL END*/}
                         </div>
                         {/*OVERALL FACT ROW*/}
-                        {/*</div>*/}
-
-
-                        {/*<div className="row">*/}
 
                         {/*GRAPH*/}
                         {/*COL FOR CARD*/}
-                        <div className="col-xl-4 col-lg-3 col-md-4">
+                        <div className="col-xl-4 col-lg-3 col-md-4 mt-2">
                             <div className="card shadow h-100">
                                 <div className="card-body ">
                                     {/*CARD ROW*/}
@@ -438,17 +407,11 @@ const ContentPanel = () => {
                             </div>
                             {/*COL END*/}
                         </div>
-
                         {/*OVERALL FACT ROW*/}
                     </div>
-
-
                     {/* END OF WRAPPER CONTENT CLASS*/}
                 </div>
-
             </section>
-
-
         </>
     );
 };
