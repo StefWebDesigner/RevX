@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
-import {Col, FormControl, FormSelect, InputGroup, Row} from "react-bootstrap";
+import {Card, Col, FormControl, FormSelect, InputGroup, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import Navbar from "../navbar/Navbar";
 
@@ -32,7 +32,6 @@ const SearchResults = () => {
             })
     }
 
-
     //SEARCHING FOR LOCATOIN BASED ON SEARCHVALUE
     function searchResultsLocation(searchValue) {
 
@@ -55,11 +54,11 @@ const SearchResults = () => {
             </section>
 
             <section>
-                <Row>
+                {/*<Row>*/}
                     <div className="d-flex">
                     <InputGroup>
                         <FormSelect
-                            className="searchPromptField"
+                            className="searchPromptField searchField"
                             onChange={(e) => {
                                 console.log(e.target.value)
                                 //BY SELECTED DROP DOWN OPTION, THE VALUE IS SET FOR THE FOLLWING PART
@@ -69,8 +68,11 @@ const SearchResults = () => {
                             <option>Username</option>
                             <option>Location</option>
                         </FormSelect>
+                    </InputGroup>
+                    <InputGroup>
                         <FormControl
                             placeholder="Search..."
+                            classname="searchField"
                             onChange={(e) => {
                                 console.log(e.target.value);
                                 setSearch(e.target.value)
@@ -79,21 +81,22 @@ const SearchResults = () => {
                             aria-describedby="basic-addon2"
                         />
                     </InputGroup>
-                    {/*    <button*/}
-                    {/*        onClick={() => {*/}
-                    {/*            console.log(searchCategory)*/}
-                    {/*            if (searchCategory == "Username") {*/}
-                    {/*                searchResultsUsername(search)*/}
+                    <button
+                        className="searchPromptField searchbutton"
+                            onClick={() => {
+                                console.log(searchCategory)
+                                if (searchCategory == "Username") {
+                                    searchResultsUsername(search)
 
-                    {/*            }*/}
-                    {/*            if (searchCategory == "Location") {*/}
-                    {/*                searchResultsLocation(search)*/}
-                    {/*            }*/}
-                    {/*        }}>*/}
-                    {/*        Search*/}
-                    {/*    </button>*/}
-                    </div>
-                </Row>
+                                }
+                                if (searchCategory == "Location") {
+                                    searchResultsLocation(search)
+                                }
+                            }}>
+                            Search
+                    </button>
+                        </div>
+                {/*</Row>*/}
 
                 {/*//OUTPUT FOR NO RESULTS*/}
                 {showNotFound && (<div><p>No results</p></div>)}
@@ -101,9 +104,22 @@ const SearchResults = () => {
                 {/*//OUTPUT OF THE REQUESTS*/}
                 {retrieveInfo.map(data => (
                     <div key={data.id}>
-                        <Link to={`/userprofile/${data.username}`}>
-                            <p className="text-center">{data.username}</p>
-                        </Link>
+
+                        <div className="userprofileContainer">
+                                <div className="userprofileContent">
+                                    <h1 className="userprofileTitle">Your Results</h1>
+
+                                    <Link to={`/userprofile/${data.username}`}>
+                                        <p className="userprofileSubtitlte">{data.username}</p>
+                                    </Link>
+
+                                    <p className="userprofileElements">Click to view profile</p>
+                                </div>
+                            <div className="color-line">
+                                <span className="color-line-1"></span>
+                            </div>
+                        </div>
+
 
                     </div>
                 ))

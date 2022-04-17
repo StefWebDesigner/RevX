@@ -166,8 +166,20 @@
 .postInputField {
     padding-top: 50px;
     padding-bottom: 50px;
-
 }
+
+.tippostinput,
+.postInputField {
+    cursor: pointer;
+}
+
+.tippostinput:hover,
+.postInputField:hover
+{
+    border: solid mediumpurple 1px;
+}
+
+
 
 
 /*MAIN BUTTON STYLE*/
@@ -648,6 +660,35 @@
     font-size: 15px;
 }
 
+.searchField {
+    margin-left: 80px;
+}
+
+.searchPromptField:hover,
+.searchField:hover {
+    border: solid mediumpurple 1px;
+}
+
+
+.searchbutton{
+    width:fit-content;
+    border: mediumpurple solid 1px;
+    background-color: mediumpurple;
+    color: white;
+    border-radius: 3px;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    margin-right: 10px;
+    float:right;
+}
+
+.searchbutton:hover{
+    border: mediumpurple solid 1px;
+    background-color: white;
+    color: mediumpurple;
+
+}
 
 .userprofileTitle,
 .userprofileElements {
@@ -662,37 +703,45 @@
 }
 
 .userprofileTitle {
-    padding-left: 70px;
+    /*padding-left: 70px;*/
+    text-align: center;
 }
 
-.userprofileSubtitlte {
+a .userprofileSubtitlte {
     color: black;
+    font-size: 30px;
+    text-decoration: none;
 }
 
 .userprofileContent {
-        border: rebeccapurple solid 2px;
-        background-color: #F8F9FC;
+    border: rebeccapurple solid 2px;
+    background-color: #F8F9FC;
+}
+.userprofileContent:hover {
+    border: mediumpurple solid 2px;
+
 }
 
-.searchPromptField {
-    width: 50%;
-
+.userprofileContainer {
+    margin: 20px auto;
+    margin-right: 60px;
+    padding-top: 15px;
+    padding-bottom: 20px;
+    width: 70%;
+    background-color: #212529;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 3px 2px 5px 3px rgba(0, 0, 0, 0.15);
 }
 
-.searchPromptField {
-    margin-left: 80px;
+
+/* Edit Profile */
+.account-label {
+    color: rgb(155, 155, 155);
+    margin-left: 5px;
 }
 
-/*.searchResultButton{*/
-/*    !*width:fit-content;*!*/
-/*    border: mediumpurple solid 1px;*/
-/*    background-color: mediumpurple;*/
-/*    border-radius: 3px;*/
-/*    !*padding-right: 10px;*!*/
-/*    !*padding-left: 10px;*!*/
-/*    !*padding-bottom: 10px;*!*/
-/*    !*margin-right: 10px;*!*/
-/*    !*float:right;*!*/
-/*}*/
+
+
 
 

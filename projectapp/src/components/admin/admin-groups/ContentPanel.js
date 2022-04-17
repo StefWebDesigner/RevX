@@ -29,44 +29,44 @@ const ContentPanel = () => {
 
     //POSTING METHOD FOR POST CONTENT
     const SubmitPostContent = async (e) => {
-       e.preventDefault()
+        e.preventDefault()
 
-       //POST CALL
-       const data = await axios.post('http://localhost:4000/categories/createTip', postContent);
-       console.log(data);
+        //POST CALL
+        const data = await axios.post('http://localhost:4000/categories/createTip', postContent);
+        console.log(data);
 
-       //RESETS THE CONTENT IN TO THE FORM
-       setPostContent({
-           categoryid: "",
-           title: "",
-           mainbodycontent: ""
-       });
+        //RESETS THE CONTENT IN TO THE FORM
+        setPostContent({
+            categoryid: "",
+            title: "",
+            mainbodycontent: ""
+        });
 
 
     }
     //POST CONTENT FORM HANDLER
     const handlePosts = (e) => {
-    e.preventDefault()
+        e.preventDefault()
         setPostContent({
             ...postContent,
-            [e.target.name] : e.target.value,
+            [e.target.name]: e.target.value,
             // [e.target.name] : e.target.value.replace(/\D/g, ""),
         });
 
     };
 
     //GET ALL POST
-   function getAllPost() {
-        axios.get('http://localhost:4000/posts/getAllPosts').then(data=>{
+    function getAllPost() {
+        axios.get('http://localhost:4000/posts/getAllPosts').then(data => {
             setAllPost(data.data);
         })
 
     }
 
     //DELETE A POST
-     async function deletePost (postid) {
+    async function deletePost(postid) {
 
-        axios.delete(`http://localhost:4000/posts/deletePost/${postid}`).then(data=>{
+        axios.delete(`http://localhost:4000/posts/deletePost/${postid}`).then(data => {
 
             console.log(data);
 
@@ -75,7 +75,6 @@ const ContentPanel = () => {
 
 
     }
-
 
 
     async function getAllGenre() {
@@ -111,7 +110,7 @@ const ContentPanel = () => {
         getAllTips();
         getMostLikedPost();
 
-    },[]);
+    }, []);
 
 
     return (
@@ -145,7 +144,7 @@ const ContentPanel = () => {
                                                     Total Tips :
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                    { allTips}
+                                                    {allTips}
                                                 </div>
                                             </div>
                                         </div>
@@ -215,23 +214,33 @@ const ContentPanel = () => {
                                                         showPost &&
 
                                                         // <div className="d-flex justify-content-center">
-                                                            <table className="table table-striped table-hover">
-                                                                {/*<div className="d-flex justify-content-center">*/}
-                                                                <thead className="text-center">
-                                                                    <tr>
-                                                                    <div className="row">
+                                                        <table className="table table-striped table-hover">
+                                                            {/*<div className="d-flex justify-content-center">*/}
+                                                            <thead className="text-center">
+                                                            <tr>
+                                                                <div className="row">
                                                                     <div className="d-flex justify-content-center">
-                                                                        <div className="col-lg-2 col-md-2 col-sm-2"><th className="text-center">PostID</th></div>
-                                                                        <div className="col-lg-4 col-md-3 col-sm-3"><th className="text-center">Post</th></div>
-                                                                        <div className="col-lg-3 col-md-3 col-sm-3"><th className="text-center">Date</th></div>
-                                                                        <div className="col-lg-2 col-md-2 col-sm-2"><th className="text-center">Like</th></div>
-                                                                        <div className="col-lg-1 col-md-2 col-sm-2"><th className="text-center">Remove</th></div>
+                                                                        <div className="col-lg-2 col-md-2 col-sm-2">
+                                                                            <th className="text-center">PostID</th>
+                                                                        </div>
+                                                                        <div className="col-lg-4 col-md-3 col-sm-3">
+                                                                            <th className="text-center">Post</th>
+                                                                        </div>
+                                                                        <div className="col-lg-3 col-md-3 col-sm-3">
+                                                                            <th className="text-center">Date</th>
+                                                                        </div>
+                                                                        <div className="col-lg-2 col-md-2 col-sm-2">
+                                                                            <th className="text-center">Like</th>
+                                                                        </div>
+                                                                        <div className="col-lg-1 col-md-2 col-sm-2">
+                                                                            <th className="text-center">Remove</th>
+                                                                        </div>
                                                                     </div>
 
-                                                                    </div>
-                                                                    </tr>
-                                                                    </thead>
-                                                            </table>
+                                                                </div>
+                                                            </tr>
+                                                            </thead>
+                                                        </table>
                                                     }
 
                                                     {
@@ -239,32 +248,46 @@ const ContentPanel = () => {
                                                         collectingAllPost.map((collect, index) => {
                                                             return (
                                                                 <div key={collect.postid}>
-                                        <table className="table table-striped table-hover">
-                                            <tbody className="text-center">
-                                            <tr className="text-center">
-                                                <div className="row">
-                                                    <div className="d-flex justify-content-center">
+                                                                    <table className="table table-striped table-hover">
+                                                                        <tbody className="text-center">
+                                                                        <tr className="text-center">
+                                                                            <div className="row">
+                                                                                <div
+                                                                                    className="d-flex justify-content-center">
 
-                                                    <div className="col-lg-2 col-md-1 col-sm-1 "><td className="text-center">{collect.postid}</td></div>
-                                                    <div className="col-lg-4 col-md-4 col-sm-4 "><td className="text-center">{collect.posttext}</td></div>
-                                                    <div className="col-lg-3 col-md-3 col-sm-3 "><td className="text-center">{collect.postdate}</td></div>
-                                                    <div className="col-lg-2 col-md-2 col-sm-2 "><td className="text-center">{collect.likes}</td></div>
-                                                    <div className="col-lg-1 col-md-2 col-sm-2 ">
-                                                            <button
-                                                                className="adminDeletebtn text-center"
-                                                                onClick={() => deletePost(collect.postid)}
-                                                            >
-                                                                <i className="bi bi-dash-square">-</i>
-                                                            </button>
-                                                    {/*END TAG FOR DLEX    */}
-                                                    </div>
-                                                    </div>
+                                                                                    <div
+                                                                                        className="col-lg-2 col-md-1 col-sm-1 ">
+                                                                                        <td className="text-center">{collect.postid}</td>
+                                                                                    </div>
+                                                                                    <div
+                                                                                        className="col-lg-4 col-md-4 col-sm-4 ">
+                                                                                        <td className="text-center">{collect.posttext}</td>
+                                                                                    </div>
+                                                                                    <div
+                                                                                        className="col-lg-3 col-md-3 col-sm-3 ">
+                                                                                        <td className="text-center">{collect.postdate}</td>
+                                                                                    </div>
+                                                                                    <div
+                                                                                        className="col-lg-2 col-md-2 col-sm-2 ">
+                                                                                        <td className="text-center">{collect.likes}</td>
+                                                                                    </div>
+                                                                                    <div
+                                                                                        className="col-lg-1 col-md-2 col-sm-2 ">
+                                                                                        <button
+                                                                                            className="adminDeletebtn text-center"
+                                                                                            onClick={() => deletePost(collect.postid)}
+                                                                                        >
+                                                                                            <i className="bi bi-dash-square">-</i>
+                                                                                        </button>
+                                                                                        {/*END TAG FOR DLEX    */}
+                                                                                    </div>
+                                                                                </div>
 
-                                                    {/*ENDING DIV FOR TABLE ROW    */}
-                                                </div>
-                                            </tr>
-                                            </tbody>
-                                        </table>
+                                                                                {/*ENDING DIV FOR TABLE ROW    */}
+                                                                            </div>
+                                                                        </tr>
+                                                                        </tbody>
+                                                                    </table>
                                                                 </div>
 
                                                             );
@@ -298,29 +321,29 @@ const ContentPanel = () => {
                                         <div className="col-md-12 mr-2">
                                             <div className="fact-body">
 
-                                                    <form onSubmit={SubmitPostContent}>
-                                                        <div className="d-flex flex-column justify-content-center">
+                                                <form onSubmit={SubmitPostContent}>
+                                                    <div className="d-flex flex-column justify-content-center">
                                                         {/*ROW FOR TITLE AND GENRE*/}
                                                         <div className="row">
                                                             <div className="col-xl-3 col-lg-3 col-md-3">
                                                                 <div className="mb-2">
-                                                                {/*SELECT INDIVIDUAL DIV*/}
-                                                                <select
-                                                                    className="custom-select d-block w-100"
-                                                                    name="categoryid"
-                                                                    value={postContent.categoryid}
-                                                                    onChange={handlePosts}
-                                                                    required>
+                                                                    {/*SELECT INDIVIDUAL DIV*/}
+                                                                    <select
+                                                                        className="custom-select d-block w-100 tippostinput"
+                                                                        name="categoryid"
+                                                                        value={postContent.categoryid}
+                                                                        onChange={handlePosts}
+                                                                        required>
 
-                                                                    <option  value="">Choose...</option>
-                                                                    <option  value={1}>Java</option>
-                                                                    <option value={2}>React</option>
-                                                                    <option  value={3}>SQL</option>
-                                                                    <option value={4}>Javascript</option>
-                                                                    <option  value={5}>HTML</option>
-                                                                </select>
+                                                                        <option value="">Choose...</option>
+                                                                        <option value={1}>Java</option>
+                                                                        <option value={2}>React</option>
+                                                                        <option value={3}>SQL</option>
+                                                                        <option value={4}>Javascript</option>
+                                                                        <option value={5}>HTML</option>
+                                                                    </select>
                                                                 </div>
-                                                            {/*END TAGS FOR SELECT OPTIONS    */}
+                                                                {/*END TAGS FOR SELECT OPTIONS    */}
                                                             </div>
                                                             <div className="col-xl-9 col-lg-9 col-md-9">
                                                                 <div className="d-flex flex-row justify-content-center">
@@ -329,7 +352,7 @@ const ContentPanel = () => {
                                                                     > Enter a title:
                                                                     </label>
                                                                     <input
-                                                                        className=" col-md-7 text-center"
+                                                                        className="tippostinput col-md-7 text-center"
                                                                         name="title"
                                                                         value={postContent.title}
                                                                         type="text"
@@ -339,8 +362,8 @@ const ContentPanel = () => {
                                                                     />
                                                                 </div>
                                                             </div>
-                                                    {/* END DIV TAG FOR TITLE & GENRE */}
-                                                    </div>
+                                                            {/* END DIV TAG FOR TITLE & GENRE */}
+                                                        </div>
 
                                                         <label
                                                             className="text-center"
@@ -358,7 +381,7 @@ const ContentPanel = () => {
 
                                                         <div className="row">
                                                             {/*<div className="col-md-12">*/}
-                                                                <div className="d-flex justify-content-center">
+                                                            <div className="d-flex justify-content-center">
                                                                 <button
                                                                     className="buttonMainStyle"
                                                                     role="button"
@@ -367,20 +390,11 @@ const ContentPanel = () => {
                                                                 >
                                                                     Post
                                                                 </button>
-                                                                </div>
                                                             </div>
-                                                        {/*</div>*/}
                                                         </div>
-                                                    </form>
-
-
-
-
-
-
-
-
-
+                                                        {/*</div>*/}
+                                                    </div>
+                                                </form>
 
 
                                                 {/*</div>*/}
@@ -393,10 +407,10 @@ const ContentPanel = () => {
                             {/*COL END*/}
                         </div>
                         {/*OVERALL FACT ROW*/}
-                    {/*</div>*/}
+                        {/*</div>*/}
 
 
-                    {/*<div className="row">*/}
+                        {/*<div className="row">*/}
 
                         {/*GRAPH*/}
                         {/*COL FOR CARD*/}
@@ -433,9 +447,6 @@ const ContentPanel = () => {
                 </div>
 
             </section>
-
-
-
 
 
         </>
