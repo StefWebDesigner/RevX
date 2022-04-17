@@ -220,20 +220,20 @@ const ContentPanel = () => {
                                                             <tr>
                                                                 <div className="row">
                                                                     <div className="d-flex justify-content-center">
-                                                                        <div className="col-lg-2 col-md-2 col-sm-2">
-                                                                            <th className="text-center">PostID</th>
+                                                                        <div className="col-lg-2 col-md-2 col-sm-2 col-3">
+                                                                            <th className="text-center post-subtitle-size">PostID</th>
                                                                         </div>
-                                                                        <div className="col-lg-4 col-md-3 col-sm-3">
-                                                                            <th className="text-center">Post</th>
+                                                                        <div className="col-lg-4 col-md-3 col-sm-3 col-3">
+                                                                            <th className="text-center post-subtitle-size">Post</th>
                                                                         </div>
-                                                                        <div className="col-lg-3 col-md-3 col-sm-3">
-                                                                            <th className="text-center">Date</th>
+                                                                        <div className="col-lg-3 col-md-3 col-sm-3 col-3">
+                                                                            <th className="text-center post-subtitle-size">Date</th>
                                                                         </div>
-                                                                        <div className="col-lg-2 col-md-2 col-sm-2">
-                                                                            <th className="text-center">Like</th>
+                                                                        <div className="col-lg-2 col-md-2 col-sm-2 col-2">
+                                                                            <th className="text-center post-subtitle-size">Like</th>
                                                                         </div>
-                                                                        <div className="col-lg-1 col-md-2 col-sm-2">
-                                                                            <th className="text-center">Remove</th>
+                                                                        <div className="col-lg-1 col-md-2 col-sm-2 col-1">
+                                                                            <th className="text-center post-subtitle-size">Remove</th>
                                                                         </div>
                                                                     </div>
 
@@ -256,23 +256,23 @@ const ContentPanel = () => {
                                                                                     className="d-flex justify-content-center">
 
                                                                                     <div
-                                                                                        className="col-lg-2 col-md-1 col-sm-1 ">
-                                                                                        <td className="text-center">{collect.postid}</td>
+                                                                                        className="col-lg-2 col-md-1 col-sm-1 col-2">
+                                                                                        <td className="text-center post-data-size">{collect.postid}</td>
                                                                                     </div>
                                                                                     <div
-                                                                                        className="col-lg-4 col-md-4 col-sm-4 ">
-                                                                                        <td className="text-center">{collect.posttext}</td>
+                                                                                        className="col-lg-4 col-md-4 col-sm-4 col-3">
+                                                                                        <td className="text-center post-data-size">{collect.posttext}</td>
                                                                                     </div>
                                                                                     <div
-                                                                                        className="col-lg-3 col-md-3 col-sm-3 ">
-                                                                                        <td className="text-center">{collect.postdate}</td>
+                                                                                        className="col-lg-3 col-md-3 col-sm-3 col-4">
+                                                                                        <td className="text-center post-data-size">{collect.postdate}</td>
                                                                                     </div>
                                                                                     <div
-                                                                                        className="col-lg-2 col-md-2 col-sm-2 ">
-                                                                                        <td className="text-center">{collect.likes}</td>
+                                                                                        className="col-lg-2 col-md-2 col-sm-2 col-2">
+                                                                                        <td className="text-center post-data-size">{collect.likes}</td>
                                                                                     </div>
                                                                                     <div
-                                                                                        className="col-lg-1 col-md-2 col-sm-2 ">
+                                                                                        className="col-lg-1 col-md-2 col-sm-2 col-2">
                                                                                         <button
                                                                                             className="adminDeletebtn text-center"
                                                                                             onClick={() => deletePost(collect.postid)}
