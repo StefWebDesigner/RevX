@@ -162,6 +162,7 @@ const AdminBody = () => {
                             {/*COL END*/}
                         </div>
 
+
                         <div className="row mb-3">
 
                         </div>
@@ -173,8 +174,8 @@ const AdminBody = () => {
 
                             {/*COL FOR CARD*/}
                             <div className="col-xl-6 col-lg-6 col-md-6">
-                                <div className="card shadow h-100 mt-2">
-                                    <div className="card-body ">
+                                <div className="card shadow h-100">
+                                    <div className="card-body">
                                         {/*CARD ROW*/}
                                         <div className="row no-gutters align-items-center">
                                             <div className="col mr-2">

@@ -1,9 +1,19 @@
 import React, {useEffect, useState} from "react";
 import ReactDOM from "react-dom";
-import {Chart, ArcElement} from 'chart.js'
-import { Doughnut, Pie } from "react-chartjs-2";
+import {Chart, ArcElement, Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Legend} from 'chart.js'
+import { Doughnut} from "react-chartjs-2";
 import axios from "axios";
+import * as labels from "react-bootstrap/ElementChildren";
 Chart.register(ArcElement);
+// ChartJS.register(
+//     CategoryScale,
+//     LinearScale,
+//     BarElement,
+//     Title,
+//     // Tooltip,
+//     Legend
+// );
+
 
 
 function ContentChart() {
@@ -54,33 +64,46 @@ function ContentChart() {
 
     },[]);
 
-
-
-
-
     //GOING TO MAKE ALL TOTAL GENRE FOR THE SUB CATEGORY BASED ON THEIR POST AND ADD IT HERE
 
-    const data = {
-        labels: ["Java","React", "Beginner", "Intermediate", "Advanced"],
-        datasets: [{
-            label: 'All Total Post Per Genre',
-            data: [java, react, beginner, intermidate, advanced],
-            backgroundColor: [
-                'rgb(255, 99, 132)',
-                'rgb(54, 162, 235)',
-                'green',
-                'purple',
-                'orange'
+const data = {
+    labels: ["Java","React", "Beginner", "Intermediate", "Advanced"],
+    datasets: [{
+        label: 'All Total Post Per Genre',
+        data: [java, react, beginner, intermidate, advanced],
+        backgroundColor: [
+            'rgb(255, 99, 132)',
+            'rgb(54, 162, 235)',
+            'green',
+            'purple',
+            'orange'
 
-            ],
-            hoverOffset: 4
-        }]
-    }
+        ],
+        hoverOffset: 4
+    }]
+}
     return (
         <div>
             <Doughnut data={data} />
         </div>
     )
 }
+
+// const data = {
+//     labels: ["Java","React", "Beginner", "Intermediate", "Advanced"],
+//     datasets: [{
+//         label: 'All Total Post Per Genre',
+//         data: [java, react, beginner, intermidate, advanced],
+//         backgroundColor: [
+//             'rgb(255, 99, 132)',
+//             'rgb(54, 162, 235)',
+//             'green',
+//             'purple',
+//             'orange'
+//
+//         ],
+//         hoverOffset: 4
+//     }]
+// }
 
 export  default ContentChart;

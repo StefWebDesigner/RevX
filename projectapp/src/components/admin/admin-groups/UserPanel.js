@@ -23,6 +23,19 @@ const UserPanel = () => {
 
     const [getReport, setGetReport] = useState([]);
 
+    //DELETE A POST
+    async function deleteReport(caseid) {
+
+        axios.delete(`http://localhost:4000/categories/deleteCategory/${caseid}`).then(data=>{
+
+            console.log(data);
+
+        })
+
+        alert("successfully deleted case");
+    }
+
+
 
     //RETREIVE ALL USERS AND SHOW ALL THEIR DETAILS
     async function getAllUsers() {
@@ -320,7 +333,7 @@ const UserPanel = () => {
                                                 <div className="col-xl-2 col-lg-2 col-md-2 col-sm-1 col-1">
                                                     <button
                                                         className="adminDeletebtn"
-                                                        onClick={() => deteleUser(user.username)}
+                                                        onClick={() => deleteReport(user.username)}
                                                     >
                                                         <i className="bi bi-dash-square">-</i>
                                                     </button>
@@ -360,35 +373,35 @@ const UserPanel = () => {
 
                         {/*GRAPH*/}
                         {/*COL FOR CARD*/}
-                        <div className="col-xl-6 col-lg-6 col-md-6">
-                            <div className="card shadow h-100">
-                                <div className="card-body ">
-                                    {/*CARD ROW*/}
-                                    <div className="row no-gutters align-items-center">
-                                        <div className="col mr-2">
-                                            <div className="fact-body">
-                                                <div className="text-center text-xs font-weight-bold text-uppercase">
-                                                    User Graph :
-                                                </div>
-                                                <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                    Admin  and Associates Totals
-                                                </div>
-                                                <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                    <UsersChart adminCount={adminCount} associateCount={associateCount}/>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {/*END CARD ROW*/}
-                                    </div>
-                                </div>
-                            </div>
-                            {/*COL END*/}
-                        </div>
+                        {/*<div className="col-xl-6 col-lg-6 col-md-6">*/}
+                        {/*    <div className="card shadow h-100">*/}
+                        {/*        <div className="card-body ">*/}
+                        {/*            /!*CARD ROW*!/*/}
+                        {/*            <div className="row no-gutters align-items-center">*/}
+                        {/*                <div className="col mr-2">*/}
+                        {/*                    <div className="fact-body">*/}
+                        {/*                        <div className="text-center text-xs font-weight-bold text-uppercase">*/}
+                        {/*                            User Graph :*/}
+                        {/*                        </div>*/}
+                        {/*                        <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">*/}
+                        {/*                            Admin  and Associates Totals*/}
+                        {/*                        </div>*/}
+                        {/*                        <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">*/}
+                        {/*                            <UsersChart adminCount={adminCount} associateCount={associateCount}/>*/}
+                        {/*                        </div>*/}
+                        {/*                    </div>*/}
+                        {/*                </div>*/}
+                        {/*                /!*END CARD ROW*!/*/}
+                        {/*            </div>*/}
+                        {/*        </div>*/}
+                        {/*    </div>*/}
+                        {/*    /!*COL END*!/*/}
+                        {/*</div>*/}
 
 
                         {/*REPORT USER*/}
                         {/*COL FOR CARD*/}
-                        <div className="col-xl-6 col-lg-6 col-md-6">
+                        <div className="col-xl-9 col-lg-9 col-md-9">
                             <div className="card shadow h-100">
                                 <div className="card-body">
                                     {/*CARD ROW*/}
@@ -411,7 +424,9 @@ const UserPanel = () => {
                                                             <th className="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-3 reportTitle">User</th>
                                                             <th className="col-xl-2 col-lg-3 col-md-3 col-sm-3 col-3 reportTitle">Complaint</th>
                                                             {/*<th className="col-2">Ignore</th>*/}
+                                                            <th className="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 reportTitle">Reject</th>
                                                             <th className="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1 reportTitle">Ban</th>
+
                                                             </thead>
                                                         </table>
                                                     </div>
@@ -435,8 +450,16 @@ const UserPanel = () => {
                                                                                         <div className="col-xl-3 col-lg-3 col-md-4 col-sm-3 col-3"><td className="text-center reportFont">{report.issue}</td></div>
                                                                                         <div className="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">
                                                                                             <button
+                                                                                                // onClick={() => deteleReport(report.caseid)}
+                                                                                                className="adminNullbtn"
+                                                                                            >
+                                                                                                Reject
+                                                                                            </button>
+                                                                                        </div>
+                                                                                        <div className="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-1">
+                                                                                            <button
+                                                                                                // onClick={() => deteleReport(report.caseid)}
                                                                                                 className="adminDeletebtn"
-                                                                                                // onClick={() => deteleUser(user.username)}
                                                                                             >
                                                                                                 <i className="bi bi-dash-square">-</i>
                                                                                             </button>
@@ -473,6 +496,37 @@ const UserPanel = () => {
                             </div>
                             {/*COL END*/}
                         </div>
+
+
+                        <div className="col-xl-3 col-lg-3 col-md-3">
+                            <div className="card shadow h-100">
+                                <div className="card-body ">
+                                    {/*CARD ROW*/}
+                                    <div className="row no-gutters align-items-center">
+                                        <div className="col mr-2">
+                                            <div className="fact-body">
+                                                <div className="text-center text-xs font-weight-bold text-uppercase">
+                                                    User Graph :
+                                                </div>
+                                                <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
+                                                    Admin  and Associates Totals
+                                                </div>
+                                                <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
+                                                    <UsersChart adminCount={adminCount} associateCount={associateCount}/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {/*END CARD ROW*/}
+                                    </div>
+                                </div>
+                            </div>
+                            {/*COL END*/}
+                        </div>
+
+
+
+
+
 
                         {/*OVERALL FACT ROW*/}
                     </div>

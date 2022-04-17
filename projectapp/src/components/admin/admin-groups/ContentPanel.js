@@ -19,9 +19,9 @@ const ContentPanel = () => {
 
     //FORM STATE FOR POST CONTENT
     const [postContent, setPostContent] = useState({
-        tiptitle: "",
-        tipbody: "",
-        tipgenre: ""
+        categoryid: "",
+        title: "",
+        mainbodycontent: ""
     });
 
     //GET POST TOGGLE STATES
@@ -32,21 +32,25 @@ const ContentPanel = () => {
        e.defaultPrevented();
 
        //POST CALL
-       const data = await axios.post('http://localhost:4000/categories/newtips', postContent);
+       const data = await axios.post('http://localhost:4000/categories/createTip', postContent);
        console.log(data);
 
        //RESETS THE CONTENT IN TO THE FORM
        setPostContent({
-           tiptitle: "",
-           tipbody: "",
-           tipgenre: ""
+           categoryid: "",
+           title: "",
+           mainbodycontent: ""
        });
+
+
     }
     //POST CONTENT FORM HANDLER
     const handlePosts = (e) => {
+
         setPostContent({
             ...postContent,
             [e.target.name] : e.target.value,
+            // [e.target.name] : e.target.value.replace(/\D/g, ""),
         });
         console.log(postContent);
     };
@@ -108,8 +112,6 @@ const ContentPanel = () => {
         getMostLikedPost();
 
     },[]);
-
-
 
 
     return (
@@ -305,17 +307,17 @@ const ContentPanel = () => {
                                                                 {/*SELECT INDIVIDUAL DIV*/}
                                                                 <select
                                                                     className="custom-select d-block w-100"
-                                                                    name="tipgenre"
-                                                                    value={postContent.tipgenre}
+                                                                    name="categoryid"
+                                                                    value={postContent.categoryid}
                                                                     onChange={handlePosts}
-                                                                    required
-                                                                >
+                                                                    required>
+
                                                                     <option  value="">Choose...</option>
-                                                                    <option  value="java">Java</option>
-                                                                    <option value="react">React</option>
-                                                                    <option  value="sql">SQL</option>
-                                                                    <option value="javascript">Javascript</option>
-                                                                    <option  value="html">HTML</option>
+                                                                    <option  value={1}>Java</option>
+                                                                    <option value={2}>React</option>
+                                                                    <option  value={3}>SQL</option>
+                                                                    <option value={4}>Javascript</option>
+                                                                    <option  value={5}>HTML</option>
                                                                 </select>
                                                                 </div>
                                                             {/*END TAGS FOR SELECT OPTIONS    */}
@@ -328,8 +330,8 @@ const ContentPanel = () => {
                                                                     </label>
                                                                     <input
                                                                         className=" col-md-7 text-center"
-                                                                        name="tiptitle"
-                                                                        value={postContent.tiptitle}
+                                                                        name="title"
+                                                                        value={postContent.title}
                                                                         type="text"
                                                                         placeholder="Enter a title"
                                                                         onChange={handlePosts}
@@ -345,8 +347,8 @@ const ContentPanel = () => {
                                                         > Enter some content: </label>
                                                         <textarea
                                                             className="postInputField text-center"
-                                                            name="tipbody"
-                                                            value={postContent.tipbody}
+                                                            name="mainbodycontent"
+                                                            value={postContent.mainbodycontent}
                                                             type="text"
                                                             placeholder="Enter content in the body"
                                                             onChange={handlePosts}

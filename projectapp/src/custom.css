@@ -506,6 +506,28 @@
     border: black solid 1px;
 }
 
+.adminNullbtn {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    background: mediumpurple;
+    width: 75%;
+    /*padding: 10px;*/
+    /*padding-left: 10px;*/
+    /*padding-right: 10px;*/
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+
+.adminNullbtn:hover {
+    background-color: rgb(105, 67, 181);
+}
+
+.adminNullbtn:active {
+    border: black solid 1px;
+}
+
 /*CATEGORY TITLE*/
 
 .category-container {
