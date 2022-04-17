@@ -507,17 +507,13 @@
 }
 
 .adminNullbtn {
-    text-align: center;
-    display: flex;
-    justify-content: center;
     background: mediumpurple;
-    width: 75%;
-    /*padding: 10px;*/
-    /*padding-left: 10px;*/
-    /*padding-right: 10px;*/
+    width: 25%;
+    padding: 10px;
     border: none;
     border-radius: 5px;
     color: white;
+    margin-bottom: 10px;
 }
 
 .adminNullbtn:hover {

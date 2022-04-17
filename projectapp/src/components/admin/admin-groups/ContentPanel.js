@@ -29,7 +29,7 @@ const ContentPanel = () => {
 
     //POSTING METHOD FOR POST CONTENT
     const SubmitPostContent = async (e) => {
-       e.defaultPrevented();
+       e.preventDefault()
 
        //POST CALL
        const data = await axios.post('http://localhost:4000/categories/createTip', postContent);
@@ -46,13 +46,13 @@ const ContentPanel = () => {
     }
     //POST CONTENT FORM HANDLER
     const handlePosts = (e) => {
-
+    e.preventDefault()
         setPostContent({
             ...postContent,
             [e.target.name] : e.target.value,
             // [e.target.name] : e.target.value.replace(/\D/g, ""),
         });
-        console.log(postContent);
+
     };
 
     //GET ALL POST
@@ -363,6 +363,7 @@ const ContentPanel = () => {
                                                                     className="buttonMainStyle"
                                                                     role="button"
                                                                     type="submit"
+                                                                    onClick={SubmitPostContent}
                                                                 >
                                                                     Post
                                                                 </button>
