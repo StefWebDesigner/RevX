@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from "react";
-import ReactDOM from "react-dom";
-import {Chart, ArcElement, Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Legend} from 'chart.js'
+import {Chart, ArcElement} from 'chart.js'
 import { Doughnut} from "react-chartjs-2";
 import axios from "axios";
-import * as labels from "react-bootstrap/ElementChildren";
+
 Chart.register(ArcElement);
 // ChartJS.register(
 //     CategoryScale,

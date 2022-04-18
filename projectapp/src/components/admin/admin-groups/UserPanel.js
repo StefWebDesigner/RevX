@@ -30,17 +30,15 @@ const UserPanel = () => {
 
         axios.delete(`http://localhost:4000/posts/deletePost/${report.postid}`).then(data => {
 
-            console.log(data);
-            console.log("successfully deleted case");
             getReportMethod()
         })
     }
 
     //FOR THE NULL CASE
     function deleteCaseId(caseid) {
-        console.log(caseid)
+
         axios.delete(`http://localhost:4000/categories/deleteCategory/${caseid}`).then(data => {
-            console.log(data);
+
         });
 
         alert("successfully deleted case");
@@ -68,8 +66,7 @@ const UserPanel = () => {
             }
             return 0;
         });
-        console.log(allUser);
-        console.log(users);
+
         setAllUser(newData);
 
         setSortById(prevId => !prevId);
@@ -89,8 +86,7 @@ const UserPanel = () => {
             }
             return 0;
         });
-        console.log(allUser);
-        console.log(newData);
+
         setAllUser(newData);
 
         setSortByUsername(prevUsername => !prevUsername);
@@ -109,8 +105,7 @@ const UserPanel = () => {
             }
             return 0;
         });
-        console.log(allUser);
-        console.log(newData);
+
         setAllUser(newData);
 
         // getAllUsers()
@@ -134,7 +129,6 @@ const UserPanel = () => {
         const data = await axios.get('http://localhost:4000/users/totalusers/account/admin');
         const amount = data.data[0].count
 
-        console.log(amount)
         setAdminCount(amount);
     }
 
@@ -143,12 +137,11 @@ const UserPanel = () => {
         const data = await axios.get('http://localhost:4000/users/totalusers/account/associate');
         const amount = data.data[0].count
 
-        console.log(amount)
         setAssociateCount(amount);
     }
 
     async function getReportMethod() {
-        const data = await axios.get('http://localhost:4000/categories/getAllReports');
+        const data = await axios.get('http://localhost:4000/reports/getAllReports');
         setGetReport(data.data);
 
     }
