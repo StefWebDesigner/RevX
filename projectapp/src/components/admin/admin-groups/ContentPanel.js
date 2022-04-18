@@ -63,7 +63,7 @@ const ContentPanel = () => {
 
         axios.delete(`http://localhost:4000/posts/deletePost/${postid}`).then(data => {
 
-            getAllPost()
+            getAllCollectedPost();
         })
     }
 
@@ -140,7 +140,7 @@ const ContentPanel = () => {
                                                     Total Posts :
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                    {allPost.length}
+                                                    {collectingAllPost.length}
                                                 </div>
                                             </div>
                                         </div>
