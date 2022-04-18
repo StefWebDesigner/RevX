@@ -46,9 +46,9 @@ function App() {
                 <Route path="/searchResults" element={<SearchResults/>}/>
 
                 {/* Routes for Account */}
-                <Route path="/account" element={<AccountItems/>}/>
+                <Route path="/account" element={<UserProfile username={user?user.username: ""}/>}/>
                 <Route path="/editAccount" element={<EditAccount />} />
-                <Route path="/userprofile/:username" element={<UserProfile />} />
+                {/* <Route path="/userprofile" element={<UserProfile />} /> */}
               </Routes>
           </Router>
       </DataContext.Provider>

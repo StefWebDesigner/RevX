@@ -26,7 +26,7 @@ function Post({postid, profilePic, userid, username, accountType, image, content
     }
 
     function reportClick(){
-        setReportInfo({show:true, reportid:userid, username:username, postid:postid});
+        setReportInfo({show:true, userid:userid, username:username, postid:postid});
     }
 
     return (
