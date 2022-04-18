@@ -133,7 +133,7 @@ const ContentPanel = () => {
 
                         {/*FACT 1*/}
                         {/*COL FOR CARD*/}
-                        <div className="col-xl-4 col-lg-4 col-md-4 mt-2">
+                        <div className="col-xl-6 col-lg-6 col-md-6 mt-2">
                             <div className="card shadow h-100">
                                 <div className="card-body purple-text-tag">
                                     {/*CARD ROW*/}
@@ -157,7 +157,7 @@ const ContentPanel = () => {
 
                         {/*FACT 2*/}
                         {/*COL FOR CARD*/}
-                        <div className="col-xl-4 col-lg-4 col-md-4 mt-2">
+                        <div className="col-xl-6 col-lg-6 col-md-6 mt-2">
                             <div className="card shadow h-100">
                                 <div className="card-body purple-text-tag">
                                     {/*CARD ROW*/}
@@ -179,37 +179,11 @@ const ContentPanel = () => {
                             {/*COL END*/}
                         </div>
 
-                        {/*FACT 1*/}
-                        {/*COL FOR CARD*/}
-                        <div className="col-xl-4 col-lg-4 col-md-4 mt-2">
-                            <div className="card shadow h-100">
-                                <div className="card-body purple-text-tag">
-                                    {/*CARD ROW*/}
-                                    <div className="row no-gutters align-items-center">
-                                        <div className="col mr-2">
-                                            <div className="fact-body">
-                                                <div className="text-center text-xs font-weight-bold text-uppercase">
-                                                    Most Liked Post :
-                                                </div>
-                                                <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                    {/*{ mostLikedPost}*/}
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {/*END CARD ROW*/}
-                                    </div>
-                                </div>
-                            </div>
-                            {/*COL END*/}
-                        </div>
-                        {/*OVERALL FACT ROW*/}
                     </div>
-
 
 
                     {/*GET ALL USERS ROW*/}
                     <div className="row mb-3">
-
 
                         {/*COL FOR CARD*/}
                         <div className="col-xl-12 col-lg-12 col-md-12">
@@ -246,20 +220,17 @@ const ContentPanel = () => {
                                                                     <tr>
                                                                     <div className="row">
                                                                     <div className="d-flex justify-content-center">
-                                                                        <div className="col-md-2 col-sm-2"><th className="text-center">PostID</th></div>
-                                                                        <div className="col-md-3 col-sm-3"><th className="text-center">Post</th></div>
-                                                                        <div className="col-md-3 col-sm-3"><th className="text-center">Date</th></div>
-                                                                        <div className="col-md-2 col-sm-2"><th className="text-center">Like</th></div>
-                                                                        <div className="col-md-2 col-sm-2"><th className="text-center">Remove</th></div>
+                                                                        <div className="col-lg-2 col-md-2 col-sm-2"><th className="text-center">PostID</th></div>
+                                                                        <div className="col-lg-4 col-md-3 col-sm-3"><th className="text-center">Post</th></div>
+                                                                        <div className="col-lg-3 col-md-3 col-sm-3"><th className="text-center">Date</th></div>
+                                                                        <div className="col-lg-2 col-md-2 col-sm-2"><th className="text-center">Like</th></div>
+                                                                        <div className="col-lg-1 col-md-2 col-sm-2"><th className="text-center">Remove</th></div>
                                                                     </div>
-
 
                                                                     </div>
                                                                     </tr>
                                                                     </thead>
-                                                                {/*</div>*/}
                                                             </table>
-                                                        // </div>
                                                     }
 
                                                     {
@@ -273,11 +244,11 @@ const ContentPanel = () => {
                                                 <div className="row">
                                                     <div className="d-flex justify-content-center">
 
-                                                    <div className="col-md-1 col-sm-1 col-xs-12"><td className="text-center">{collect.postid}</td></div>
-                                                    <div className="col-md-4 col-sm-4 col-xs-12"><td className="text-center">{collect.posttext}</td></div>
-                                                    <div className="col-md-3 col-sm-3 col-xs-12"><td className="text-center">{collect.postdate}</td></div>
-                                                    <div className="col-md-2 col-sm-2 col-xs-12"><td className="text-center">{collect.likes}</td></div>
-                                                    <div className="col-md-2 col-sm-2 col-xs-12">
+                                                    <div className="col-lg-2 col-md-1 col-sm-1 "><td className="text-center">{collect.postid}</td></div>
+                                                    <div className="col-lg-4 col-md-4 col-sm-4 "><td className="text-center">{collect.posttext}</td></div>
+                                                    <div className="col-lg-3 col-md-3 col-sm-3 "><td className="text-center">{collect.postdate}</td></div>
+                                                    <div className="col-lg-2 col-md-2 col-sm-2 "><td className="text-center">{collect.likes}</td></div>
+                                                    <div className="col-lg-1 col-md-2 col-sm-2 ">
                                                             <button
                                                                 className="adminDeletebtn text-center"
                                                                 onClick={() => deletePost(collect.postid)}
@@ -331,6 +302,7 @@ const ContentPanel = () => {
                                                         {/*ROW FOR TITLE AND GENRE*/}
                                                         <div className="row">
                                                             <div className="col-xl-3 col-lg-3 col-md-3">
+                                                                <div className="mb-2">
                                                                 {/*SELECT INDIVIDUAL DIV*/}
                                                                 <select
                                                                     className="custom-select d-block w-100"
@@ -340,14 +312,13 @@ const ContentPanel = () => {
                                                                     required
                                                                 >
                                                                     <option  value="">Choose...</option>
-                                                                    <option  value="beginner">Beginner</option>
-                                                                    <option value="intermediate">Intermediate</option>
-                                                                    <option  value="advanced">Advanced</option>
-                                                                    <option value="java">Java</option>
-                                                                    <option  value="javascript">Javascript</option>
+                                                                    <option  value="java">Java</option>
                                                                     <option value="react">React</option>
-                                                                    <option  value="python">Python</option>
+                                                                    <option  value="sql">SQL</option>
+                                                                    <option value="javascript">Javascript</option>
+                                                                    <option  value="html">HTML</option>
                                                                 </select>
+                                                                </div>
                                                             {/*END TAGS FOR SELECT OPTIONS    */}
                                                             </div>
                                                             <div className="col-xl-9 col-lg-9 col-md-9">

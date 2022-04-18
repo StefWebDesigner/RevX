@@ -135,13 +135,6 @@
     padding: 20px;
 }
 
-/* MEDIA QUERRIES */
-/* @media only screen and (max-width: 720px) {
-    html {
-        overflow: hidden;
-    }
-} */
-
 /* ADMIN  */
 
 /*PADDING TO AVOID COLISION ON NAV*/
@@ -510,6 +503,7 @@
     border: none;
     border-radius: 5px;
     color: white;
+    margin-bottom: 10px;
 }
 
 .adminbtn:hover {
@@ -584,10 +578,11 @@
 
 
 /* Edit Profile */
-.account-label{
-    color:rgb(155, 155, 155);
+.account-label {
+    color: rgb(155, 155, 155);
     margin-left: 5px;
 }
+
 .category-content:hover {
     border: mediumpurple solid 2px;
 
@@ -659,6 +654,7 @@
     border: mediumpurple solid 1px;
 }
 
+
 .account-pic{
     width:100px;
     float:left;
@@ -690,3 +686,15 @@
 .postlist{
     width:70%;
 }
+
+.reportFont {
+    font-size: 15px;
+}
+
+.reportTitle {
+    font-size: 15px;
+
+}
+
+
+
