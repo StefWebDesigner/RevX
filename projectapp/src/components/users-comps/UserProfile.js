@@ -1,70 +1,107 @@
-import React, {useEffect, useState} from 'react';
-import {useParams} from 'react-router-dom'
+import React, {useEffect, useState, useContext} from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Container, Row, Col, Card } from 'react-bootstrap';
+import { RiPencilLine } from "react-icons/ri";
 import axios from "axios";
-import {Card, Col, Row} from "react-bootstrap";
-import Navbar from "../navbar/Navbar";
+import Header from '../navbar/Header';
+import Navbar from '../navbar/Navbar';
+import DataContext from "../../dataStore/dataStore";
+import ProfilePost from '../posts/ProfilePost';
 
-const UserProfile = () => {
+const UserProfile = ({username}) => {
+  
+    //CALLING IN DATASTORE -> USED FOR NAV BAR CONDITION STATEMENT
+    const { user, setUser } = useContext(DataContext);
 
-    //USE PARAM FOR THE LINK
-    const {username} = useParams();
-    const [userProfile, setUserProfile] = useState([]);
+    const [profile, setProfile] = useState({});
+    const [posts, setPosts] = useState([]);
+
+    const navigate = useNavigate();
+
 
     useEffect(() => {
         axios.get(`http://localhost:4000/users/userByName/${username}`)
             .then((response) => {
-                setUserProfile(response.data);
+
+                if(response.data){
+                
+                    setProfile(response.data);
+
+                    axios.get(`http://localhost:4000/posts/PostByUser/${response.data.userid}`)
+                        .then((res) => {
+                            setPosts(res.data);
+                        })
+                }
             })
-    }, [])
+    }, [username]);
 
-    console.log(userProfile);
+    //console.log(profile);
+    
+    const pageContent = (
+        <Container className="account-page">
+            {/* User Profile Information */}
+            <Row className="justify-content-md-center mb-4">
+                <Col xs="auto">
+                    <img src={"../../../images/" + (profile.pic ? profile.pic : "user-badge-purple.svg")}
+                        className="account-pic" alt="User Avatar" />
+                </Col>
+                <Col md={6}>
+                    <Card >
+                        <Card.Header bsPrefix='account-heading'>
+                            <h1>{profile.firstname} {profile.lastname}</h1>
+                            <span className='account-handle'> @{profile.username}</span>
 
-    return (
-        <>
-            <section>
-                <Navbar/>
-            </section>
+                            {user.userid === profile.userid ? 
+                                <button 
+                                    type="button" 
+                                    className="editbtn" 
+                                    onClick={() => navigate('/editAccount')}>
+                                    <RiPencilLine />
+                                </button> 
+                                : ""
+                            }
 
-            <section>
-                <Row>
-                    <Card>
-                        <Card.Header>
-                            <h1 className="userprofileTitle">
-                                You searched for {username}
-                            </h1>
                         </Card.Header>
+                        <Card.Body>
+                            <Row>
+                                <p><b>Position:</b> {profile.account}</p>
+                            </Row>
+                            <Row>
+                                <p><b>Location:</b> {profile.city}, {profile.state}</p>
+                            </Row>
+                            <Row>
+                                <p><b>Contact:</b> {profile.email}</p>
+                            </Row>
+                        </Card.Body>
                     </Card>
-                </Row>
-                {/*<Row>*/}
-                {/*    <Card>*/}
-                {/*        <Card.Body>*/}
-                {/*        <Col xs={12}>*/}
-                {/*            <div className="category-container">*/}
-                {/*                <div className="userprofileContent">*/}
-                {/*            /!*<img src="{userProfile.pic}">*!/*/}
-                {/*                    <h1 className="userprofileSubtitlte">Username : </h1>*/}
-                {/*                    <h2 className="userprofileElements">{username}</h2>*/}
-                {/*                    <h1 className="userprofileSubtitlte">Firstname : </h1>*/}
-                {/*                    <h2 className="userprofileElements">{userProfile.firstname}{userProfile.lastname} </h2>*/}
-                {/*                    <h1 className="userprofileSubtitlte">Location : </h1>*/}
-                {/*                    <h2 className="userprofileElements"> {userProfile.city}</h2>*/}
-                {/*                    <h2 className="userprofileElements">{userProfile.state}</h2>*/}
-                {/*                </div>*/}
-                {/*                <div className="color-line">*/}
-                {/*                    <span className="color-line-1"></span>*/}
-                {/*                </div>*/}
-                {/*            </div>*/}
-                {/*        </Col>*/}
-                {/*        </Card.Body>*/}
-                {/*    </Card>*/}
-                {/*</Row>*/}
+                </Col>
+            </Row>
 
-            </section>
+            {/* User Posts */}
+            <Row className="justify-content-md-center">
+                <Col>
+                    <h3 className='text-center'>Posts</h3>
+                    {posts?
+                        posts.map((post) => {
+                        return (
+                            <ProfilePost key={post.postid} profile={profile} post={post} />
+                            );
+                        })
+                    : <p>This user has no posts.</p>}
+                </Col>
+            </Row>
+        </Container>
 
-
-
-        </>
     );
+
+    const noProfile = (<h2 className="text-center">User has been deactivated</h2>);
+
+    return ( 
+    <>
+        <Header />
+        <Navbar />
+        {profile ? pageContent : noProfile}
+    </>);
 };
 
 export default UserProfile;

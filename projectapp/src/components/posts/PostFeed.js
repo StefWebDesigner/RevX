@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import axios from 'axios';
 import Post from './Post';
 
-function PostFeed({createNewPost}){
+function PostFeed({newPost, setReportInfo}){
 
     const [posts, setPosts] = useState([]);
 
@@ -11,7 +11,7 @@ function PostFeed({createNewPost}){
 
             setPosts(res.data);
         });
-    },[]);
+    },[newPost]);
     
 
     return posts.map((post) => {
@@ -21,12 +21,14 @@ function PostFeed({createNewPost}){
                     key={post.postid}
                     postid={post.postid}
                     profilePic={post.pic}
+                    userid={post.userid}
                     username={post.username}
                     accountType={post.account}
                     image={post.image}
                     content={post.posttext}
                     postdate={post.postdate}
                     likes={post.likes}
+                    setReportInfo={setReportInfo}
                 />
         );
     });
