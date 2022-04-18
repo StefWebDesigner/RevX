@@ -40,9 +40,9 @@ ReveX (Social Network App) is built to connect employees of a company to other e
  - For Company purpose
  
  ## Contributors
- - Megan
- - Stefan
- - Samuel 
+ - Stefan Riley
+ - Megan Orth
+ - Samuel Sholib
  
  ## License
  - MIT
