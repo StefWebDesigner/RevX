@@ -63,10 +63,6 @@ const ContentPanel = () => {
 
         axios.delete(`http://localhost:4000/posts/deletePost/${postid}`).then(data => {
 
-<<<<<<< HEAD
-=======
-            console.log(data);
->>>>>>> 63862ab8e44c8ed0e70f8320155e139b8f47e092
             getAllPost()
         })
     }
