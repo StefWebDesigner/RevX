@@ -71,6 +71,7 @@ const Signup = (props) => {
                 } else {
                     // new user
                     const newUser = {
+                        userid:null,
                         firstname:first.value,
                         lastname:last.value,
                         username:username.value,
@@ -83,10 +84,9 @@ const Signup = (props) => {
                     axios.post(`http://localhost:4000/users/newUser`,newUser).then((res)=>{
 
                         props.setShowSignup(false);
-                        newUser.userid = res.userid;
-
+                        newUser.userid = res.data.userid;
                         setUser(newUser);
-
+                        localStorage.setItem("user", JSON.stringify(newUser));
                         setErrorMessages({});
                     });
                 }

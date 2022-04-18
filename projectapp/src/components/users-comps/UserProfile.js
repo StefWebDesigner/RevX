@@ -43,7 +43,7 @@ const UserProfile = (props) => {
                 }
             })
     }, [username]);
-    
+
     const pageContent = (
         <Container className="account-page">
             {/* User Profile Information */}
@@ -94,7 +94,7 @@ const UserProfile = (props) => {
                             <ProfilePost key={post.postid} profile={profile} post={post} />
                             );
                         })
-                    : <p className="text-center">This user has no posts.</p>}
+                    : <p className="text-center">No posts.</p>}
                 </Col>
             </Row>
         </Container>
