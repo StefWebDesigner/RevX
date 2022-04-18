@@ -33,7 +33,6 @@ const ContentPanel = () => {
 
         //POST CALL
         const data = await axios.post('http://localhost:4000/categories/createTip', postContent);
-        console.log(data);
 
         //RESETS THE CONTENT IN TO THE FORM
         setPostContent({
@@ -64,9 +63,13 @@ const ContentPanel = () => {
 
         axios.delete(`http://localhost:4000/posts/deletePost/${postid}`).then(data => {
 
+<<<<<<< HEAD
             console.log(data);
             // deletePost();
             getAllPost()
+=======
+            deletePost();
+>>>>>>> 8da6e80bf957ad7ef083f73fe5b86ba430322565
         })
         getAllPost();
     }

@@ -12,9 +12,6 @@ const AdminBody = () => {
     const [adminCount, setAdminCount] = useState([]);
     const [allTips, setAllTips] = useState([]);
 
-    console.log(adminCount);
-    console.log(associateCount);
-
 
     async function getAllUsers() {
         const data = await axios.get('http://localhost:4000/users/allUsers');
@@ -39,7 +36,6 @@ const AdminBody = () => {
         const data = await axios.get('http://localhost:4000/users/totalusers/account/admin');
         const amount = data.data[0].count
 
-        console.log(amount)
         setAdminCount(amount);
     }
 
@@ -48,7 +44,6 @@ const AdminBody = () => {
         const data = await axios.get('http://localhost:4000/users/totalusers/account/associate');
         const amount = data.data[0].count
 
-        console.log(amount)
         setAssociateCount(amount);
     }
 

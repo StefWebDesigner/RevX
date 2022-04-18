@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useContext} from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import { RiPencilLine } from "react-icons/ri";
 import axios from "axios";
@@ -8,15 +8,24 @@ import Navbar from '../navbar/Navbar';
 import DataContext from "../../dataStore/dataStore";
 import ProfilePost from '../posts/ProfilePost';
 
-const UserProfile = ({username}) => {
+const UserProfile = (props) => {
   
     //CALLING IN DATASTORE -> USED FOR NAV BAR CONDITION STATEMENT
-    const { user, setUser } = useContext(DataContext);
+    const { user } = useContext(DataContext);
 
     const [profile, setProfile] = useState({});
     const [posts, setPosts] = useState([]);
 
     const navigate = useNavigate();
+    let params = useParams();
+
+    let username;
+
+    if(props.username){
+        username = props.username;
+    } else {
+        username = params.username;
+    }
 
 
     useEffect(() => {
@@ -35,8 +44,6 @@ const UserProfile = ({username}) => {
             })
     }, [username]);
 
-    //console.log(profile);
-    
     const pageContent = (
         <Container className="account-page">
             {/* User Profile Information */}
@@ -87,7 +94,7 @@ const UserProfile = ({username}) => {
                             <ProfilePost key={post.postid} profile={profile} post={post} />
                             );
                         })
-                    : <p>This user has no posts.</p>}
+                    : <p className="text-center">No posts.</p>}
                 </Col>
             </Row>
         </Container>

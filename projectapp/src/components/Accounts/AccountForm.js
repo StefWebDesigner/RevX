@@ -12,7 +12,7 @@ function AccountForm() {
     //CALL THE DATASTORE GLOBAL VARIABLE FROM STORE
     const { user, setUser } = useContext(DataStore);
 
-    const [profilePic, setProfilePic] = useState(user.pic);
+    const [profilePic, setProfilePic] = useState(user.pic?user.pic:"user-badge-purple.svg");
 
     //potential error messages when validating form
     const [errorMessages, setErrorMessages] = useState({});

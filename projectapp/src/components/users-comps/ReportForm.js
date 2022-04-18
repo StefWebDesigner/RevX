@@ -17,7 +17,6 @@ function ReportForm({reportInfo, setReportInfo}){
             return;
         }
 
-        console.log(newReport);
         axios.post('http://localhost:4000/reports/newReport', newReport);
 
         setReportInfo({ show: false });

@@ -36,12 +36,8 @@ function Login(props) {
 
             //check if username is in database
             const { data } = await axios.get(`http://localhost:4000/users/userByName/${username.value}`);
-            console.log(data);
-
 
             if (data) {
-
-
 
                 //username in system - check if passwords match
                 if (data.password === password.value) {

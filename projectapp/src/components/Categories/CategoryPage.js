@@ -14,7 +14,6 @@ const CategoryPage = ({categoryid, title}) => {
         axios.get(`http://localhost:4000/categories/getcontentbycategoryid/${categoryid}`)
             .then((response) => {
                 setContent(response.data);
-                console.log(response);
             });
 
     }, [categoryid]);
@@ -30,6 +29,7 @@ const CategoryPage = ({categoryid, title}) => {
                     content.map((article) => {
                         return (
                             <CategoryPost
+                                key={article.id}
                                 title={article.title}
                                 bodyContent={article.mainbodycontent}
                             />

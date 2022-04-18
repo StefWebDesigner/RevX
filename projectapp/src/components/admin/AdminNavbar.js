@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {Link} from "react-router-dom";
 import {
     ProSidebar,
@@ -8,14 +8,13 @@ import {
     SidebarFooter,
     SidebarContent
 } from 'react-pro-sidebar';
-import icon from 'react-bootstrap'
 import {
     FiHome,
     FiLogOut,
     FiArrowLeftCircle,
     FiArrowRightCircle
 } from "react-icons/fi";
-import {FaList, FaRegHeart, FaRegUser} from "react-icons/fa";
+import {FaRegUser} from "react-icons/fa";
 import {RiAdminLine, RiPencilLine} from "react-icons/ri";
 import {BiCog} from "react-icons/bi";
 import DataContext from "../../dataStore/dataStore";
@@ -27,7 +26,7 @@ const AdminNavbar = ({setShowLogin}) => {
     const [menuCollapse, setMenuCollaspe] = useState(false);
 
     //CALLING IN DATASTORE -> USED FOR NAV BAR CONDITION STATEMENT
-    const {user, setUser} = useContext(DataContext);
+    const {setUser} = useContext(DataContext);
 
     //logout and send to login home
     function logout() {
@@ -58,26 +57,19 @@ const AdminNavbar = ({setShowLogin}) => {
 
                         {/*CHANGE MENU ICON SHAPE*/}
                         <Menu iconShape="square">
+                            <MenuItem active={true} icon={<FiHome/>}>
+                                <Link to="/">Home</Link>
+                            </MenuItem>
                             <MenuItem icon={<RiAdminLine />}>
                                 <Link to="/admin">Admin Portal</Link>
                             </MenuItem>
                         </Menu>
-
-                        {/*{user && user.account === 'admin' ?*/}
-                        {/*    <MenuItem icon={<RiAdminLine />}>*/}
-                        {/*        <Link to="/admin">Admin Portal</Link>*/}
-                        {/*    </MenuItem>*/}
-                        {/*    : ""}*/}
-
 
                     </SidebarHeader>
 
                     {/*CONTAIN MAIN NAV CONTENT*/}
                     <SidebarContent>
                         <Menu iconShape="square">
-                            <MenuItem active={true} icon={<FiHome/>}>
-                                <Link to="/">Home</Link>
-                            </MenuItem>
                             <MenuItem icon={<FaRegUser/>}>
                                 <Link to="/userpanel">User Panel</Link>
                             </MenuItem>
@@ -91,8 +83,8 @@ const AdminNavbar = ({setShowLogin}) => {
                     {/*FOOTER SECTION*/}
                     <SidebarFooter>
                         <Menu iconShape="square">
-                            <MenuItem icon={<BiCog/>}>
-                                <a>Setting</a>
+                            <MenuItem icon={<BiCog />}>
+                                <Link to="/account">Account</Link>
                             </MenuItem>
                             <MenuItem icon={<FiLogOut/>}>
                                 <Link to="/" onClick={() => logout()}>Logout</Link>

@@ -740,7 +740,6 @@
     border-radius: 3px;
     padding-right: 10px;
     padding-left: 10px;
-    padding-bottom: 10px;
     margin-right: 10px;
     float:right;
 }
@@ -812,3 +811,39 @@ a .userprofileSubtitlte {
     font-size: 13px;
 }
 
+
+/* Search */
+.search-page{
+    width:70%;
+    margin:auto;
+    padding-top:20px;
+}
+
+.result-list{
+    display:flex;
+    flex-direction: column;
+    margin: 20px auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchresult{
+    width:100%;
+    padding:20px;
+    text-align: center;
+    border-bottom:1px solid lightgray;
+}
+
+.viewprofilebtn{
+        margin:5px auto;
+        background-color: rgb(206, 188, 242);
+        border-radius: 5px;
+        border: rgb(206, 188, 242) solid 1px;
+        color:black;
+        width: fit-content;
+        padding: 10px;
+}
+
+.viewprofilebtn:hover{
+    background-color: mediumpurple;
+}
