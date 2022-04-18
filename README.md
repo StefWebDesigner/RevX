@@ -6,11 +6,11 @@
 
 - [Features-implemented](#Features-implemented)
 
-- [Technologies used](#Technologies used)
+- [Technologies used](#Technologies-used)
 
-- [Commands to get started](#Commands to get started)
+- [Commands to get started](#Commands-to-get-started)
 
-- [Usage of the project](#Usage of the project)
+- [Usage of the project](#Project-usage)
 
 - [Contributors](#Contributors)
 
@@ -32,7 +32,11 @@ ReveX (Social Network App) is built to connect employees of a company to other e
  
  
  ## Commands to get started
- ## Usage of the project
+ `npm init`
+ `npm install express`
+ `npm install axios`
+ `npm start`
+ ## Project-usage
  
  ## Contributors
  
