@@ -32,12 +32,16 @@ ReveX (Social Network App) is built to connect employees of a company to other e
  
  
  ## Commands to get started
- `npm init`
+ `npm init -y`
  `npm install express`
  `npm install axios`
  `npm start`
  ## Project-usage
  
  ## Contributors
+ - Megan
+ - Stefan
+ - Samuel 
  
  ## License
+ - MIT
