@@ -50,9 +50,7 @@ Admin users can additionally:
  
  
  ## Commands to get started
- `npm init -y`
- `npm install express`
- `npm install axios`
+ `npm install`
  `npm start`
  
  ## Project-usage
