@@ -3,12 +3,7 @@ import { useEffect, useContext, useState } from 'react';
 import DataStore from "../../dataStore/dataStore";
 import { useNavigate } from "react-router-dom";
 
-//import AccountForms from "../users-comps/AccountForm"
-
-
-
-
-function AccountItems(_getUserInfo) {
+function AccountItems() {
 
 
     const { user } = useContext(DataStore);
@@ -24,11 +19,9 @@ function AccountItems(_getUserInfo) {
     
         axios.get(`http://localhost:4000/users/userByName/${user.username}`).then((res) => {
             setUserInfo(res.data)
-            console.log(res.data);
-
         });
 
-        axios.get(`http://localhost:4000/posts/PostByUser/authorid/${user.userid}`).then((res) => {
+        axios.get(`http://localhost:4000/posts/PostByUser/${user.userid}`).then((res) => {
 
             setPostInfo(res.data);
         });
@@ -39,13 +32,9 @@ function AccountItems(_getUserInfo) {
 
         });
 
-    });
+    },[]);
 
     let navigate = useNavigate(); 
-  const routeChange = () => { 
-    let path = "../users-comps/AccountForm"; 
-    navigate(path);
-  }
 
     return (
         <>
@@ -56,19 +45,24 @@ function AccountItems(_getUserInfo) {
                     lastname={userInfo.lastname}
                 </div>
 
-                <div className="postInfo">
-                    posttext={postInfo.posttext}
-                    postdate={postInfo.postdate}
-                    likes={postInfo.likes}
-                </div>
-                <div className="reportInfo">
-                    caseid={reports.caseid}
-                    reportid={reports.reportid}
-                    issue={reports.issue}
+                {/* {postInfo?
+                    <div className="postInfo">
+                        posttext={postInfo.posttext}
+                        postdate={postInfo.postdate}
+                        likes={postInfo.likes}
+                    </div>
+                :""}
 
-                </div>
+                {reports?
+                    <div className="reportInfo">
+                        caseid={reports.caseid}
+                        reportid={reports.reportid}
+                        issue={reports.issue}
+
+                    </div>
+                :""} */}
             </div>
-            <button type="submit" className="signup-page" id="signup" value="Submit" onClick={routeChange} >Edit Profile</button>
+            <button className="" onClick={()=>navigate('/editAccount')} >Edit Profile</button>
         </>
     );
 

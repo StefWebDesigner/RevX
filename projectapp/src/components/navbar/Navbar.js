@@ -18,7 +18,6 @@ import {
 import { 
     FaJava,
     FaReact,
-    FaExclamationTriangle,
     FaTable 
 } from "react-icons/fa";
 import { RiAdminLine } from "react-icons/ri";
@@ -88,13 +87,13 @@ const Navbar = ({setShowLogin}) => {
                                 <Link to="/react">React</Link>
                             </MenuItem>
                             <MenuItem icon={<FaTable />}>
-                                <Link to="/beginner">SQL</Link>
+                                <Link to="/sql">SQL</Link>
                             </MenuItem>
                             <MenuItem icon={<IoLogoJavascript />}>
-                                <Link to="/intermidate">JavaScript</Link>
+                                <Link to="/javascript">JavaScript</Link>
                             </MenuItem>
                             <MenuItem icon={<MdWebAsset />}>
-                                <Link to="/advanced">HTML</Link>
+                                <Link to="/html">HTML</Link>
                             </MenuItem>
                         </Menu>
                     </SidebarContent>
@@ -107,9 +106,6 @@ const Navbar = ({setShowLogin}) => {
                                 <Link to="/account">Account</Link>
                             </MenuItem>
                           
-                            <MenuItem icon={<FaExclamationTriangle/>}>
-                                <a href="#">Report</a>
-                            </MenuItem>
                             <MenuItem icon={<FiLogOut/>}>
                                 <Link to="/" onClick={() => logout()}>Logout</Link>
                             </MenuItem>

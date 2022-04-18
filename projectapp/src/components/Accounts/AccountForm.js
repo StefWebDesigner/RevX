@@ -5,13 +5,14 @@ import Form from 'react-bootstrap/Form';
 import { Container, Row, Col } from 'react-bootstrap';
 import DataStore from "../../dataStore/dataStore";
 import ProfilePics from './ProfilePics';
+import { useNavigate } from 'react-router-dom';
 
 function AccountForm() {
 
     //CALL THE DATASTORE GLOBAL VARIABLE FROM STORE
     const { user, setUser } = useContext(DataStore);
 
-    const [profilePic, setProfilePic] = useState(user.pic ? user.pic : "user-badge-purple.svg");
+    const [profilePic, setProfilePic] = useState(user.pic);
 
     //potential error messages when validating form
     const [errorMessages, setErrorMessages] = useState({});
@@ -21,6 +22,8 @@ function AccountForm() {
         unameused: "username taken",
         email: "invalid email format"
     };
+
+    const navigate = useNavigate();
 
     //POST AXIOS & EMAIL AND VALIDATION
     function handleSubmit(e) {
@@ -76,6 +79,8 @@ function AccountForm() {
                 setUser(newInfo);
             });
         }
+
+        navigate('/account');
     }
 
     function renderErrorMessage(name) {
@@ -107,7 +112,7 @@ function AccountForm() {
                                 <ProfilePics />
                             </div>
                         </Form.Group>
-                        <button className="previewbtn" onClick={updatePreview}>
+                        <button type="button" className="previewbtn" onClick={updatePreview}>
                             Preview Changes
                         </button>
                     </Col>
