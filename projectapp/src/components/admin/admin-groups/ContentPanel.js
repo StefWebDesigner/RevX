@@ -65,9 +65,10 @@ const ContentPanel = () => {
         axios.delete(`http://localhost:4000/posts/deletePost/${postid}`).then(data => {
 
             console.log(data);
-
-            deletePost();
+            // deletePost();
+            getAllPost()
         })
+        getAllPost();
     }
 
     async function getAllCollectedPost() {

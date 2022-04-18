@@ -148,7 +148,7 @@ const UserPanel = () => {
     }
 
     async function getReportMethod() {
-        const data = await axios.get('http://localhost:4000/categories/getAllReports');
+        const data = await axios.get('http://localhost:4000/reports/getAllReports');
         setGetReport(data.data);
 
     }
