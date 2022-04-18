@@ -8,9 +8,7 @@ import {useState} from "react";
 import DataContext from "./dataStore/dataStore";
 import UserPanel from "./components/admin/admin-groups/UserPanel";
 import SearchResults from "./components/users-comps/SearchResults";
-//import SurveyPanel from "./components/admin/admin-groups/SurveyPanel";
 import ContentPanel from "./components/admin/admin-groups/ContentPanel";
-import ChatMain from "./components/chat-components/ChatMain.js";
 // import Account from '../src/components/Accounts/accounts';
 import EditAccount from '../src/components/users-comps/EditAccount';
 import UserProfile from "./components/users-comps/UserProfile";
@@ -20,8 +18,6 @@ import Beginner from "./components/Categories/Beginner";
 import Intermidate from "./components/Categories/Intermidate";
 import Advanced from "./components/Categories/Advanced";
 import AccountItems from './components/Accounts/AccountItems';
-//mport SurveyForm from "./components/Survey/SurveyForm";
-
 
 function App() {
 
@@ -44,8 +40,7 @@ function App() {
 
                   {/*ROUTES FOR ADMIN*/}
                   <Route path="/userpanel" element={<UserPanel/>}/>
-                  {/* <Route path="/surveypanel" element={<SurveyPanel/>}/> */}
-                  <Route path="/contentpanel" element={<ContentPanel/>}/> 
+                  <Route path="/contentpanel" element={<ContentPanel/>}/>
 
                   <Route path="/editAccount" element={<EditAccount />}/>
                   <Route path="/userprofile/:username" element={<UserProfile/>}/>
@@ -56,7 +51,6 @@ function App() {
                   <Route path="/intermidate" element={<Intermidate/>}/>
                   <Route path="/advanced" element={<Advanced/>}/>
                   <Route path="/searchResults" element={<SearchResults/>}/>
-
 
                   <Route path="/account" element={<AccountItems/>}/>
               </Routes>
