@@ -23,7 +23,7 @@ function UsersChart({adminCount,associateCount}) {
     return (
         <div>
             <Doughnut
-                className="userChartSize"
+
                 data={data} />
         </div>
     )

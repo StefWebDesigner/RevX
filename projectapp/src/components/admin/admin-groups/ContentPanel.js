@@ -6,80 +6,69 @@ import ContentChart from "../admincharts/ContentChart";
 
 const ContentPanel = () => {
 
+    //ALL POST FOR FACT
     const [allPost, setAllPost] = useState([]);
-
-    const [allGenre, setAllGenre] = useState([]);
-
+    //COLLECTING ALL THE POST
     const [collectingAllPost, setCollectingAllPost] = useState([]);
-
+    //DISPLAYING TOTAL TIPS FOR FACT
     const [allTips, setAllTips] = useState([]);
-
-    const [mostLikedPost, setMostLikedPost] = useState([]);
-
-
     //FORM STATE FOR POST CONTENT
     const [postContent, setPostContent] = useState({
-        tiptitle: "",
-        tipbody: "",
-        tipgenre: ""
+        categoryid: "",
+        title: "",
+        mainbodycontent: ""
     });
-
     //GET POST TOGGLE STATES
     const [showPost, setShowPost] = useState();
 
     //POSTING METHOD FOR POST CONTENT
     const SubmitPostContent = async (e) => {
-       e.defaultPrevented();
+        e.preventDefault()
 
-       //POST CALL
-       const data = await axios.post('http://localhost:4000/categories/newtips', postContent);
-       console.log(data);
+        //SOME FORM VALIDATION
+        if(!postContent.categoryid.trim() || !postContent.title.trim() || !postContent.mainbodycontent.trim()) {
+            alert("Please enter all information");
+            return
+        }
 
-       //RESETS THE CONTENT IN TO THE FORM
-       setPostContent({
-           // postTitle: "",
-           // postBody: "",
-           // postGenre: ""
-           tiptitle: "",
-           tipbody: "",
-           tipgenre: ""
-       });
+        //POST CALL
+        const data = await axios.post('http://localhost:4000/categories/createTip', postContent);
+        console.log(data);
+
+        //RESETS THE CONTENT IN TO THE FORM
+        setPostContent({
+            categoryid: "",
+            title: "",
+            mainbodycontent: ""
+        });
     }
     //POST CONTENT FORM HANDLER
     const handlePosts = (e) => {
+        e.preventDefault()
         setPostContent({
             ...postContent,
-            [e.target.name] : e.target.value,
+            [e.target.name]: e.target.value,
         });
-        console.log(postContent);
+
     };
 
     //GET ALL POST
-   function getAllPost() {
-        axios.get('http://localhost:4000/posts/getAllPosts').then(data=>{
+    function getAllPost() {
+        axios.get('http://localhost:4000/posts/getAllPosts').then(data => {
             setAllPost(data.data);
         })
-
     }
 
     //DELETE A POST
-     function deletePost (id) {
+    async function deletePost(postid) {
 
-        axios.delete(`http://localhost:4000/posts/deletePost/${id}`).then(data=>{
-            console.log('helo')
+        axios.delete(`http://localhost:4000/posts/deletePost/${postid}`).then(data => {
+
+            console.log(data);
+
+            deletePost();
         })
-
-
-
     }
-
-
-
-    async function getAllGenre() {
-        const data = await axios.get('http://localhost:4000/categories/getAll');
-        setAllGenre(data.data);
-    }
-
 
     async function getAllCollectedPost() {
 
@@ -93,25 +82,12 @@ const ContentPanel = () => {
         setAllTips(amount);
     }
 
-    async function getMostLikedPost() {
-        const data = await axios.get('http://localhost:4000/posts/maxlikepost');
-        const amount = data.data;
-        setMostLikedPost(amount);
-    }
-
     useEffect(() => {
-
         //CALLING GET ALL USERS & DETAILS
         getAllPost();
-        getAllGenre()
         getAllCollectedPost();
         getAllTips();
-        getMostLikedPost();
-
-    },[]);
-
-
-
+    }, []);
 
     return (
         <>
@@ -119,7 +95,6 @@ const ContentPanel = () => {
             <AdminNavbar/>
 
             <section id="adminSection" className="adminBackground fade-in-animation">
-
                 {/*FLEX AND WRAPPER CONTENT CLASS*/}
                 <div id="admin-wrapper" className="d-flex flex-column adminBody">
 
@@ -144,7 +119,7 @@ const ContentPanel = () => {
                                                     Total Tips :
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                    { allTips}
+                                                    {allTips}
                                                 </div>
                                             </div>
                                         </div>
@@ -181,12 +156,11 @@ const ContentPanel = () => {
 
                     </div>
 
-
                     {/*GET ALL USERS ROW*/}
                     <div className="row mb-3">
 
                         {/*COL FOR CARD*/}
-                        <div className="col-xl-12 col-lg-12 col-md-12">
+                        <div className="col-xl-12 col-lg-12 col-md-12 mt-2">
                             <div className="card shadow h-100">
                                 <div className="card-body">
                                     {/*CARD ROW*/}
@@ -197,7 +171,6 @@ const ContentPanel = () => {
                                                     Get All Post :
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-
                                                     Displays all post currently recorded in database
                                                 </div>
                                                 <div className="text-center mt-5">
@@ -214,23 +187,33 @@ const ContentPanel = () => {
                                                         showPost &&
 
                                                         // <div className="d-flex justify-content-center">
-                                                            <table className="table table-striped table-hover">
-                                                                {/*<div className="d-flex justify-content-center">*/}
-                                                                <thead className="text-center">
-                                                                    <tr>
-                                                                    <div className="row">
+                                                        <table className="table table-striped table-hover">
+                                                            {/*<div className="d-flex justify-content-center">*/}
+                                                            <thead className="text-center">
+                                                            <tr>
+                                                                <div className="row">
                                                                     <div className="d-flex justify-content-center">
-                                                                        <div className="col-lg-2 col-md-2 col-sm-2"><th className="text-center">PostID</th></div>
-                                                                        <div className="col-lg-4 col-md-3 col-sm-3"><th className="text-center">Post</th></div>
-                                                                        <div className="col-lg-3 col-md-3 col-sm-3"><th className="text-center">Date</th></div>
-                                                                        <div className="col-lg-2 col-md-2 col-sm-2"><th className="text-center">Like</th></div>
-                                                                        <div className="col-lg-1 col-md-2 col-sm-2"><th className="text-center">Remove</th></div>
+                                                                        <div className="col-lg-2 col-md-2 col-sm-2 col-3">
+                                                                            <th className="text-center post-subtitle-size">PostID</th>
+                                                                        </div>
+                                                                        <div className="col-lg-4 col-md-3 col-sm-3 col-3">
+                                                                            <th className="text-center post-subtitle-size">Post</th>
+                                                                        </div>
+                                                                        <div className="col-lg-3 col-md-3 col-sm-3 col-3">
+                                                                            <th className="text-center post-subtitle-size">Date</th>
+                                                                        </div>
+                                                                        <div className="col-lg-2 col-md-2 col-sm-2 col-2">
+                                                                            <th className="text-center post-subtitle-size">Like</th>
+                                                                        </div>
+                                                                        <div className="col-lg-1 col-md-2 col-sm-2 col-1">
+                                                                            <th className="text-center post-subtitle-size">Remove</th>
+                                                                        </div>
                                                                     </div>
 
-                                                                    </div>
-                                                                    </tr>
-                                                                    </thead>
-                                                            </table>
+                                                                </div>
+                                                            </tr>
+                                                            </thead>
+                                                        </table>
                                                     }
 
                                                     {
@@ -238,32 +221,46 @@ const ContentPanel = () => {
                                                         collectingAllPost.map((collect, index) => {
                                                             return (
                                                                 <div key={collect.postid}>
-                                        <table className="table table-striped table-hover">
-                                            <tbody className="text-center">
-                                            <tr className="text-center">
-                                                <div className="row">
-                                                    <div className="d-flex justify-content-center">
+                                                                    <table className="table table-striped table-hover">
+                                                                        <tbody className="text-center">
+                                                                        <tr className="text-center">
+                                                                            <div className="row">
+                                                                                <div
+                                                                                    className="d-flex justify-content-center">
 
-                                                    <div className="col-lg-2 col-md-1 col-sm-1 "><td className="text-center">{collect.postid}</td></div>
-                                                    <div className="col-lg-4 col-md-4 col-sm-4 "><td className="text-center">{collect.posttext}</td></div>
-                                                    <div className="col-lg-3 col-md-3 col-sm-3 "><td className="text-center">{collect.postdate}</td></div>
-                                                    <div className="col-lg-2 col-md-2 col-sm-2 "><td className="text-center">{collect.likes}</td></div>
-                                                    <div className="col-lg-1 col-md-2 col-sm-2 ">
-                                                            <button
-                                                                className="adminDeletebtn text-center"
-                                                                onClick={() => deletePost(collect.postid)}
-                                                            >
-                                                                <i className="bi bi-dash-square">-</i>
-                                                            </button>
-                                                    {/*END TAG FOR DLEX    */}
-                                                    </div>
-                                                    </div>
+                                                                                    <div
+                                                                                        className="col-lg-2 col-md-1 col-sm-1 col-2">
+                                                                                        <td className="text-center post-data-size">{collect.postid}</td>
+                                                                                    </div>
+                                                                                    <div
+                                                                                        className="col-lg-4 col-md-4 col-sm-4 col-3">
+                                                                                        <td className="text-center post-data-size">{collect.posttext}</td>
+                                                                                    </div>
+                                                                                    <div
+                                                                                        className="col-lg-3 col-md-3 col-sm-3 col-4">
+                                                                                        <td className="text-center post-data-size">{collect.postdate}</td>
+                                                                                    </div>
+                                                                                    <div
+                                                                                        className="col-lg-2 col-md-2 col-sm-2 col-2">
+                                                                                        <td className="text-center post-data-size">{collect.likes}</td>
+                                                                                    </div>
+                                                                                    <div
+                                                                                        className="col-lg-1 col-md-2 col-sm-2 col-2">
+                                                                                        <button
+                                                                                            className="adminDeletebtn text-center"
+                                                                                            onClick={() => deletePost(collect.postid)}
+                                                                                        >
+                                                                                            <i className="bi bi-dash-square">-</i>
+                                                                                        </button>
+                                                                                        {/*END TAG FOR DLEX    */}
+                                                                                    </div>
+                                                                                </div>
 
-                                                    {/*ENDING DIV FOR TABLE ROW    */}
-                                                </div>
-                                            </tr>
-                                            </tbody>
-                                        </table>
+                                                                                {/*ENDING DIV FOR TABLE ROW    */}
+                                                                            </div>
+                                                                        </tr>
+                                                                        </tbody>
+                                                                    </table>
                                                                 </div>
 
                                                             );
@@ -283,13 +280,12 @@ const ContentPanel = () => {
                         {/*OVERALL FACT ROW*/}
                     </div>
 
-
                     {/*POST CONTENT SECTION*/}
                     <div className="row mb-3">
 
 
                         {/*COL FOR CARD*/}
-                        <div className="col-xl-8 col-lg-8 col-md-8">
+                        <div className="col-xl-8 col-lg-8 col-md-8 mt-2">
                             <div className="card shadow h-100">
                                 <div className="card-body">
                                     {/*CARD ROW*/}
@@ -297,91 +293,84 @@ const ContentPanel = () => {
                                         <div className="col-md-12 mr-2">
                                             <div className="fact-body">
 
-                                                    <form onSubmit={SubmitPostContent}>
-                                                        <div className="d-flex flex-column justify-content-center">
+                                                <form onSubmit={SubmitPostContent}>
+                                                    <div className="d-flex flex-column justify-content-center">
                                                         {/*ROW FOR TITLE AND GENRE*/}
                                                         <div className="row">
                                                             <div className="col-xl-3 col-lg-3 col-md-3">
                                                                 <div className="mb-2">
-                                                                {/*SELECT INDIVIDUAL DIV*/}
-                                                                <select
-                                                                    className="custom-select d-block w-100"
-                                                                    name="tipgenre"
-                                                                    value={postContent.tipgenre}
-                                                                    onChange={handlePosts}
-                                                                    required
-                                                                >
-                                                                    <option  value="">Choose...</option>
-                                                                    <option  value="java">Java</option>
-                                                                    <option value="react">React</option>
-                                                                    <option  value="sql">SQL</option>
-                                                                    <option value="javascript">Javascript</option>
-                                                                    <option  value="html">HTML</option>
-                                                                </select>
+                                                                    {/*SELECT INDIVIDUAL DIV*/}
+                                                                    <select
+                                                                        className="custom-select d-block w-100 tippostinput"
+                                                                        name="categoryid"
+                                                                        value={postContent.categoryid}
+                                                                        onChange={handlePosts}
+                                                                        required>
+
+                                                                        <option value="">Choose...</option>
+                                                                        <option value={1}>Java</option>
+                                                                        <option value={2}>React</option>
+                                                                        <option value={3}>SQL</option>
+                                                                        <option value={4}>Javascript</option>
+                                                                        <option value={5}>HTML</option>
+                                                                    </select>
                                                                 </div>
-                                                            {/*END TAGS FOR SELECT OPTIONS    */}
+                                                                {/*END TAGS FOR SELECT OPTIONS    */}
                                                             </div>
                                                             <div className="col-xl-9 col-lg-9 col-md-9">
                                                                 <div className="d-flex flex-row justify-content-center">
                                                                     <label
                                                                         className="col-md-3 text-center"
+                                                                        aria-label="Enter a title"
                                                                     > Enter a title:
                                                                     </label>
                                                                     <input
-                                                                        className=" col-md-7 text-center"
-                                                                        name="tiptitle"
-                                                                        value={postContent.tiptitle}
+                                                                        className="tippostinput col-md-7 text-center"
+                                                                        name="title"
+                                                                        value={postContent.title}
                                                                         type="text"
                                                                         placeholder="Enter a title"
+                                                                        aria-placeholder="Enter a title"
                                                                         onChange={handlePosts}
                                                                         required
                                                                     />
                                                                 </div>
                                                             </div>
-                                                    {/* END DIV TAG FOR TITLE & GENRE */}
-                                                    </div>
+                                                            {/* END DIV TAG FOR TITLE & GENRE */}
+                                                        </div>
 
                                                         <label
                                                             className="text-center"
+                                                            aria-label="Enter content into body"
+
                                                         > Enter some content: </label>
                                                         <textarea
                                                             className="postInputField text-center"
-                                                            name="tipbody"
-                                                            value={postContent.tipbody}
+                                                            name="mainbodycontent"
+                                                            value={postContent.mainbodycontent}
                                                             type="text"
                                                             placeholder="Enter content in the body"
+                                                            aria-placeholder="Enter content in body post"
                                                             onChange={handlePosts}
                                                             required
                                                         >
                                                         </textarea>
 
                                                         <div className="row">
-                                                            {/*<div className="col-md-12">*/}
-                                                                <div className="d-flex justify-content-center">
+                                                            <div className="d-flex justify-content-center">
                                                                 <button
                                                                     className="buttonMainStyle"
                                                                     role="button"
                                                                     type="submit"
+                                                                    onClick={SubmitPostContent}
                                                                 >
                                                                     Post
                                                                 </button>
-                                                                </div>
                                                             </div>
-                                                        {/*</div>*/}
                                                         </div>
-                                                    </form>
+                                                    </div>
+                                                </form>
 
-
-
-
-
-
-
-
-
-
-
-                                                {/*</div>*/}
                                             </div>
                                         </div>
                                         {/*END CARD ROW*/}
@@ -391,14 +380,10 @@ const ContentPanel = () => {
                             {/*COL END*/}
                         </div>
                         {/*OVERALL FACT ROW*/}
-                    {/*</div>*/}
-
-
-                    {/*<div className="row">*/}
 
                         {/*GRAPH*/}
                         {/*COL FOR CARD*/}
-                        <div className="col-xl-4 col-lg-3 col-md-4">
+                        <div className="col-xl-4 col-lg-3 col-md-4 mt-2">
                             <div className="card shadow h-100">
                                 <div className="card-body ">
                                     {/*CARD ROW*/}
@@ -409,7 +394,7 @@ const ContentPanel = () => {
                                                     Post Graph :
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                    All Total Post Per Genre
+                                                    Total Post Per Genre
                                                 </div>
                                                 <div className=" text-center h5 mb-0 font-weight-bold text-gray-800">
                                                     <ContentChart/>
@@ -422,20 +407,11 @@ const ContentPanel = () => {
                             </div>
                             {/*COL END*/}
                         </div>
-
                         {/*OVERALL FACT ROW*/}
                     </div>
-
-
                     {/* END OF WRAPPER CONTENT CLASS*/}
                 </div>
-
             </section>
-
-
-
-
-
         </>
     );
 };

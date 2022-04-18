@@ -9,7 +9,7 @@ import DataContext from "../../dataStore/dataStore";
 import ProfilePost from '../posts/ProfilePost';
 
 const UserProfile = ({username}) => {
-
+  
     //CALLING IN DATASTORE -> USED FOR NAV BAR CONDITION STATEMENT
     const { user, setUser } = useContext(DataContext);
 
@@ -17,6 +17,7 @@ const UserProfile = ({username}) => {
     const [posts, setPosts] = useState([]);
 
     const navigate = useNavigate();
+
 
     useEffect(() => {
         axios.get(`http://localhost:4000/users/userByName/${username}`)
@@ -90,6 +91,7 @@ const UserProfile = ({username}) => {
                 </Col>
             </Row>
         </Container>
+
     );
 
     const noProfile = (<h2 className="text-center">User has been deactivated</h2>);

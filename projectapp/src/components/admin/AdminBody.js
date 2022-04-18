@@ -82,7 +82,7 @@ const AdminBody = () => {
 
                     {/*HEADER TITLE*/}
                     <div className="d-sm-flex align-items-center justify-content-center mb-4">
-                        <h1 className="text-center">Overal Portal Information</h1>
+                        <h1 className="text-center">Portal Information</h1>
                     </div>
 
                     {/*OVERALL FACT ROW*/}
@@ -162,6 +162,7 @@ const AdminBody = () => {
                             {/*COL END*/}
                         </div>
 
+
                         <div className="row mb-3">
 
                         </div>
@@ -172,9 +173,9 @@ const AdminBody = () => {
 
 
                             {/*COL FOR CARD*/}
-                            <div className="col-xl-6 col-lg-6 col-md-6">
-                                <div className="card shadow h-100 mt-2">
-                                    <div className="card-body ">
+                            <div className="col-xl-6 col-lg-6 col-md-6 mt-2">
+                                <div className="card shadow h-100">
+                                    <div className="card-body">
                                         {/*CARD ROW*/}
                                         <div className="row no-gutters align-items-center">
                                             <div className="col mr-2">
@@ -185,7 +186,7 @@ const AdminBody = () => {
                                                     </div>
                                                     <div
                                                         className=" text-center h5 mb-0 font-weight-bold text-gray-800">
-                                                        All Total Post Per Genre
+                                                        Total Post Per Genre
                                                     </div>
                                                     <div
                                                         className=" text-center h5 mb-0 font-weight-bold text-gray-800">
@@ -205,7 +206,7 @@ const AdminBody = () => {
 
                             {/*GRAPH*/}
                             {/*COL FOR CARD*/}
-                            <div className="col-xl-6 col-lg-6 col-md-6">
+                            <div className="col-xl-6 col-lg-6 col-md-6 mt-2">
                                 <div className="card shadow h-100 ">
                                     <div className="card-body ">
                                         {/*CARD ROW*/}

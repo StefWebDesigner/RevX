@@ -3,8 +3,8 @@ import { useEffect, useContext, useState } from 'react';
 import DataStore from "../../dataStore/dataStore";
 import { useNavigate } from "react-router-dom";
 
-function AccountItems() {
 
+function AccountItems() {
 
     const { user } = useContext(DataStore);
     // const { post } = useContext(DataStore);
@@ -35,6 +35,10 @@ function AccountItems() {
     },[]);
 
     let navigate = useNavigate(); 
+  const routeChange = () => { 
+    let path = "../editAccount/";
+    navigate(path);
+  }
 
     return (
         <>

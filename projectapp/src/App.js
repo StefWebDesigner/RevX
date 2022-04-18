@@ -11,7 +11,6 @@ import SearchResults from "./components/users-comps/SearchResults";
 import ContentPanel from "./components/admin/admin-groups/ContentPanel";
 import EditAccount from '../src/components/Accounts/EditAccount';
 import UserProfile from "./components/users-comps/UserProfile";
-import AccountItems from './components/Accounts/AccountItems';
 import CategoryPage from './components/Categories/CategoryPage';
 
 
@@ -30,6 +29,7 @@ function App() {
         }}>
           <Router>
               <Routes>
+
                 {/*ROUTES FOR HOME NAV*/}
                 <Route path="/" element={<Home/>}/>
                 <Route path="/admin" element={<Admin/>}/>

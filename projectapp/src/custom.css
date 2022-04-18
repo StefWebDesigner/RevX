@@ -159,9 +159,18 @@
 .postInputField {
     padding-top: 50px;
     padding-bottom: 50px;
-
 }
 
+.tippostinput,
+.postInputField {
+    cursor: pointer;
+}
+
+.tippostinput:hover,
+.postInputField:hover
+{
+    border: solid mediumpurple 1px;
+}
 
 /*MAIN BUTTON STYLE*/
 
@@ -180,9 +189,6 @@
     transition: 0.5s;
     border: 1px solid #ec1840;
 }
-
-
-
 
 /*HOVER EFFECT & ANIMATION TRIGGER*/
 .buttonMainStyle:hover {
@@ -422,6 +428,7 @@
     background-color: mediumpurple;
     border-radius: 5px;
     color:white;
+    cursor: pointer;
 }
 
 .not-liked-button {
@@ -431,6 +438,7 @@
     background-color: transparent;
     border-radius: 5px;
     color: white;
+    cursor: pointer;
 }
 
 .not-liked-button:hover{
@@ -462,6 +470,7 @@
     border:none;
     background-color: transparent;
     float:right;
+    cursor: pointer;
 }
 
 .reportbtn:hover {
@@ -533,6 +542,24 @@
 }
 
 .adminDeletebtn:active {
+    border: black solid 1px;
+}
+
+.adminNullbtn {
+    background: mediumpurple;
+    width: 25%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.adminNullbtn:hover {
+    background-color: rgb(105, 67, 181);
+}
+
+.adminNullbtn:active {
     border: black solid 1px;
 }
 
@@ -693,8 +720,95 @@
 
 .reportTitle {
     font-size: 15px;
+}
 
+.searchField {
+    margin-left: 80px;
+}
+
+.searchPromptField:hover,
+.searchField:hover {
+    border: solid mediumpurple 1px;
 }
 
 
+.searchbutton{
+    width:fit-content;
+    border: mediumpurple solid 1px;
+    background-color: mediumpurple;
+    color: white;
+    border-radius: 3px;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    margin-right: 10px;
+    float:right;
+}
+
+.searchbutton:hover{
+    border: mediumpurple solid 1px;
+    background-color: white;
+    color: mediumpurple;
+
+}
+
+.userprofileTitle,
+.userprofileElements {
+    text-align: center;
+    color: mediumpurple;
+}
+
+.userprofileTitle,
+.userprofileElements,
+.userprofileSubtitlte {
+    text-align: center;
+}
+
+.userprofileTitle {
+    /*padding-left: 70px;*/
+    text-align: center;
+}
+
+a .userprofileSubtitlte {
+    color: black;
+    font-size: 30px;
+    text-decoration: none;
+}
+
+
+.userprofileContent {
+    border: rebeccapurple solid 2px;
+    background-color: #F8F9FC;
+}
+.userprofileContent:hover {
+    border: mediumpurple solid 2px;
+
+}
+
+.userprofileContainer {
+    margin: 20px auto;
+    margin-right: 60px;
+    padding-top: 15px;
+    padding-bottom: 20px;
+    width: 70%;
+    background-color: #212529;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 3px 2px 5px 3px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Edit Profile */
+.account-label {
+    color: rgb(155, 155, 155);
+    margin-left: 5px;
+}
+
+.post-data-size {
+    font-size: 13px;
+}
+
+.post-subtitle-size {
+    font-size: 13px;
+}
 
