@@ -1,5 +1,6 @@
 # Project1-TheMediaThatIsSocial
- Title: RevX (Social Network App)
+Title: RevX Social Network
+
  ## Table Of Contents
 
 - [Description](#Description)
@@ -50,14 +51,27 @@ Admin users can additionally:
  
  
  ## Commands to get started
- `npm install`
- `npm start`
+ 
+Backend
+- This project requires a PostgreSQL database with the schema listed in the db/schema.sql file.
+- You may use the db/seeds.sql file to populate your database, if you wish.
+- You will also need a file dbconnect.js located in the src folder with your unique PostgreSQL Pool informtaion.
+- Then, navigate to backend folder
+- Enter `npm install` in your command line
+- Enter `node server.js` to launch the backend server
+
+Frontend
+- Navigate to frontend/projectapp
+- Enter `npm install` in your command line
+- Enter `npm start`. You will be directed to your browser
  
  ## Project-usage
- - For Company purpose
+ - For individual use within a company
  
  ## Contributors
  - Stefan Riley
  - Megan Orth
  - Samuel Sholib
 
+ ## License
+MIT
