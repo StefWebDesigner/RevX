@@ -1,4 +1,4 @@
-# Project1-TheMediaThatIsSocial
+# RevX
 Title: RevX Social Network
 
  ## Table Of Contents
